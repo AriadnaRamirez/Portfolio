@@ -29,11 +29,11 @@ export function ThemeToggle() {
   const resolvedTheme =
     theme === "system" ? systemTheme : theme;
 
-  const isDark = resolvedTheme === "dark";
+  const isDark = resolvedTheme === "Dark";
 
   return (
     <button
-      onClick={() => setTheme(isDark ? "light" : "dark")}
+      onClick={() => setTheme(isDark ? "Light" : "Dark")}
       className="px-3 py-1 rounded-full border text-xs border-gray-300 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-800 transition"
       aria-label="Toggle theme"
     >
