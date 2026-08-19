@@ -1,43 +1,36 @@
-// components/navbar/ThemeToggle.tsx
 "use client";
 
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 
 export function ThemeToggle() {
-  const { theme, systemTheme, setTheme } = useTheme();
+  const { resolvedTheme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
-  // Solo después de montar podemos confiar en theme/systemTheme
   useEffect(() => {
     setMounted(true);
   }, []);
 
-  // Mientras no está montado, devolvemos un botón "neutro"
-  // que se verá igual en SSR y en el cliente
   if (!mounted) {
     return (
       <button
-        className="px-3 py-1 rounded-full border text-xs border-gray-300 dark:border-gray-600"
+        type="button"
+        className="h-9 w-9 border border-border-strong text-xs"
         aria-label="Toggle theme"
-      >
-        🌙
-      </button>
+      />
     );
   }
 
-  const resolvedTheme =
-    theme === "system" ? systemTheme : theme;
-
-  const isDark = resolvedTheme === "Dark";
+  const isDark = resolvedTheme === "dark";
 
   return (
     <button
-      onClick={() => setTheme(isDark ? "Light" : "Dark")}
-      className="px-3 py-1 rounded-full border text-xs border-gray-300 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-800 transition"
-      aria-label="Toggle theme"
+      type="button"
+      onClick={() => setTheme(isDark ? "light" : "dark")}
+      className="h-9 px-3 border border-border-strong text-xs font-semibold uppercase tracking-wider text-foreground transition hover:border-highlight hover:text-highlight"
+      aria-label={isDark ? "Switch to light theme" : "Switch to dark theme"}
     >
-      {isDark ? "☀️ Light" : "🌙 Dark"}
+      {isDark ? "Light" : "Dark"}
     </button>
   );
 }
