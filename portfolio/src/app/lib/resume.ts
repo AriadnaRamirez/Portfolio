@@ -126,10 +126,14 @@ export function buildResume(lang: Lang, t: Copy): ResumeModel {
       },
     ],
     skills: [
-      { left: t.resume_label_web, sub: t.resume_skills_web },
-      { left: t.resume_label_forms, sub: t.resume_skills_forms },
-      { left: t.resume_label_ux, sub: t.resume_skills_ux },
-      { left: t.resume_label_tools, sub: t.resume_skills_tools },
+      { left: t.resume_label_frontend, sub: t.resume_skills_frontend },
+      { left: t.resume_label_backend, sub: t.resume_skills_backend },
+      { left: t.resume_label_databases, sub: t.resume_skills_databases },
+      { left: t.resume_label_testing, sub: t.resume_skills_testing },
+      { left: t.resume_label_cloud, sub: t.resume_skills_cloud },
+      { left: t.resume_label_vcs, sub: t.resume_skills_vcs },
+      { left: t.resume_label_auth, sub: t.resume_skills_auth },
+      { left: t.resume_label_methods, sub: t.resume_skills_methods },
     ],
     honors: [
       ...scholarshipIds.map(

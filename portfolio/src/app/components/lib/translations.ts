@@ -9,11 +9,11 @@ export const translations = {
     nav_open: "Abrir menú",
     nav_close: "Cerrar menú",
 
-    footer_tagline: "Web Developer · UX/UI · Ciberseguridad · DevOps · México",
+    footer_tagline: "Fullstack web developer · UX/UI · Ciberseguridad · DevOps · México",
 
     hero_kicker: "Portfolio",
-    identity_line: "Web Developer · UX/UI · Ciberseguridad · DevOps",
-    hero_role: "Web Developer · UX/UI · Ciberseguridad · DevOps",
+    identity_line: "Fullstack web developer · UX/UI · Ciberseguridad · DevOps",
+    hero_role: "Fullstack web developer · UX/UI · Ciberseguridad · DevOps",
     hero_title: "Productos digitales accesibles, responsivos y escalables",
     hero_subtitle:
       "Diseño e implemento features end-to-end: interfaces en React/Next.js, APIs en Node.js, autenticación, roles y datos. Integro IA en diseño, prototipado y desarrollo para acelerar iteraciones y entregar soluciones funcionales. Experiencia en SaaS, rediseño web, CMS WordPress y producto hotelero.",
@@ -23,7 +23,7 @@ export const translations = {
     hero_location: "México · Remoto · Híbrido · Presencial",
     hero_stack_label: "Stack principal",
     hero_highlight_1_label: "Enfoque",
-    hero_highlight_1_value: "Web · UX/UI · Ciberseguridad · DevOps",
+    hero_highlight_1_value: "Fullstack · UX/UI · Ciberseguridad · DevOps",
     hero_highlight_2_label: "Disponibilidad",
     hero_highlight_2_value: "Remoto · Híbrido · Presencial",
     hero_highlight_3_label: "Idiomas",
@@ -83,14 +83,14 @@ export const translations = {
     experience_kicker: "Trayectoria",
     experience_title: "Experiencia",
     experience_subtitle:
-      "Web Developer en GROVA Marketing, freelance, RISE Hackathon Paris y roles previos.",
+      "Fullstack web developer en GROVA Marketing, freelance, RISE Hackathon Paris y roles previos.",
     experience_tab_current: "Actual",
     experience_tab_product: "Producto",
     experience_tab_prior: "Previa",
     experience_prior_note:
       "Analicé datos experimentales en investigación aplicada y redacté reportes técnicos en inglés.",
 
-    exp_grova_role: "Web Developer",
+    exp_grova_role: "Fullstack web developer",
     exp_grova_org: "GROVA Marketing",
     exp_grova_period: "Ago 2025 — Actualidad · Remoto",
     exp_grova_b1:
@@ -153,9 +153,9 @@ export const translations = {
     about_kicker: "Perfil",
     about_title: "Sobre mí",
     about_intro:
-      "Desarrolladora Web especializada en React, Next.js y TypeScript, con enfoque en UX/UI y experiencia construyendo productos digitales accesibles, responsivos y escalables.",
+      "Desarrolladora fullstack especializada en React, Next.js y TypeScript, con enfoque en UX/UI y experiencia construyendo productos digitales accesibles, responsivos y escalables.",
     about_body:
-      "Galardonada y beneficiaria de Fulbright–García Robles (2021), Junior Achievement Americas (Mujer Digital, ruta Cisco CCNA) y Generation México (AWS re/Start + IA generativa, oct 2026). Web Developer en GROVA Marketing (remoto). Freelance en Grupo CRM Extintores. Participante en el RISE Hackathon Paris (jul 2026).",
+      "Galardonada y beneficiaria de Fulbright–García Robles (2021), Junior Achievement Americas (Mujer Digital, ruta Cisco CCNA) y Generation México (AWS re/Start + IA generativa, oct 2026). Fullstack web developer en GROVA Marketing (remoto). Freelance en Grupo CRM Extintores. Participante en el RISE Hackathon Paris (jul 2026).",
     about_now_title: "Actualmente",
     about_now_body:
       "Disponible en remoto, híbrido o presencial. En GROVA Marketing construyo producto en React/Next.js y mantengo WordPress; freelance en Grupo CRM Extintores. CCNA en proceso; AWS re/Start + IA generativa inicia en octubre 2026.",
@@ -164,7 +164,8 @@ export const translations = {
     about_tab_credentials: "Formación",
 
     stack_title: "Stack técnico",
-    stack_subtitle: "Habilidades técnicas del CV: desarrollo web, formularios, UX/UI y herramientas.",
+    stack_subtitle:
+      "Habilidades técnicas del CV: frontend, backend, bases de datos, testing, cloud y metodologías.",
     stack_frontend: "Frontend",
     stack_backend: "Backend & datos",
     stack_tools: "CMS & delivery",
@@ -242,7 +243,7 @@ export const translations = {
     contact_kicker: "Contacto",
     contact_title: "Trabajemos juntos",
     contact_subtitle:
-      "Disponible en remoto, híbrido o presencial. Web Developer · UX/UI · Ciberseguridad · DevOps.",
+      "Disponible en remoto, híbrido o presencial. Fullstack web developer · UX/UI · Ciberseguridad · DevOps.",
     contact_availability: "Disponible: remoto, híbrido o presencial",
     contact_response: "Respondo en 24–48 h hábiles.",
     contact_cta_headline: "Cuéntame sobre tu proyecto o vacante",
@@ -266,26 +267,35 @@ export const translations = {
     resume_title: "CV actualizado",
     resume_download: "Descargar CV (Español)",
     resume_downloading: "Generando PDF…",
-    resume_headline: "Web Developer · UX/UI · Ciberseguridad · DevOps",
+    resume_headline: "Fullstack web developer · UX/UI · Ciberseguridad · DevOps",
     resume_location: "México (Remoto / Híbrido / Presencial)",
     resume_summary:
-      "Desarrolladora Web especializada en React, Next.js y TypeScript, con enfoque en UX/UI y experiencia construyendo productos digitales accesibles, responsivos y escalables. Experiencia en SaaS, rediseños web y soluciones a medida, desarrollando interfaces y componentes reutilizables bajo metodologías Agile/Scrum. Integro IA en el diseño, prototipado y desarrollo para acelerar iteraciones, automatizar tareas y optimizar procesos. Mi formación en UX/UI, Full Stack, ciberseguridad e Ingeniería Civil combina criterio de diseño, capacidad técnica y pensamiento analítico para resolver problemas de forma estructurada.",
+      "Desarrolladora fullstack especializada en React, Next.js y TypeScript, con enfoque en UX/UI y experiencia construyendo productos digitales accesibles, responsivos y escalables. Experiencia en SaaS, rediseños web y soluciones a medida, desarrollando interfaces y componentes reutilizables bajo metodologías Agile/Scrum. Integro IA en el diseño, prototipado y desarrollo para acelerar iteraciones, automatizar tareas y optimizar procesos. Mi formación en UX/UI, Full Stack, ciberseguridad e Ingeniería Civil combina criterio de diseño, capacidad técnica y pensamiento analítico para resolver problemas de forma estructurada.",
     resume_awards_lead: "Galardonada y beneficiaria de las siguientes becas:",
     resume_award_fulbright: "Fulbright–García Robles — COMEXUS (2021)",
     resume_award_ja:
       "Junior Achievement Americas — Mujer Digital, ciberseguridad / ruta Cisco CCNA (en curso)",
     resume_award_generation:
       "Generation México — AWS re/Start + IA generativa (inicio oct 2026)",
-    resume_label_web: "Desarrollo web",
-    resume_label_forms: "Formularios y validación",
-    resume_label_ux: "Diseño y UX/UI",
-    resume_label_tools: "Herramientas y metodologías",
-    resume_skills_web:
-      "React, Next.js, JavaScript, TypeScript, HTML5, CSS3, Tailwind CSS, Bootstrap, Node.js, Express.js, TypeORM, REST APIs, PostgreSQL, MongoDB, WordPress",
-    resume_skills_forms: "Formik, Yup",
-    resume_skills_ux:
-      "Figma, Design Systems, Responsive Design, Arquitectura de Información, Accesibilidad web (WCAG)",
-    resume_skills_tools: "Git, GitHub, Vercel, Postman, Agile / Scrum",
+    resume_label_frontend: "Frontend",
+    resume_label_backend: "Backend",
+    resume_label_databases: "Bases de datos",
+    resume_label_testing: "Testing",
+    resume_label_cloud: "Cloud / Deploy",
+    resume_label_vcs: "Control de versiones y colaboración",
+    resume_label_auth: "Autenticación / APIs",
+    resume_label_methods: "Metodologías",
+    resume_skills_frontend:
+      "HTML5, CSS3, JavaScript, React, TypeScript, Redux / Redux Toolkit, Next.js, Material UI (MUI), Tailwind CSS, DOM, AJAX",
+    resume_skills_backend:
+      "Node.js, Express, APIs REST, TypeScript, TypeORM, Mongoose, Swagger",
+    resume_skills_databases: "PostgreSQL, MongoDB, SQL, NoSQL",
+    resume_skills_testing: "Jest, Vitest, React Testing Library",
+    resume_skills_cloud: "Vercel, Render",
+    resume_skills_vcs: "Git, GitHub",
+    resume_skills_auth: "Auth0, APIs REST",
+    resume_skills_methods:
+      "Agile, Scrum, Trabajo colaborativo, Project-based learning",
     resume_school_servi_title: "ServiYApp — Marketplace de servicios de belleza",
     resume_school_servi_b1:
       "Diseñé e implementé dashboards para usuarios, proveedores y administradores en Next.js y Tailwind CSS.",
@@ -320,11 +330,11 @@ export const translations = {
     nav_open: "Open menu",
     nav_close: "Close menu",
 
-    footer_tagline: "Web Developer · UX/UI · Cybersecurity · DevOps · Mexico",
+    footer_tagline: "Fullstack web developer · UX/UI · Cybersecurity · DevOps · Mexico",
 
     hero_kicker: "Portfolio",
-    identity_line: "Web Developer · UX/UI · Cybersecurity · DevOps",
-    hero_role: "Web Developer · UX/UI · Cybersecurity · DevOps",
+    identity_line: "Fullstack web developer · UX/UI · Cybersecurity · DevOps",
+    hero_role: "Fullstack web developer · UX/UI · Cybersecurity · DevOps",
     hero_title: "Accessible, responsive, scalable digital products",
     hero_subtitle:
       "I design and ship features across the stack: React/Next.js UIs, Node.js APIs, auth/roles, and data. I use AI in design, prototyping, and development to speed up iteration and ship working solutions. Experience in SaaS, website redesigns, WordPress CMS, and hospitality product.",
@@ -334,7 +344,7 @@ export const translations = {
     hero_location: "Mexico · Remote · Hybrid · On-site",
     hero_stack_label: "Core stack",
     hero_highlight_1_label: "Focus",
-    hero_highlight_1_value: "Web · UX/UI · Cybersecurity · DevOps",
+    hero_highlight_1_value: "Fullstack · UX/UI · Cybersecurity · DevOps",
     hero_highlight_2_label: "Availability",
     hero_highlight_2_value: "Remote · Hybrid · On-site",
     hero_highlight_3_label: "Languages",
@@ -394,14 +404,14 @@ export const translations = {
     experience_kicker: "Career",
     experience_title: "Experience",
     experience_subtitle:
-      "Web Developer at GROVA Marketing, freelance work, RISE Hackathon Paris, and earlier roles.",
+      "Fullstack web developer at GROVA Marketing, freelance work, RISE Hackathon Paris, and earlier roles.",
     experience_tab_current: "Current",
     experience_tab_product: "Product",
     experience_tab_prior: "Earlier",
     experience_prior_note:
       "Analyzed experimental data in applied research and wrote technical reports in English.",
 
-    exp_grova_role: "Web Developer",
+    exp_grova_role: "Fullstack web developer",
     exp_grova_org: "GROVA Marketing",
     exp_grova_period: "Aug 2025 — Present · Remote",
     exp_grova_b1:
@@ -464,9 +474,9 @@ export const translations = {
     about_kicker: "Profile",
     about_title: "About",
     about_intro:
-      "Web developer specialized in React, Next.js, and TypeScript, with a UX/UI focus and experience building accessible, responsive, scalable digital products.",
+      "Fullstack web developer specialized in React, Next.js, and TypeScript, with a UX/UI focus and experience building accessible, responsive, scalable digital products.",
     about_body:
-      "Awarded Fulbright–García Robles (2021), Junior Achievement Americas (Mujer Digital, Cisco CCNA track), and Generation Mexico (AWS re/Start + generative AI, Oct 2026). Web Developer at GROVA Marketing (remote). Freelance at Grupo CRM Extintores. Participant in RISE Hackathon Paris (Jul 2026).",
+      "Awarded Fulbright–García Robles (2021), Junior Achievement Americas (Mujer Digital, Cisco CCNA track), and Generation Mexico (AWS re/Start + generative AI, Oct 2026). Fullstack web developer at GROVA Marketing (remote). Freelance at Grupo CRM Extintores. Participant in RISE Hackathon Paris (Jul 2026).",
     about_now_title: "Currently",
     about_now_body:
       "Available remote, hybrid, or on-site. At GROVA Marketing I build React/Next.js product UI and maintain WordPress; freelance at Grupo CRM Extintores. CCNA in progress; AWS re/Start + generative AI starts October 2026.",
@@ -475,7 +485,8 @@ export const translations = {
     about_tab_credentials: "Credentials",
 
     stack_title: "Technical stack",
-    stack_subtitle: "Technical skills from the CV: web development, forms, UX/UI, and tools.",
+    stack_subtitle:
+      "Technical skills from the CV: frontend, backend, databases, testing, cloud, and methodologies.",
     stack_frontend: "Frontend",
     stack_backend: "Backend & data",
     stack_tools: "CMS & delivery",
@@ -553,7 +564,7 @@ export const translations = {
     contact_kicker: "Contact",
     contact_title: "Let’s work together",
     contact_subtitle:
-      "Available remote, hybrid, or on-site. Web Developer · UX/UI · Cybersecurity · DevOps.",
+      "Available remote, hybrid, or on-site. Fullstack web developer · UX/UI · Cybersecurity · DevOps.",
     contact_availability: "Available: remote, hybrid, or on-site",
     contact_response: "I typically reply within 24–48 business hours.",
     contact_cta_headline: "Tell me about your role or project",
@@ -577,26 +588,35 @@ export const translations = {
     resume_title: "Updated CV",
     resume_download: "Download CV (English)",
     resume_downloading: "Generating PDF…",
-    resume_headline: "Web Developer · UX/UI · Cybersecurity · DevOps",
+    resume_headline: "Fullstack web developer · UX/UI · Cybersecurity · DevOps",
     resume_location: "Mexico (Remote / Hybrid / On-site)",
     resume_summary:
-      "Web developer specialized in React, Next.js, and TypeScript, with a UX/UI focus and experience building accessible, responsive, scalable digital products. Experience in SaaS, website redesigns, and custom solutions, developing interfaces and reusable components under Agile/Scrum. I integrate AI into design, prototyping, and development to speed up iteration, automate tasks, and streamline processes. My background in UX/UI, Full Stack, cybersecurity, and Civil Engineering combines design judgment, technical skill, and analytical thinking to solve problems in a structured way.",
+      "Fullstack web developer specialized in React, Next.js, and TypeScript, with a UX/UI focus and experience building accessible, responsive, scalable digital products. Experience in SaaS, website redesigns, and custom solutions, developing interfaces and reusable components under Agile/Scrum. I integrate AI into design, prototyping, and development to speed up iteration, automate tasks, and streamline processes. My background in UX/UI, Full Stack, cybersecurity, and Civil Engineering combines design judgment, technical skill, and analytical thinking to solve problems in a structured way.",
     resume_awards_lead: "Awarded the following fellowships and scholarships:",
     resume_award_fulbright: "Fulbright–García Robles — COMEXUS (2021)",
     resume_award_ja:
       "Junior Achievement Americas — Mujer Digital, cybersecurity / Cisco CCNA track (in progress)",
     resume_award_generation:
       "Generation Mexico — AWS re/Start + generative AI (starts Oct 2026)",
-    resume_label_web: "Web development",
-    resume_label_forms: "Forms and validation",
-    resume_label_ux: "Design and UX/UI",
-    resume_label_tools: "Tools and methods",
-    resume_skills_web:
-      "React, Next.js, JavaScript, TypeScript, HTML5, CSS3, Tailwind CSS, Bootstrap, Node.js, Express.js, TypeORM, REST APIs, PostgreSQL, MongoDB, WordPress",
-    resume_skills_forms: "Formik, Yup",
-    resume_skills_ux:
-      "Figma, Design Systems, Responsive Design, Information Architecture, Web Accessibility (WCAG)",
-    resume_skills_tools: "Git, GitHub, Vercel, Postman, Agile / Scrum",
+    resume_label_frontend: "Frontend",
+    resume_label_backend: "Backend",
+    resume_label_databases: "Databases",
+    resume_label_testing: "Testing",
+    resume_label_cloud: "Cloud / Deploy",
+    resume_label_vcs: "Version control & collaboration",
+    resume_label_auth: "Authentication / APIs",
+    resume_label_methods: "Methodologies",
+    resume_skills_frontend:
+      "HTML5, CSS3, JavaScript, React, TypeScript, Redux / Redux Toolkit, Next.js, Material UI (MUI), Tailwind CSS, DOM, AJAX",
+    resume_skills_backend:
+      "Node.js, Express, REST APIs, TypeScript, TypeORM, Mongoose, Swagger",
+    resume_skills_databases: "PostgreSQL, MongoDB, SQL, NoSQL",
+    resume_skills_testing: "Jest, Vitest, React Testing Library",
+    resume_skills_cloud: "Vercel, Render",
+    resume_skills_vcs: "Git, GitHub",
+    resume_skills_auth: "Auth0, REST APIs",
+    resume_skills_methods:
+      "Agile, Scrum, Collaborative work, Project-based learning",
     resume_school_servi_title: "ServiYApp — Beauty services marketplace",
     resume_school_servi_b1:
       "Designed and implemented dashboards for users, providers, and admins in Next.js and Tailwind CSS.",
