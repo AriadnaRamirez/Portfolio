@@ -1,12 +1,19 @@
-// context/LanguageContext.tsx
 "use client";
 
-import { createContext, useContext, useState, useEffect } from "react";
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 import { Lang, translations } from "../components/lib/translations";
+
+type Dictionary = { [K in keyof (typeof translations)["es"]]: string };
 
 type LanguageContextType = {
   lang: Lang;
-  t: typeof translations["es"];
+  t: Dictionary;
   setLang: (lang: Lang) => void;
 };
 
@@ -16,14 +23,20 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
   const [lang, setLangState] = useState<Lang>("es");
 
   useEffect(() => {
-    const stored = window.localStorage.getItem("lang") as Lang | null;
-    if (stored) setLangState(stored);
+    const stored = window.localStorage.getItem("lang");
+    if (stored === "es" || stored === "en") {
+      setLangState(stored);
+    }
   }, []);
 
-  const setLang = (value: Lang) => {
+  useEffect(() => {
+    document.documentElement.lang = lang;
+  }, [lang]);
+
+  const setLang = useCallback((value: Lang) => {
     setLangState(value);
     window.localStorage.setItem("lang", value);
-  };
+  }, []);
 
   return (
     <LanguageContext.Provider
