@@ -12,10 +12,10 @@ const styles = StyleSheet.create({
     fontFamily: "Times-Roman",
     fontSize: 10.5,
     color: "#111111",
-    paddingTop: 40,
-    paddingBottom: 44,
+    paddingTop: 36,
+    paddingBottom: 36,
     paddingHorizontal: 42,
-    lineHeight: 1.4,
+    lineHeight: 1.32,
     display: "flex",
     flexDirection: "column",
   },
@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
   location: {
     textAlign: "center",
     fontSize: 10,
-    marginTop: 8,
+    marginTop: 6,
   },
   contact: {
     textAlign: "center",
@@ -44,13 +44,13 @@ const styles = StyleSheet.create({
   headerRule: {
     height: 1,
     backgroundColor: "#111111",
-    marginTop: 12,
-    marginBottom: 12,
+    marginTop: 8,
+    marginBottom: 10,
   },
   awardsLead: {
     fontFamily: "Times-Bold",
-    marginTop: 8,
-    marginBottom: 4,
+    marginTop: 6,
+    marginBottom: 3,
   },
   summary: {
     marginBottom: 0,
@@ -62,8 +62,18 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: "#111111",
     paddingBottom: 3,
-    marginTop: 10,
-    marginBottom: 6,
+    marginTop: 8,
+    marginBottom: 4,
+  },
+  sectionTitleTight: {
+    fontFamily: "Times-Bold",
+    fontSize: 11,
+    letterSpacing: 1.2,
+    borderBottomWidth: 1,
+    borderBottomColor: "#111111",
+    paddingBottom: 2,
+    marginTop: 6,
+    marginBottom: 3,
   },
   sectionTitleFirst: {
     fontFamily: "Times-Bold",
@@ -73,7 +83,7 @@ const styles = StyleSheet.create({
     borderBottomColor: "#111111",
     paddingBottom: 3,
     marginTop: 0,
-    marginBottom: 6,
+    marginBottom: 4,
   },
   row: {
     flexDirection: "row",
@@ -96,17 +106,17 @@ const styles = StyleSheet.create({
     flexShrink: 0,
   },
   job: {
-    marginBottom: 10,
+    marginBottom: 8,
   },
   nestedTitle: {
     fontFamily: "Times-BoldItalic",
-    marginTop: 8,
-    marginBottom: 3,
+    marginTop: 6,
+    marginBottom: 2,
   },
   bullet: {
     flexDirection: "row",
     gap: 8,
-    marginBottom: 2,
+    marginBottom: 1,
     paddingLeft: 10,
   },
   bulletMark: {
@@ -116,10 +126,10 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   eduBlock: {
-    marginBottom: 5,
+    marginBottom: 3,
   },
   skillLine: {
-    marginBottom: 3,
+    marginBottom: 1,
   },
 });
 
@@ -142,15 +152,18 @@ type HarvardResumePdfProps = {
 function SectionTitle({
   children,
   first = false,
+  tight = false,
 }: {
   children: string;
   first?: boolean;
+  tight?: boolean;
 }) {
-  return (
-    <Text style={first ? styles.sectionTitleFirst : styles.sectionTitle}>
-      {children.toUpperCase()}
-    </Text>
-  );
+  const style = first
+    ? styles.sectionTitleFirst
+    : tight
+      ? styles.sectionTitleTight
+      : styles.sectionTitle;
+  return <Text style={style}>{children.toUpperCase()}</Text>;
 }
 
 function Bullets({ items }: { items: string[] }) {
@@ -217,7 +230,7 @@ export function HarvardResumePdf({ resume, labels }: HarvardResumePdfProps) {
           </View>
         ))}
 
-        <SectionTitle>{labels.education}</SectionTitle>
+        <SectionTitle tight>{labels.education}</SectionTitle>
         {resume.education.map((item) => (
           <View key={item.left} style={styles.eduBlock}>
             <View style={styles.row}>
@@ -228,7 +241,7 @@ export function HarvardResumePdf({ resume, labels }: HarvardResumePdfProps) {
           </View>
         ))}
 
-        <SectionTitle>{labels.skills}</SectionTitle>
+        <SectionTitle tight>{labels.skills}</SectionTitle>
         {resume.skills.map((item) => (
           <Text key={item.left} style={styles.skillLine}>
             <Text style={styles.strong}>{item.left}: </Text>
@@ -236,7 +249,7 @@ export function HarvardResumePdf({ resume, labels }: HarvardResumePdfProps) {
           </Text>
         ))}
 
-        <SectionTitle>{labels.certifications}</SectionTitle>
+        <SectionTitle tight>{labels.certifications}</SectionTitle>
         {resume.certifications.map((item) => (
           <View key={item.left} style={styles.eduBlock}>
             <View style={styles.row}>
@@ -247,10 +260,10 @@ export function HarvardResumePdf({ resume, labels }: HarvardResumePdfProps) {
           </View>
         ))}
 
-        <SectionTitle>{labels.honors}</SectionTitle>
+        <SectionTitle tight>{labels.honors}</SectionTitle>
         <Bullets items={resume.honors} />
 
-        <SectionTitle>{labels.languages}</SectionTitle>
+        <SectionTitle tight>{labels.languages}</SectionTitle>
         <Text>{resume.languages.join("  •  ")}</Text>
       </Page>
     </Document>

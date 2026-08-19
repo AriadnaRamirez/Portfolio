@@ -1,7 +1,7 @@
 export const site = {
   name: "Ariadna Ramírez",
   fullName: "Ariadna Montserrat Ramírez Matías",
-  title: "Web Developer · UX/UI · Cybersecurity · DevOps",
+  title: "Fullstack web developer · UX/UI · Cybersecurity · DevOps",
   location: "Mexico · Remote · Hybrid · On-site",
   linkedin: "https://www.linkedin.com/in/ariadnaramirez",
   github: "https://github.com/AriadnaRamirez",

@@ -22,15 +22,15 @@ const body = Outfit({
 
 export const metadata: Metadata = {
   title: {
-    default: "Ariadna Ramírez · Web Developer",
+    default: "Ariadna Ramírez · Fullstack web developer",
     template: "%s · Ariadna Ramírez",
   },
   description:
-    "Web Developer · UX/UI · Cybersecurity · DevOps. TypeScript, React, Next.js. Mexico · remote.",
+    "Fullstack web developer · UX/UI · Cybersecurity · DevOps. TypeScript, React, Next.js. Mexico · remote.",
   openGraph: {
-    title: "Ariadna Ramírez · Web Developer · UX/UI · Cybersecurity · DevOps",
+    title: "Ariadna Ramírez · Fullstack web developer · UX/UI · Cybersecurity · DevOps",
     description:
-      "Web Developer · UX/UI · Cybersecurity · DevOps. React, Next.js, TypeScript. Mexico · remote / hybrid / on-site.",
+      "Fullstack web developer · UX/UI · Cybersecurity · DevOps. React, Next.js, TypeScript. Mexico · remote / hybrid / on-site.",
     locale: "es_MX",
     type: "website",
   },

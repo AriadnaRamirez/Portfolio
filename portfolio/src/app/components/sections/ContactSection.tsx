@@ -8,7 +8,7 @@ import { SocialIcon } from "../ui/SocialIcon";
 import { ResumeDownloadButton } from "../resume/ResumeDownloadButton";
 
 const emailHref = `mailto:${site.email}?subject=${encodeURIComponent(
-  "Web Developer opportunity — Portfolio",
+  "Fullstack web developer opportunity — Portfolio",
 )}`;
 
 const channels = [
