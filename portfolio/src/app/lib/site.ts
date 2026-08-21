@@ -149,8 +149,9 @@ export function projectMediaPath(
   const count = projectShotCount(id);
   const n = Math.min(Math.max(shot, 1), count);
   const ext = projectMediaExt[id]?.[kind] ?? "svg";
-  if (count > 1) return `/projects/${id}/${kind}-${n}.${ext}`;
-  return `/projects/${id}/${kind}.${ext}`;
+  const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+  if (count > 1) return `${base}/projects/${id}/${kind}-${n}.${ext}`;
+  return `${base}/projects/${id}/${kind}.${ext}`;
 }
 
 /** Display order: Hotel → Senda → Serviyapp → Dulce Glaseado → Framboyán */
