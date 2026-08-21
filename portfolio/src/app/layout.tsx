@@ -26,11 +26,11 @@ export const metadata: Metadata = {
     template: "%s · Ariadna Ramírez",
   },
   description:
-    "Fullstack web developer · UX/UI · Cybersecurity · DevOps. TypeScript, React, Next.js. Mexico · remote.",
+    "Fullstack web developer · UX/UI · Cybersecurity. TypeScript, React, Next.js. Mexico · remote.",
   openGraph: {
-    title: "Ariadna Ramírez · Fullstack web developer · UX/UI · Cybersecurity · DevOps",
+    title: "Ariadna Ramírez · Fullstack web developer · UX/UI · Cybersecurity",
     description:
-      "Fullstack web developer · UX/UI · Cybersecurity · DevOps. React, Next.js, TypeScript. Mexico · remote / hybrid / on-site.",
+      "Fullstack web developer · UX/UI · Cybersecurity. React, Next.js, TypeScript. Mexico · remote / hybrid / on-site.",
     locale: "es_MX",
     type: "website",
   },

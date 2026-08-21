@@ -23,8 +23,8 @@ export function ProjectCard({ id, lang, t, compact = false }: ProjectCardProps) 
 
   if (compact) {
     return (
-      <article className="grid gap-6 py-8 md:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] md:items-center md:gap-8 lg:gap-10 md:py-10">
-        <div className="min-w-0 space-y-3">
+      <article className="grid gap-5 py-8 md:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] md:items-center md:gap-8 lg:gap-10 md:py-10">
+        <div className="order-2 min-w-0 space-y-3 md:order-1">
           <p className="text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-highlight">
             {badge}
           </p>
@@ -37,19 +37,21 @@ export function ProjectCard({ id, lang, t, compact = false }: ProjectCardProps) 
           </p>
           <TechIconRow ids={meta.tech.slice(0, 4)} />
         </div>
-        <ProjectGallery id={id} title={title} t={t} compact />
+        <div className="order-1 min-w-0 md:order-2">
+          <ProjectGallery id={id} title={title} t={t} compact />
+        </div>
       </article>
     );
   }
 
   return (
-    <article className="border-b border-border py-10 last:border-b-0 sm:py-12 lg:py-14">
-      <div className="grid gap-8 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:items-start lg:gap-10 xl:gap-12">
-        <div className="min-w-0 space-y-4">
+    <article className="border-b border-border py-8 last:border-b-0 sm:py-12 lg:py-14">
+      <div className="grid gap-6 sm:gap-8 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:items-start lg:gap-10 xl:gap-12">
+        <div className="order-2 min-w-0 space-y-3 sm:space-y-4 lg:order-1">
           <p className="text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-highlight">
             {badge}
           </p>
-          <h3 className="font-display text-3xl font-medium tracking-tight text-foreground sm:text-4xl">
+          <h3 className="font-display text-2xl font-medium tracking-tight text-foreground sm:text-3xl lg:text-4xl">
             {title}
           </h3>
           <p className="text-sm text-muted sm:text-base">{role}</p>
@@ -63,7 +65,7 @@ export function ProjectCard({ id, lang, t, compact = false }: ProjectCardProps) 
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-text"
+                  className="btn-text inline-flex min-h-11 items-center"
                 >
                   {t[link.labelKey]} →
                 </a>
@@ -72,7 +74,9 @@ export function ProjectCard({ id, lang, t, compact = false }: ProjectCardProps) 
           ) : null}
         </div>
 
-        <ProjectGallery id={id} title={title} t={t} />
+        <div className="order-1 min-w-0 lg:order-2">
+          <ProjectGallery id={id} title={title} t={t} />
+        </div>
       </div>
     </article>
   );

@@ -117,6 +117,14 @@ export function buildResume(lang: Lang, t: Copy): ResumeModel {
         bullets: [t.resume_school_servi_b1, t.resume_school_servi_b2, t.resume_school_servi_b3],
       },
       {
+        title: t.resume_school_dulce_title,
+        bullets: [
+          t.resume_school_dulce_b1,
+          t.resume_school_dulce_b2,
+          t.resume_school_dulce_b3,
+        ],
+      },
+      {
         title: t.resume_school_fram_title,
         bullets: [
           t.resume_school_fram_b1,

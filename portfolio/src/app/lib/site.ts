@@ -1,7 +1,7 @@
 export const site = {
   name: "Ariadna Ramírez",
   fullName: "Ariadna Montserrat Ramírez Matías",
-  title: "Fullstack web developer · UX/UI · Cybersecurity · DevOps",
+  title: "Fullstack web developer · UX/UI · Cybersecurity",
   location: "Mexico · Remote · Hybrid · On-site",
   linkedin: "https://www.linkedin.com/in/ariadnaramirez",
   github: "https://github.com/AriadnaRamirez",
@@ -27,9 +27,9 @@ export type ProjectLink = {
 
 export type ProjectCategory = "fullstack" | "frontend" | "product";
 
-export type ProjectId = "servi" | "senda" | "fram" | "hotel";
+export type ProjectId = "servi" | "senda" | "fram" | "hotel" | "dulce";
 
-export type MediaKind = "desktop" | "mobile" | "detail";
+export type MediaKind = "desktop" | "tablet" | "mobile";
 
 export type TechId =
   | "typescript"
@@ -70,9 +70,10 @@ export const projectMeta: Record<
     accent: "#3d1f24",
   },
   senda: {
-    badge: { es: "GROVA · Clínica", en: "GROVA · Clinic" },
+    badge: { es: "GROVA · Cliente privado", en: "GROVA · Private client" },
     tech: ["react", "typescript"],
     categories: ["frontend", "product"],
+    // Private client work: no public live URL or GitHub.
     links: [],
     featured: true,
     accent: "#5a252c",
@@ -92,19 +93,68 @@ export const projectMeta: Record<
     links: [],
     accent: "#8b3a42",
   },
+  dulce: {
+    badge: { es: "Proyecto escolar · Full stack", en: "Academic project · Full stack" },
+    tech: ["react", "vite", "nodejs", "postgresql"],
+    categories: ["fullstack", "product"],
+    links: [
+      {
+        labelKey: "projects_link_live",
+        href: "https://dulceglaseado.com",
+      },
+    ],
+    featured: true,
+    accent: "#e91e63",
+  },
 };
 
-/** Drop real screenshots here to replace SVG mockups:
- *  public/projects/{id}/desktop.jpg|png|webp
- *  public/projects/{id}/mobile.jpg|png|webp
- *  public/projects/{id}/detail.jpg|png|webp
- */
-export function projectMediaPath(id: ProjectId, kind: MediaKind) {
-  return `/projects/${id}/${kind}.svg`;
+/** Shots per device (hotel: 1 sticky open, 2–5 sticky closed). */
+export const projectMediaShotCount: Partial<Record<ProjectId, number>> = {
+  hotel: 5,
+  dulce: 4,
+};
+
+/** Which device mockups to show. Defaults to all three. */
+export const projectMediaKinds: Partial<Record<ProjectId, MediaKind[]>> = {
+  dulce: ["desktop"],
+};
+
+/** Real screenshots replace SVG mockups when an extension is set per project/kind. */
+const projectMediaExt: Partial<
+  Record<ProjectId, Partial<Record<MediaKind, "png" | "jpg" | "webp">>>
+> = {
+  hotel: {
+    desktop: "png",
+    tablet: "png",
+    mobile: "png",
+  },
+  dulce: {
+    desktop: "png",
+  },
+};
+
+export function projectShotCount(id: ProjectId) {
+  return projectMediaShotCount[id] ?? 1;
 }
 
-/** Display order: Hotel → Senda → Serviyapp → Framboyán */
-export const projectIds: ProjectId[] = ["hotel", "senda", "servi", "fram"];
+export function projectKinds(id: ProjectId): MediaKind[] {
+  return projectMediaKinds[id] ?? ["desktop", "tablet", "mobile"];
+}
+
+export function projectMediaPath(
+  id: ProjectId,
+  kind: MediaKind,
+  shot = 1,
+) {
+  const count = projectShotCount(id);
+  const n = Math.min(Math.max(shot, 1), count);
+  const ext = projectMediaExt[id]?.[kind] ?? "svg";
+  if (count > 1) return `/projects/${id}/${kind}-${n}.${ext}`;
+  return `/projects/${id}/${kind}.${ext}`;
+}
+
+/** Display order: Hotel → Senda → Serviyapp → Dulce Glaseado → Framboyán */
+export const projectIds: ProjectId[] = ["hotel", "senda", "servi", "dulce", "fram"];
 
 export const navPages = [
   { href: "/", key: "nav_home" as const },

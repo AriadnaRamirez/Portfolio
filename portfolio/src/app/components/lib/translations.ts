@@ -9,11 +9,11 @@ export const translations = {
     nav_open: "Abrir menú",
     nav_close: "Cerrar menú",
 
-    footer_tagline: "Fullstack web developer · UX/UI · Ciberseguridad · DevOps · México",
+    footer_tagline: "Fullstack web developer · UX/UI · Ciberseguridad · México",
 
     hero_kicker: "Portfolio",
-    identity_line: "Fullstack web developer · UX/UI · Ciberseguridad · DevOps",
-    hero_role: "Fullstack web developer · UX/UI · Ciberseguridad · DevOps",
+    identity_line: "Fullstack web developer · UX/UI · Ciberseguridad",
+    hero_role: "Fullstack web developer · UX/UI · Ciberseguridad",
     hero_title: "Productos digitales accesibles, responsivos y escalables",
     hero_subtitle:
       "Diseño e implemento features end-to-end: interfaces en React/Next.js, APIs en Node.js, autenticación, roles y datos. Integro IA en diseño, prototipado y desarrollo para acelerar iteraciones y entregar soluciones funcionales. Experiencia en SaaS, rediseño web, CMS WordPress y producto hotelero.",
@@ -23,7 +23,7 @@ export const translations = {
     hero_location: "México · Remoto · Híbrido · Presencial",
     hero_stack_label: "Stack principal",
     hero_highlight_1_label: "Enfoque",
-    hero_highlight_1_value: "Fullstack · UX/UI · Ciberseguridad · DevOps",
+    hero_highlight_1_value: "Fullstack · UX/UI · Ciberseguridad",
     hero_highlight_2_label: "Disponibilidad",
     hero_highlight_2_value: "Remoto · Híbrido · Presencial",
     hero_highlight_3_label: "Idiomas",
@@ -32,7 +32,7 @@ export const translations = {
     home_work_kicker: "Selección",
     home_work_title: "Trabajo reciente",
     home_work_subtitle:
-      "Hotel Marqués del Valle y Senda (GROVA), más proyectos escolares: ServiYApp y Colectivo Framboyán.",
+      "Hotel Marqués del Valle y Senda (GROVA), más proyectos escolares: ServiYApp, Dulce Glaseado y Colectivo Framboyán.",
     home_work_cta: "Ver todos los proyectos",
     home_about_kicker: "Perfil",
     home_about_title: "Perfil profesional",
@@ -51,9 +51,12 @@ export const translations = {
     projects_link_live: "Ver sitio",
     projects_link_github: "Código",
     projects_media_desktop: "Desktop",
+    projects_media_tablet: "Tablet",
     projects_media_mobile: "Mobile",
-    projects_media_detail: "Detalle",
+    projects_media_sticky_open: "Sticky abierta",
+    projects_media_sticky_closed: "Sticky cerrada",
     projects_evidence: "Evidencia visual",
+    projects_shot_of: "Vista",
     projects_lightbox_close: "Cerrar",
     projects_lightbox_prev: "Anterior",
     projects_lightbox_next: "Siguiente",
@@ -66,9 +69,9 @@ export const translations = {
       "Diseñé e implementé dashboards para usuarios, proveedores y administradores en Next.js y Tailwind CSS. Construí componentes reutilizables y desplegué el producto en Vercel. Implementé autenticación local y Google OAuth, control de acceso por roles (RBAC) y persistencia en PostgreSQL.",
 
     projects_senda_title: "SENDA",
-    projects_senda_role: "GROVA · Sistema a medida",
+    projects_senda_role: "GROVA · Sistema a medida · Cliente privado",
     projects_senda_desc:
-      "Diseñé e implementé la experiencia digital a medida para una clínica de belleza (botox, lifting y tratamientos estéticos), alineada a su operación y marca. Implementé citas, pacientes y ventas con formularios validados (Formik y Yup). Con Codex aceleré formularios estandarizados y componentes reutilizables, reduciendo trabajo repetitivo y manteniendo consistencia entre interfaces.",
+      "Diseñé e implementé la experiencia digital a medida para una clínica de belleza (botox, lifting y tratamientos estéticos), alineada a su operación y marca. Implementé citas, pacientes y ventas con formularios validados (Formik y Yup). Con Codex aceleré formularios estandarizados y componentes reutilizables, reduciendo trabajo repetitivo y manteniendo consistencia entre interfaces. El código y el entorno de producción son privados del cliente.",
 
     projects_fram_title: "Colectivo Framboyán",
     projects_fram_role: "Proyecto escolar · E-commerce",
@@ -79,6 +82,11 @@ export const translations = {
     projects_hotel_role: "GROVA · Rediseño de sitio web",
     projects_hotel_desc:
       "Lideré el rediseño de la experiencia digital y la arquitectura de información. Con Figma Make aceleré el prototipado de alta fidelidad —de requerimientos a modelos listos para validar— e iteré propuestas de interfaz con mayor agilidad. Llevé a producción la UI responsive (Vite, TypeScript y Tailwind), con consistencia visual y navegación clara orientada a conversión.",
+
+    projects_dulce_title: "Dulce Glaseado",
+    projects_dulce_role: "Proyecto escolar · Full stack · Pick-up",
+    projects_dulce_desc:
+      "App de pick-up para una tienda de roles en Oaxaca. Los clientes ven menú y sucursales, se registran e inician sesión, agendan una caja de 4 o 6 roles con al menos 24 h de anticipación (mar–dom, 9:00–17:00) y consultan o cancelan pedidos desde un historial. Cada sucursal muestra dirección, horario, teléfono y enlace a Google Maps. Diseñé e implementé frontend, backend, modelado de datos y validaciones de negocio (React, Vite, React Router · Express, TypeORM, PostgreSQL · Axios, SweetAlert2).",
 
     experience_kicker: "Trayectoria",
     experience_title: "Experiencia",
@@ -120,9 +128,9 @@ export const translations = {
 
     exp_crm_role: "Freelance · WordPress CMS",
     exp_crm_org: "Grupo CRM Extintores",
-    exp_crm_period: "Ago 2026 — Actualidad",
+    exp_crm_period: "Ago 2026 — Actualidad · En proceso",
     exp_crm_b1:
-      "Diseño e implemento el sitio institucional en WordPress (CMS), con entregas iterativas desde agosto 2026.",
+      "Diseño e implemento el sitio institucional en WordPress (CMS), con entregas iterativas desde agosto 2026; aún sin dominio público.",
     exp_crm_b2:
       "Definí la arquitectura de páginas y el contenido para una presencia digital alineada a marca.",
 
@@ -243,7 +251,7 @@ export const translations = {
     contact_kicker: "Contacto",
     contact_title: "Trabajemos juntos",
     contact_subtitle:
-      "Disponible en remoto, híbrido o presencial. Fullstack web developer · UX/UI · Ciberseguridad · DevOps.",
+      "Disponible en remoto, híbrido o presencial. Fullstack web developer · UX/UI · Ciberseguridad.",
     contact_availability: "Disponible: remoto, híbrido o presencial",
     contact_response: "Respondo en 24–48 h hábiles.",
     contact_cta_headline: "Cuéntame sobre tu proyecto o vacante",
@@ -267,7 +275,7 @@ export const translations = {
     resume_title: "CV actualizado",
     resume_download: "Descargar CV (Español)",
     resume_downloading: "Generando PDF…",
-    resume_headline: "Fullstack web developer · UX/UI · Ciberseguridad · DevOps",
+    resume_headline: "Fullstack web developer · UX/UI · Ciberseguridad",
     resume_location: "México (Remoto / Híbrido / Presencial)",
     resume_summary:
       "Desarrolladora fullstack especializada en React, Next.js y TypeScript, con enfoque en UX/UI y experiencia construyendo productos digitales accesibles, responsivos y escalables. Experiencia en SaaS, rediseños web y soluciones a medida, desarrollando interfaces y componentes reutilizables bajo metodologías Agile/Scrum. Integro IA en el diseño, prototipado y desarrollo para acelerar iteraciones, automatizar tareas y optimizar procesos. Mi formación en UX/UI, Full Stack, ciberseguridad e Ingeniería Civil combina criterio de diseño, capacidad técnica y pensamiento analítico para resolver problemas de forma estructurada.",
@@ -310,6 +318,13 @@ export const translations = {
       "Implementé catálogo, SEO on-page y UI de conversión en Next.js y TypeScript.",
     resume_school_fram_b3:
       "Definí la arquitectura de información y el diseño responsive alineados a la marca.",
+    resume_school_dulce_title: "Dulce Glaseado — App de pick-up (roles, Oaxaca)",
+    resume_school_dulce_b1:
+      "Full stack: catálogo de sabores y cajas (4/6), registro/login, agenda de pick-up e historial de pedidos activos y cancelados (React, Vite, Express, TypeORM, PostgreSQL).",
+    resume_school_dulce_b2:
+      "Validaciones de negocio: anticipación mínima 24 h, mar–dom 9:00–17:00, sin lunes y sin duplicar horario; fichas de sucursal con mapa.",
+    resume_school_dulce_b3:
+      "Rol end-to-end: diseño, frontend, backend, modelado de datos y reglas de agenda (Axios, SweetAlert2, React Router).",
     resume_section_education: "Educación",
     resume_section_experience: "Experiencia profesional",
     resume_section_profile: "Perfil profesional",
@@ -330,11 +345,11 @@ export const translations = {
     nav_open: "Open menu",
     nav_close: "Close menu",
 
-    footer_tagline: "Fullstack web developer · UX/UI · Cybersecurity · DevOps · Mexico",
+    footer_tagline: "Fullstack web developer · UX/UI · Cybersecurity · Mexico",
 
     hero_kicker: "Portfolio",
-    identity_line: "Fullstack web developer · UX/UI · Cybersecurity · DevOps",
-    hero_role: "Fullstack web developer · UX/UI · Cybersecurity · DevOps",
+    identity_line: "Fullstack web developer · UX/UI · Cybersecurity",
+    hero_role: "Fullstack web developer · UX/UI · Cybersecurity",
     hero_title: "Accessible, responsive, scalable digital products",
     hero_subtitle:
       "I design and ship features across the stack: React/Next.js UIs, Node.js APIs, auth/roles, and data. I use AI in design, prototyping, and development to speed up iteration and ship working solutions. Experience in SaaS, website redesigns, WordPress CMS, and hospitality product.",
@@ -344,7 +359,7 @@ export const translations = {
     hero_location: "Mexico · Remote · Hybrid · On-site",
     hero_stack_label: "Core stack",
     hero_highlight_1_label: "Focus",
-    hero_highlight_1_value: "Fullstack · UX/UI · Cybersecurity · DevOps",
+    hero_highlight_1_value: "Fullstack · UX/UI · Cybersecurity",
     hero_highlight_2_label: "Availability",
     hero_highlight_2_value: "Remote · Hybrid · On-site",
     hero_highlight_3_label: "Languages",
@@ -353,7 +368,7 @@ export const translations = {
     home_work_kicker: "Selected",
     home_work_title: "Recent work",
     home_work_subtitle:
-      "Hotel Marqués del Valle and Senda (GROVA), plus academic projects: ServiYApp and Colectivo Framboyán.",
+      "Hotel Marqués del Valle and Senda (GROVA), plus academic projects: ServiYApp, Dulce Glaseado, and Colectivo Framboyán.",
     home_work_cta: "View all projects",
     home_about_kicker: "Profile",
     home_about_title: "Professional profile",
@@ -372,9 +387,12 @@ export const translations = {
     projects_link_live: "Live site",
     projects_link_github: "Code",
     projects_media_desktop: "Desktop",
+    projects_media_tablet: "Tablet",
     projects_media_mobile: "Mobile",
-    projects_media_detail: "Detail",
+    projects_media_sticky_open: "Sticky open",
+    projects_media_sticky_closed: "Sticky closed",
     projects_evidence: "Visual evidence",
+    projects_shot_of: "View",
     projects_lightbox_close: "Close",
     projects_lightbox_prev: "Previous",
     projects_lightbox_next: "Next",
@@ -387,9 +405,9 @@ export const translations = {
       "Designed and implemented dashboards for users, providers, and admins in Next.js and Tailwind CSS. Built reusable components and deployed the product to Vercel. Implemented local and Google OAuth authentication, role-based access control (RBAC), and PostgreSQL persistence.",
 
     projects_senda_title: "SENDA",
-    projects_senda_role: "GROVA · Custom system",
+    projects_senda_role: "GROVA · Custom system · Private client",
     projects_senda_desc:
-      "Designed and implemented a custom digital experience for a beauty clinic (Botox, lifting, and aesthetic treatments), aligned to operations and brand. Implemented appointments, patients, and sales with validated forms (Formik and Yup). Used Codex to speed up standardized forms and reusable components, reducing repetitive work and keeping interfaces consistent.",
+      "Designed and implemented a custom digital experience for a beauty clinic (Botox, lifting, and aesthetic treatments), aligned to operations and brand. Implemented appointments, patients, and sales with validated forms (Formik and Yup). Used Codex to speed up standardized forms and reusable components, reducing repetitive work and keeping interfaces consistent. Source code and production environment remain private to the client.",
 
     projects_fram_title: "Colectivo Framboyán",
     projects_fram_role: "Academic project · E-commerce",
@@ -400,6 +418,11 @@ export const translations = {
     projects_hotel_role: "GROVA · Website redesign",
     projects_hotel_desc:
       "Led the digital experience redesign and information architecture. Used Figma Make to speed up high-fidelity prototyping — from requirements to models ready to validate — and iterated UI proposals with more agility. Shipped the responsive production UI (Vite, TypeScript, and Tailwind) with brand-consistent visuals and conversion-oriented navigation.",
+
+    projects_dulce_title: "Dulce Glaseado",
+    projects_dulce_role: "Academic project · Full stack · Pick-up",
+    projects_dulce_desc:
+      "Pick-up app for a cinnamon-roll shop in Oaxaca. Customers browse the menu and branches, sign up and log in, schedule a box of 4 or 6 rolls with at least 24 hours' notice (Tue–Sun, 9:00–17:00), and view or cancel orders from a history. Each branch shows address, hours, phone, and a Google Maps link. I designed and built the frontend, backend, data model, and business validations (React, Vite, React Router · Express, TypeORM, PostgreSQL · Axios, SweetAlert2).",
 
     experience_kicker: "Career",
     experience_title: "Experience",
@@ -441,9 +464,9 @@ export const translations = {
 
     exp_crm_role: "Freelance · WordPress CMS",
     exp_crm_org: "Grupo CRM Extintores",
-    exp_crm_period: "Aug 2026 — Present",
+    exp_crm_period: "Aug 2026 — Present · In progress",
     exp_crm_b1:
-      "Design and implement the company website in WordPress (CMS), delivering iteratively since August 2026.",
+      "Design and implement the company website in WordPress (CMS), delivering iteratively since August 2026; no public domain yet.",
     exp_crm_b2:
       "Defined page architecture and content for a brand-aligned digital presence.",
 
@@ -564,7 +587,7 @@ export const translations = {
     contact_kicker: "Contact",
     contact_title: "Let’s work together",
     contact_subtitle:
-      "Available remote, hybrid, or on-site. Fullstack web developer · UX/UI · Cybersecurity · DevOps.",
+      "Available remote, hybrid, or on-site. Fullstack web developer · UX/UI · Cybersecurity.",
     contact_availability: "Available: remote, hybrid, or on-site",
     contact_response: "I typically reply within 24–48 business hours.",
     contact_cta_headline: "Tell me about your role or project",
@@ -588,7 +611,7 @@ export const translations = {
     resume_title: "Updated CV",
     resume_download: "Download CV (English)",
     resume_downloading: "Generating PDF…",
-    resume_headline: "Fullstack web developer · UX/UI · Cybersecurity · DevOps",
+    resume_headline: "Fullstack web developer · UX/UI · Cybersecurity",
     resume_location: "Mexico (Remote / Hybrid / On-site)",
     resume_summary:
       "Fullstack web developer specialized in React, Next.js, and TypeScript, with a UX/UI focus and experience building accessible, responsive, scalable digital products. Experience in SaaS, website redesigns, and custom solutions, developing interfaces and reusable components under Agile/Scrum. I integrate AI into design, prototyping, and development to speed up iteration, automate tasks, and streamline processes. My background in UX/UI, Full Stack, cybersecurity, and Civil Engineering combines design judgment, technical skill, and analytical thinking to solve problems in a structured way.",
@@ -631,6 +654,13 @@ export const translations = {
       "Implemented catalog, on-page SEO, and conversion-oriented UI in Next.js and TypeScript.",
     resume_school_fram_b3:
       "Defined information architecture and responsive design aligned to the brand.",
+    resume_school_dulce_title: "Dulce Glaseado — Pick-up app (rolls, Oaxaca)",
+    resume_school_dulce_b1:
+      "Full stack: flavor and box catalog (4/6), sign-up/login, pick-up scheduling, and active/canceled order history (React, Vite, Express, TypeORM, PostgreSQL).",
+    resume_school_dulce_b2:
+      "Business rules: 24h minimum notice, Tue–Sun 9:00–17:00, no Mondays, no duplicate time slots; branch cards with map links.",
+    resume_school_dulce_b3:
+      "End-to-end role: design, frontend, backend, data modeling, and scheduling validations (Axios, SweetAlert2, React Router).",
     resume_section_education: "Education",
     resume_section_experience: "Professional experience",
     resume_section_profile: "Professional profile",
