@@ -16,7 +16,7 @@ export function HomeAboutTeaser() {
         </div>
         <div className="space-y-6">
           <p className="text-base leading-relaxed text-muted sm:text-lg">
-            {t.resume_summary}
+            {t.home_about_body}
           </p>
           <div className="flex flex-wrap gap-3">
             <Link href="/about" prefetch className="btn-ghost inline-flex">

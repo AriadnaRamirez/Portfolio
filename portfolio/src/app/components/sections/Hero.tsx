@@ -32,7 +32,7 @@ export function Hero() {
           </div>
 
           <p className="max-w-xl text-base leading-relaxed text-muted sm:text-lg">
-            {t.resume_summary}
+            {t.hero_subtitle}
           </p>
 
           <div className="flex flex-col gap-3 min-[480px]:flex-row min-[480px]:flex-wrap">

@@ -1,17 +1,48 @@
 "use client";
 
+import { BrandLogos } from "./components/sections/BrandLogos";
+import { ContactCtaBand } from "./components/sections/ContactCtaBand";
 import { ContactSection } from "./components/sections/ContactSection";
-import { Hero } from "./components/sections/Hero";
-import { HomeAboutTeaser } from "./components/sections/HomeAboutTeaser";
-import { HomeWorkPreview } from "./components/sections/HomeWorkPreview";
+import { LandingAbout } from "./components/sections/LandingAbout";
+import { LandingCertifications } from "./components/sections/LandingCertifications";
+import { LandingEducation } from "./components/sections/LandingEducation";
+import { LandingExperience } from "./components/sections/LandingExperience";
+import { LandingHero } from "./components/sections/LandingHero";
+import { LandingProjects } from "./components/sections/LandingProjects";
+import { LandingSkills } from "./components/sections/LandingSkills";
+import { SectionBand } from "./components/ui/SectionBand";
 
 export default function HomePage() {
   return (
     <>
-      <Hero />
-      <HomeWorkPreview />
-      <HomeAboutTeaser />
-      <ContactSection />
+      <LandingHero />
+      <SectionBand cat="violet">
+        <LandingProjects />
+      </SectionBand>
+      <SectionBand tone="tint" cat="blue">
+        <LandingSkills />
+      </SectionBand>
+      <SectionBand cat="pink">
+        <LandingCertifications />
+      </SectionBand>
+      <SectionBand cat="mint">
+        <BrandLogos />
+      </SectionBand>
+      <SectionBand tone="frame">
+        <ContactCtaBand />
+      </SectionBand>
+      <SectionBand cat="teal">
+        <LandingAbout />
+      </SectionBand>
+      <SectionBand tone="tint" cat="violet">
+        <LandingExperience />
+      </SectionBand>
+      <SectionBand cat="mint">
+        <LandingEducation />
+      </SectionBand>
+      <SectionBand tone="tint" cat="peach">
+        <ContactSection />
+      </SectionBand>
     </>
   );
 }

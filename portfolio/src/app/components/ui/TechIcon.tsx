@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import type { TechId } from "@/app/lib/site";
 import { techLabels } from "@/app/lib/site";
+import { assetPath } from "@/app/lib/siteUrl";
 
 const iconClass = "h-[1.1em] w-[1.1em] shrink-0";
 
@@ -26,7 +27,7 @@ function Svg({
   );
 }
 
-const icons: Record<TechId, ReactNode> = {
+const icons: Partial<Record<TechId, ReactNode>> = {
   typescript: (
     <path
       fill="currentColor"
@@ -104,21 +105,68 @@ const icons: Record<TechId, ReactNode> = {
   ),
 };
 
+export function TechGlyph({
+  id,
+  className = "h-6 w-6 shrink-0",
+}: {
+  id: TechId;
+  className?: string;
+}) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} aria-hidden>
+      {icons[id]}
+    </svg>
+  );
+}
+
 type TechIconProps = {
   id: TechId;
   className?: string;
   showLabel?: boolean;
 };
 
+/** Real brand logos in /public/stack; ids without a brand keep the glyph. */
+const logoFiles: Partial<Record<TechId, { file: string; mono?: boolean }>> = {
+  typescript: { file: "typescript" },
+  react: { file: "react" },
+  nextjs: { file: "nextjs", mono: true },
+  nodejs: { file: "nodejs" },
+  postgresql: { file: "postgresql" },
+  mongodb: { file: "mongodb" },
+  tailwind: { file: "tailwindcss" },
+  figma: { file: "figma" },
+  vite: { file: "vitejs" },
+  wordpress: { file: "wordpress", mono: true },
+  javascript: { file: "javascript" },
+  html: { file: "html5" },
+  css: { file: "css3" },
+  cursor: { file: "cursor", mono: true },
+  figmamake: { file: "figma" },
+};
+
 export function TechIcon({ id, className, showLabel = true }: TechIconProps) {
   const label = techLabels[id];
+  const logo = logoFiles[id];
   return (
     <span
-      className={`inline-flex items-center gap-2 border border-border px-2.5 py-1.5 text-[0.65rem] font-medium uppercase tracking-wider text-foreground transition hover:border-highlight hover:text-highlight ${className ?? ""}`}
+      className={`inline-flex items-center gap-2 rounded-full border border-border bg-background px-3 py-1.5 text-[0.8125rem] font-medium text-foreground transition-colors duration-200 hover:border-border-strong hover:bg-surface-2 ${className ?? ""}`}
     >
-      <Svg title={label} className={iconClass}>
-        {icons[id]}
-      </Svg>
+      {logo ? (
+        // eslint-disable-next-line @next/next/no-img-element -- static export, local SVGs
+        <img
+          src={assetPath(`/stack/${logo.file}.svg`)}
+          alt={showLabel ? "" : label}
+          width={16}
+          height={16}
+          loading="lazy"
+          decoding="async"
+          className={`h-4 w-4 shrink-0 object-contain ${logo.mono ? "dark:invert" : ""}`}
+        />
+      ) : (
+        <Svg title={label} className={iconClass}>
+          {icons[id]}
+        </Svg>
+      )}
       {showLabel ? <span>{label}</span> : null}
     </span>
   );

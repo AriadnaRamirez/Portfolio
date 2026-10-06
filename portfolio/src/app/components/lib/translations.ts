@@ -4,46 +4,166 @@ export const translations = {
     nav_work: "Trabajo",
     nav_experience: "Experiencia",
     nav_about: "Sobre mí",
+    nav_skills: "Stack",
+    nav_certs: "Certificaciones",
     nav_contact: "Contacto",
     nav_resume: "CV",
     nav_open: "Abrir menú",
     nav_close: "Cerrar menú",
 
-    footer_tagline: "Fullstack web developer · UX/UI · Ciberseguridad · México",
+    footer_tagline:
+      "Fullstack Web Developer · Frontend · React · TypeScript · UX/UI · México",
+    footer_sitemap: "Mapa del sitio",
+    nf_kicker: "Error 404",
+    nf_title: "Esta página no existe (o se mudó).",
+    nf_body: "Puede que el enlace esté roto o que la dirección tenga un error. Te llevo de vuelta a lo importante.",
+    nf_home: "Volver al inicio",
+    nf_links: "O ve directo a",
+    character_alt: "Ilustración de Ariadna",    footer_nav: "Navegación",
+    footer_top: "Volver arriba",
 
     hero_kicker: "Portfolio",
-    identity_line: "Fullstack web developer · UX/UI · Ciberseguridad",
-    hero_role: "Fullstack web developer · UX/UI · Ciberseguridad",
-    hero_title: "Productos digitales accesibles, responsivos y escalables",
+    identity_line: "Fullstack Web Developer | Frontend · React · TypeScript · UX/UI",
+    hero_role: "Fullstack Web Developer | Frontend · React · TypeScript · UX/UI",
+    hero_title: "Frontend que convierte: SaaS, sitios y productos a medida",
     hero_subtitle:
-      "Diseño e implemento features end-to-end: interfaces en React/Next.js, APIs en Node.js, autenticación, roles y datos. Integro IA en diseño, prototipado y desarrollo para acelerar iteraciones y entregar soluciones funcionales. Experiencia en SaaS, rediseño web, CMS WordPress y producto hotelero.",
+      "Frontend React y TypeScript: interfaces claras, UX/UI e integraciones REST para productos en producción.",
     hero_cta_primary: "Conectar en LinkedIn",
-    hero_cta_secondary: "Ver trabajo",
+    hero_cta_secondary: "Ver proyectos",
     hero_cta_contact: "Contacto",
-    hero_location: "México · Remoto · Híbrido · Presencial",
+    hero_cta_contact_primary: "Hablemos",
+    hero_cta_cv: "Descargar CV",
+    hero_editorial_line: "Interfaces claras. Productos reales. Entrega a producción.",
+    hero_location: "México · Remoto / Híbrido / Presencial",
     hero_stack_label: "Stack principal",
     hero_highlight_1_label: "Enfoque",
-    hero_highlight_1_value: "Fullstack · UX/UI · Ciberseguridad",
+    hero_highlight_1_value: "Frontend · React · TypeScript · UX/UI",
     hero_highlight_2_label: "Disponibilidad",
     hero_highlight_2_value: "Remoto · Híbrido · Presencial",
     hero_highlight_3_label: "Idiomas",
-    hero_highlight_3_value: "ES nativo · EN C1",
+    hero_highlight_3_value: "ES nativo · EN bilingüe C1 · TOEFL 100",
+    hero_float_1_title: "React",
+    hero_float_1_sub: "Frontend",
+    hero_float_2_title: "TypeScript",
+    hero_float_2_sub: "Type-safe UI",
+    hero_stat_1: "Disponible",
+    hero_stat_2: "EN C1",
+    hero_stat_3: "México",
+
+    agency_kicker: "Fullstack Web Developer",
+    agency_hero_line1: "Frontend que convierte:",
+    agency_hero_line2: "SaaS, sitios y productos a medida.",
+    agency_hero_subtitle:
+      "Diseño e implemento frontend React/TypeScript, UX/UI e integraciones REST para productos en producción.",
+    agency_stat_1: "Frontend · React · TS",
+    agency_stat_2: "Remoto / híbrido",
+    agency_stat_3: "ES · EN C1",
+    agency_photo_caption: "Fullstack Web Developer",
+    agency_about_title: "Desarrollo productos digitales con criterio de UX y código limpio.",
+    agency_about_p1:
+      "Soy Ariadna Ramírez, Fullstack Web Developer con foco en Frontend, React y TypeScript. Trabajo en SaaS, sitios web y soluciones a medida para clientes reales.",
+    agency_about_p2:
+      "Combino interfaces responsivas, componentes reutilizables e integraciones REST — desde análisis y UX/UI hasta implementación, pruebas y despliegue.",
+    agency_about_pull: "Interfaces claras. Productos reales. Entrega a producción.",
+
+    brands_kicker: "Marcas",
+    brands_title_italic: "Con quién",
+    brands_title_rest: "he construido",
+    brands_subtitle:
+      "Freelance y colaboración por proyectos: productos en producción y marcas reales.",
+
+    landing_about_title: "Desarrollo productos digitales con criterio de UX y código limpio.",
+    landing_about_p1:
+      "Soy Ariadna Ramírez, Fullstack Web Developer con foco en Frontend, React y TypeScript. Trabajo en SaaS, sitios web y soluciones a medida para clientes reales.",
+    landing_about_p2:
+      "Combino interfaces responsivas, componentes reutilizables e integraciones REST — desde análisis y UX/UI hasta implementación, pruebas y despliegue.",
+    landing_about_focus_label: "Enfoque actual",
+    landing_about_focus_1: "Frontend React & TypeScript",
+    landing_about_focus_2: "UX/UI y conversión",
+    landing_about_focus_3: "APIs REST & JWT",
+    landing_about_focus_4: "SEO básico y deploy",
+    landing_about_focus_5: "IA asistida con validación",
+
+    landing_skills_title: "El stack con el que",
+    landing_skills_title_accent: "llevo ideas a producción.",
+    note_work: "cosas reales, en producción",
+    note_skills: "lo que uso a diario",
+    note_certs: "siempre aprendiendo",
+    note_brands: "gracias por la confianza",
+    note_about: "un poco de mí",
+    note_experience: "del brief al deploy",
+    note_edu: "de ingeniera civil a dev",
+    note_contact: "¡escríbeme!",
+    exp_full_cv: "Ver trayectoria completa en el CV",
+    exp_more: "logros más",
+    exp_less: "Mostrar menos",
+    exp_current: "Actual",
+    exp_projects: "Proyectos",
+    exp_stack: "Stack",
+    exp_crm_s1: "productos en catálogo",
+    exp_crm_s2: "on-page y local",
+    exp_crm_s3: "de la idea a producción",
+    exp_grova_s1: "formularios CRUD",
+    exp_grova_s2: "proyectos de cliente",
+    exp_grova_s3: "frontend multimoneda",
+    hero_note_me: "¡Hola, soy yo!",
+    hero_note_place: "desde Oaxaca, MX",
+    landing_skills_subtitle:
+      "Herramientas visibles: frontend, backend, UX/UI y delivery a producción.",
+    landing_skills_1_title: "Frontend",
+    landing_skills_1_body:
+      "React · Next.js · TypeScript · JavaScript · Vite · HTML5 · CSS3 · Material UI · Tailwind CSS · Redux · Zustand",
+    landing_skills_2_title: "Backend & APIs",
+    landing_skills_2_body:
+      "Node.js · Express · REST APIs · JWT · TypeORM · Mongoose · PostgreSQL · MongoDB · SQL",
+    landing_skills_3_title: "UX/UI & Testing",
+    landing_skills_3_body:
+      "Figma · Figma Make · UX Audit · Wireframing · Prototyping · Formik · Yup · Jest · Vitest · React Testing Library · Chrome DevTools · Insomnia",
+    landing_skills_4_title: "Web, Cloud & AI",
+    landing_skills_4_body:
+      "Responsive · Performance · WordPress · Elementor · SEO · Vercel · Render · GitHub · Cursor · Codex · Copilot",
+
+    landing_certs_title_italic: "Credenciales",
+    landing_certs_title_rest: "que respaldan el perfil.",
+    landing_certs_subtitle:
+      "Certificaciones y programas selectivos: formación técnica con foco en empleabilidad y cloud.",
+    landing_certs_programs_label: "Programas en curso / seleccionada",
+    landing_certs_programs_subtitle:
+      "Becas y cohortes activas — señal de crecimiento continuo para equipos que contratan.",
+
+    landing_projects_title: "Proyectos destacados",
+    landing_projects_subtitle:
+      "Productos en producción: freelance, colaboración por proyectos y trabajo en equipo.",
+    landing_projects_index_label: "Índice",
+
+    landing_exp_title: "Más que código: trayectoria reciente.",
+    landing_exp_subtitle: "Freelance y colaboración por proyectos con clientes reales.",
+
+    landing_edu_title: "Formación",
+    landing_edu_subtitle: "Educación formal que sostiene el criterio técnico y de producto.",
+    landing_edu_training_label: "Formación complementaria",
+
+    mid_cta_kicker: "Siguiente paso",
+    mid_cta_title_italic: "¿Construimos",
+    mid_cta_title_rest: "tu próximo producto?",
+    mid_cta_body:
+      "Cuéntame sobre tu vacante o proyecto. Respondo en 24–48 h hábiles con una propuesta clara.",
 
     home_work_kicker: "Selección",
     home_work_title: "Trabajo reciente",
     home_work_subtitle:
-      "Hotel Marqués del Valle y Senda (GROVA), más proyectos escolares: ServiYApp, Dulce Glaseado y Colectivo Framboyán.",
+      "Sitios y productos en producción: CRM Extintores, Hotel Marqués del Valle, SENDA y ServiYApp.",
     home_work_cta: "Ver todos los proyectos",
     home_about_kicker: "Perfil",
     home_about_title: "Perfil profesional",
     home_about_body:
-      "Background en Ingeniería Civil, diplomado UX/UI (EBAC) y formación fullstack (Henry). En GROVA Marketing (remoto) construyo UI en React/Next.js y mantengo WordPress; en Hotel Marqués del Valle y Senda usé IA para acelerar prototipado y componentes. En jul 2026, RISE Hackathon Paris: auditoría de reservas OTAs vs. estancia real. Freelance desde ago 2026 (Grupo CRM Extintores). Becaria JA (CCNA), Generation México (AWS re/Start + IA, oct 2026) y Fulbright–García Robles.",
+      "Fullstack con foco en Frontend. Combino React/TypeScript, criterio UX/UI y pensamiento analítico para entregar experiencias claras y alineadas al negocio — con SEO básico e IA generativa como apoyo, siempre con validación manual.",
     home_about_cta: "Más sobre mí",
 
     work_kicker: "Portfolio",
     work_title: "Trabajo",
     work_subtitle:
-      "Proyectos de GROVA (Hotel Marqués del Valle, Senda) y proyectos escolares.",
+      "Freelance y agencia: sitios institucionales, SaaS multi-comercio y productos digitales en producción.",
     work_tab_all: "Todos",
     work_tab_fullstack: "Full Stack",
     work_tab_frontend: "Frontend",
@@ -53,94 +173,145 @@ export const translations = {
     projects_media_desktop: "Desktop",
     projects_media_tablet: "Tablet",
     projects_media_mobile: "Mobile",
-    projects_media_sticky_open: "Sticky abierta",
-    projects_media_sticky_closed: "Sticky cerrada",
-    projects_evidence: "Evidencia visual",
+    projects_status_private: "Proyecto privado",
+    projects_status_pending: "Demo pendiente",
+    projects_hotel_shot_1: "Inicio con barra de reserva siempre visible",
+    projects_hotel_shot_2: "La ubicación como argumento: Oaxaca a pie",
+    projects_hotel_shot_3: "Reserva directa por WhatsApp o llamada",
+    projects_hotel_shot_4: "Habitaciones con precio, capacidad y amenidades",
+    projects_hotel_shot_5: "Comparativa de habitaciones con galería propia",
+    projects_hotel_shot_6: "Página de reserva: fechas, huéspedes y disponibilidad",
+    projects_evidence: "Vista previa",
     projects_shot_of: "Vista",
     projects_lightbox_close: "Cerrar",
+    projects_lightbox_open: "Ampliar",
+    projects_compare: "Comparar antes y después del rediseño",
+    cs_kicker: "Caso de estudio",
+    cs_back: "Proyectos",
+    cs_view_live: "Ver sitio en vivo",
+    cs_challenge: "El reto",
+    cs_goals: "Objetivos",
+    cs_process: "Proceso",
+    cs_solution: "La solución",
+    cs_results: "Resultados",
+    cs_cta_title: "¿Tienes un proyecto parecido?",
+    cs_cta_body: "Cuéntame qué necesitas y te respondo en 24–48 h hábiles con una propuesta clara.",
+    cs_more: "Más proyectos",
+    cs_read: "Ver caso de estudio",
+    cs_featured: "Caso destacado",
+    cs_before: "Antes del rediseño",
+    projects_after: "Después",
+    projects_before: "Antes",
+    projects_before_caption: "Sitio anterior, antes de la auditoría UX/CX",
+    projects_senda_shot_1: "Listado de pacientes con búsqueda y paginación",
+    projects_senda_shot_2: "Detalle de paciente con datos clínicos dinámicos",
+    projects_senda_shot_3: "Formulario de edición (Formik + Yup)",
+    projects_senda_shot_4: "Validación de horarios y descansos",
+    projects_senda_shot_5: "Gestión de usuarios por rol y estado",
+    projects_senda_shot_6: "Perfil de usuario con horarios asignados",
+    projects_crm_shot_1: "Inicio con propuesta de valor y CTAs de llamada y WhatsApp",
+    projects_crm_shot_2: "Catálogo de 55 equipos con filtro por categoría",
+    projects_crm_shot_3: "Nosotros: empresa, misión y mascota de marca",
+    projects_crm_shot_4: "Galería de instalaciones reales con filtros por giro",
+    projects_crm_shot_5: "Blog: guías prácticas para SEO local",
+    projects_crm_shot_6: "Contacto con formulario que envía a WhatsApp",
     projects_lightbox_prev: "Anterior",
     projects_lightbox_next: "Siguiente",
     pager_prev: "Anterior",
     pager_next: "Siguiente",
 
     projects_servi_title: "ServiYApp",
-    projects_servi_role: "Proyecto escolar · Marketplace",
+    projects_servi_role: "Frontend Developer · Equipo de 6 · Marketplace",
     projects_servi_desc:
-      "Diseñé e implementé dashboards para usuarios, proveedores y administradores en Next.js y Tailwind CSS. Construí componentes reutilizables y desplegué el producto en Vercel. Implementé autenticación local y Google OAuth, control de acceso por roles (RBAC) y persistencia en PostgreSQL.",
+      "Marketplace de belleza a domicilio: paneles cliente/proveedor/admin, OAuth, pagos y chat en tiempo real.",
 
     projects_senda_title: "SENDA",
-    projects_senda_role: "GROVA · Sistema a medida · Cliente privado",
+    projects_senda_role: "GROVA · SPA SaaS multi-comercio",
     projects_senda_desc:
-      "Diseñé e implementé la experiencia digital a medida para una clínica de belleza (botox, lifting y tratamientos estéticos), alineada a su operación y marca. Implementé citas, pacientes y ventas con formularios validados (Formik y Yup). Con Codex aceleré formularios estandarizados y componentes reutilizables, reduciendo trabajo repetitivo y manteniendo consistencia entre interfaces. El código y el entorno de producción son privados del cliente.",
+      "SaaS de citas y operaciones: formularios CRUD, estado con Zustand y APIs REST con JWT.",
+
+    projects_crm_title: "Grupo CRM Extintores",
+    projects_crm_role: "Freelance · Sitio institucional en producción",
+    projects_crm_desc:
+      "Sitio end-to-end con catálogo de 50+ productos, CTAs de WhatsApp, SEO local y deploy en Vercel.",
 
     projects_fram_title: "Colectivo Framboyán",
-    projects_fram_role: "Proyecto escolar · E-commerce",
+    projects_fram_role: "Fullstack Developer · Individual · SoyHenry 2025",
     projects_fram_desc:
-      "Construí un e-commerce con navegación móvil, accesibilidad y experiencia de usuario orientada a artesanos oaxaqueños. Implementé catálogo, SEO on-page y UI de conversión en Next.js y TypeScript. Definí la arquitectura de información y el diseño responsive alineados a la marca.",
+      "E-commerce fullstack de artesanías oaxaqueñas: catálogo, autenticación JWT, carrito, órdenes y API REST con Next.js, Express, TypeORM y PostgreSQL.",
 
     projects_hotel_title: "Hotel Marqués del Valle",
-    projects_hotel_role: "GROVA · Rediseño de sitio web",
+    projects_hotel_role: "GROVA · HMDV · UX/UI + Frontend en producción",
     projects_hotel_desc:
-      "Lideré el rediseño de la experiencia digital y la arquitectura de información. Con Figma Make aceleré el prototipado de alta fidelidad —de requerimientos a modelos listos para validar— e iteré propuestas de interfaz con mayor agilidad. Llevé a producción la UI responsive (Vite, TypeScript y Tailwind), con consistencia visual y navegación clara orientada a conversión.",
+      "Rediseño UX/UI y frontend bilingüe con flujo de reserva orientado a conversión. En producción.",
 
     projects_dulce_title: "Dulce Glaseado",
-    projects_dulce_role: "Proyecto escolar · Full stack · Pick-up",
+    projects_dulce_role: "Fullstack Developer · Pedidos y reservas",
     projects_dulce_desc:
-      "App de pick-up para una tienda de roles en Oaxaca. Los clientes ven menú y sucursales, se registran e inician sesión, agendan una caja de 4 o 6 roles con al menos 24 h de anticipación (mar–dom, 9:00–17:00) y consultan o cancelan pedidos desde un historial. Cada sucursal muestra dirección, horario, teléfono y enlace a Google Maps. Diseñé e implementé frontend, backend, modelado de datos y validaciones de negocio (React, Vite, React Router · Express, TypeORM, PostgreSQL · Axios, SweetAlert2).",
+      "Aplicación fullstack para gestión de pedidos y reservas de una pastelería: frontend React + Vite y API REST en Express por capas.",
 
     experience_kicker: "Trayectoria",
     experience_title: "Experiencia",
     experience_subtitle:
-      "Fullstack web developer en GROVA Marketing, freelance, RISE Hackathon Paris y roles previos.",
+      "Freelance (Trabajo Independiente) y Web Developer en GROVA Marketing — sitios, SaaS y mantenimiento en producción.",
     experience_tab_current: "Actual",
     experience_tab_product: "Producto",
     experience_tab_prior: "Previa",
     experience_prior_note:
-      "Analicé datos experimentales en investigación aplicada y redacté reportes técnicos en inglés.",
+      "Experiencia profesional: Trabajo Independiente y GROVA Marketing.",
 
-    exp_grova_role: "Fullstack web developer",
+    exp_grova_role: "Web Developer",
     exp_grova_org: "GROVA Marketing",
-    exp_grova_period: "Ago 2025 — Actualidad · Remoto",
+    exp_grova_period: "Colaboración por proyectos · Ago 2025 — Ago 2026 · Remoto",
     exp_grova_b1:
-      "Construyo y mantengo aplicaciones web en React, TypeScript y Next.js, con componentes reutilizables que aceleran nuevas features y sostienen consistencia en producto.",
+      "Desarrollo de sitios web y productos digitales para clientes de la agencia, con enfoque en frontend, UX/UI, APIs y mantenimiento.",
     exp_grova_b2:
-      "Traduzco diseños de Figma en interfaces responsivas y accesibles, con fidelidad visual y consistencia de marca en producción.",
+      "SENDA: SPA SaaS multi-comercio; 12 formularios CRUD (React, TypeScript, Formik, Yup); formularios dinámicos JSON; Zustand; APIs REST con JWT; pruebas DevTools/Insomnia; Git/GitHub (branches, PRs y code review).",
     exp_grova_b3:
-      "Ejecuto QA frontend, debugging y optimización de rendimiento antes de cada release, para reducir defectos visibles al usuario.",
+      "HMDV — Hotel Marqués del Valle: auditoría UX/CX, prototipo Figma/Make y frontend React/TypeScript/Vite multipágina ES/EN multimoneda; flujo de reserva; frontend en producción.",
     exp_grova_b4:
-      "Mantengo y actualizo sitios WordPress (CMS) de clientes activos, con entregas estables en producción.",
+      "FitPlus: actualizaciones de contenido y modificaciones para campañas promocionales en producción con WordPress y Elementor.",
     exp_grova_b5:
-      "Colaboro con diseño, desarrollo y producto en Agile/Scrum, con handoffs claros que evitan retrabajo entre disciplinas.",
-    exp_grova_b6:
-      "Hotel Marqués del Valle: lideré el rediseño de la experiencia digital. Con Figma Make aceleré el paso de requerimientos a prototipos de alta fidelidad e iteré propuestas de interfaz antes de implementar.",
-    exp_grova_b7:
-      "Senda: implementé UI de citas, pacientes y ventas en React/TypeScript (Formik y Yup). Con Codex aceleré formularios estandarizados y componentes reutilizables, reduciendo trabajo repetitivo sin romper la estructura del proyecto.",
-    exp_grova_p_hotel_title: "Proyecto: Hotel Marqués del Valle — Rediseño de sitio web",
-    exp_grova_p_hotel_b1:
-      "Lideré el rediseño de la experiencia digital y la arquitectura de información. Con Figma Make aceleré el prototipado de alta fidelidad —de requerimientos a modelos listos para validar— e iteré propuestas de interfaz con mayor agilidad.",
-    exp_grova_p_hotel_b2:
-      "Llevé a producción la UI responsive (Vite, TypeScript y Tailwind), con consistencia visual y navegación clara orientada a conversión.",
-    exp_grova_p_senda_title: "Proyecto: Senda — Sistema a medida para clínica de belleza",
+      "Stack: React 19 · TypeScript · JavaScript · Vite · Formik · Yup · Zustand · Tailwind CSS · Material UI · Motion · REST APIs · JWT · WordPress · Git · GitHub.",
+    exp_grova_p_senda_title: "SENDA",
     exp_grova_p_senda_b1:
-      "Diseñé e implementé la experiencia digital a medida para una clínica de belleza (botox, lifting y tratamientos estéticos), alineada a su operación y marca.",
+      "Desarrollé funcionalidades para una SPA SaaS multi-comercio de gestión de citas, pacientes, servicios, productos y personal.",
     exp_grova_p_senda_b2:
-      "Implementé citas, pacientes y ventas con formularios validados (Formik y Yup). Con Codex aceleré formularios estandarizados y componentes reutilizables, reduciendo trabajo repetitivo y manteniendo consistencia entre interfaces.",
+      "Implementé 12 formularios CRUD con React, TypeScript, Formik y Yup, además de extender un sistema de formularios dinámicos basado en configuraciones JSON.",
+    exp_grova_p_senda_b3:
+      "Desarrollé flujos de gestión de citas y componentes reutilizables; Zustand (sesión/comercio); APIs REST con JWT; pruebas DevTools/Insomnia; Git/GitHub (branches, PRs y code review).",
+    exp_grova_p_hotel_title: "HMDV — Hotel Marqués del Valle",
+    exp_grova_p_hotel_b1:
+      "Realicé auditoría UX/CX, arquitectura de páginas, wireframes y prototipo de alta fidelidad en Figma/Figma Make junto con marketing y dirección.",
+    exp_grova_p_hotel_b2:
+      "Desarrollé el frontend completo utilizando React, TypeScript y Vite: multipágina responsive, bilingüe ES/EN y multimoneda.",
+    exp_grova_p_hotel_b3:
+      "Diseñé y optimicé el flujo de reserva; Codex y GitHub Copilot con validación. Frontend integrado en producción.",
+    exp_grova_p_fitplus_title: "FitPlus",
+    exp_grova_p_fitplus_b1:
+      "Gestioné actualizaciones de contenido y modificaciones para campañas promocionales en producción utilizando WordPress y Elementor.",
 
-    exp_crm_role: "Freelance · WordPress CMS",
-    exp_crm_org: "Grupo CRM Extintores",
-    exp_crm_period: "Ago 2026 — Actualidad · En proceso",
+    exp_crm_role: "Freelance Web Developer",
+    exp_crm_org: "Trabajo Independiente",
+    exp_crm_period: "Ago 2026 — Actualidad · Oaxaca, México",
     exp_crm_b1:
-      "Diseño e implemento el sitio institucional en WordPress (CMS), con entregas iterativas desde agosto 2026; aún sin dominio público.",
+      "Desarrollo de soluciones web a la medida para clientes reales, cubriendo desde la arquitectura y UX hasta el desarrollo, SEO y despliegue en producción.",
     exp_crm_b2:
-      "Definí la arquitectura de páginas y el contenido para una presencia digital alineada a marca.",
+      "PROYECTO Grupo CRM Extintores: sitio institucional responsive end-to-end, desde arquitectura y contenidos hasta desarrollo y despliegue en producción.",
+    exp_crm_b3:
+      "Implementé un catálogo de 50+ productos con fichas individuales, servicios, FAQ, contacto y CTAs de cotización vía WhatsApp.",
+    exp_crm_b4:
+      "Apliqué prácticas básicas de SEO on-page y SEO local; despliegue en Vercel con configuración de dominio y publicación.",
+    exp_crm_b5:
+      "Trabajé directamente con el cliente para traducir necesidades de negocio en soluciones web; IA generativa como apoyo, validando manualmente el código y el resultado final.",
 
     exp_rise_role: "Participante",
-    exp_rise_org: "RISE Hackathon Paris",
-    exp_rise_period: "Jul 2026",
+    exp_rise_org: "RAISE Summit Hackathon 2026",
+    exp_rise_period: "Jul 2026 · Remoto · Equipo internacional México–Argentina",
     exp_rise_b1:
-      "Desarrollé en equipo un sistema de auditoría de reservas hoteleras que contrasta reservas de OTAs (Booking.com, Expedia y otras) con la estancia real, para detectar discrepancias que afectan facturación y comisiones (reservas no concretadas, cambios de estancia, late check-out, early check-in).",
+      "Clawback: frontend y UX de un prototipo de IA para detectar discrepancias entre reservas hoteleras y comisiones cobradas por OTAs.",
     exp_rise_b2:
-      "Usé Cursor Agents para acelerar el desarrollo, iterar funcionalidades y convertir prototipos en una solución funcional dentro del tiempo del hackathon.",
+      "Cursor Agents y prompt engineering en un hackathon de 48 horas, validando el código generado; demo funcional desplegada y presentada.",
 
     exp_dulce_role: "Fundadora y administradora",
     exp_dulce_org: "Dulce Glaseado",
@@ -161,104 +332,125 @@ export const translations = {
     about_kicker: "Perfil",
     about_title: "Sobre mí",
     about_intro:
-      "Desarrolladora fullstack especializada en React, Next.js y TypeScript, con enfoque en UX/UI y experiencia construyendo productos digitales accesibles, responsivos y escalables.",
+      "Fullstack con foco en Frontend, React y TypeScript — productos SaaS, sitios web y soluciones a medida para clientes reales.",
     about_body:
-      "Galardonada y beneficiaria de Fulbright–García Robles (2021), Junior Achievement Americas (Mujer Digital, ruta Cisco CCNA) y Generation México (AWS re/Start + IA generativa, oct 2026). Fullstack web developer en GROVA Marketing (remoto). Freelance en Grupo CRM Extintores. Participante en el RISE Hackathon Paris (jul 2026).",
+      "Combino desarrollo frontend, criterio UX/UI y pensamiento analítico para crear experiencias funcionales alineadas a usuarios y negocio. Experiencia en optimización web y SEO básico; IA generativa como apoyo, con revisión y validación del código. Hoy: freelance (Grupo CRM Extintores) y trayectoria en GROVA Marketing (SENDA, HMDV, FitPlus).",
     about_now_title: "Actualmente",
     about_now_body:
-      "Disponible en remoto, híbrido o presencial. En GROVA Marketing construyo producto en React/Next.js y mantengo WordPress; freelance en Grupo CRM Extintores. CCNA en proceso; AWS re/Start + IA generativa inicia en octubre 2026.",
+      "Freelance Web Developer (Grupo CRM Extintores · Oaxaca). Formación en curso: Generation México (AWS), EPAM IT Operations, Global HITSS y Mujer Digital (JA Americas).",
     about_tab_profile: "Perfil",
     about_tab_stack: "Stack",
     about_tab_credentials: "Formación",
 
     stack_title: "Stack técnico",
     stack_subtitle:
-      "Habilidades técnicas del CV: frontend, backend, bases de datos, testing, cloud y metodologías.",
+      "Habilidades del CV: Frontend, Backend & APIs, UX/UI & Testing, Web, Cloud & Deployment, Development & AI.",
     stack_frontend: "Frontend",
-    stack_backend: "Backend & datos",
-    stack_tools: "CMS & delivery",
+    stack_backend: "Backend & APIs",
+    stack_tools: "Web · Cloud · AI",
 
     credentials_education: "Educación",
-    credentials_scholarships: "Becas",
+    credentials_scholarships: "Formación complementaria",
     credentials_certs: "Certificaciones",
     credentials_awards: "Reconocimientos",
     credentials_languages: "Idiomas",
     credentials_publication: "Publicación",
 
-    sch_mujer_digital_program: "Beca Junior Achievement Americas · Ciberseguridad",
-    sch_mujer_digital_org: "Mujer Digital · ruta Cisco CCNA",
+    sch_mujer_digital_program: "Junior Achievement Americas — Mujer Digital · 7.ª generación",
+    sch_mujer_digital_org:
+      "2026 · En curso · Formación en ciberseguridad, redes y soporte, con acompañamiento para empleabilidad. Cisco Digital Badges: Introduction to Cybersecurity · Networking Basics · Network Defense.",
 
-    sch_generation_aws_program: "Beca Generation México · AWS re/Start + IA generativa",
-    sch_generation_aws_org: "Inicio oct 2026",
+    sch_generation_aws_program: "Generation México — AWS re/Start + AI Foundational · Cohorte 03",
+    sch_generation_aws_org:
+      "Seleccionada · Beca completa · Inicio 12 oct. 2026 · Programa intensivo (15 semanas) en cloud computing, AWS, Linux, networking e IA. Certs previstas: AWS Certified Cloud Practitioner · AWS Certified AI Practitioner.",
 
-    sch_fulbright_program: "Becaria · Fulbright-García Robles",
+    sch_epam_program: "EPAM — IT Operations and Support Training Program",
+    sch_epam_org:
+      "12 oct. — 5 dic. 2026 · Formación orientada a IT Support, IT Operations, Service Management, Knowledge Management, troubleshooting y soporte técnico.",
+
+    sch_hitss_program: "Global HITSS — Semillero de Talento de Global HITSS",
+    sch_hitss_org:
+      "28 sept. — 17 dic. 2026 · Capacitación y primer empleo tecnológico para talento junior en el ecosistema laboral de TI, mediante formación práctica y acompañamiento.",
+
+    sch_fulbright_program: "Beca Fulbright–García Robles",
     sch_fulbright_org: "COMEXUS · 2021",
 
     edu_henry_degree: "Bootcamp Full Stack Web Developer",
-    edu_henry_school: "SoyHenry",
+    edu_henry_school: "SoyHenry · +800 horas · React · Node.js · TypeScript · PostgreSQL · Git/GitHub · Scrum",
     edu_henry_period: "May 2025 — Nov 2025",
-
-    edu_generation_restart_degree: "AWS re/Start + IA generativa",
-    edu_generation_restart_school: "Generation México",
-    edu_generation_restart_period: "Oct 2026 — (próximo inicio)",
-
-    edu_ja_cyber_degree: "Programa de Ciberseguridad (ruta Cisco CCNA)",
-    edu_ja_cyber_school: "Mujer Digital · Junior Achievement Americas",
-    edu_ja_cyber_period: "En curso",
 
     edu_ebac_degree: "Diplomado en UX/UI Design",
     edu_ebac_school: "EBAC",
     edu_ebac_period: "2024",
 
     edu_lasalle_degree: "Licenciatura en Ingeniería Civil",
-    edu_lasalle_school: "Universidad La Salle Oaxaca",
+    edu_lasalle_school:
+      "Universidad La Salle Oaxaca · GPA 9.2/10 · Primer lugar de generación · Medalla Hermano Miguel Febres Cordero · Honors",
     edu_lasalle_period: "2015 — 2020",
 
-    edu_kansas_ms_degree: "M.S. Civil Engineering (estudios)",
+    edu_kansas_ms_degree: "Graduate Studies in Civil Engineering",
     edu_kansas_ms_school: "The University of Kansas",
     edu_kansas_ms_period: "Ago 2022 — Ene 2023",
 
-    cert_ccna_title: "CCNA (Cisco Certified Network Associate)",
-    cert_ccna_org: "Cisco",
-    cert_ccna_period: "En proceso",
+    cert_henry_cert_title: "Full Stack Developer Certificate",
+    cert_henry_cert_org: "SoyHenry",
+    cert_henry_cert_period: "2025",
+    cert_ebac_ux_title: "Diplomado en UX/UI Design",
+    cert_ebac_ux_org: "EBAC",
+    cert_ebac_ux_period: "2024",
+    cert_ccst_title: "Cisco Certified Support Technician (CCST)",
+    cert_ccst_org: "Cisco",
+    cert_ccst_period: "En preparación",
     cert_python_data_title: "Python for Data Analysis",
     cert_python_data_org: "Emerging Technologies Institute",
     cert_python_data_period: "2020",
     cert_python_prog_title: "Programming with Python",
     cert_python_prog_org: "Emerging Technologies Institute",
     cert_python_prog_period: "2020",
-    cert_henry_cert_title: "Certificado Henry — Fullstack Developer",
-    cert_henry_cert_org: "",
-    cert_henry_cert_period: "2025",
-    cert_toefl_title: "TOEFL iBT — Inglés C1",
-    cert_toefl_org: "",
-    cert_toefl_period: "2026",
+    cert_python_title: "Python for Data Analysis · Programming with Python",
+    cert_python_org: "Emerging Technologies Institute",
+    cert_python_period: "2020",
+    cert_cisco_badges_title: "Cisco Digital Badges",
+    cert_cisco_badges_org:
+      "Introduction to Cybersecurity · Networking Basics · Networking Devices and Initial Configuration · Endpoint Security · Network Defense",
+    cert_cisco_badges_period: "2026",
 
     award_merito: "Medalla al Mérito Académico · Universidad La Salle Oaxaca",
     award_raise:
-      "Participante — RISE Hackathon Paris (jul 2026): auditoría de reservas hoteleras (OTAs vs. estancia real)",
+      "Participante — RAISE Summit Hackathon 2026 · Proyecto Clawback",
     award_lasalle_2019:
-      "1er lugar · XXI Concurso Lasallista de Investigación, Desarrollo e Innovación 2019",
-    award_omm_2015: "1er lugar estatal · Olimpiada Mexicana de Matemáticas 2015",
-    award_semilleros: "Top 10 semilleros de investigación · La Salle Colombia 2020",
+      "1.er lugar — XXI Concurso Lasallista de Investigación, Desarrollo e Innovación · 2019",
+    award_omm_2015: "1.er lugar estatal — Olimpiada Mexicana de Matemáticas · 2015",
+    award_semilleros: "Top 10 — Semilleros de Investigación, La Salle Colombia · 2020",
+    award_fulbright: "Beca Fulbright–García Robles — COMEXUS · 2021",
+    award_mujer_digital:
+      "Beca Mujer Digital — Junior Achievement Americas · 7.ª generación · 2026",
+    award_generation_aws:
+      "Generation México — AWS re/Start + AI Foundational · Seleccionada · 2026",
+    award_lasalle_valedictorian:
+      "Primer lugar de generación — Licenciatura en Ingeniería Civil · Universidad La Salle Oaxaca",
+    award_hermano_miguel:
+      "Medalla Hermano Miguel Febres Cordero · Honors · Universidad La Salle Oaxaca",
 
     lang_es: "Español — Nativo",
-    lang_en: "Inglés — C1 (TOEFL iBT)",
+    lang_en: "Inglés — Bilingüe, C1 (TOEFL iBT 100/120 · 2026)",
 
     publication_title:
       "Elaboración y análisis de esfuerzo axial de bloques constructivos manufacturados con residuos de cantera y arena volcánica",
 
     contact_kicker: "Contacto",
-    contact_title: "Trabajemos juntos",
+    contact_title: "Hablemos de tu próximo producto",
     contact_subtitle:
-      "Disponible en remoto, híbrido o presencial. Fullstack web developer · UX/UI · Ciberseguridad.",
-    contact_availability: "Disponible: remoto, híbrido o presencial",
+      "Disponible remoto, híbrido o presencial. Frontend React/TypeScript · UX/UI · entregas a producción.",
+    contact_availability: "Disponible ahora",
     contact_response: "Respondo en 24–48 h hábiles.",
-    contact_cta_headline: "Cuéntame sobre tu proyecto o vacante",
+    contact_cta_headline: "Escríbeme y empecemos",
     contact_cta_support:
-      "Si buscas a alguien que construya interfaces y productos digitales con criterio de UX/UI, escríbeme.",
-    contact_cta_email_primary: "Escribirme por email",
-    contact_cta_linkedin_primary: "Conectar en LinkedIn",
+      "Si buscas frontend React/TypeScript con criterio UX/UI y entrega a producción, este es el momento. Email o LinkedIn — tú eliges.",
+    contact_cta_email_primary: "Enviar email",
+    contact_copy: "Copiar email",
+    contact_copied: "¡Copiado!",
+    contact_cta_linkedin_primary: "Abrir LinkedIn",
     contact_linkedin_label: "LinkedIn",
     contact_linkedin_body:
       "Ideal para roles, referidos y feedback sobre mi trabajo.",
@@ -272,114 +464,250 @@ export const translations = {
     contact_cta_email: "Enviar correo",
 
     resume_kicker: "Curriculum",
-    resume_title: "CV actualizado",
+    resume_title: "CV (2 páginas)",
     resume_download: "Descargar CV (Español)",
-    resume_downloading: "Generando PDF…",
-    resume_headline: "Fullstack web developer · UX/UI · Ciberseguridad",
-    resume_location: "México (Remoto / Híbrido / Presencial)",
+    resume_downloading: "Descargando…",
+    resume_headline: "Fullstack Web Developer | Frontend · React · TypeScript · UX/UI",
+    resume_location: "",
     resume_summary:
-      "Desarrolladora fullstack especializada en React, Next.js y TypeScript, con enfoque en UX/UI y experiencia construyendo productos digitales accesibles, responsivos y escalables. Experiencia en SaaS, rediseños web y soluciones a medida, desarrollando interfaces y componentes reutilizables bajo metodologías Agile/Scrum. Integro IA en el diseño, prototipado y desarrollo para acelerar iteraciones, automatizar tareas y optimizar procesos. Mi formación en UX/UI, Full Stack, ciberseguridad e Ingeniería Civil combina criterio de diseño, capacidad técnica y pensamiento analítico para resolver problemas de forma estructurada.",
+      "Desarrolladora Fullstack Web especializada en Frontend, React y TypeScript, con experiencia práctica en productos SaaS, sitios web y soluciones a medida para clientes reales; desarrollo interfaces responsivas, componentes reutilizables e integraciones con APIs REST, participando desde el análisis de necesidades y UX/UI hasta la implementación, pruebas, debugging y despliegue. Combino desarrollo frontend, criterio UX/UI y pensamiento analítico para crear experiencias funcionales y alineadas con las necesidades de usuarios y negocio, con experiencia complementaria en optimización web y SEO básico aplicado a proyectos reales. Utilizo IA generativa como herramienta de apoyo en diseño, prototipado y desarrollo, revisando, adaptando, depurando y validando el código generado.",
     resume_awards_lead: "Galardonada y beneficiaria de las siguientes becas:",
     resume_award_fulbright: "Fulbright–García Robles — COMEXUS (2021)",
     resume_award_ja:
-      "Junior Achievement Americas — Mujer Digital, ciberseguridad / ruta Cisco CCNA (en curso)",
+      "Junior Achievement Americas — Mujer Digital, 7.ª generación · Ciberseguridad (2026, en curso)",
     resume_award_generation:
-      "Generation México — AWS re/Start + IA generativa (inicio oct 2026)",
+      "Generation México — AWS re/Start + IA Foundational, Cohorte 03 (seleccionada, inicio oct 2026)",
     resume_label_frontend: "Frontend",
     resume_label_backend: "Backend",
     resume_label_databases: "Bases de datos",
+    resume_label_uiux: "UI/UX & Forms",
     resume_label_testing: "Testing",
     resume_label_cloud: "Cloud / Deploy",
     resume_label_vcs: "Control de versiones y colaboración",
+    resume_label_cms: "CMS",
+    resume_label_ai: "IA aplicada al desarrollo",
     resume_label_auth: "Autenticación / APIs",
     resume_label_methods: "Metodologías",
     resume_skills_frontend:
-      "HTML5, CSS3, JavaScript, React, TypeScript, Redux / Redux Toolkit, Next.js, Material UI (MUI), Tailwind CSS, DOM, AJAX",
+      "React, Next.js, TypeScript, JavaScript, Vite, HTML5, CSS3, Material UI (MUI), Tailwind CSS, Redux / Redux Toolkit, Zustand",
     resume_skills_backend:
-      "Node.js, Express, APIs REST, TypeScript, TypeORM, Mongoose, Swagger",
+      "Node.js, Express, REST APIs, JWT, TypeORM, Mongoose",
     resume_skills_databases: "PostgreSQL, MongoDB, SQL, NoSQL",
-    resume_skills_testing: "Jest, Vitest, React Testing Library",
-    resume_skills_cloud: "Vercel, Render",
-    resume_skills_vcs: "Git, GitHub",
+    resume_skills_uiux:
+      "Figma, Figma Make, Responsive Design, Formik, Yup, Componentes reutilizables, Toast UI",
+    resume_skills_testing:
+      "Jest, Vitest, React Testing Library, Chrome DevTools, Insomnia",
+    resume_skills_cloud: "Vercel, Render, GitHub Pages",
+    resume_skills_vcs: "Git, GitHub, Branching, Pull Requests",
+    resume_skills_cms: "WordPress",
+    resume_skills_ai:
+      "Cursor, Cursor Agents, Codex, GitHub Copilot, Prompt Engineering",
     resume_skills_auth: "Auth0, APIs REST",
     resume_skills_methods:
       "Agile, Scrum, Trabajo colaborativo, Project-based learning",
     resume_school_servi_title: "ServiYApp — Marketplace de servicios de belleza",
     resume_school_servi_b1:
-      "Diseñé e implementé dashboards para usuarios, proveedores y administradores en Next.js y Tailwind CSS.",
+      "Frontend de paneles cliente, proveedor y admin con rutas por rol y sesión Zustand + JWT (Next.js, React, TypeScript, Tailwind).",
     resume_school_servi_b2:
-      "Construí componentes reutilizables y desplegué el producto en Vercel.",
+      "Auth con Google OAuth, checkout Mercado Pago (MXN/COP/ARS) y chat en tiempo real con Socket.IO.",
     resume_school_servi_b3:
-      "Implementé autenticación local y Google OAuth, control de acceso por roles (RBAC) y persistencia en PostgreSQL.",
-    resume_school_fram_title: "Colectivo Framboyán — E-commerce para artesanos oaxaqueños",
+      "Backoffice con métricas Recharts; formularios Formik/Yup; deploy frontend en Vercel y backend en Render.",
+    resume_school_fram_title: "Colectivo Framboyán — E-commerce de artesanías oaxaqueñas",
     resume_school_fram_b1:
-      "Construí un e-commerce con navegación móvil, accesibilidad y experiencia de usuario orientada a artesanos oaxaqueños.",
+      "E-commerce fullstack: catálogo, registro/login, carrito y órdenes (Next.js, React, TypeScript, Tailwind).",
     resume_school_fram_b2:
-      "Implementé catálogo, SEO on-page y UI de conversión en Next.js y TypeScript.",
+      "API REST Express con JWT; estado global con Context API y carrito persistido en localStorage.",
     resume_school_fram_b3:
-      "Definí la arquitectura de información y el diseño responsive alineados a la marca.",
-    resume_school_dulce_title: "Dulce Glaseado — App de pick-up (roles, Oaxaca)",
+      "TypeORM + PostgreSQL; preparación de deploy con variables de entorno, CORS y separación frontend/backend.",
+    resume_school_dulce_title: "Dulce Glaseado — App fullstack de pick-up",
     resume_school_dulce_b1:
-      "Full stack: catálogo de sabores y cajas (4/6), registro/login, agenda de pick-up e historial de pedidos activos y cancelados (React, Vite, Express, TypeORM, PostgreSQL).",
+      "Frontend React/Vite y API Express/TypeScript por capas; persistencia PostgreSQL con TypeORM.",
     resume_school_dulce_b2:
-      "Validaciones de negocio: anticipación mínima 24 h, mar–dom 9:00–17:00, sin lunes y sin duplicar horario; fichas de sucursal con mapa.",
+      "Reglas de negocio: horarios, anticipación 24 h, restricciones de días y prevención de reservas duplicadas.",
     resume_school_dulce_b3:
-      "Rol end-to-end: diseño, frontend, backend, modelado de datos y reglas de agenda (Axios, SweetAlert2, React Router).",
+      "Rutas protegidas, modales y estados vacíos; deploy del frontend en GitHub Pages con GitHub Actions.",
     resume_section_education: "Educación",
-    resume_section_experience: "Experiencia profesional",
-    resume_section_profile: "Perfil profesional",
-    resume_section_projects: "Proyectos escolares",
-    resume_section_skills: "Habilidades técnicas",
+    resume_section_experience: "Experiencia",
+    resume_section_profile: "Perfil",
+    resume_section_projects: "Proyectos",
+    resume_section_programs: "Formación complementaria",
+    resume_section_skills: "Habilidades",
     resume_section_honors: "Becas y reconocimientos",
     resume_section_certs: "Certificaciones",
     resume_section_languages: "Idiomas",
+    resume_section_profile_compact: "Perfil",
+    resume_section_experience_compact: "Experiencia",
+    resume_section_projects_compact: "Proyectos estudiantiles",
+    resume_section_programs_compact: "Formación complementaria",
+    resume_section_skills_compact: "Habilidades",
     resume_section_publication: "Publicación",
+    resume_nested_project_prefix: "PROYECTO:",
   },
   en: {
     nav_home: "Home",
     nav_work: "Work",
     nav_experience: "Experience",
     nav_about: "About",
+    nav_skills: "Stack",
+    nav_certs: "Certifications",
     nav_contact: "Contact",
     nav_resume: "CV",
     nav_open: "Open menu",
     nav_close: "Close menu",
 
-    footer_tagline: "Fullstack web developer · UX/UI · Cybersecurity · Mexico",
+    footer_tagline:
+      "Fullstack Web Developer · Frontend · React · TypeScript · UX/UI · Mexico",
+    footer_sitemap: "Site map",
+    nf_kicker: "Error 404",
+    nf_title: "This page doesn’t exist (or it moved).",
+    nf_body: "The link may be broken or the address mistyped. Let me take you back to what matters.",
+    nf_home: "Back to home",
+    nf_links: "Or jump straight to",
+    character_alt: "Illustration of Ariadna",    footer_nav: "Navigate",
+    footer_top: "Back to top",
 
     hero_kicker: "Portfolio",
-    identity_line: "Fullstack web developer · UX/UI · Cybersecurity",
-    hero_role: "Fullstack web developer · UX/UI · Cybersecurity",
-    hero_title: "Accessible, responsive, scalable digital products",
+    identity_line: "Fullstack Web Developer | Frontend · React · TypeScript · UX/UI",
+    hero_role: "Fullstack Web Developer | Frontend · React · TypeScript · UX/UI",
+    hero_title: "Frontend that converts: SaaS, sites, and custom products",
     hero_subtitle:
-      "I design and ship features across the stack: React/Next.js UIs, Node.js APIs, auth/roles, and data. I use AI in design, prototyping, and development to speed up iteration and ship working solutions. Experience in SaaS, website redesigns, WordPress CMS, and hospitality product.",
+      "React and TypeScript frontend: clear interfaces, UX/UI, and REST integrations for live products.",
     hero_cta_primary: "Connect on LinkedIn",
-    hero_cta_secondary: "View work",
+    hero_cta_secondary: "View projects",
     hero_cta_contact: "Contact",
-    hero_location: "Mexico · Remote · Hybrid · On-site",
+    hero_cta_contact_primary: "Let's talk",
+    hero_cta_cv: "Download CV",
+    hero_editorial_line: "Clear interfaces. Real products. Shipped to production.",
+    hero_location: "Mexico · Remote / Hybrid / On-site",
     hero_stack_label: "Core stack",
     hero_highlight_1_label: "Focus",
-    hero_highlight_1_value: "Fullstack · UX/UI · Cybersecurity",
+    hero_highlight_1_value: "Frontend · React · TypeScript · UX/UI",
     hero_highlight_2_label: "Availability",
     hero_highlight_2_value: "Remote · Hybrid · On-site",
     hero_highlight_3_label: "Languages",
-    hero_highlight_3_value: "ES native · EN C1",
+    hero_highlight_3_value: "ES native · EN bilingual C1 · TOEFL 100",
+    hero_float_1_title: "React",
+    hero_float_1_sub: "Frontend",
+    hero_float_2_title: "TypeScript",
+    hero_float_2_sub: "Type-safe UI",
+    hero_stat_1: "Available",
+    hero_stat_2: "EN C1",
+    hero_stat_3: "Mexico",
+
+    agency_kicker: "Fullstack Web Developer",
+    agency_hero_line1: "Frontend that converts:",
+    agency_hero_line2: "SaaS, sites, and custom products.",
+    agency_hero_subtitle:
+      "I design and ship React/TypeScript frontend, UX/UI, and REST integrations for products in production.",
+    agency_stat_1: "Frontend · React · TS",
+    agency_stat_2: "Remote / hybrid",
+    agency_stat_3: "ES · EN C1",
+    agency_photo_caption: "Fullstack Web Developer",
+    agency_about_title: "I build digital products with UX judgment and clean code.",
+    agency_about_p1:
+      "I'm Ariadna Ramírez, a Fullstack Web Developer focused on Frontend, React, and TypeScript. I work on SaaS, websites, and custom solutions for real clients.",
+    agency_about_p2:
+      "I combine responsive interfaces, reusable components, and REST integrations — from analysis and UX/UI through implementation, testing, and deploy.",
+    agency_about_pull: "Clear interfaces. Real products. Shipped to production.",
+
+    brands_kicker: "Brands",
+    brands_title_italic: "Who I've",
+    brands_title_rest: "built with",
+    brands_subtitle:
+      "Freelance and project collaborations: live products and real brands.",
+
+    landing_about_title: "I build digital products with UX judgment and clean code.",
+    landing_about_p1:
+      "I'm Ariadna Ramírez, a Fullstack Web Developer focused on Frontend, React, and TypeScript. I work on SaaS, websites, and custom solutions for real clients.",
+    landing_about_p2:
+      "I combine responsive interfaces, reusable components, and REST integrations — from analysis and UX/UI through implementation, testing, and deployment.",
+    landing_about_focus_label: "Current focus",
+    landing_about_focus_1: "Frontend React & TypeScript",
+    landing_about_focus_2: "UX/UI and conversion",
+    landing_about_focus_3: "REST APIs & JWT",
+    landing_about_focus_4: "Basic SEO and deploy",
+    landing_about_focus_5: "AI-assisted work with validation",
+
+    landing_skills_title: "The stack I use to",
+    landing_skills_title_accent: "ship ideas to production.",
+    note_work: "real things, live in production",
+    note_skills: "what I use every day",
+    note_certs: "always learning",
+    note_brands: "thanks for the trust",
+    note_about: "a bit about me",
+    note_experience: "from brief to deploy",
+    note_edu: "from civil engineer to dev",
+    note_contact: "drop me a line!",
+    exp_full_cv: "See the full track record in my CV",
+    exp_more: "more achievements",
+    exp_less: "Show less",
+    exp_current: "Current",
+    exp_projects: "Projects",
+    exp_stack: "Stack",
+    exp_crm_s1: "catalog products",
+    exp_crm_s2: "on-page & local",
+    exp_crm_s3: "from idea to production",
+    exp_grova_s1: "CRUD forms",
+    exp_grova_s2: "client projects",
+    exp_grova_s3: "multi-currency frontend",
+    hero_note_me: "Hi, that's me!",
+    hero_note_place: "from Oaxaca, MX",
+    landing_skills_subtitle:
+      "Visible tools: frontend, backend, UX/UI, and production delivery.",
+    landing_skills_1_title: "Frontend",
+    landing_skills_1_body:
+      "React · Next.js · TypeScript · JavaScript · Vite · HTML5 · CSS3 · Material UI · Tailwind CSS · Redux · Zustand",
+    landing_skills_2_title: "Backend & APIs",
+    landing_skills_2_body:
+      "Node.js · Express · REST APIs · JWT · TypeORM · Mongoose · PostgreSQL · MongoDB · SQL",
+    landing_skills_3_title: "UX/UI & Testing",
+    landing_skills_3_body:
+      "Figma · Figma Make · UX Audit · Wireframing · Prototyping · Formik · Yup · Jest · Vitest · React Testing Library · Chrome DevTools · Insomnia",
+    landing_skills_4_title: "Web, Cloud & AI",
+    landing_skills_4_body:
+      "Responsive · Performance · WordPress · Elementor · SEO · Vercel · Render · GitHub · Cursor · Codex · Copilot",
+
+    landing_certs_title_italic: "Credentials",
+    landing_certs_title_rest: "that back the profile.",
+    landing_certs_subtitle:
+      "Certifications and selective programs: technical training with employability and cloud focus.",
+    landing_certs_programs_label: "Programs in progress / selected",
+    landing_certs_programs_subtitle:
+      "Active scholarships and cohorts — continuous growth for teams that hire.",
+
+    landing_projects_title: "Featured projects",
+    landing_projects_subtitle:
+      "Products in production: freelance, project-based collaboration, and team work.",
+    landing_projects_index_label: "Index",
+
+    landing_exp_title: "More than code: recent path.",
+    landing_exp_subtitle: "Freelance and project-based work with real clients.",
+
+    landing_edu_title: "Education",
+    landing_edu_subtitle: "Formal education that backs technical and product judgment.",
+    landing_edu_training_label: "Additional training",
+
+    mid_cta_kicker: "Next step",
+    mid_cta_title_italic: "Shall we build",
+    mid_cta_title_rest: "your next product?",
+    mid_cta_body:
+      "Tell me about your role or project. I reply within 24–48 business hours with a clear next step.",
 
     home_work_kicker: "Selected",
     home_work_title: "Recent work",
     home_work_subtitle:
-      "Hotel Marqués del Valle and Senda (GROVA), plus academic projects: ServiYApp, Dulce Glaseado, and Colectivo Framboyán.",
+      "Live sites and products: CRM Extintores, Hotel Marqués del Valle, SENDA, and ServiYApp.",
     home_work_cta: "View all projects",
     home_about_kicker: "Profile",
     home_about_title: "Professional profile",
     home_about_body:
-      "Civil Engineering background, UX/UI diploma (EBAC), and fullstack training (Henry). At GROVA Marketing (remote) I build React/Next.js UI and maintain WordPress; on Hotel Marqués del Valle and Senda I used AI to speed up prototyping and reusable components. In Jul 2026, RISE Hackathon Paris: OTA vs. actual-stay reservation audit. Freelance since Aug 2026 (Grupo CRM Extintores). Scholar: JA (CCNA), Generation Mexico (AWS re/Start + AI, Oct 2026), and Fulbright–García Robles.",
+      "Fullstack with a Frontend focus. I combine React/TypeScript, UX/UI judgment, and analytical thinking to ship clear, business-aligned experiences — with basic SEO and generative AI as support, always with manual validation.",
     home_about_cta: "More about me",
 
     work_kicker: "Portfolio",
     work_title: "Work",
     work_subtitle:
-      "GROVA projects (Hotel Marqués del Valle, Senda) and academic projects.",
+      "Freelance and agency work: institutional sites, multi-store SaaS, and digital products in production.",
     work_tab_all: "All",
     work_tab_fullstack: "Full Stack",
     work_tab_frontend: "Frontend",
@@ -389,94 +717,145 @@ export const translations = {
     projects_media_desktop: "Desktop",
     projects_media_tablet: "Tablet",
     projects_media_mobile: "Mobile",
-    projects_media_sticky_open: "Sticky open",
-    projects_media_sticky_closed: "Sticky closed",
-    projects_evidence: "Visual evidence",
+    projects_status_private: "Private project",
+    projects_status_pending: "Demo coming soon",
+    projects_hotel_shot_1: "Home with an always-visible booking bar",
+    projects_hotel_shot_2: "Location as the pitch: Oaxaca on foot",
+    projects_hotel_shot_3: "Direct booking via WhatsApp or phone",
+    projects_hotel_shot_4: "Rooms with price, capacity, and amenities",
+    projects_hotel_shot_5: "Room comparison with individual galleries",
+    projects_hotel_shot_6: "Booking page: dates, guests, and availability",
+    projects_evidence: "Preview",
     projects_shot_of: "View",
     projects_lightbox_close: "Close",
+    projects_lightbox_open: "Expand",
+    projects_compare: "Compare before and after the redesign",
+    cs_kicker: "Case study",
+    cs_back: "Projects",
+    cs_view_live: "View live site",
+    cs_challenge: "The challenge",
+    cs_goals: "Goals",
+    cs_process: "Process",
+    cs_solution: "The solution",
+    cs_results: "Results",
+    cs_cta_title: "Have a similar project?",
+    cs_cta_body: "Tell me what you need and I'll get back to you within 24–48 business hours with a clear proposal.",
+    cs_more: "More projects",
+    cs_read: "Read case study",
+    cs_featured: "Featured case",
+    cs_before: "Before the redesign",
+    projects_after: "After",
+    projects_before: "Before",
+    projects_before_caption: "Previous site, before the UX/CX audit",
+    projects_senda_shot_1: "Patient list with search and pagination",
+    projects_senda_shot_2: "Patient detail with dynamic clinical data",
+    projects_senda_shot_3: "Edit form (Formik + Yup)",
+    projects_senda_shot_4: "Schedule and break validation",
+    projects_senda_shot_5: "User management by role and status",
+    projects_senda_shot_6: "User profile with assigned schedules",
+    projects_crm_shot_1: "Home with value proposition and call/WhatsApp CTAs",
+    projects_crm_shot_2: "Catalog of 55 products with category filters",
+    projects_crm_shot_3: "About: company, mission, and brand mascot",
+    projects_crm_shot_4: "Gallery of real installations filtered by industry",
+    projects_crm_shot_5: "Blog: practical guides for local SEO",
+    projects_crm_shot_6: "Contact form that sends straight to WhatsApp",
     projects_lightbox_prev: "Previous",
     projects_lightbox_next: "Next",
     pager_prev: "Previous",
     pager_next: "Next",
 
     projects_servi_title: "ServiYApp",
-    projects_servi_role: "Academic project · Marketplace",
+    projects_servi_role: "Frontend Developer · Team of 6 · Marketplace",
     projects_servi_desc:
-      "Designed and implemented dashboards for users, providers, and admins in Next.js and Tailwind CSS. Built reusable components and deployed the product to Vercel. Implemented local and Google OAuth authentication, role-based access control (RBAC), and PostgreSQL persistence.",
+      "At-home beauty marketplace: client/provider/admin panels, OAuth, payments, and real-time chat.",
 
     projects_senda_title: "SENDA",
-    projects_senda_role: "GROVA · Custom system · Private client",
+    projects_senda_role: "GROVA · Multi-store SaaS SPA",
     projects_senda_desc:
-      "Designed and implemented a custom digital experience for a beauty clinic (Botox, lifting, and aesthetic treatments), aligned to operations and brand. Implemented appointments, patients, and sales with validated forms (Formik and Yup). Used Codex to speed up standardized forms and reusable components, reducing repetitive work and keeping interfaces consistent. Source code and production environment remain private to the client.",
+      "Appointments and operations SaaS: CRUD forms, Zustand state, and REST APIs with JWT.",
+
+    projects_crm_title: "Grupo CRM Extintores",
+    projects_crm_role: "Freelance · Institutional site in production",
+    projects_crm_desc:
+      "End-to-end site with a 50+ product catalog, WhatsApp CTAs, local SEO, and Vercel deploy.",
 
     projects_fram_title: "Colectivo Framboyán",
-    projects_fram_role: "Academic project · E-commerce",
+    projects_fram_role: "Fullstack Developer · Solo · SoyHenry 2025",
     projects_fram_desc:
-      "Built an e-commerce experience with mobile navigation, accessibility, and UX tailored to Oaxacan artisans. Implemented catalog, on-page SEO, and conversion-oriented UI in Next.js and TypeScript. Defined information architecture and responsive design aligned to the brand.",
+      "Fullstack e-commerce for Oaxacan crafts: catalog, JWT auth, cart, orders, and REST API with Next.js, Express, TypeORM, and PostgreSQL.",
 
     projects_hotel_title: "Hotel Marqués del Valle",
-    projects_hotel_role: "GROVA · Website redesign",
+    projects_hotel_role: "GROVA · HMDV · UX/UI + Frontend in production",
     projects_hotel_desc:
-      "Led the digital experience redesign and information architecture. Used Figma Make to speed up high-fidelity prototyping — from requirements to models ready to validate — and iterated UI proposals with more agility. Shipped the responsive production UI (Vite, TypeScript, and Tailwind) with brand-consistent visuals and conversion-oriented navigation.",
+      "UX/UI redesign and bilingual frontend with a conversion-focused booking flow. Live in production.",
 
     projects_dulce_title: "Dulce Glaseado",
-    projects_dulce_role: "Academic project · Full stack · Pick-up",
+    projects_dulce_role: "Fullstack Developer · Orders and bookings",
     projects_dulce_desc:
-      "Pick-up app for a cinnamon-roll shop in Oaxaca. Customers browse the menu and branches, sign up and log in, schedule a box of 4 or 6 rolls with at least 24 hours' notice (Tue–Sun, 9:00–17:00), and view or cancel orders from a history. Each branch shows address, hours, phone, and a Google Maps link. I designed and built the frontend, backend, data model, and business validations (React, Vite, React Router · Express, TypeORM, PostgreSQL · Axios, SweetAlert2).",
+      "Fullstack bakery orders and bookings app: React + Vite frontend and layered Express REST API.",
 
     experience_kicker: "Career",
     experience_title: "Experience",
     experience_subtitle:
-      "Fullstack web developer at GROVA Marketing, freelance work, RISE Hackathon Paris, and earlier roles.",
+      "Freelance (Independent work) and Web Developer at GROVA Marketing — sites, SaaS, and production maintenance.",
     experience_tab_current: "Current",
     experience_tab_product: "Product",
     experience_tab_prior: "Earlier",
     experience_prior_note:
-      "Analyzed experimental data in applied research and wrote technical reports in English.",
+      "Professional experience: Independent work and GROVA Marketing.",
 
-    exp_grova_role: "Fullstack web developer",
+    exp_grova_role: "Web Developer",
     exp_grova_org: "GROVA Marketing",
-    exp_grova_period: "Aug 2025 — Present · Remote",
+    exp_grova_period: "Project-based · Aug 2025 — Aug 2026 · Remote",
     exp_grova_b1:
-      "Build and maintain web apps in React, TypeScript, and Next.js, with reusable components that speed up new features and keep product UI consistent.",
+      "Websites and digital products for agency clients, focused on frontend, UX/UI, APIs, and maintenance.",
     exp_grova_b2:
-      "Turn Figma designs into responsive, accessible interfaces with visual fidelity and brand consistency in production.",
+      "SENDA: multi-store SaaS SPA; 12 CRUD forms (React, TypeScript, Formik, Yup); JSON dynamic forms; Zustand; REST APIs with JWT; DevTools/Insomnia testing; Git/GitHub (branches, PRs, and code review).",
     exp_grova_b3:
-      "Run frontend QA, debugging, and performance optimization before each release to reduce user-facing defects.",
+      "HMDV — Hotel Marqués del Valle: UX/CX audit, Figma/Make prototype, and React/TypeScript/Vite multipage ES/EN multi-currency frontend; booking flow; frontend live in production.",
     exp_grova_b4:
-      "Maintain and update WordPress (CMS) sites for active clients, with stable production deliveries.",
+      "FitPlus: content updates and promotional campaign changes in production with WordPress and Elementor.",
     exp_grova_b5:
-      "Collaborate with design, engineering, and product under Agile/Scrum, with clear handoffs that reduce rework across disciplines.",
-    exp_grova_b6:
-      "Hotel Marqués del Valle: led the digital experience redesign. Used Figma Make to move from requirements to high-fidelity prototypes faster and iterated UI proposals before implementation.",
-    exp_grova_b7:
-      "Senda: shipped appointment, patient, and sales UI in React/TypeScript (Formik and Yup). Used Codex to speed up standardized forms and reusable components, cutting repetitive work without breaking project structure.",
-    exp_grova_p_hotel_title: "Project: Hotel Marqués del Valle — Website redesign",
-    exp_grova_p_hotel_b1:
-      "Led the digital experience redesign and information architecture. Used Figma Make to speed up high-fidelity prototyping — from requirements to models ready to validate — and iterated UI proposals with more agility.",
-    exp_grova_p_hotel_b2:
-      "Shipped the responsive production UI (Vite, TypeScript, and Tailwind) with brand-consistent visuals and conversion-oriented navigation.",
-    exp_grova_p_senda_title: "Project: Senda — Custom system for a beauty clinic",
+      "Stack: React 19 · TypeScript · JavaScript · Vite · Formik · Yup · Zustand · Tailwind CSS · Material UI · Motion · REST APIs · JWT · WordPress · Git · GitHub.",
+    exp_grova_p_senda_title: "SENDA",
     exp_grova_p_senda_b1:
-      "Designed and implemented a custom digital experience for a beauty clinic (Botox, lifting, and aesthetic treatments), aligned to operations and brand.",
+      "Built features for a multi-store SaaS SPA covering appointments, patients, services, products, and staff.",
     exp_grova_p_senda_b2:
-      "Implemented appointments, patients, and sales with validated forms (Formik and Yup). Used Codex to speed up standardized forms and reusable components, reducing repetitive work and keeping interfaces consistent.",
+      "Implemented 12 CRUD forms with React, TypeScript, Formik, and Yup, and extended a JSON-config dynamic form system.",
+    exp_grova_p_senda_b3:
+      "Built appointment management flows and reusable components; Zustand (session/store); REST APIs with JWT; DevTools/Insomnia testing; Git/GitHub (branches, PRs, and code review).",
+    exp_grova_p_hotel_title: "HMDV — Hotel Marqués del Valle",
+    exp_grova_p_hotel_b1:
+      "Conducted UX/CX audit, page architecture, wireframes, and high-fidelity Figma/Figma Make prototype with marketing and leadership.",
+    exp_grova_p_hotel_b2:
+      "Built the complete frontend using React, TypeScript, and Vite: responsive multipage, bilingual ES/EN, multi-currency.",
+    exp_grova_p_hotel_b3:
+      "Designed and optimized the booking flow; Codex and GitHub Copilot with validation. Frontend live in production.",
+    exp_grova_p_fitplus_title: "FitPlus",
+    exp_grova_p_fitplus_b1:
+      "Managed content updates and changes for promotional campaigns in production using WordPress and Elementor.",
 
-    exp_crm_role: "Freelance · WordPress CMS",
-    exp_crm_org: "Grupo CRM Extintores",
-    exp_crm_period: "Aug 2026 — Present · In progress",
+    exp_crm_role: "Freelance Web Developer",
+    exp_crm_org: "Independent work",
+    exp_crm_period: "Aug 2026 — Present · Oaxaca, Mexico",
     exp_crm_b1:
-      "Design and implement the company website in WordPress (CMS), delivering iteratively since August 2026; no public domain yet.",
+      "Custom web solutions for real clients, covering architecture and UX through development, SEO, and production deployment.",
     exp_crm_b2:
-      "Defined page architecture and content for a brand-aligned digital presence.",
+      "PROJECT Grupo CRM Extintores: end-to-end responsive institutional site, from architecture and content through development and production deployment.",
+    exp_crm_b3:
+      "Implemented a 50+ product catalog with detail pages, services, FAQ, contact, and WhatsApp quote CTAs.",
+    exp_crm_b4:
+      "Applied basic on-page and local SEO; deployed on Vercel with domain and publication setup.",
+    exp_crm_b5:
+      "Worked directly with the client to translate business needs into web solutions; generative AI as support, manually validating the code and final result.",
 
     exp_rise_role: "Participant",
-    exp_rise_org: "RISE Hackathon Paris",
-    exp_rise_period: "Jul 2026",
+    exp_rise_org: "RAISE Summit Hackathon 2026",
+    exp_rise_period: "Jul 2026 · Remote · International Mexico–Argentina team",
     exp_rise_b1:
-      "Built, as a team, a hotel reservation audit system that compares OTA bookings (Booking.com, Expedia, and others) with the actual stay, to flag discrepancies that affect billing and commissions (no-shows, stay changes, late check-out, early check-in).",
+      "Clawback: frontend and UX of an AI prototype to detect gaps between hotel bookings and OTA commissions.",
     exp_rise_b2:
-      "Used Cursor Agents to speed up development, iterate on features, and turn prototypes into a working solution within the hackathon timeframe.",
+      "Cursor Agents and prompt engineering in a 48-hour hackathon, validating generated code; working demo deployed and presented.",
 
     exp_dulce_role: "Founder & operator",
     exp_dulce_org: "Dulce Glaseado",
@@ -497,104 +876,125 @@ export const translations = {
     about_kicker: "Profile",
     about_title: "About",
     about_intro:
-      "Fullstack web developer specialized in React, Next.js, and TypeScript, with a UX/UI focus and experience building accessible, responsive, scalable digital products.",
+      "Fullstack with a Frontend focus in React and TypeScript — SaaS products, websites, and custom solutions for real clients.",
     about_body:
-      "Awarded Fulbright–García Robles (2021), Junior Achievement Americas (Mujer Digital, Cisco CCNA track), and Generation Mexico (AWS re/Start + generative AI, Oct 2026). Fullstack web developer at GROVA Marketing (remote). Freelance at Grupo CRM Extintores. Participant in RISE Hackathon Paris (Jul 2026).",
+      "I combine frontend development, UX/UI judgment, and analytical thinking to create functional experiences aligned with users and business. Experience in web optimization and basic SEO; generative AI as support, with review and validation of the code. Today: freelance (Grupo CRM Extintores) and background at GROVA Marketing (SENDA, HMDV, FitPlus).",
     about_now_title: "Currently",
     about_now_body:
-      "Available remote, hybrid, or on-site. At GROVA Marketing I build React/Next.js product UI and maintain WordPress; freelance at Grupo CRM Extintores. CCNA in progress; AWS re/Start + generative AI starts October 2026.",
+      "Freelance Web Developer (Grupo CRM Extintores · Oaxaca). Training in progress: Generation Mexico (AWS), EPAM IT Operations, Global HITSS, and Mujer Digital (JA Americas).",
     about_tab_profile: "Profile",
     about_tab_stack: "Stack",
     about_tab_credentials: "Credentials",
 
     stack_title: "Technical stack",
     stack_subtitle:
-      "Technical skills from the CV: frontend, backend, databases, testing, cloud, and methodologies.",
+      "Skills from the CV: Frontend, Backend & APIs, UX/UI & Testing, Web, Cloud & Deployment, Development & AI.",
     stack_frontend: "Frontend",
-    stack_backend: "Backend & data",
-    stack_tools: "CMS & delivery",
+    stack_backend: "Backend & APIs",
+    stack_tools: "Web · Cloud · AI",
 
     credentials_education: "Education",
-    credentials_scholarships: "Scholarships",
+    credentials_scholarships: "Additional training",
     credentials_certs: "Certifications",
     credentials_awards: "Honors",
     credentials_languages: "Languages",
     credentials_publication: "Publication",
 
-    sch_mujer_digital_program: "Junior Achievement Americas Scholarship · Cybersecurity",
-    sch_mujer_digital_org: "Mujer Digital · Cisco CCNA track",
+    sch_mujer_digital_program: "Junior Achievement Americas — Mujer Digital · 7th cohort",
+    sch_mujer_digital_org:
+      "2026 · In progress · Training in cybersecurity, networking, and support, with employability mentoring. Cisco Digital Badges: Introduction to Cybersecurity · Networking Basics · Network Defense.",
 
-    sch_generation_aws_program: "Generation Mexico Scholarship · AWS re/Start + generative AI",
-    sch_generation_aws_org: "Starts Oct 2026",
+    sch_generation_aws_program: "Generation Mexico — AWS re/Start + AI Foundational · Cohort 03",
+    sch_generation_aws_org:
+      "Selected · Full scholarship · Starts Oct 12, 2026 · Intensive program (15 weeks) in cloud computing, AWS, Linux, networking, and AI. Planned certs: AWS Certified Cloud Practitioner · AWS Certified AI Practitioner.",
 
-    sch_fulbright_program: "Fulbright-García Robles Scholar",
+    sch_epam_program: "EPAM — IT Operations and Support Training Program",
+    sch_epam_org:
+      "Oct 12 — Dec 5, 2026 · Training focused on IT Support, IT Operations, Service Management, Knowledge Management, troubleshooting, and technical support.",
+
+    sch_hitss_program: "Global HITSS — Global HITSS Talent Seedbed",
+    sch_hitss_org:
+      "Sep 28 — Dec 17, 2026 · Training and first tech job program for junior talent entering the IT labor ecosystem through practical training and mentorship.",
+
+    sch_fulbright_program: "Fulbright–García Robles Fellowship",
     sch_fulbright_org: "COMEXUS · 2021",
 
-    edu_henry_degree: "Full Stack Web Developer bootcamp",
-    edu_henry_school: "SoyHenry",
+    edu_henry_degree: "Full Stack Web Developer Bootcamp",
+    edu_henry_school: "SoyHenry · +800 hours · React · Node.js · TypeScript · PostgreSQL · Git/GitHub · Scrum",
     edu_henry_period: "May 2025 — Nov 2025",
 
-    edu_generation_restart_degree: "AWS re/Start + generative AI",
-    edu_generation_restart_school: "Generation Mexico",
-    edu_generation_restart_period: "Oct 2026 — (upcoming start)",
-
-    edu_ja_cyber_degree: "Cybersecurity program (Cisco CCNA track)",
-    edu_ja_cyber_school: "Mujer Digital · Junior Achievement Americas",
-    edu_ja_cyber_period: "In progress",
-
-    edu_ebac_degree: "UX/UI Design diploma",
+    edu_ebac_degree: "UX/UI Design Diploma",
     edu_ebac_school: "EBAC",
     edu_ebac_period: "2024",
 
     edu_lasalle_degree: "B.S. Civil Engineering",
-    edu_lasalle_school: "Universidad La Salle Oaxaca",
+    edu_lasalle_school:
+      "Universidad La Salle Oaxaca · GPA 9.2/10 · Class valedictorian · Hermano Miguel Febres Cordero Medal · Honors",
     edu_lasalle_period: "2015 — 2020",
 
-    edu_kansas_ms_degree: "M.S. Civil Engineering (studies)",
+    edu_kansas_ms_degree: "Graduate Studies in Civil Engineering",
     edu_kansas_ms_school: "The University of Kansas",
     edu_kansas_ms_period: "Aug 2022 — Jan 2023",
 
-    cert_ccna_title: "CCNA (Cisco Certified Network Associate)",
-    cert_ccna_org: "Cisco",
-    cert_ccna_period: "In progress",
+    cert_henry_cert_title: "Full Stack Developer Certificate",
+    cert_henry_cert_org: "SoyHenry",
+    cert_henry_cert_period: "2025",
+    cert_ebac_ux_title: "UX/UI Design Diploma",
+    cert_ebac_ux_org: "EBAC",
+    cert_ebac_ux_period: "2024",
+    cert_ccst_title: "Cisco Certified Support Technician (CCST)",
+    cert_ccst_org: "Cisco",
+    cert_ccst_period: "In progress",
     cert_python_data_title: "Python for Data Analysis",
     cert_python_data_org: "Emerging Technologies Institute",
     cert_python_data_period: "2020",
     cert_python_prog_title: "Programming with Python",
     cert_python_prog_org: "Emerging Technologies Institute",
     cert_python_prog_period: "2020",
-    cert_henry_cert_title: "Henry Certificate — Fullstack Developer",
-    cert_henry_cert_org: "",
-    cert_henry_cert_period: "2025",
-    cert_toefl_title: "TOEFL iBT — English C1",
-    cert_toefl_org: "",
-    cert_toefl_period: "2026",
+    cert_python_title: "Python for Data Analysis · Programming with Python",
+    cert_python_org: "Emerging Technologies Institute",
+    cert_python_period: "2020",
+    cert_cisco_badges_title: "Cisco Digital Badges",
+    cert_cisco_badges_org:
+      "Introduction to Cybersecurity · Networking Basics · Networking Devices and Initial Configuration · Endpoint Security · Network Defense",
+    cert_cisco_badges_period: "2026",
 
     award_merito: "Academic Merit Medal · Universidad La Salle Oaxaca",
     award_raise:
-      "Participant — RISE Hackathon Paris (Jul 2026): hotel reservation audit (OTAs vs. actual stay)",
+      "Participant — RAISE Summit Hackathon 2026 · Clawback project",
     award_lasalle_2019:
-      "1st place · XXI Lasallista Research, Development & Innovation Contest 2019",
-    award_omm_2015: "1st place (state) · Mexican Mathematics Olympiad 2015",
-    award_semilleros: "Top 10 research seedbeds · La Salle Colombia 2020",
+      "1st place — XXI Lasallista Research, Development & Innovation Contest · 2019",
+    award_omm_2015: "1st place (state) — Mexican Mathematics Olympiad · 2015",
+    award_semilleros: "Top 10 — Research Seedbeds, La Salle Colombia · 2020",
+    award_fulbright: "Fulbright–García Robles Fellowship — COMEXUS · 2021",
+    award_mujer_digital:
+      "Mujer Digital Scholarship — Junior Achievement Americas · 7th cohort · 2026",
+    award_generation_aws:
+      "Generation Mexico — AWS re/Start + AI Foundational · Selected · 2026",
+    award_lasalle_valedictorian:
+      "Class valedictorian — B.S. Civil Engineering · Universidad La Salle Oaxaca",
+    award_hermano_miguel:
+      "Hermano Miguel Febres Cordero Medal · Honors · Universidad La Salle Oaxaca",
 
     lang_es: "Spanish — Native",
-    lang_en: "English — C1 (TOEFL iBT)",
+    lang_en: "English — Bilingual, C1 (TOEFL iBT 100/120 · 2026)",
 
     publication_title:
       "Elaboration and axial stress analysis of construction blocks manufactured with quarry waste and volcanic sand",
 
     contact_kicker: "Contact",
-    contact_title: "Let’s work together",
+    contact_title: "Let’s talk about your next product",
     contact_subtitle:
-      "Available remote, hybrid, or on-site. Fullstack web developer · UX/UI · Cybersecurity.",
-    contact_availability: "Available: remote, hybrid, or on-site",
+      "Available remote, hybrid, or on-site. Frontend React/TypeScript · UX/UI · production delivery.",
+    contact_availability: "Available now",
     contact_response: "I typically reply within 24–48 business hours.",
-    contact_cta_headline: "Tell me about your role or project",
+    contact_cta_headline: "Write to me — let’s start",
     contact_cta_support:
-      "If you need someone who builds interfaces and digital products with UX/UI judgment — reach out.",
-    contact_cta_email_primary: "Email me",
-    contact_cta_linkedin_primary: "Connect on LinkedIn",
+      "If you need React/TypeScript frontend with UX judgment and production delivery, now is the time. Email or LinkedIn — your choice.",
+    contact_cta_email_primary: "Send email",
+    contact_copy: "Copy email",
+    contact_copied: "Copied!",
+    contact_cta_linkedin_primary: "Open LinkedIn",
     contact_linkedin_label: "LinkedIn",
     contact_linkedin_body:
       "Best for roles, referrals, and feedback on my work.",
@@ -608,68 +1008,84 @@ export const translations = {
     contact_cta_email: "Send email",
 
     resume_kicker: "Resume",
-    resume_title: "Updated CV",
+    resume_title: "CV (2 pages)",
     resume_download: "Download CV (English)",
-    resume_downloading: "Generating PDF…",
-    resume_headline: "Fullstack web developer · UX/UI · Cybersecurity",
-    resume_location: "Mexico (Remote / Hybrid / On-site)",
+    resume_downloading: "Downloading…",
+    resume_headline: "Fullstack Web Developer | Frontend · React · TypeScript · UX/UI",
+    resume_location: "",
     resume_summary:
-      "Fullstack web developer specialized in React, Next.js, and TypeScript, with a UX/UI focus and experience building accessible, responsive, scalable digital products. Experience in SaaS, website redesigns, and custom solutions, developing interfaces and reusable components under Agile/Scrum. I integrate AI into design, prototyping, and development to speed up iteration, automate tasks, and streamline processes. My background in UX/UI, Full Stack, cybersecurity, and Civil Engineering combines design judgment, technical skill, and analytical thinking to solve problems in a structured way.",
+      "Fullstack web developer specialized in Frontend, React, and TypeScript, with hands-on experience in SaaS products, websites, and custom solutions for real clients; I build responsive interfaces, reusable components, and REST API integrations, taking part from needs analysis and UX/UI through implementation, testing, debugging, and deployment. I combine frontend development, UX/UI judgment, and analytical thinking to create functional experiences aligned with user and business needs, with complementary experience in web optimization and basic SEO applied to real projects. I use generative AI as a support tool in design, prototyping, and development, reviewing, adapting, debugging, and validating generated code.",
     resume_awards_lead: "Awarded the following fellowships and scholarships:",
     resume_award_fulbright: "Fulbright–García Robles — COMEXUS (2021)",
     resume_award_ja:
-      "Junior Achievement Americas — Mujer Digital, cybersecurity / Cisco CCNA track (in progress)",
+      "Junior Achievement Americas — Mujer Digital, 7th generation · Cybersecurity (2026, in progress)",
     resume_award_generation:
-      "Generation Mexico — AWS re/Start + generative AI (starts Oct 2026)",
+      "Generation Mexico — AWS re/Start + AI Foundational, Cohort 03 (selected, starts Oct 2026)",
     resume_label_frontend: "Frontend",
     resume_label_backend: "Backend",
     resume_label_databases: "Databases",
+    resume_label_uiux: "UI/UX & Forms",
     resume_label_testing: "Testing",
     resume_label_cloud: "Cloud / Deploy",
     resume_label_vcs: "Version control & collaboration",
+    resume_label_cms: "CMS",
+    resume_label_ai: "AI for development",
     resume_label_auth: "Authentication / APIs",
     resume_label_methods: "Methodologies",
     resume_skills_frontend:
-      "HTML5, CSS3, JavaScript, React, TypeScript, Redux / Redux Toolkit, Next.js, Material UI (MUI), Tailwind CSS, DOM, AJAX",
+      "React, Next.js, TypeScript, JavaScript, Vite, HTML5, CSS3, Material UI (MUI), Tailwind CSS, Redux / Redux Toolkit, Zustand",
     resume_skills_backend:
-      "Node.js, Express, REST APIs, TypeScript, TypeORM, Mongoose, Swagger",
+      "Node.js, Express, REST APIs, JWT, TypeORM, Mongoose",
     resume_skills_databases: "PostgreSQL, MongoDB, SQL, NoSQL",
-    resume_skills_testing: "Jest, Vitest, React Testing Library",
-    resume_skills_cloud: "Vercel, Render",
-    resume_skills_vcs: "Git, GitHub",
+    resume_skills_uiux:
+      "Figma, Figma Make, Responsive Design, Formik, Yup, Reusable components, Toast UI",
+    resume_skills_testing:
+      "Jest, Vitest, React Testing Library, Chrome DevTools, Insomnia",
+    resume_skills_cloud: "Vercel, Render, GitHub Pages",
+    resume_skills_vcs: "Git, GitHub, Branching, Pull Requests",
+    resume_skills_cms: "WordPress",
+    resume_skills_ai:
+      "Cursor, Cursor Agents, Codex, GitHub Copilot, Prompt Engineering",
     resume_skills_auth: "Auth0, REST APIs",
     resume_skills_methods:
       "Agile, Scrum, Collaborative work, Project-based learning",
     resume_school_servi_title: "ServiYApp — Beauty services marketplace",
     resume_school_servi_b1:
-      "Designed and implemented dashboards for users, providers, and admins in Next.js and Tailwind CSS.",
+      "Frontend for client, provider, and admin panels with role routes and Zustand + JWT session (Next.js, React, TypeScript, Tailwind).",
     resume_school_servi_b2:
-      "Built reusable components and deployed the product to Vercel.",
+      "Google OAuth auth, Mercado Pago checkout (MXN/COP/ARS), and real-time Socket.IO chat.",
     resume_school_servi_b3:
-      "Implemented local and Google OAuth authentication, role-based access control (RBAC), and PostgreSQL persistence.",
-    resume_school_fram_title: "Colectivo Framboyán — E-commerce for Oaxacan artisans",
+      "Admin backoffice with Recharts metrics; Formik/Yup forms; frontend on Vercel and backend on Render.",
+    resume_school_fram_title: "Colectivo Framboyán — Oaxacan crafts e-commerce",
     resume_school_fram_b1:
-      "Built an e-commerce experience with mobile navigation, accessibility, and UX tailored to Oaxacan artisans.",
+      "Fullstack e-commerce: catalog, sign-up/login, cart, and orders (Next.js, React, TypeScript, Tailwind).",
     resume_school_fram_b2:
-      "Implemented catalog, on-page SEO, and conversion-oriented UI in Next.js and TypeScript.",
+      "Express REST API with JWT; Context API global state and cart persisted in localStorage.",
     resume_school_fram_b3:
-      "Defined information architecture and responsive design aligned to the brand.",
-    resume_school_dulce_title: "Dulce Glaseado — Pick-up app (rolls, Oaxaca)",
+      "TypeORM + PostgreSQL; deploy-ready setup with env vars, CORS, and frontend/backend separation.",
+    resume_school_dulce_title: "Dulce Glaseado — Fullstack pick-up app",
     resume_school_dulce_b1:
-      "Full stack: flavor and box catalog (4/6), sign-up/login, pick-up scheduling, and active/canceled order history (React, Vite, Express, TypeORM, PostgreSQL).",
+      "React/Vite frontend and layered Express/TypeScript API; PostgreSQL persistence with TypeORM.",
     resume_school_dulce_b2:
-      "Business rules: 24h minimum notice, Tue–Sun 9:00–17:00, no Mondays, no duplicate time slots; branch cards with map links.",
+      "Business rules: hours, 24h notice, day restrictions, and duplicate-booking prevention.",
     resume_school_dulce_b3:
-      "End-to-end role: design, frontend, backend, data modeling, and scheduling validations (Axios, SweetAlert2, React Router).",
+      "Protected routes, modals, and empty states; frontend deploy to GitHub Pages via GitHub Actions.",
     resume_section_education: "Education",
-    resume_section_experience: "Professional experience",
-    resume_section_profile: "Professional profile",
-    resume_section_projects: "Academic projects",
-    resume_section_skills: "Technical skills",
+    resume_section_experience: "Experience",
+    resume_section_profile: "Profile",
+    resume_section_projects: "Projects",
+    resume_section_programs: "Additional training",
+    resume_section_skills: "Skills",
     resume_section_honors: "Fellowships and honors",
     resume_section_certs: "Certifications",
     resume_section_languages: "Languages",
+    resume_section_profile_compact: "Profile",
+    resume_section_experience_compact: "Experience",
+    resume_section_projects_compact: "Student projects",
+    resume_section_programs_compact: "Additional training",
+    resume_section_skills_compact: "Skills",
     resume_section_publication: "Publication",
+    resume_nested_project_prefix: "PROJECT:",
   },
 } as const;
 

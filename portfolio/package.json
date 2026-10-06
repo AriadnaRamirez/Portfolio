@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "cv:en": "npx --yes tsx scripts/generate-en-cv.mts"
   },
   "dependencies": {
     "@react-pdf/renderer": "^4.6.1",

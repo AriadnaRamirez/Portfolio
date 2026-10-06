@@ -1,13 +1,16 @@
 export const site = {
   name: "Ariadna Ramírez",
   fullName: "Ariadna Montserrat Ramírez Matías",
-  title: "Fullstack web developer · UX/UI · Cybersecurity",
-  location: "Mexico · Remote · Hybrid · On-site",
+  title: "Fullstack Web Developer | Frontend · React · TypeScript · UX/UI",
+  location: "Mexico · Remote / Hybrid / On-site",
   linkedin: "https://www.linkedin.com/in/ariadnaramirez",
   github: "https://github.com/AriadnaRamirez",
   email: "ariadnamts98@gmail.com",
   phone: "951 218 9458",
   phoneHref: "tel:+529512189458",
+  /** Portrait used in hero / about (under public/). */
+  photo: "/images/ariadna.jpg",
+  avatar: "/images/ariadna-avatar.png",
   coreStack: [
     "TypeScript",
     "React",
@@ -27,7 +30,7 @@ export type ProjectLink = {
 
 export type ProjectCategory = "fullstack" | "frontend" | "product";
 
-export type ProjectId = "servi" | "senda" | "fram" | "hotel" | "dulce";
+export type ProjectId = "crm" | "servi" | "senda" | "fram" | "hotel" | "dulce";
 
 export type MediaKind = "desktop" | "tablet" | "mobile";
 
@@ -43,7 +46,12 @@ export type TechId =
   | "vite"
   | "oauth"
   | "seo"
-  | "wordpress";
+  | "wordpress"
+  | "javascript"
+  | "html"
+  | "css"
+  | "cursor"
+  | "figmamake";
 
 export const projectMeta: Record<
   ProjectId,
@@ -52,13 +60,31 @@ export const projectMeta: Record<
     tech: TechId[];
     categories: ProjectCategory[];
     links: ProjectLink[];
+    /** Shown instead of a live link when the project can't be visited. */
+    status?: "private" | "pending";
     featured?: boolean;
     accent: string;
   }
 > = {
+  crm: {
+    badge: {
+      es: "Freelance · Trabajo Independiente",
+      en: "Freelance · Independent work",
+    },
+    tech: ["html", "css", "javascript", "cursor"],
+    categories: ["frontend", "product"],
+    links: [
+      {
+        labelKey: "projects_link_live",
+        href: "https://www.crmextintores.com.mx/",
+      },
+    ],
+    featured: true,
+    accent: "#c62828",
+  },
   hotel: {
-    badge: { es: "GROVA · Rediseño", en: "GROVA · Redesign" },
-    tech: ["vite", "typescript", "tailwind", "figma"],
+    badge: { es: "GROVA · HMDV · Rediseño", en: "GROVA · HMDV · Redesign" },
+    tech: ["figma", "figmamake", "vite", "react", "typescript", "tailwind"],
     categories: ["frontend", "product"],
     links: [
       {
@@ -71,30 +97,36 @@ export const projectMeta: Record<
   },
   senda: {
     badge: { es: "GROVA · Cliente privado", en: "GROVA · Private client" },
-    tech: ["react", "typescript"],
+    tech: ["react", "typescript", "vite"],
     categories: ["frontend", "product"],
     // Private client work: no public live URL or GitHub.
     links: [],
+    status: "private",
     featured: true,
     accent: "#5a252c",
   },
   servi: {
-    badge: { es: "Proyecto escolar", en: "Academic project" },
-    tech: ["nextjs", "typescript", "tailwind", "postgresql", "oauth"],
+    badge: {
+      es: "Proyecto estudiantil · Marketplace",
+      en: "Student project · Marketplace",
+    },
+    tech: ["nextjs", "typescript", "tailwind", "oauth"],
     categories: ["fullstack", "product"],
     links: [],
+    status: "pending",
     featured: true,
     accent: "#722f37",
   },
+  // Kept in meta for assets/types; not listed on CV (excluded from projectIds).
   fram: {
-    badge: { es: "Proyecto escolar · E-commerce", en: "Academic project · E-commerce" },
-    tech: ["nextjs", "typescript", "tailwind", "seo"],
-    categories: ["frontend"],
+    badge: { es: "Proyecto escolar · Fullstack", en: "Academic project · Fullstack" },
+    tech: ["nextjs", "typescript", "nodejs", "postgresql"],
+    categories: ["fullstack", "product"],
     links: [],
     accent: "#8b3a42",
   },
   dulce: {
-    badge: { es: "Proyecto escolar · Full stack", en: "Academic project · Full stack" },
+    badge: { es: "Proyecto escolar · Fullstack", en: "Academic project · Fullstack" },
     tech: ["react", "vite", "nodejs", "postgresql"],
     categories: ["fullstack", "product"],
     links: [
@@ -103,20 +135,48 @@ export const projectMeta: Record<
         href: "https://dulceglaseado.com",
       },
     ],
-    featured: true,
     accent: "#e91e63",
   },
 };
 
-/** Shots per device (hotel: 1 sticky open, 2–5 sticky closed). */
+/** Shots per device. */
 export const projectMediaShotCount: Partial<Record<ProjectId, number>> = {
-  hotel: 5,
+  hotel: 6,
   dulce: 4,
+  crm: 6,
+  senda: 6,
 };
 
-/** Which device mockups to show. Defaults to all three. */
+/** Screenshots of the site before the redesign, under /projects/<id>/before-<n>.webp. */
+export const projectBeforeShotCount: Partial<Record<ProjectId, number>> = {
+  hotel: 3,
+};
+
+export function projectBeforePath(id: ProjectId, shot: number) {
+  const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+  return `${base}/projects/${id}/before-${shot}.webp`;
+}
+
+export function projectDesktopShots(id: ProjectId) {
+  return Array.from({ length: projectShotCount(id) }, (_, i) =>
+    projectMediaPath(id, "desktop", i + 1),
+  );
+}
+
+export function projectBeforeShots(id: ProjectId) {
+  return Array.from({ length: projectBeforeShotCount[id] ?? 0 }, (_, i) =>
+    projectBeforePath(id, i + 1),
+  );
+}
+
+/** Which device mockups to show; a phone frame overlays the desktop when mobile shots exist. */
 export const projectMediaKinds: Partial<Record<ProjectId, MediaKind[]>> = {
+  hotel: ["desktop", "mobile"],
+  crm: ["desktop", "mobile"],
+  senda: ["desktop"],
+  servi: ["desktop"],
   dulce: ["desktop"],
+  fram: ["desktop"],
 };
 
 /** Real screenshots replace SVG mockups when an extension is set per project/kind. */
@@ -124,12 +184,18 @@ const projectMediaExt: Partial<
   Record<ProjectId, Partial<Record<MediaKind, "png" | "jpg" | "webp">>>
 > = {
   hotel: {
-    desktop: "png",
-    tablet: "png",
-    mobile: "png",
+    desktop: "webp",
+    mobile: "webp",
   },
   dulce: {
-    desktop: "png",
+    desktop: "webp",
+  },
+  crm: {
+    desktop: "webp",
+    mobile: "webp",
+  },
+  senda: {
+    desktop: "webp",
   },
 };
 
@@ -138,7 +204,7 @@ export function projectShotCount(id: ProjectId) {
 }
 
 export function projectKinds(id: ProjectId): MediaKind[] {
-  return projectMediaKinds[id] ?? ["desktop", "tablet", "mobile"];
+  return projectMediaKinds[id] ?? ["desktop"];
 }
 
 export function projectMediaPath(
@@ -154,32 +220,29 @@ export function projectMediaPath(
   return `${base}/projects/${id}/${kind}.${ext}`;
 }
 
-/** Display order: Hotel → Senda → Serviyapp → Dulce Glaseado → Framboyán */
-export const projectIds: ProjectId[] = ["hotel", "senda", "servi", "dulce", "fram"];
+/** Display order from CV: CRM → HMDV → SENDA → ServiYApp (student). */
+export const projectIds: ProjectId[] = ["crm", "hotel", "senda", "servi"];
 
 export const navPages = [
-  { href: "/", key: "nav_home" as const },
-  { href: "/work", key: "nav_work" as const },
-  { href: "/experience", key: "nav_experience" as const },
-  { href: "/about", key: "nav_about" as const },
-  { href: "/contact", key: "nav_contact" as const },
+  { href: "/#work", key: "nav_work" as const },
+  { href: "/#skills", key: "nav_skills" as const },
+  { href: "/#certs", key: "nav_certs" as const },
+  { href: "/#experience", key: "nav_experience" as const },
+  { href: "/#about", key: "nav_about" as const },
+  { href: "/#contact", key: "nav_contact" as const },
 ] as const;
 
-export const experienceIds = ["grova", "crm", "rise", "dulce", "kansas"] as const;
+/** Roles from the current CV (CRM current, then GROVA). */
+export const experienceIds = ["crm", "grova"] as const;
 
 export type ExperienceId = (typeof experienceIds)[number];
 
 export const experienceBulletCounts: Record<ExperienceId, number> = {
-  grova: 7,
-  crm: 2,
-  rise: 2,
-  dulce: 2,
-  kansas: 2,
+  crm: 5,
+  grova: 5,
 };
 
 export const educationIds = [
-  "generation_restart",
-  "ja_cyber",
   "henry",
   "ebac",
   "lasalle",
@@ -187,26 +250,21 @@ export const educationIds = [
 ] as const;
 
 export const scholarshipIds = [
-  "mujer_digital",
   "generation_aws",
-  "fulbright",
+  "epam",
+  "hitss",
+  "mujer_digital",
 ] as const;
 
 export const certificationIds = [
-  "ccna",
-  "toefl",
   "henry_cert",
-  "python_data",
-  "python_prog",
+  "ebac_ux",
+  "ccst",
+  "cisco_badges",
+  "python",
 ] as const;
 
-export const awardIds = [
-  "merito",
-  "raise",
-  "lasalle_2019",
-  "semilleros",
-  "omm_2015",
-] as const;
+export const awardIds = ["lasalle_valedictorian", "hermano_miguel"] as const;
 
 export const stackGroups: Record<
   "frontend" | "backend" | "tools",
@@ -230,4 +288,9 @@ export const techLabels: Record<TechId, string> = {
   oauth: "OAuth",
   seo: "SEO",
   wordpress: "WordPress",
+  javascript: "JavaScript",
+  html: "HTML5",
+  css: "CSS3",
+  cursor: "Cursor",
+  figmamake: "Figma Make",
 };

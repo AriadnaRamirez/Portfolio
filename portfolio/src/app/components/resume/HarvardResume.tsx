@@ -4,36 +4,40 @@ import type { ResumeJob, ResumeLine, ResumeModel } from "@/app/lib/resume";
 type Labels = {
   profile: string;
   education: string;
+  programs: string;
   experience: string;
   projects: string;
   skills: string;
   honors: string;
   certifications: string;
   languages: string;
+  nestedProjectPrefix: string;
 };
 
-type HarvardResumeProps = {
+type Props = {
   resume: ResumeModel;
   labels: Labels;
 };
+
+const serif = "font-[Times_New_Roman,Times,Georgia,serif]";
+
+/** US Letter preview — matches PDF design (AriadnaRamirez_CV_2026). */
+const letterPage =
+  "harvard-resume relative mx-auto mb-6 box-border w-full max-w-[8.5in] min-h-[11in] bg-white px-[0.75in] py-[0.55in] text-black shadow-[0_18px_50px_rgba(12,12,12,0.12)] print:mb-0 print:min-h-0 print:shadow-none";
 
 function Section({
   title,
   children,
   first = false,
-  tight = false,
 }: {
   title: string;
   children: ReactNode;
   first?: boolean;
-  tight?: boolean;
 }) {
   return (
-    <section className={first ? "mt-0" : tight ? "mt-1.5" : "mt-2.5"}>
+    <section className={first ? "mt-0" : "mt-4"}>
       <h2
-        className={`border-b border-black pb-0.5 font-[Times_New_Roman,Times,Georgia,serif] text-[11px] font-bold uppercase tracking-[0.12em] text-black ${
-          tight ? "mb-1" : "mb-1.5"
-        }`}
+        className={`${serif} mb-2 border-b border-black pb-0.5 text-[10.5px] font-bold uppercase tracking-[0.15em] text-black`}
       >
         {title}
       </h2>
@@ -45,9 +49,9 @@ function Section({
 function DateRow({ left, right }: { left: string; right?: string }) {
   return (
     <div className="flex items-baseline justify-between gap-3">
-      <p className="min-w-0 flex-1 font-bold">{left}</p>
+      <p className="min-w-0 flex-1 font-bold leading-[1.15]">{left}</p>
       {right ? (
-        <p className="shrink-0 text-right text-[10px]">{right}</p>
+        <p className="shrink-0 text-right text-[10px] leading-[1.15]">{right}</p>
       ) : null}
     </div>
   );
@@ -55,142 +59,181 @@ function DateRow({ left, right }: { left: string; right?: string }) {
 
 function LineBlock({ item }: { item: ResumeLine }) {
   return (
-    <div className="mb-1 leading-snug last:mb-0">
+    <div className="mb-1.5 leading-[1.15] last:mb-0">
       <DateRow left={item.left} right={item.right} />
-      {item.sub ? <p>{item.sub}</p> : null}
+      {item.sub ? (
+        <p className="mt-0.5 text-[10px] leading-[1.15]">{item.sub}</p>
+      ) : null}
     </div>
   );
 }
 
-function Job({ job }: { job: ResumeJob }) {
+function Job({
+  job,
+  projectPrefix,
+}: {
+  job: ResumeJob;
+  projectPrefix: string;
+}) {
+  const [lead, ...rest] = job.bullets;
+  const hasNested = Boolean(job.nestedProjects?.length);
+
   return (
-    <div>
+    <div className="mb-3 last:mb-0">
       <DateRow left={`${job.role} — ${job.org}`} right={job.period} />
-      <ul className="mt-0.5 list-disc space-y-1 pl-5">
-        {job.bullets.map((bullet) => (
-          <li key={bullet}>{bullet}</li>
-        ))}
-      </ul>
-      {job.nestedProjects?.map((project) => (
-        <div key={project.title} className="mt-1.5">
-          <p className="font-bold italic">{project.title}</p>
-          <ul className="mt-0.5 list-disc space-y-1 pl-5">
-            {project.bullets.map((bullet) => (
-              <li key={bullet}>{bullet}</li>
+      {hasNested && lead ? (
+        <p className="mt-1 leading-[1.15]">{lead}</p>
+      ) : job.bullets.length > 0 ? (
+        <ul className="mt-1 list-disc space-y-1 pl-5 leading-[1.2]">
+          {job.bullets.map((b) => (
+            <li key={b}>{b}</li>
+          ))}
+        </ul>
+      ) : null}
+      {hasNested && rest.length > 0 ? (
+        <ul className="mt-1 list-disc space-y-1 pl-5 leading-[1.2]">
+          {rest.map((b) => (
+            <li key={b}>{b}</li>
+          ))}
+        </ul>
+      ) : null}
+      {job.nestedProjects?.map((p) => (
+        <div key={p.title} className="mt-2">
+          <p className="font-bold leading-[1.15]">
+            {projectPrefix} {p.title}
+          </p>
+          <ul className="mt-1 list-disc space-y-1 pl-5 leading-[1.2]">
+            {p.bullets.map((b) => (
+              <li key={b}>{b}</li>
             ))}
           </ul>
         </div>
+      ))}
+      {job.footerBullets?.map((line) => (
+        <p key={line} className="mt-1.5 text-[9.5px] leading-[1.15]">
+          {line}
+        </p>
       ))}
     </div>
   );
 }
 
-function Header({ resume }: { resume: ResumeModel }) {
+export function HarvardResume({ resume, labels }: Props) {
   return (
-    <header className="mb-2 text-center">
-      <h1 className="font-[Times_New_Roman,Times,Georgia,serif] text-[18px] font-bold tracking-[0.14em] text-black">
-        {resume.name}
-      </h1>
-      <p className="mt-1 font-[Times_New_Roman,Times,Georgia,serif] text-[11.5px] italic text-black">
-        {resume.headline}
-      </p>
-      <p className="mt-1.5 font-[Times_New_Roman,Times,Georgia,serif] text-[10px] text-black">
-        {resume.location}
-      </p>
-      <p className="mt-0.5 font-[Times_New_Roman,Times,Georgia,serif] text-[10px] text-black">
-        {resume.contactLine}
-      </p>
-      <div className="mt-2 h-px bg-black" />
-    </header>
-  );
-}
+    <div className={`${serif} space-y-6 text-[10.5px] leading-[1.15] text-black print:space-y-0`}>
+      <article className={letterPage} data-page-size="letter">
+        <header className="mb-3 text-center">
+          <h1 className={`${serif} text-[16px] font-bold tracking-[0.16em]`}>
+            {resume.name}
+          </h1>
+          <p className={`${serif} mt-2 text-[11px] italic`}>{resume.headline}</p>
+          <p className={`${serif} mt-2 text-[10px]`}>
+            {resume.contacts.map((item, index) => (
+              <span key={item.href}>
+                {index > 0 ? " · " : null}
+                <a
+                  href={item.href}
+                  target={item.href.startsWith("http") ? "_blank" : undefined}
+                  rel={
+                    item.href.startsWith("http")
+                      ? "noopener noreferrer"
+                      : undefined
+                  }
+                  className="text-black no-underline hover:underline"
+                >
+                  {item.label}
+                </a>
+              </span>
+            ))}
+          </p>
+          {resume.location ? (
+            <p className={`${serif} mt-1 text-[10px]`}>{resume.location}</p>
+          ) : null}
+        </header>
 
-function Sheet({
-  children,
-}: {
-  children: ReactNode;
-}) {
-  return (
-    <article className="harvard-resume relative mx-auto mb-8 flex h-[11in] w-full max-w-[8.5in] flex-col overflow-hidden bg-white px-[42px] pb-10 pt-10 text-black shadow-[0_18px_50px_rgba(12,12,12,0.12)]">
-      <div className="flex min-h-0 flex-1 flex-col overflow-hidden font-[Times_New_Roman,Times,Georgia,serif] text-[10.5px] leading-snug text-black">
-        {children}
-      </div>
-    </article>
-  );
-}
+        <Section title={labels.profile} first>
+          {resume.summary.split(/\n\n+/).map((paragraph) => (
+            <p
+              key={paragraph.slice(0, 40)}
+              className="mt-1 text-justify leading-[1.2] first:mt-0"
+            >
+              {paragraph}
+            </p>
+          ))}
+        </Section>
 
-export function HarvardResume({ resume, labels }: HarvardResumeProps) {
-  return (
-    <div>
-      <Sheet>
-        <div className="flex min-h-0 flex-1 flex-col">
-          <Header resume={resume} />
-          <Section title={labels.profile} first>
-            <p className="leading-snug">{resume.summary}</p>
-            <p className="mt-1.5 font-bold">{resume.awardsLead}</p>
-            <ul className="mt-0.5 list-disc space-y-0.5 pl-5">
-              {resume.awards.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
-          </Section>
-          <Section title={labels.experience}>
-            <div className="space-y-2">
-              {resume.experience.map((job) => (
-                <Job key={`${job.org}-${job.period}`} job={job} />
-              ))}
-            </div>
-          </Section>
-        </div>
-      </Sheet>
+        <Section title={labels.experience}>
+          {resume.experience.map((job) => (
+            <Job
+              key={`${job.org}-${job.period}`}
+              job={job}
+              projectPrefix={labels.nestedProjectPrefix}
+            />
+          ))}
+        </Section>
+      </article>
 
-      <Sheet>
+      <article className={letterPage} data-page-size="letter">
         <Section title={labels.projects} first>
           {resume.projects.map((project) => (
-            <div key={project.title} className="mb-1.5 last:mb-0">
-              <p className="font-bold leading-snug">{project.title}</p>
-              <ul className="list-disc space-y-0.5 pl-5 leading-snug">
-                {project.bullets.map((bullet) => (
-                  <li key={bullet}>{bullet}</li>
+            <div key={project.title} className="mb-3 last:mb-0">
+              <p className="font-bold leading-[1.15]">{project.title}</p>
+              <ul className="mt-1 list-disc space-y-1 pl-5 leading-[1.2]">
+                {project.bullets.map((b) => (
+                  <li key={b}>{b}</li>
                 ))}
               </ul>
             </div>
           ))}
         </Section>
 
-        <Section title={labels.education} tight>
+        <Section title={labels.education}>
           {resume.education.map((item) => (
             <LineBlock key={item.left} item={item} />
           ))}
         </Section>
 
-        <Section title={labels.skills} tight>
+        {resume.programs.length > 0 ? (
+          <Section title={labels.programs}>
+            {resume.programs.map((item) => (
+              <LineBlock key={item.left} item={item} />
+            ))}
+          </Section>
+        ) : null}
+
+        <Section title={labels.skills}>
           {resume.skills.map((item) => (
-            <p key={item.left} className="mb-0.5 leading-snug last:mb-0">
+            <p key={item.left} className="mb-1 leading-[1.15]">
               <span className="font-bold">{item.left}: </span>
               {item.sub}
             </p>
           ))}
         </Section>
 
-        <Section title={labels.certifications} tight>
-          {resume.certifications.map((item) => (
-            <LineBlock key={item.left} item={item} />
-          ))}
-        </Section>
-
-        <Section title={labels.honors} tight>
-          <ul className="list-disc space-y-0 pl-5 leading-snug">
-            {resume.honors.map((item) => (
-              <li key={item}>{item}</li>
+        {resume.certifications.length > 0 ? (
+          <Section title={labels.certifications}>
+            {resume.certifications.map((item) => (
+              <LineBlock key={item.left} item={item} />
             ))}
-          </ul>
-        </Section>
+          </Section>
+        ) : null}
 
-        <Section title={labels.languages} tight>
-          <p>{resume.languages.join("  •  ")}</p>
-        </Section>
-      </Sheet>
+        {resume.honors.length > 0 ? (
+          <Section title={labels.honors}>
+            <ul className="list-disc space-y-1 pl-5 leading-[1.2]">
+              {resume.honors.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </Section>
+        ) : null}
+
+        {resume.languages.length > 0 ? (
+          <Section title={labels.languages}>
+            <p className="leading-[1.15]">{resume.languages.join(" · ")}</p>
+          </Section>
+        ) : null}
+      </article>
     </div>
   );
 }

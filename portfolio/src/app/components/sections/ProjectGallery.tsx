@@ -1,36 +1,294 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useId, useState, type ReactNode } from "react";
+import {
+  useCallback,
+  useEffect,
+  useId,
+  useRef,
+  useState,
+  type PointerEvent,
+  type ReactNode,
+} from "react";
+import { createPortal } from "react-dom";
 import type { TranslationKey } from "@/app/components/lib/translations";
 import {
+  projectBeforeShots,
+  projectDesktopShots,
   projectKinds,
   projectMediaPath,
   projectMeta,
-  projectShotCount,
-  type MediaKind,
   type ProjectId,
 } from "@/app/lib/site";
 
 type Dict = Record<TranslationKey, string>;
-
-const labelKey: Record<MediaKind, TranslationKey> = {
-  desktop: "projects_media_desktop",
-  tablet: "projects_media_tablet",
-  mobile: "projects_media_mobile",
-};
+type Mode = "after" | "before";
 
 function projectUrl(id: ProjectId) {
   const live = projectMeta[id].links.find((l) => l.labelKey === "projects_link_live");
-  if (!live) return "portfolio";
+  if (!live) return "";
   return live.href.replace(/^https?:\/\//, "").replace(/\/$/, "");
 }
 
-function shotCaption(t: Dict, id: ProjectId, shot: number) {
-  if (id === "hotel") {
-    return shot === 1 ? t.projects_media_sticky_open : t.projects_media_sticky_closed;
-  }
-  return `${t.projects_shot_of} ${shot}`;
+export function shotCaption(t: Dict, id: ProjectId, shot: number, mode: Mode = "after") {
+  if (mode === "before") return t.projects_before_caption;
+  const specific = t[`projects_${id}_shot_${shot}` as TranslationKey];
+  return specific ?? `${t.projects_shot_of} ${shot}`;
+}
+
+/** Dulce: screenshots are pre-cropped to 15:8. */
+function frameAspect(id: ProjectId) {
+  return id === "dulce" ? "aspect-[15/8]" : "aspect-[16/10]";
+}
+
+const pad = (n: number) => String(n).padStart(2, "0");
+
+function useShots(count: number) {
+  const [shot, setShot] = useState(1);
+  const next = useCallback(() => setShot((s) => (s % count) + 1), [count]);
+  const prev = useCallback(
+    () => setShot((s) => ((s - 2 + count) % count) + 1),
+    [count],
+  );
+  return { shot, setShot, next, prev };
+}
+
+/** Horizontal swipe on touch/pen; mouse drags are ignored so clicks stay clicks. */
+function useSwipe(onPrev: () => void, onNext: () => void) {
+  const start = useRef<number | null>(null);
+  return {
+    onPointerDown: (e: PointerEvent) => {
+      if (e.pointerType !== "mouse") start.current = e.clientX;
+    },
+    onPointerUp: (e: PointerEvent) => {
+      if (start.current === null) return;
+      const dx = e.clientX - start.current;
+      start.current = null;
+      if (Math.abs(dx) < 40) return;
+      if (dx > 0) onPrev();
+      else onNext();
+    },
+  };
+}
+
+function BrowserChrome({ url, children, aspect }: { url: string; children: ReactNode; aspect: string }) {
+  return (
+    <div className="overflow-hidden rounded-xl border border-border bg-background shadow-[0_30px_60px_-30px_rgba(20,20,40,0.35)]">
+      <div className="flex items-center gap-2 border-b border-border px-3 py-2 sm:px-4 sm:py-2.5">
+        <span className="flex gap-1.5" aria-hidden>
+          <span className="h-2 w-2 rounded-full bg-border sm:h-2.5 sm:w-2.5" />
+          <span className="h-2 w-2 rounded-full bg-border sm:h-2.5 sm:w-2.5" />
+          <span className="h-2 w-2 rounded-full bg-border sm:h-2.5 sm:w-2.5" />
+        </span>
+        {url ? (
+          <div className="mx-auto min-w-0 max-w-[60%] truncate rounded-full bg-surface px-3 py-0.5 text-center text-[0.65rem] tracking-wide text-muted sm:text-xs">
+            {url}
+          </div>
+        ) : (
+          <span className="flex-1" aria-hidden />
+        )}
+        <span className="w-8 sm:w-10" aria-hidden />
+      </div>
+      <div className={`relative overflow-hidden bg-surface ${aspect}`}>{children}</div>
+    </div>
+  );
+}
+
+function PhoneChrome({ children }: { children: ReactNode }) {
+  return (
+    <div className="rounded-[1.4rem] border-[0.35rem] border-foreground bg-foreground shadow-[0_24px_40px_-20px_rgba(20,20,40,0.5)]">
+      <div className="relative aspect-[9/19.5] overflow-hidden rounded-[1.05rem] bg-surface">
+        {children}
+      </div>
+    </div>
+  );
+}
+
+/** All shots stay mounted and crossfade, so switching never flashes empty. */
+function ShotStack({
+  srcs,
+  active,
+  title,
+  sizes,
+  priority,
+  fit = "cover",
+}: {
+  srcs: string[];
+  active: number;
+  title: string;
+  sizes: string;
+  priority?: boolean;
+  fit?: "cover" | "contain";
+}) {
+  return (
+    <>
+      {srcs.map((src, i) => {
+        const n = i + 1;
+        return (
+          <Image
+            key={src}
+            src={src}
+            alt={n === active ? `${title} — ${n}/${srcs.length}` : ""}
+            aria-hidden={n !== active}
+            fill
+            unoptimized
+            sizes={sizes}
+            priority={priority && n === 1}
+            loading={priority && n === 1 ? undefined : "lazy"}
+            className={`${fit === "contain" ? "object-contain" : "object-cover object-top"} transition-opacity duration-500 ease-out ${
+              n === active ? "opacity-100" : "opacity-0"
+            }`}
+          />
+        );
+      })}
+    </>
+  );
+}
+
+function ArrowButton({
+  dir,
+  onClick,
+  label,
+  tone = "light",
+}: {
+  dir: "prev" | "next";
+  onClick: () => void;
+  label: string;
+  tone?: "light" | "dark";
+}) {
+  const toneClass =
+    tone === "dark"
+      ? "border-white/25 text-white hover:bg-white hover:text-black"
+      : "border-border text-foreground hover:border-foreground hover:bg-foreground hover:text-background";
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      aria-label={label}
+      className={`flex h-10 w-10 items-center justify-center rounded-full border transition-colors duration-200 ${toneClass}`}
+    >
+      <svg viewBox="0 0 16 16" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden>
+        {dir === "prev" ? <path d="M10 3 5 8l5 5" /> : <path d="m6 3 5 5-5 5" />}
+      </svg>
+    </button>
+  );
+}
+
+function Lightbox({
+  title,
+  t,
+  srcs,
+  caption,
+  shot,
+  setShot,
+  onPrev,
+  onNext,
+  onClose,
+}: {
+  title: string;
+  t: Dict;
+  srcs: string[];
+  caption: (shot: number) => string;
+  shot: number;
+  setShot: (n: number) => void;
+  onPrev: () => void;
+  onNext: () => void;
+  onClose: () => void;
+}) {
+  const titleId = useId();
+  const closeRef = useRef<HTMLButtonElement>(null);
+  const swipe = useSwipe(onPrev, onNext);
+  const count = srcs.length;
+
+  useEffect(() => {
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    closeRef.current?.focus();
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+      if (e.key === "ArrowLeft") onPrev();
+      if (e.key === "ArrowRight") onNext();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = prevOverflow;
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [onClose, onPrev, onNext]);
+
+  return (
+    <div
+      className="fixed inset-0 z-[60] flex flex-col bg-[#0d0d10]/95 text-white backdrop-blur-md animate-fade"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby={titleId}
+      onClick={onClose}
+    >
+      <div
+        className="flex items-center justify-between gap-4 px-4 py-4 sm:px-8"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <p id={titleId} className="min-w-0 truncate text-sm">
+          <span className="font-display text-base">{title}</span>
+          <span className="ml-3 text-white/50">{caption(shot)}</span>
+        </p>
+        <button
+          ref={closeRef}
+          type="button"
+          onClick={onClose}
+          aria-label={t.projects_lightbox_close}
+          className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/25 transition-colors hover:bg-white hover:text-black"
+        >
+          <svg viewBox="0 0 16 16" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden>
+            <path d="m3.5 3.5 9 9m0-9-9 9" />
+          </svg>
+        </button>
+      </div>
+
+      <div
+        className="relative flex min-h-0 flex-1 items-center justify-center px-4 sm:px-20"
+        {...swipe}
+      >
+        <div className="w-full max-w-6xl" onClick={(e) => e.stopPropagation()}>
+          <div className="relative aspect-[16/10] max-h-[72dvh] overflow-hidden rounded-lg">
+            <ShotStack srcs={srcs} active={shot} title={title} sizes="100vw" priority fit="contain" />
+          </div>
+        </div>
+        {count > 1 ? (
+          <>
+            <div className="absolute left-6 top-1/2 hidden -translate-y-1/2 sm:block" onClick={(e) => e.stopPropagation()}>
+              <ArrowButton dir="prev" onClick={onPrev} label={t.projects_lightbox_prev} tone="dark" />
+            </div>
+            <div className="absolute right-6 top-1/2 hidden -translate-y-1/2 sm:block" onClick={(e) => e.stopPropagation()}>
+              <ArrowButton dir="next" onClick={onNext} label={t.projects_lightbox_next} tone="dark" />
+            </div>
+          </>
+        ) : null}
+      </div>
+
+      {count > 1 ? (
+        <div
+          className="flex items-center justify-center gap-2 overflow-x-auto px-4 pt-4 pb-[max(1.25rem,env(safe-area-inset-bottom))]"
+          onClick={(e) => e.stopPropagation()}
+        >
+          {srcs.map((src, i) => (
+            <button
+              key={src}
+              type="button"
+              onClick={() => setShot(i + 1)}
+              aria-label={caption(i + 1)}
+              aria-current={i + 1 === shot}
+              className={`relative h-12 w-20 shrink-0 overflow-hidden rounded-md transition duration-200 sm:h-14 sm:w-24 ${
+                i + 1 === shot ? "opacity-100 ring-2 ring-white" : "opacity-45 hover:opacity-80"
+              }`}
+            >
+              <Image src={src} alt="" fill unoptimized sizes="96px" className="object-cover object-top" />
+            </button>
+          ))}
+        </div>
+      ) : null}
+    </div>
+  );
 }
 
 type ProjectGalleryProps = {
@@ -40,432 +298,161 @@ type ProjectGalleryProps = {
   compact?: boolean;
 };
 
-/** Dulce: fixed desktop frame; screenshots pre-cropped to match. */
-function usesFixedDesktopFrame(id: ProjectId) {
-  return id === "dulce";
-}
+export function ProjectGallery({ id, title, t, compact = false }: ProjectGalleryProps) {
+  const afterShots = projectDesktopShots(id);
+  const beforeShots = projectBeforeShots(id);
+  const [mode, setMode] = useState<Mode>("after");
+  const srcs = mode === "before" ? beforeShots : afterShots;
+  const count = srcs.length;
+  const hasMobile = projectKinds(id).includes("mobile") && mode === "after";
+  const { shot, setShot, next, prev } = useShots(count);
+  const [open, setOpen] = useState(false);
+  const close = useCallback(() => setOpen(false), []);
+  const swipe = useSwipe(prev, next);
+  const url = projectUrl(id);
+  const aspect = frameAspect(id);
+  const caption = (n: number) => shotCaption(t, id, n, mode);
 
-function MediaImage({
-  src,
-  alt,
-  className,
-  sizes,
-  priority,
-}: {
-  src: string;
-  alt: string;
-  className?: string;
-  sizes?: string;
-  priority?: boolean;
-}) {
-  return (
-    <Image
-      src={src}
-      alt={alt}
-      fill
-      unoptimized
-      className={className}
-      sizes={sizes}
-      priority={priority}
-    />
-  );
-}
+  const switchMode = (m: Mode) => {
+    setMode(m);
+    setShot(1);
+  };
 
-function BrowserMockup({
-  children,
-  url = "ariadna.dev",
-  /** Fixed frame for projects whose shots share one aspect (e.g. Dulce 15:8). */
-  frameClassName = "aspect-[16/10]",
-}: {
-  children: ReactNode;
-  url?: string;
-  frameClassName?: string;
-}) {
-  return (
-    <div className="overflow-hidden rounded-lg border border-border bg-[color-mix(in_srgb,var(--foreground)_6%,var(--background))] shadow-[0_14px_40px_-26px_rgba(0,0,0,0.45)] sm:rounded-xl sm:shadow-[0_18px_50px_-28px_rgba(0,0,0,0.45)]">
-      <div className="flex items-center gap-1.5 border-b border-border px-2.5 py-2 sm:gap-2 sm:px-4 sm:py-2.5">
-        <span className="flex gap-1 sm:gap-1.5" aria-hidden>
-          <span className="h-2 w-2 rounded-full bg-[#e06c75] sm:h-2.5 sm:w-2.5" />
-          <span className="h-2 w-2 rounded-full bg-[#e5c07b] sm:h-2.5 sm:w-2.5" />
-          <span className="h-2 w-2 rounded-full bg-[#98c379] sm:h-2.5 sm:w-2.5" />
-        </span>
-        <div className="ml-0.5 min-w-0 flex-1 truncate rounded-md border border-border bg-background px-2 py-0.5 text-[0.6rem] tracking-wide text-muted sm:ml-1 sm:px-2.5 sm:py-1 sm:text-xs">
-          {url}
-        </div>
-      </div>
-      <div className={`relative overflow-hidden bg-surface ${frameClassName}`}>
-        {children}
-      </div>
-    </div>
-  );
-}
-
-function TabletMockup({ children }: { children: ReactNode }) {
-  return (
-    <div className="mx-auto w-full max-w-[17rem] sm:max-w-[19rem]">
-      <div className="rounded-[1.35rem] border-[0.55rem] border-[color-mix(in_srgb,var(--foreground)_88%,transparent)] bg-[color-mix(in_srgb,var(--foreground)_88%,transparent)] p-1 shadow-[0_18px_40px_-24px_rgba(0,0,0,0.5)]">
-        <div className="relative aspect-[3/4] overflow-hidden rounded-[0.85rem] bg-surface">
-          {children}
-        </div>
-      </div>
-      <span className="mx-auto mt-2 block h-1 w-8 rounded-full bg-[color-mix(in_srgb,var(--foreground)_35%,transparent)]" />
-    </div>
-  );
-}
-
-function PhoneMockup({ children }: { children: ReactNode }) {
-  return (
-    <div className="mx-auto w-full max-w-[10.5rem] sm:max-w-[11.5rem]">
-      <div className="rounded-[1.6rem] border-[0.45rem] border-[color-mix(in_srgb,var(--foreground)_88%,transparent)] bg-[color-mix(in_srgb,var(--foreground)_88%,transparent)] p-[0.2rem] shadow-[0_18px_40px_-24px_rgba(0,0,0,0.5)]">
-        <div className="relative overflow-hidden rounded-[1.15rem] bg-surface">
-          <div
-            className="pointer-events-none absolute left-1/2 top-1.5 z-10 h-1.5 w-14 -translate-x-1/2 rounded-full bg-[color-mix(in_srgb,var(--foreground)_55%,transparent)]"
-            aria-hidden
-          />
-          <div className="relative aspect-[9/19.5]">{children}</div>
-        </div>
-      </div>
-      <span className="mx-auto mt-2 block h-1 w-7 rounded-full bg-[color-mix(in_srgb,var(--foreground)_35%,transparent)]" />
-    </div>
-  );
-}
-
-function DeviceFrame({
-  kind,
-  children,
-  url,
-  frameClassName,
-}: {
-  kind: MediaKind;
-  children: ReactNode;
-  url?: string;
-  frameClassName?: string;
-}) {
-  if (kind === "desktop") {
+  if (compact) {
     return (
-      <BrowserMockup url={url} frameClassName={frameClassName}>
-        {children}
-      </BrowserMockup>
+      <BrowserChrome url={url} aspect={aspect}>
+        <ShotStack srcs={afterShots.slice(0, 1)} active={1} title={title} sizes="(max-width: 768px) 100vw, 40vw" />
+      </BrowserChrome>
     );
   }
-  if (kind === "tablet") return <TabletMockup>{children}</TabletMockup>;
-  return <PhoneMockup>{children}</PhoneMockup>;
-}
-
-type LightboxState = { kind: MediaKind; shot: number };
-
-function ImageLightbox({
-  title,
-  t,
-  state,
-  shotCount,
-  onClose,
-  onPrev,
-  onNext,
-  id,
-}: {
-  title: string;
-  t: Dict;
-  state: LightboxState;
-  shotCount: number;
-  onClose: () => void;
-  onPrev: () => void;
-  onNext: () => void;
-  id: ProjectId;
-}) {
-  const label = t[labelKey[state.kind]];
-  const titleId = useId();
-
-  useEffect(() => {
-    const prev = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") onClose();
-      if (e.key === "ArrowLeft") onPrev();
-      if (e.key === "ArrowRight") onNext();
-    };
-    window.addEventListener("keydown", onKey);
-    return () => {
-      document.body.style.overflow = prev;
-      window.removeEventListener("keydown", onKey);
-    };
-  }, [onClose, onPrev, onNext]);
 
   return (
-    <div
-      className="fixed inset-0 z-50 flex items-end justify-center bg-foreground/85 p-0 backdrop-blur-sm animate-fade sm:items-center sm:p-6"
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby={titleId}
-      onClick={onClose}
-    >
-      <div
-        className="relative flex max-h-[min(100dvh,100%)] w-full max-w-5xl flex-col gap-2 overflow-y-auto p-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] sm:gap-3 sm:p-0 sm:pb-0"
-        onClick={(e) => e.stopPropagation()}
-      >
-        <div className="flex items-start justify-between gap-3 text-background sm:items-center">
-          <p id={titleId} className="min-w-0 text-sm tracking-wide">
-            <span className="font-display text-base sm:text-lg">{title}</span>
-            <span className="mx-2 hidden text-background/50 sm:inline">·</span>
-            <span className="mt-1 block text-[0.65rem] uppercase tracking-[0.16em] sm:mt-0 sm:inline">
-              {label} · {shotCaption(t, id, state.shot)}
-            </span>
-          </p>
-          <button
-            type="button"
-            onClick={onClose}
-            className="min-h-10 shrink-0 border border-background/40 px-3 py-2 text-[0.65rem] font-semibold uppercase tracking-[0.14em] transition hover:bg-background hover:text-foreground"
-            aria-label={t.projects_lightbox_close}
-          >
-            {t.projects_lightbox_close} ✕
-          </button>
-        </div>
-
-        <div className="mx-auto w-full max-w-4xl">
-          <DeviceFrame
-            kind={state.kind}
-            url={projectUrl(id)}
-            frameClassName={
-              usesFixedDesktopFrame(id) ? "aspect-[15/8]" : undefined
-            }
-          >
-            <MediaImage
-              src={projectMediaPath(id, state.kind, state.shot)}
-              alt={`${title} — ${label} ${state.shot}`}
-              className="object-cover object-top"
-              sizes="100vw"
-              priority
-            />
-          </DeviceFrame>
-        </div>
-
-        <div className="flex items-center justify-between gap-2 sm:gap-3">
-          <button
-            type="button"
-            onClick={onPrev}
-            className="min-h-11 flex-1 border border-background/40 px-3 py-2.5 text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-background transition hover:bg-background hover:text-foreground sm:flex-none sm:px-4"
-          >
-            ← {t.projects_lightbox_prev}
-          </button>
-          <p className="shrink-0 text-xs uppercase tracking-[0.16em] text-background/70">
-            {state.shot} / {shotCount}
-          </p>
-          <button
-            type="button"
-            onClick={onNext}
-            className="min-h-11 flex-1 border border-background/40 px-3 py-2.5 text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-background transition hover:bg-background hover:text-foreground sm:flex-none sm:px-4"
-          >
-            {t.projects_lightbox_next} →
-          </button>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function DeviceCarousel({
-  kind,
-  title,
-  t,
-  id,
-  shotCount,
-  priority,
-  className = "",
-}: {
-  kind: MediaKind;
-  title: string;
-  t: Dict;
-  id: ProjectId;
-  shotCount: number;
-  priority?: boolean;
-  className?: string;
-}) {
-  const [shot, setShot] = useState(1);
-  const [lightbox, setLightbox] = useState(false);
-
-  const next = () => setShot((s) => (s % shotCount) + 1);
-  const prev = () => setShot((s) => ((s - 2 + shotCount) % shotCount) + 1);
-
-  return (
-    <div className={`min-w-0 ${className}`}>
-      <button
-        type="button"
-        onClick={() => setLightbox(true)}
-        className="group w-full text-left transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-highlight"
-      >
-        <DeviceFrame
-          kind={kind}
-          url={projectUrl(id)}
-          frameClassName={
-            usesFixedDesktopFrame(id) ? "aspect-[15/8]" : undefined
-          }
+    <div className="min-w-0">
+      {beforeShots.length ? (
+        <div
+          role="group"
+          aria-label={t.projects_compare}
+          className="mb-3 inline-flex rounded-full border border-border bg-background p-1 text-xs font-medium"
         >
-          <MediaImage
-            src={projectMediaPath(id, kind, shot)}
-            alt={`${title} — ${t[labelKey[kind]]} ${shot}`}
-            className="object-cover object-top transition duration-300 group-hover:scale-[1.015]"
-            sizes={
-              kind === "desktop"
-                ? "(max-width: 1024px) 100vw, 55vw"
-                : "(max-width: 1024px) 45vw, 20vw"
-            }
-            priority={priority && shot === 1}
-          />
-        </DeviceFrame>
-      </button>
+          {(["after", "before"] as const).map((m) => (
+            <button
+              key={m}
+              type="button"
+              onClick={() => switchMode(m)}
+              aria-pressed={mode === m}
+              className={`rounded-full px-3.5 py-1.5 transition-colors duration-200 ${
+                mode === m ? "bg-foreground text-background" : "text-muted hover:text-foreground"
+              }`}
+            >
+              {m === "after" ? t.projects_after : t.projects_before}
+            </button>
+          ))}
+        </div>
+      ) : null}
 
-      <div className="mt-2.5 flex flex-col items-center gap-2">
-        <p className="text-center text-[0.65rem] uppercase tracking-[0.16em] text-muted">
-          {t[labelKey[kind]]}
-          {shotCount > 1 ? (
-            <>
-              <span className="mx-1.5 text-border">·</span>
-              {shotCaption(t, id, shot)}
-            </>
+      <div
+        className={`relative overflow-hidden rounded-2xl bg-[linear-gradient(140deg,color-mix(in_srgb,var(--cat-from,var(--grad-from))_14%,var(--surface)),color-mix(in_srgb,var(--cat-to,var(--grad-to))_12%,var(--surface)))] px-4 pt-6 sm:px-10 sm:pt-10 ${
+          hasMobile ? "pb-10 sm:pb-14" : "pb-0"
+        }`}
+        {...swipe}
+      >
+        <button
+          type="button"
+          onClick={() => setOpen(true)}
+          className="group relative block w-full text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-foreground"
+        >
+          <div className={hasMobile ? "" : "translate-y-px [&>div]:rounded-b-none [&>div]:border-b-0"}>
+            <BrowserChrome url={url} aspect={aspect}>
+              <ShotStack
+                key={mode}
+                srcs={srcs}
+                active={shot}
+                title={title}
+                sizes="(max-width: 1024px) 100vw, 60vw"
+              />
+            </BrowserChrome>
+          </div>
+          {mode === "before" ? (
+            <span className="pointer-events-none absolute top-12 left-3 rounded-full bg-foreground/85 px-3 py-1 text-xs font-medium text-background backdrop-blur sm:top-14">
+              {t.projects_before}
+            </span>
           ) : null}
-        </p>
+          <span className="pointer-events-none absolute right-3 bottom-3 inline-flex items-center gap-1.5 rounded-full bg-foreground/85 px-3 py-1.5 text-xs font-medium text-background opacity-0 backdrop-blur transition duration-300 group-hover:opacity-100 group-focus-visible:opacity-100">
+            <svg viewBox="0 0 16 16" className="h-3 w-3" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden>
+              <path d="M9.5 2.5h4v4M6.5 13.5h-4v-4M13.5 2.5 9 7M2.5 13.5 7 9" />
+            </svg>
+            {t.projects_lightbox_open}
+          </span>
+        </button>
 
-        {shotCount > 1 ? (
-          <div className="flex items-center gap-1 sm:gap-2">
-            <button
-              type="button"
-              onClick={prev}
-              className="flex h-9 w-9 items-center justify-center text-sm text-muted transition hover:text-highlight"
-              aria-label={t.projects_lightbox_prev}
-            >
-              ←
-            </button>
-            <div className="flex gap-1.5">
-              {Array.from({ length: shotCount }, (_, i) => i + 1).map((n) => (
-                <button
-                  key={n}
-                  type="button"
-                  onClick={() => setShot(n)}
-                  className={`h-2 rounded-full transition sm:h-1.5 ${
-                    n === shot
-                      ? "w-5 bg-highlight"
-                      : "w-2 bg-border hover:bg-muted sm:w-1.5"
-                  }`}
-                  aria-label={`${t.projects_shot_of} ${n}`}
-                  aria-current={n === shot}
-                />
-              ))}
-            </div>
-            <button
-              type="button"
-              onClick={next}
-              className="flex h-9 w-9 items-center justify-center text-sm text-muted transition hover:text-highlight"
-              aria-label={t.projects_lightbox_next}
-            >
-              →
-            </button>
+        {hasMobile ? (
+          <div className="pointer-events-none absolute right-4 bottom-4 w-[22%] max-w-[9.5rem] sm:right-8 sm:bottom-6">
+            <PhoneChrome>
+              <ShotStack
+                srcs={afterShots.map((_, i) => projectMediaPath(id, "mobile", i + 1))}
+                active={shot}
+                title={title}
+                sizes="160px"
+              />
+            </PhoneChrome>
           </div>
         ) : null}
       </div>
 
-      {lightbox ? (
-        <ImageLightbox
-          id={id}
-          title={title}
-          t={t}
-          state={{ kind, shot }}
-          shotCount={shotCount}
-          onClose={() => setLightbox(false)}
-          onPrev={() => setShot((s) => ((s - 2 + shotCount) % shotCount) + 1)}
-          onNext={() => setShot((s) => (s % shotCount) + 1)}
-        />
+      {count > 1 ? (
+        <div className="mt-4 flex items-center gap-4">
+          <div className="flex min-w-0 flex-1 gap-2 overflow-x-auto [scrollbar-width:none]">
+            {srcs.map((src, i) => (
+              <button
+                key={src}
+                type="button"
+                onClick={() => setShot(i + 1)}
+                aria-label={caption(i + 1)}
+                aria-current={i + 1 === shot}
+                className={`relative h-11 w-16 shrink-0 overflow-hidden rounded-md border transition duration-200 sm:h-12 sm:w-[4.5rem] ${
+                  i + 1 === shot
+                    ? "border-foreground opacity-100"
+                    : "border-border opacity-55 hover:opacity-90"
+                }`}
+              >
+                <Image
+                  src={src}
+                  alt=""
+                  fill
+                  unoptimized
+                  sizes="72px"
+                  loading="lazy"
+                  className="object-cover object-top"
+                />
+              </button>
+            ))}
+          </div>
+          <p className="hidden shrink-0 font-mono-label tabular-nums text-muted sm:block">
+            {pad(shot)} / {pad(count)}
+          </p>
+          <div className="flex shrink-0 gap-2">
+            <ArrowButton dir="prev" onClick={prev} label={t.projects_lightbox_prev} />
+            <ArrowButton dir="next" onClick={next} label={t.projects_lightbox_next} />
+          </div>
+        </div>
       ) : null}
-    </div>
-  );
-}
 
-export function ProjectGallery({
-  id,
-  title,
-  t,
-  compact = false,
-}: ProjectGalleryProps) {
-  const shotCount = projectShotCount(id);
-  const kindsShown = projectKinds(id);
-  const hasDesktop = kindsShown.includes("desktop");
-  const hasTablet = kindsShown.includes("tablet");
-  const hasMobile = kindsShown.includes("mobile");
-  const desktopOnly = hasDesktop && !hasTablet && !hasMobile;
-
-  if (compact) {
-    return (
-      <div className="min-w-0">
-        <BrowserMockup
-          url={projectUrl(id)}
-          frameClassName={
-            usesFixedDesktopFrame(id) ? "aspect-[15/8]" : undefined
-          }
-        >
-          <MediaImage
-            src={projectMediaPath(id, "desktop", 1)}
-            alt={`${title} — desktop`}
-            className="object-cover object-top"
-            sizes="(max-width: 768px) 100vw, 40vw"
-          />
-        </BrowserMockup>
-      </div>
-    );
-  }
-
-  return (
-    <div className="min-w-0 space-y-4">
-      <p className="text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-muted">
-        {t.projects_evidence}
-      </p>
-
-      {desktopOnly ? (
-        <DeviceCarousel
-          id={id}
-          title={title}
-          t={t}
-          kind="desktop"
-          shotCount={shotCount}
-          priority
-          className="mx-auto w-full max-w-3xl"
-        />
-      ) : (
-        <div className="grid gap-6 sm:gap-8 lg:grid-cols-[minmax(0,1.35fr)_minmax(0,0.9fr)] lg:items-end lg:gap-8">
-          {hasDesktop ? (
-            <DeviceCarousel
-              id={id}
+      {open
+        ? createPortal(
+            <Lightbox
               title={title}
               t={t}
-              kind="desktop"
-              shotCount={shotCount}
-              priority={id === "hotel"}
-            />
-          ) : null}
-
-          {/* Tablet/phone mockups are hard to read on small screens — desktop only below lg */}
-          {hasTablet || hasMobile ? (
-            <div className="hidden grid-cols-2 items-end gap-4 sm:gap-6 lg:grid">
-              {hasTablet ? (
-                <DeviceCarousel
-                  id={id}
-                  title={title}
-                  t={t}
-                  kind="tablet"
-                  shotCount={shotCount}
-                />
-              ) : null}
-              {hasMobile ? (
-                <DeviceCarousel
-                  id={id}
-                  title={title}
-                  t={t}
-                  kind="mobile"
-                  shotCount={shotCount}
-                />
-              ) : null}
-            </div>
-          ) : null}
-        </div>
-      )}
+              srcs={srcs}
+              caption={caption}
+              shot={shot}
+              setShot={setShot}
+              onPrev={prev}
+              onNext={next}
+              onClose={close}
+            />,
+            document.body,
+          )
+        : null}
     </div>
   );
 }

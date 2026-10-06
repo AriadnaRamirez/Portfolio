@@ -5,36 +5,29 @@ import { useLanguage } from "@/app/context/LanguageContext";
 export function LangToggle() {
   const { lang, setLang } = useLanguage();
 
+  const item = (value: "es" | "en", label: string) => (
+    <button
+      type="button"
+      onClick={() => setLang(value)}
+      className={`rounded-full px-2.5 py-1 text-xs font-semibold transition-colors duration-200 ${
+        lang === value
+          ? "bg-background text-foreground shadow-[0_1px_2px_rgba(36,36,36,0.12)]"
+          : "text-muted hover:text-foreground"
+      }`}
+      aria-pressed={lang === value}
+    >
+      {label}
+    </button>
+  );
+
   return (
     <div
-      className="inline-flex border border-border-strong text-xs"
+      className="inline-flex items-center rounded-full bg-surface-2 p-0.5"
       role="group"
       aria-label="Language"
     >
-      <button
-        type="button"
-        onClick={() => setLang("es")}
-        className={`px-3 py-2 font-semibold uppercase tracking-wider transition ${
-          lang === "es"
-            ? "bg-foreground text-background"
-            : "text-muted hover:bg-highlight-soft hover:text-foreground"
-        }`}
-        aria-pressed={lang === "es"}
-      >
-        ES
-      </button>
-      <button
-        type="button"
-        onClick={() => setLang("en")}
-        className={`border-l border-border-strong px-3 py-2 font-semibold uppercase tracking-wider transition ${
-          lang === "en"
-            ? "bg-foreground text-background"
-            : "text-muted hover:bg-highlight-soft hover:text-foreground"
-        }`}
-        aria-pressed={lang === "en"}
-      >
-        EN
-      </button>
+      {item("es", "ES")}
+      {item("en", "EN")}
     </div>
   );
 }

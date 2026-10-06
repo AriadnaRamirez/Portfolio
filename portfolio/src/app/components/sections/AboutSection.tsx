@@ -22,7 +22,7 @@ function ProfilePanel() {
     <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-14">
       <div className="space-y-5">
         <p className="font-display text-2xl font-medium leading-snug text-foreground sm:text-3xl">
-          {t.resume_summary}
+          {t.about_intro}
         </p>
         <p className="text-base leading-relaxed text-muted sm:text-lg">
           {t.about_body}
