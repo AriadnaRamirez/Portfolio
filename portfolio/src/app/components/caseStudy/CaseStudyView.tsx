@@ -1,10 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import type { ReactNode } from "react";
+import { useState, type ReactNode } from "react";
 import { useLanguage } from "@/app/context/LanguageContext";
-import { caseStudies } from "@/app/lib/caseStudies";
+import { caseStudies, type CaseStudy } from "@/app/lib/caseStudies";
 import { assetPath } from "@/app/lib/siteUrl";
+import { BeforeAfterSlider } from "../ui/BeforeAfterSlider";
 import { Reveal } from "../ui/Reveal";
 import { ScrollStory } from "../ui/ScrollStory";
 import { TechIconRow } from "../ui/TechIcon";
@@ -29,6 +30,55 @@ function SectionHead({ kicker, title }: { kicker: string; title?: string }) {
         </Reveal>
       ) : null}
     </div>
+  );
+}
+
+function BeforeAfterCompare({ pairs }: { pairs: NonNullable<CaseStudy["before"]> }) {
+  const { t, lang } = useLanguage();
+  const [active, setActive] = useState(0);
+  const pair = pairs[active];
+
+  return (
+    <figure className="overflow-visible rounded-none">
+      <BeforeAfterSlider
+        key={pair.image}
+        before={assetPath(pair.image)}
+        after={assetPath(pair.after)}
+        beforeLabel={t.projects_before}
+        afterLabel={t.projects_after}
+        label={t.projects_compare}
+        alt={pair.caption[lang]}
+      />
+      <div className="mt-4 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+        <figcaption className="max-w-2xl space-y-2 text-sm leading-relaxed text-muted">
+          <p className="font-mono-label text-xs">{t.cs_compare_hint}</p>
+          <p>
+            <span className="font-semibold text-foreground">{t.projects_before}:</span> {pair.caption[lang]}
+          </p>
+          <p>
+            <span className="font-semibold text-foreground">{t.projects_after}:</span> {pair.afterCaption[lang]}
+          </p>
+        </figcaption>
+        {pairs.length > 1 ? (
+          <div role="group" aria-label={t.cs_before} className="flex shrink-0 gap-2">
+            {pairs.map((p, i) => (
+              <button
+                key={p.image}
+                type="button"
+                onClick={() => setActive(i)}
+                aria-pressed={active === i}
+                aria-label={p.caption[lang]}
+                className={`overflow-hidden rounded-lg border-2 transition-[border-color,opacity] duration-200 ${
+                  active === i ? "border-foreground" : "border-transparent opacity-60 hover:opacity-100"
+                }`}
+              >
+                <img src={assetPath(p.after)} alt="" loading="lazy" decoding="async" className="aspect-[16/10] w-20 object-cover object-top" />
+              </button>
+            ))}
+          </div>
+        ) : null}
+      </div>
+    </figure>
   );
 }
 
@@ -140,27 +190,9 @@ export function CaseStudyView({ slug }: { slug: string }) {
       {cs.before?.length ? (
         <section className="page-shell pb-24 sm:pb-32" aria-label={t.cs_before}>
           <SectionHead kicker={t.cs_before} />
-          <ul className="mt-10 grid gap-6 md:grid-cols-3">
-            {cs.before.map((b, i) => (
-              <Reveal key={b.image} as="li" variant="up" delay={i * 90}>
-                <figure className="overflow-visible rounded-none">
-                  <div className="relative overflow-hidden rounded-xl border border-border bg-surface">
-                    <img
-                      src={assetPath(b.image)}
-                      alt={b.caption[lang]}
-                      loading="lazy"
-                      decoding="async"
-                      className="aspect-[16/10] w-full object-cover object-top grayscale-[35%]"
-                    />
-                    <span className="absolute top-3 left-3 rounded-full bg-foreground/85 px-3 py-1 text-xs font-medium text-background backdrop-blur">
-                      {t.projects_before}
-                    </span>
-                  </div>
-                  <figcaption className="mt-3 text-sm leading-relaxed text-muted">{b.caption[lang]}</figcaption>
-                </figure>
-              </Reveal>
-            ))}
-          </ul>
+          <Reveal variant="up" className="mt-10">
+            <BeforeAfterCompare pairs={cs.before} />
+          </Reveal>
         </section>
       ) : null}
 

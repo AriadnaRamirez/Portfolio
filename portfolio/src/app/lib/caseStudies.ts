@@ -30,7 +30,7 @@ export type CaseStudy = {
   /** Screenshot that backs a result, e.g. a search ranking. */
   evidence?: { image: string; caption: L };
   /** Screenshots of the site before the redesign. */
-  before?: { image: string; caption: L }[];
+  before?: { image: string; after: string; caption: L; afterCaption: L }[];
   testimonial?: { quote: L; author: string; role: L };
   learnings?: L;
 };
@@ -119,27 +119,33 @@ export const caseStudies: Record<string, CaseStudy> = {
       { value: "55", label: { es: "productos en catálogo", en: "catalog products" } },
       { value: "7", label: { es: "categorías con filtro", en: "filterable categories" } },
       { value: "1 clic", label: { es: "para cotizar por WhatsApp", en: "to quote via WhatsApp" } },
-      { value: "Top 3", label: { es: "en Google para “extintores cuajimalpa”", en: "on Google for “extintores cuajimalpa”" } },
+      { value: "Pág. 1", label: { es: "de Google para “extintores cuajimalpa”", en: "of Google for “extintores cuajimalpa”" } },
     ],
     evidence: {
       image: "/projects/crm/seo-cuajimalpa.webp",
       caption: {
-        es: "Búsqueda en Google de “extintores cuajimalpa” (6 de octubre de 2026): Grupo CRM Extintores aparece entre los 3 negocios del bloque local de Maps, junto con el sitio en los resultados web.",
-        en: "Google search for “extintores cuajimalpa” (October 6, 2026): Grupo CRM Extintores appears among the 3 businesses in the local Maps pack, alongside the site in the web results.",
+        es: "Búsqueda en Google de “extintores cuajimalpa” (6 de octubre de 2026): una ficha de producto de crmextintores.com.mx aparece en la primera página de resultados web orgánicos, sin anuncios de por medio.",
+        en: "Google search for “extintores cuajimalpa” (October 6, 2026): a crmextintores.com.mx product page shows up on the first page of organic web results, with no ads involved.",
       },
     },
     before: [
       {
         image: "/projects/crm/before-1.webp",
-        caption: { es: "Portada: hero oscuro con texto pequeño y el CTA principal apuntando al catálogo, no a cotizar.", en: "Home: dark hero with small text and the main CTA pointing to the catalog, not to a quote." },
+        after: "/projects/crm/desktop-1.webp",
+        caption: { es: "Hero oscuro con texto pequeño; el botón principal llevaba al catálogo, no a cotizar.", en: "Dark hero with small text; the main button led to the catalog, not to a quote." },
+        afterCaption: { es: "Un mensaje que habla del problema real —cumplir con Protección Civil— y dos caminos inmediatos: llamar o cotizar por WhatsApp.", en: "A message about the real problem — civil-protection compliance — and two immediate paths: call or quote via WhatsApp." },
       },
       {
         image: "/projects/crm/before-2.webp",
-        caption: { es: "Categorías con una “Sin categorizar” visible al público.", en: "Categories with an “Uncategorized” one visible to the public." },
+        after: "/projects/crm/desktop-2.webp",
+        caption: { es: "Categorías con conteos sueltos y una “Sin categorizar” visible al público.", en: "Categories with loose counts and an “Uncategorized” one visible to the public." },
+        afterCaption: { es: "Catálogo de 55 equipos en 7 categorías reales, con filtros, buscador y cotización en cada producto.", en: "A 55-product catalog in 7 real categories, with filters, search, and a quote button on every product." },
       },
       {
         image: "/projects/crm/before-3.webp",
-        caption: { es: "Productos sin imagen y un “Curso de prueba” publicado.", en: "Products without images and a published “test course”." },
+        after: "/projects/crm/after-3.webp",
+        caption: { es: "Productos sin imagen y un “Curso de prueba” publicado como si fuera un artículo.", en: "Products without images and a “test course” published as if it were an item." },
+        afterCaption: { es: "Cada producto con foto, clave, especificaciones y dos acciones claras: ver detalle o cotizar por WhatsApp.", en: "Every product with a photo, SKU, specs, and two clear actions: view details or quote via WhatsApp." },
       },
     ],
   },
@@ -227,15 +233,21 @@ export const caseStudies: Record<string, CaseStudy> = {
     before: [
       {
         image: "/projects/hotel/before-1.webp",
-        caption: { es: "Portada: imagen protagonista, sin forma inmediata de reservar.", en: "Home: hero image, no immediate way to book." },
+        after: "/projects/hotel/desktop-1.webp",
+        caption: { es: "Una foto de fachada como protagonista y ninguna forma inmediata de reservar.", en: "A façade photo as the hero and no immediate way to book." },
+        afterCaption: { es: "Barra de reserva con fechas, adultos y niños desde el primer segundo, más atajos directos a WhatsApp y llamada.", en: "A booking bar with dates, adults, and children from the first second, plus direct WhatsApp and phone shortcuts." },
       },
       {
         image: "/projects/hotel/before-2.webp",
+        after: "/projects/hotel/desktop-2.webp",
         caption: { es: "Secciones con bloques de texto largos y poca jerarquía.", en: "Sections with long text blocks and little hierarchy." },
+        afterCaption: { es: "Contenido escaneable que convierte la ubicación —a pasos del Zócalo— en una razón para reservar.", en: "Scannable content that turns the location — steps from the Zócalo — into a reason to book." },
       },
       {
         image: "/projects/hotel/before-3.webp",
+        after: "/projects/hotel/desktop-4.webp",
         caption: { es: "Habitaciones sin precio ni capacidad visibles.", en: "Rooms without visible price or capacity." },
+        afterCaption: { es: "Cada habitación con precio por noche, capacidad, amenidades y galería propia, lista para comparar y reservar.", en: "Each room with nightly price, capacity, amenities, and its own gallery, ready to compare and book." },
       },
     ],
   },
