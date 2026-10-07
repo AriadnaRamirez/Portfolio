@@ -176,9 +176,19 @@ export function SiteNav() {
         <Link
           href="/#contact"
           prefetch
-          className="ml-1 rounded-full bg-white px-4 py-1.5 text-sm font-semibold whitespace-nowrap text-[#242424] transition-colors duration-200 hover:bg-white/90"
+          className="group relative ml-1 inline-flex items-center overflow-hidden rounded-full bg-white px-4 py-1.5 text-sm font-semibold whitespace-nowrap text-[#242424] transition-[color,box-shadow,transform] duration-300 ease-out hover:text-white hover:shadow-[0_6px_20px_-4px_rgba(106,61,240,0.6)] focus-visible:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white motion-safe:hover:-translate-y-px"
         >
-          {t.hero_cta_contact_primary}
+          <span
+            aria-hidden
+            className="absolute inset-0 bg-[linear-gradient(110deg,#6a3df0,#c2410c)] opacity-0 transition-opacity duration-300 ease-out group-hover:opacity-100 group-focus-visible:opacity-100"
+          />
+          <span className="relative">{t.hero_cta_contact_primary}</span>
+          <span
+            aria-hidden
+            className="relative inline-block w-0 -translate-x-1 overflow-hidden opacity-0 transition-all duration-300 ease-out group-hover:ml-1.5 group-hover:w-3 group-hover:translate-x-0 group-hover:opacity-100 group-focus-visible:ml-1.5 group-focus-visible:w-3 group-focus-visible:translate-x-0 group-focus-visible:opacity-100"
+          >
+            →
+          </span>
         </Link>
       </nav>
     </>

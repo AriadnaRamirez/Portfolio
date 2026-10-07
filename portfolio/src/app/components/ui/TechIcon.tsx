@@ -142,6 +142,10 @@ const logoFiles: Partial<Record<TechId, { file: string; mono?: boolean }>> = {
   css: { file: "css3" },
   cursor: { file: "cursor", mono: true },
   figmamake: { file: "figma" },
+  nestjs: { file: "nestjs" },
+  vercel: { file: "vercel", mono: true },
+  render: { file: "render", mono: true },
+  neon: { file: "neon" },
 };
 
 export function TechIcon({ id, className, showLabel = true }: TechIconProps) {

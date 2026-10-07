@@ -233,7 +233,7 @@ export const translations = {
     projects_crm_title: "Grupo CRM Extintores",
     projects_crm_role: "Freelance · Sitio institucional en producción",
     projects_crm_desc:
-      "Sitio end-to-end con catálogo de 50+ productos, CTAs de WhatsApp, SEO local y deploy en Vercel.",
+      "Sitio end-to-end con catálogo de 50+ productos, CTAs de WhatsApp y SEO local que lo llevó al top 3 de Google para “extintores cuajimalpa”. Deploy en Vercel.",
 
     projects_fram_title: "Colectivo Framboyán",
     projects_fram_role: "Fullstack Developer · Individual · SoyHenry 2025",
@@ -244,6 +244,17 @@ export const translations = {
     projects_hotel_role: "GROVA · HMDV · UX/UI + Frontend en producción",
     projects_hotel_desc:
       "Rediseño UX/UI y frontend bilingüe con flujo de reserva orientado a conversión. En producción.",
+
+    projects_ccst_title: "CCST Study Lab",
+    projects_ccst_role: "Diseño y desarrollo · Web, API y base de datos",
+    projects_ccst_desc:
+      "Plataforma de estudio para la certificación Cisco CCST Cybersecurity: 51 tarjetas corregidas en el servidor, rachas de dominio y sesiones que priorizan lo que más fallas. Desarrollada con Cursor para acelerar el proceso.",
+    projects_ccst_shot_1: "Inicio: entra con cuenta o juega sin cuenta",
+    projects_ccst_shot_2: "Elige el tamaño de la sesión: 10, 20, 30 o 50",
+    projects_ccst_shot_3: "Tarjeta de relacionar, uno de los cinco tipos",
+    projects_ccst_shot_4: "Feedback con explicación y racha hacia el dominio",
+    projects_ccst_shot_5: "Resumen: qué fallaste y qué recuperaste en el refuerzo",
+    projects_ccst_shot_6: "Repaso: sesión de refuerzo con las que más fallas",
 
     projects_dulce_title: "Dulce Glaseado",
     projects_dulce_role: "Fullstack Developer · Pedidos y reservas",
@@ -777,7 +788,7 @@ export const translations = {
     projects_crm_title: "Grupo CRM Extintores",
     projects_crm_role: "Freelance · Institutional site in production",
     projects_crm_desc:
-      "End-to-end site with a 50+ product catalog, WhatsApp CTAs, local SEO, and Vercel deploy.",
+      "End-to-end site with a 50+ product catalog, WhatsApp CTAs, and local SEO that took it to Google's top 3 for “extintores cuajimalpa”. Deployed on Vercel.",
 
     projects_fram_title: "Colectivo Framboyán",
     projects_fram_role: "Fullstack Developer · Solo · SoyHenry 2025",
@@ -788,6 +799,17 @@ export const translations = {
     projects_hotel_role: "GROVA · HMDV · UX/UI + Frontend in production",
     projects_hotel_desc:
       "UX/UI redesign and bilingual frontend with a conversion-focused booking flow. Live in production.",
+
+    projects_ccst_title: "CCST Study Lab",
+    projects_ccst_role: "Design & development · Web, API, and database",
+    projects_ccst_desc:
+      "Study platform for the Cisco CCST Cybersecurity certification: 51 server-graded cards, mastery streaks, and sessions that prioritize what you miss most. Built with Cursor to speed up the process.",
+    projects_ccst_shot_1: "Home: sign in or play without an account",
+    projects_ccst_shot_2: "Pick a session size: 10, 20, 30, or 50",
+    projects_ccst_shot_3: "Matching card, one of five card types",
+    projects_ccst_shot_4: "Feedback with explanation and mastery streak",
+    projects_ccst_shot_5: "Summary: what you missed and recovered in reinforcement",
+    projects_ccst_shot_6: "Review: reinforcement session with your weakest cards",
 
     projects_dulce_title: "Dulce Glaseado",
     projects_dulce_role: "Fullstack Developer · Orders and bookings",

@@ -30,7 +30,7 @@ export type ProjectLink = {
 
 export type ProjectCategory = "fullstack" | "frontend" | "product";
 
-export type ProjectId = "crm" | "servi" | "senda" | "fram" | "hotel" | "dulce";
+export type ProjectId = "crm" | "servi" | "senda" | "fram" | "hotel" | "dulce" | "ccst";
 
 export type MediaKind = "desktop" | "tablet" | "mobile";
 
@@ -51,7 +51,11 @@ export type TechId =
   | "html"
   | "css"
   | "cursor"
-  | "figmamake";
+  | "figmamake"
+  | "nestjs"
+  | "vercel"
+  | "render"
+  | "neon";
 
 export const projectMeta: Record<
   ProjectId,
@@ -94,6 +98,19 @@ export const projectMeta: Record<
     ],
     featured: true,
     accent: "#3d1f24",
+  },
+  ccst: {
+    badge: { es: "Proyecto personal · Fullstack", en: "Personal project · Fullstack" },
+    tech: ["nextjs", "nestjs", "typescript", "postgresql", "vercel", "render", "neon", "cursor"],
+    categories: ["fullstack", "product"],
+    links: [
+      {
+        labelKey: "projects_link_live",
+        href: "https://ccst-study-lab.vercel.app/",
+      },
+    ],
+    featured: true,
+    accent: "#1f1f1f",
   },
   senda: {
     badge: { es: "GROVA · Cliente privado", en: "GROVA · Private client" },
@@ -145,11 +162,13 @@ export const projectMediaShotCount: Partial<Record<ProjectId, number>> = {
   dulce: 4,
   crm: 6,
   senda: 6,
+  ccst: 6,
 };
 
 /** Screenshots of the site before the redesign, under /projects/<id>/before-<n>.webp. */
 export const projectBeforeShotCount: Partial<Record<ProjectId, number>> = {
   hotel: 3,
+  crm: 3,
 };
 
 export function projectBeforePath(id: ProjectId, shot: number) {
@@ -173,6 +192,7 @@ export function projectBeforeShots(id: ProjectId) {
 export const projectMediaKinds: Partial<Record<ProjectId, MediaKind[]>> = {
   hotel: ["desktop", "mobile"],
   crm: ["desktop", "mobile"],
+  ccst: ["desktop", "mobile"],
   senda: ["desktop"],
   servi: ["desktop"],
   dulce: ["desktop"],
@@ -197,6 +217,10 @@ const projectMediaExt: Partial<
   senda: {
     desktop: "webp",
   },
+  ccst: {
+    desktop: "webp",
+    mobile: "webp",
+  },
 };
 
 export function projectShotCount(id: ProjectId) {
@@ -220,8 +244,8 @@ export function projectMediaPath(
   return `${base}/projects/${id}/${kind}.${ext}`;
 }
 
-/** Display order from CV: CRM → HMDV → SENDA → ServiYApp (student). */
-export const projectIds: ProjectId[] = ["crm", "hotel", "senda", "servi"];
+/** Display order: CRM → HMDV → CCST Study Lab → SENDA → ServiYApp (student). */
+export const projectIds: ProjectId[] = ["crm", "hotel", "ccst", "senda", "servi"];
 
 export const navPages = [
   { href: "/#work", key: "nav_work" as const },
@@ -293,4 +317,8 @@ export const techLabels: Record<TechId, string> = {
   css: "CSS3",
   cursor: "Cursor",
   figmamake: "Figma Make",
+  nestjs: "NestJS",
+  vercel: "Vercel",
+  render: "Render",
+  neon: "Neon",
 };

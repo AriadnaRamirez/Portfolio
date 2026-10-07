@@ -143,7 +143,7 @@ export function CaseStudyView({ slug }: { slug: string }) {
           <ul className="mt-10 grid gap-6 md:grid-cols-3">
             {cs.before.map((b, i) => (
               <Reveal key={b.image} as="li" variant="up" delay={i * 90}>
-                <figure>
+                <figure className="overflow-visible rounded-none">
                   <div className="relative overflow-hidden rounded-xl border border-border bg-surface">
                     <img
                       src={assetPath(b.image)}
@@ -197,6 +197,25 @@ export function CaseStudyView({ slug }: { slug: string }) {
             </Reveal>
           ))}
         </dl>
+        {cs.resultsNote ? (
+          <p className="mt-6 max-w-3xl text-sm leading-relaxed text-muted">{cs.resultsNote[lang]}</p>
+        ) : null}
+        {cs.evidence ? (
+          <Reveal variant="up" className="mt-10">
+            <figure className="overflow-visible rounded-none">
+              <div className="overflow-hidden rounded-2xl border border-border bg-background shadow-[0_20px_50px_-30px_rgba(0,0,0,0.35)]">
+                <img
+                  src={assetPath(cs.evidence.image)}
+                  alt={cs.evidence.caption[lang]}
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full"
+                />
+              </div>
+              <figcaption className="mt-3 max-w-3xl text-sm leading-relaxed text-muted">{cs.evidence.caption[lang]}</figcaption>
+            </figure>
+          </Reveal>
+        ) : null}
 
         {cs.testimonial ? (
           <Reveal variant="up" as="article" className="mt-10 rounded-2xl border border-border bg-background p-8 sm:p-10">

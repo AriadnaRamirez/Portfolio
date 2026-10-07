@@ -14,6 +14,7 @@ const pages = [
   { href: "/work/", label: "Proyectos" },
   { href: "/work/crm/", label: "Caso de estudio: Grupo CRM Extintores" },
   { href: "/work/hmdv/", label: "Caso de estudio: Hotel Marqués del Valle" },
+  { href: "/work/ccst/", label: "Caso de estudio: CCST Study Lab" },
   { href: "/experience/", label: "Experiencia" },
   { href: "/about/", label: "Sobre mí" },
   { href: "/contact/", label: "Contacto" },

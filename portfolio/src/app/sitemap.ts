@@ -14,6 +14,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/work/", priority: 0.9, changeFrequency: "monthly" },
     { path: "/work/crm/", priority: 0.8, changeFrequency: "monthly" },
     { path: "/work/hmdv/", priority: 0.8, changeFrequency: "monthly" },
+    { path: "/work/ccst/", priority: 0.8, changeFrequency: "monthly" },
     { path: "/resume/", priority: 0.9, changeFrequency: "monthly" },
     { path: "/experience/", priority: 0.8, changeFrequency: "monthly" },
     { path: "/about/", priority: 0.7, changeFrequency: "monthly" },
