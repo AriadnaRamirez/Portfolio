@@ -12,6 +12,9 @@ import {
 } from "react";
 import { createPortal } from "react-dom";
 import type { TranslationKey } from "@/app/components/lib/translations";
+import { caseStudyFor } from "@/app/lib/caseStudies";
+import { assetPath } from "@/app/lib/siteUrl";
+import { BeforeAfterSlider } from "../ui/BeforeAfterSlider";
 import {
   projectBeforeShots,
   projectDesktopShots,
@@ -312,6 +315,7 @@ export function ProjectGallery({ id, title, t, compact = false }: ProjectGallery
   const url = projectUrl(id);
   const aspect = frameAspect(id);
   const caption = (n: number) => shotCaption(t, id, n, mode);
+  const comparePair = mode === "before" ? caseStudyFor(id)?.before?.[shot - 1] : undefined;
 
   const switchMode = (m: Mode) => {
     setMode(m);
@@ -340,11 +344,16 @@ export function ProjectGallery({ id, title, t, compact = false }: ProjectGallery
               type="button"
               onClick={() => switchMode(m)}
               aria-pressed={mode === m}
-              className={`rounded-full px-3.5 py-1.5 transition-colors duration-200 ${
+              className={`inline-flex items-center gap-1.5 rounded-full px-3.5 py-1.5 transition-colors duration-200 ${
                 mode === m ? "bg-foreground text-background" : "text-muted hover:text-foreground"
               }`}
             >
-              {m === "after" ? t.projects_after : t.projects_before}
+              {m === "before" ? (
+                <svg viewBox="0 0 24 24" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                  <path d="m9 6-6 6 6 6M15 6l6 6-6 6" />
+                </svg>
+              ) : null}
+              {m === "after" ? t.projects_current : t.projects_view_compare}
             </button>
           ))}
         </div>
@@ -354,8 +363,24 @@ export function ProjectGallery({ id, title, t, compact = false }: ProjectGallery
         className={`relative overflow-hidden rounded-2xl bg-[linear-gradient(140deg,color-mix(in_srgb,var(--cat-from,var(--grad-from))_14%,var(--surface)),color-mix(in_srgb,var(--cat-to,var(--grad-to))_12%,var(--surface)))] px-4 pt-6 sm:px-10 sm:pt-10 ${
           hasMobile ? "pb-10 sm:pb-14" : "pb-0"
         }`}
-        {...swipe}
+        {...(comparePair ? {} : swipe)}
       >
+        {comparePair ? (
+          <div className="translate-y-px [&>div]:rounded-b-none [&>div]:border-b-0">
+            <BrowserChrome url={url} aspect={aspect}>
+              <BeforeAfterSlider
+                key={comparePair.image}
+                before={srcs[shot - 1]}
+                after={assetPath(comparePair.after)}
+                beforeLabel={t.projects_before}
+                afterLabel={t.projects_current}
+                label={t.projects_compare}
+                alt={title}
+                className="h-full aspect-auto! rounded-none! border-0!"
+              />
+            </BrowserChrome>
+          </div>
+        ) : (
         <button
           type="button"
           onClick={() => setOpen(true)}
@@ -384,6 +409,7 @@ export function ProjectGallery({ id, title, t, compact = false }: ProjectGallery
             {t.projects_lightbox_open}
           </span>
         </button>
+        )}
 
         {hasMobile ? (
           <div className="pointer-events-none absolute right-4 bottom-4 w-[22%] max-w-[9.5rem] sm:right-8 sm:bottom-6">
