@@ -30,50 +30,42 @@ export function BrandLogos() {
           </Reveal>
         </div>
 
-        <ul className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
-          {brandIds.map((id, i) => {
-            const brand = brands[id];
-            return (
-              <Reveal key={id} as="li" variant="up" delay={i * 90}>
-                <a
-                  href={brand.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={`${brand.label[lang]} ↗`}
-                  className="brand-tile group relative flex h-full flex-col overflow-hidden rounded-[1.5rem] border border-border bg-background no-underline transition duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1 hover:border-transparent hover:shadow-[0_24px_48px_-28px_rgba(0,0,0,0.35)]"
-                >
-                  <span
-                    aria-hidden
-                    className="pointer-events-none absolute inset-0 bg-[radial-gradient(120%_80%_at_50%_0%,color-mix(in_srgb,var(--cat-from)_14%,transparent),transparent_70%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-                  />
-                  <span className="relative flex aspect-[4/3] items-center justify-center px-6">
-                    <BrandMark
-                      id={id}
-                      className="w-auto max-w-[80%] opacity-75 grayscale transition duration-500 group-hover:scale-105 group-hover:opacity-100 group-hover:grayscale-0"
-                    />
-                  </span>
-                  <span className="relative flex items-end justify-between gap-3 border-t border-border px-4 py-3.5 sm:px-5">
-                    <span className="min-w-0">
-                      <span className="block text-sm leading-snug font-semibold text-foreground">
-                        {brand.label[lang]}
-                      </span>
-                      <span className="mt-0.5 block text-xs leading-snug text-muted">
-                        {brand.sector[lang]}
-                        <span className="hidden sm:inline"> · {brand.work[lang]}</span>
-                      </span>
-                    </span>
+        <Reveal variant="fade">
+          <ul className="grid grid-cols-2 border-t border-border lg:grid-cols-4">
+            {brandIds.map((id) => {
+              const brand = brands[id];
+              return (
+                <li key={id} className="border-b border-border odd:border-r lg:border-r lg:last:border-r-0">
+                  <a
+                    href={brand.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${brand.label[lang]} ↗`}
+                    className="group relative flex h-full flex-col items-center px-4 pt-12 pb-8 text-center no-underline transition-colors duration-500 hover:bg-[color-mix(in_srgb,var(--foreground)_3%,transparent)] sm:px-6"
+                  >
                     <span
                       aria-hidden
-                      className="shrink-0 text-sm text-muted transition duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-foreground"
+                      className="absolute top-4 right-4 text-sm text-muted opacity-0 transition duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:opacity-100 group-focus-visible:opacity-100"
                     >
                       ↗
                     </span>
-                  </span>
-                </a>
-              </Reveal>
-            );
-          })}
-        </ul>
+                    <span className="flex h-20 w-full items-center justify-center">
+                      <BrandMark
+                        id={id}
+                        className="w-auto max-w-[78%] opacity-60 grayscale transition duration-500 group-hover:opacity-100 group-hover:grayscale-0 dark:opacity-75 dark:brightness-0 dark:invert dark:group-hover:opacity-100"
+                      />
+                    </span>
+                    <span className="mt-10 block text-sm font-medium text-foreground">{brand.label[lang]}</span>
+                    <span className="mt-1 block text-xs leading-relaxed text-muted">
+                      {brand.sector[lang]}
+                      <span className="hidden sm:inline"> · {brand.work[lang]}</span>
+                    </span>
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
+        </Reveal>
       </div>
     </section>
   );

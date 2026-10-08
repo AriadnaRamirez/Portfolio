@@ -15,6 +15,8 @@ export function ResumeDownloadButton({ className }: ResumeDownloadButtonProps) {
     <a
       href={file.href}
       download={file.filename}
+      data-umami-event="cv-download"
+      data-umami-event-lang={lang}
       className={className ?? "btn-primary"}
     >
       {t.resume_download}

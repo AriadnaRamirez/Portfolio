@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { usePathname } from "next/navigation";
 import { useLanguage } from "@/app/context/LanguageContext";
-import { site } from "@/app/lib/site";
+import { site, whatsappHref } from "@/app/lib/site";
 import { Reveal } from "../ui/Reveal";
 import { SectionHeader } from "../ui/SectionHeader";
 import { SocialIcon } from "../ui/SocialIcon";
@@ -46,14 +46,25 @@ export function ContactSection({ headingLevel }: ContactSectionProps) {
         <div className="mt-3 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <a
             href={emailHref}
-            className="block break-all font-display text-[clamp(1.2rem,5vw,2.75rem)] leading-tight text-foreground transition-colors hover:text-[var(--cat-ink)]"
+            className="block min-w-0 break-all font-display text-[clamp(1.2rem,5vw,2.75rem)] leading-tight lg:text-[clamp(1.5rem,2.4vw,2.25rem)] text-foreground transition-colors hover:text-[var(--cat-ink)]"
           >
             {site.email}
           </a>
           <div className="flex shrink-0 flex-wrap gap-3">
-            <a href={emailHref} className="btn-primary whitespace-nowrap">
+            <a href={emailHref} data-umami-event="contact-email" className="btn-primary whitespace-nowrap">
               <SocialIcon kind="email" className="h-3.5 w-3.5" />
               {t.contact_cta_email_primary}
+            </a>
+            <a
+              href={whatsappHref(t.wa_quote_msg)}
+              target="_blank"
+              rel="noopener noreferrer"
+              data-umami-event="whatsapp"
+              data-umami-event-from="contact"
+              className="btn-ghost whitespace-nowrap"
+            >
+              <SocialIcon kind="whatsapp" className="h-4 w-4" />
+              {t.contact_whatsapp}
             </a>
             <button type="button" onClick={copyEmail} className="btn-ghost whitespace-nowrap" aria-live="polite">
               {copied ? t.contact_copied : t.contact_copy}

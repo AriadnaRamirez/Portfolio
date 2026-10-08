@@ -1,7 +1,6 @@
 "use client";
 
 import { BrandLogos } from "./components/sections/BrandLogos";
-import { ContactCtaBand } from "./components/sections/ContactCtaBand";
 import { ContactSection } from "./components/sections/ContactSection";
 import { LandingAbout } from "./components/sections/LandingAbout";
 import { LandingCertifications } from "./components/sections/LandingCertifications";
@@ -9,6 +8,7 @@ import { LandingEducation } from "./components/sections/LandingEducation";
 import { LandingExperience } from "./components/sections/LandingExperience";
 import { LandingHero } from "./components/sections/LandingHero";
 import { LandingProjects } from "./components/sections/LandingProjects";
+import { LandingServices } from "./components/sections/LandingServices";
 import { LandingSkills } from "./components/sections/LandingSkills";
 import { SectionBand } from "./components/ui/SectionBand";
 
@@ -19,17 +19,11 @@ export default function HomePage() {
       <SectionBand cat="violet">
         <LandingProjects />
       </SectionBand>
-      <SectionBand tone="tint" cat="blue">
-        <LandingSkills />
-      </SectionBand>
-      <SectionBand cat="pink">
-        <LandingCertifications />
-      </SectionBand>
-      <SectionBand cat="mint">
+      <SectionBand tone="tint" cat="mint">
         <BrandLogos />
       </SectionBand>
-      <SectionBand tone="frame">
-        <ContactCtaBand />
+      <SectionBand cat="peach">
+        <LandingServices />
       </SectionBand>
       <SectionBand cat="teal">
         <LandingAbout />
@@ -37,8 +31,14 @@ export default function HomePage() {
       <SectionBand tone="tint" cat="violet">
         <LandingExperience />
       </SectionBand>
+      <SectionBand cat="blue">
+        <LandingSkills />
+      </SectionBand>
       <SectionBand cat="mint">
         <LandingEducation />
+      </SectionBand>
+      <SectionBand cat="pink">
+        <LandingCertifications />
       </SectionBand>
       <SectionBand tone="tint" cat="peach">
         <ContactSection />

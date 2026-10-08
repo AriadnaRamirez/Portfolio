@@ -31,7 +31,7 @@ export const brands: Record<
     sector: { es: "Agencia de marketing", en: "Marketing agency" },
     work: { es: "Desarrollo por proyectos", en: "Project-based development" },
     logo: "/brands/grova.png",
-    logoClassName: "h-12 sm:h-14 dark:invert",
+    logoClassName: "h-11 sm:h-12",
   },
   crm: {
     name: "CRM Extintores",
@@ -43,7 +43,7 @@ export const brands: Record<
     sector: { es: "Seguridad contra incendios", en: "Fire safety" },
     work: { es: "Sitio + catálogo end-to-end", en: "End-to-end site + catalog" },
     logo: "/brands/crm.webp",
-    logoClassName: "h-10 sm:h-11 rounded-sm",
+    logoClassName: "h-8 sm:h-9",
   },
   hmdv: {
     name: "HMDV",
@@ -55,7 +55,7 @@ export const brands: Record<
     sector: { es: "Hotelería", en: "Hospitality" },
     work: { es: "UX/UI + frontend", en: "UX/UI + frontend" },
     logo: "/brands/hmdv.png",
-    logoClassName: "h-14 sm:h-16 dark:invert",
+    logoClassName: "h-14 sm:h-16",
   },
   fitplus: {
     name: "FitPlus",
@@ -64,6 +64,7 @@ export const brands: Record<
     sector: { es: "Fitness", en: "Fitness" },
     work: { es: "WordPress · campañas", en: "WordPress · campaigns" },
     logo: "/brands/fitplus.png",
-    logoClassName: "h-12 sm:h-14",
+    logoClassName:
+      "h-12 sm:h-14 brightness-[.6] group-hover:brightness-100 dark:group-hover:brightness-0",
   },
 };

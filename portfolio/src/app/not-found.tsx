@@ -13,6 +13,7 @@ export default function NotFound() {
 
   return (
     <section className="cat-violet page-shell flex min-h-[70dvh] flex-col justify-center py-24">
+      <meta name="robots" content="noindex" />
       <p className="section-kicker is-visible">{t.nf_kicker}</p>
       <p
         aria-hidden

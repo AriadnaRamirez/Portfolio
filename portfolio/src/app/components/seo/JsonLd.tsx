@@ -80,7 +80,7 @@ export function JsonLd({ siteUrl }: JsonLdProps) {
     ],
     availableChannel: {
       "@type": "ServiceChannel",
-      serviceUrl: `${siteUrl}/contact/`,
+      serviceUrl: `${siteUrl}/#contact`,
     },
   };
 

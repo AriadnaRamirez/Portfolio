@@ -24,16 +24,16 @@ const rowA: Logo[] = [
 
 const rowB: Logo[] = [
   { file: "nodejs", label: "Node.js" },
+  { file: "nestjs", label: "NestJS" },
   { file: "express", label: "Express", mono: true },
+  { file: "socketio", label: "Socket.IO", mono: true },
   { file: "postgresql", label: "PostgreSQL" },
+  { file: "prisma", label: "Prisma", mono: true },
   { file: "mongodb", label: "MongoDB" },
-  { file: "mongoose", label: "Mongoose" },
   { file: "git", label: "Git" },
   { file: "github", label: "GitHub", mono: true },
   { file: "jest", label: "Jest" },
   { file: "vitest", label: "Vitest" },
-  { file: "insomnia", label: "Insomnia" },
-  { file: "wordpress", label: "WordPress", mono: true },
   { file: "vercel", label: "Vercel", mono: true },
 ];
 

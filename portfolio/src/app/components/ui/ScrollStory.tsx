@@ -81,11 +81,13 @@ export function ScrollStory({
   lang,
   url,
   footer,
+  problemLabel,
 }: {
   steps: StoryStep[];
   lang: Lang;
   url?: string;
   footer?: React.ReactNode;
+  problemLabel?: string;
 }) {
   const [active, setActive] = useState(0);
   const refs = useRef<(HTMLDivElement | null)[]>([]);
@@ -160,18 +162,20 @@ export function ScrollStory({
               />
             </div>
             <p className="font-mono-label text-gradient">{s.kicker[lang]}</p>
+            {s.problem ? (
+              <p className="mt-4 max-w-md border-l-2 border-border pl-4 text-sm leading-relaxed text-muted">
+                {problemLabel ? <span className="font-mono-label mb-1 block">{problemLabel}</span> : null}
+                {s.problem[lang]}
+              </p>
+            ) : null}
             <h3
-              className={`mt-3 font-display text-3xl leading-tight text-foreground transition-opacity duration-500 sm:text-4xl ${
-                i === active ? "lg:opacity-100" : "lg:opacity-35"
+              className={`${s.problem ? "mt-5" : "mt-3"} font-display text-3xl leading-tight text-foreground transition-opacity duration-500 sm:text-4xl ${
+                i === active ? "lg:opacity-100" : "lg:opacity-55"
               }`}
             >
               {s.title[lang]}
             </h3>
-            <p
-              className={`mt-4 max-w-md text-[0.9375rem] leading-relaxed text-muted transition-opacity duration-500 ${
-                i === active ? "lg:opacity-100" : "lg:opacity-40"
-              }`}
-            >
+            <p className="mt-4 max-w-md text-[0.9375rem] leading-relaxed text-muted">
               {s.body[lang]}
             </p>
           </div>

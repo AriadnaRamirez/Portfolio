@@ -23,7 +23,7 @@ export default function ResumePage() {
           <a href={file.href} target="_blank" rel="noreferrer" className="btn-ghost">
             {lang === "es" ? "Abrir PDF" : "Open PDF"}
           </a>
-          <Link href="/about" prefetch className="btn-ghost">
+          <Link href="/#about" prefetch className="btn-ghost">
             {t.nav_about}
           </Link>
         </div>

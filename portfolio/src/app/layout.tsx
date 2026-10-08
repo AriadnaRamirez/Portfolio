@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Bricolage_Grotesque, Caveat } from "next/font/google";
 import localFont from "next/font/local";
+import Script from "next/script";
 import { JsonLd } from "./components/seo/JsonLd";
 import { PagePager } from "./components/layout/PagePager";
 import { RouteEffects } from "./components/layout/RouteEffects";
@@ -38,6 +39,9 @@ const hand = Caveat({
 });
 
 const siteUrl = SITE_URL.replace(/\/$/, "");
+
+/** Cookieless analytics; only loads when the Umami website ID is set at build time. */
+const umamiWebsiteId = process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID;
 
 export const viewport: Viewport = {
   themeColor: [
@@ -142,6 +146,13 @@ export default function RootLayout({
             </div>
           </LanguageProvider>
         </ThemeProvider>
+        {umamiWebsiteId ? (
+          <Script
+            src="https://cloud.umami.is/script.js"
+            data-website-id={umamiWebsiteId}
+            strategy="afterInteractive"
+          />
+        ) : null}
       </body>
     </html>
   );

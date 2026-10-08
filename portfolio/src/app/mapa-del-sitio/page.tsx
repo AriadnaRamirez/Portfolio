@@ -11,23 +11,21 @@ export const metadata = pageMetadata({
 
 const pages = [
   { href: "/", label: "Inicio" },
-  { href: "/work/", label: "Proyectos" },
   { href: "/work/crm/", label: "Caso de estudio: Grupo CRM Extintores" },
   { href: "/work/hmdv/", label: "Caso de estudio: Hotel Marqués del Valle" },
   { href: "/work/ccst/", label: "Caso de estudio: CCST Study Lab" },
-  { href: "/experience/", label: "Experiencia" },
-  { href: "/about/", label: "Sobre mí" },
-  { href: "/contact/", label: "Contacto" },
+  { href: "/work/serviyapp/", label: "Caso de estudio: ServiYApp" },
   { href: "/resume/", label: "CV" },
 ];
 
 const sections = [
   { href: "/#work", label: "Proyectos destacados" },
-  { href: "/#skills", label: "Stack" },
-  { href: "/#certs", label: "Certificaciones y programas" },
+  { href: "/#services", label: "Servicios y proceso" },
   { href: "/#about", label: "Sobre mí" },
   { href: "/#experience", label: "Experiencia" },
+  { href: "/#skills", label: "Stack" },
   { href: "/#education", label: "Formación" },
+  { href: "/#certs", label: "Certificaciones y programas" },
   { href: "/#contact", label: "Contacto" },
 ];
 

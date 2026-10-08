@@ -12,7 +12,7 @@ import { LangToggle } from "../navbar/LangToggle";
 import { ThemeToggle } from "../navbar/ThemeToggle";
 
 const avatarSrc = assetPath(site.avatar);
-const pillLinksMobile = new Set(["/#work", "/#skills", "/#contact"]);
+const pillLinksMobile = new Set(["/#work", "/#services", "/#contact"]);
 
 function sectionIdFromHref(href: string) {
   const hash = href.includes("#") ? href.split("#")[1] : "";
@@ -96,12 +96,19 @@ export function SiteNav() {
               <LangToggle />
               <ThemeToggle />
             </div>
+            <Link
+              href="/resume"
+              prefetch
+              className="hidden rounded-full px-3 py-1.5 text-sm font-medium text-muted transition-colors hover:text-foreground lg:inline-flex"
+            >
+              {t.nav_resume_view}
+            </Link>
             <span className="hidden md:inline-flex">
               <ResumeDownloadButton className="btn-ghost !min-h-9 !px-4 !py-1.5 !text-sm" />
             </span>
             <button
               type="button"
-              className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border text-sm transition-colors hover:bg-surface-2 md:hidden"
+              className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border text-sm transition-colors hover:bg-surface-2 lg:hidden"
               aria-expanded={open}
               aria-label={open ? t.nav_close : t.nav_open}
               onClick={() => setOpen((v) => !v)}
@@ -114,12 +121,12 @@ export function SiteNav() {
         </nav>
 
         <div
-          className={`overflow-hidden transition-[max-height,opacity] duration-300 ease-out md:hidden ${
-            open ? "max-h-[36rem] border-t border-border opacity-100" : "max-h-0 opacity-0"
+          className={`overflow-hidden transition-[max-height,opacity] duration-300 ease-out lg:hidden ${
+            open ? "max-h-[44rem] border-t border-border opacity-100" : "max-h-0 opacity-0"
           }`}
         >
           <div className="page-shell flex flex-col gap-1 py-5">
-            {[...navPages, { href: "/resume", key: "nav_resume" as const }].map((link) => (
+            {[...navPages, { href: "/resume", key: "nav_resume_view" as const }].map((link) => (
               <Link
                 key={link.href}
                 href={link.href}

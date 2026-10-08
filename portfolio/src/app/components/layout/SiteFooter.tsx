@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useLanguage } from "@/app/context/LanguageContext";
+import { caseStudies } from "@/app/lib/caseStudies";
 import { navPages, site } from "@/app/lib/site";
 import { SocialIcon } from "../ui/SocialIcon";
 
@@ -50,8 +51,22 @@ export function SiteFooter() {
             </Link>
           ))}
           <Link href="/resume" prefetch className={linkClass}>
-            {t.nav_resume}
+            {t.nav_resume_view}
           </Link>
+        </nav>
+
+        <nav
+          aria-label={t.footer_case_studies}
+          className="mt-4 flex flex-wrap items-baseline gap-x-6 gap-y-2"
+        >
+          <span className="text-xs font-semibold tracking-[0.14em] text-white/40 uppercase">
+            {t.footer_case_studies}
+          </span>
+          {Object.values(caseStudies).map((cs) => (
+            <Link key={cs.slug} href={`/work/${cs.slug}/`} prefetch className={linkClass}>
+              {cs.client}
+            </Link>
+          ))}
         </nav>
 
         <div className="mt-6 flex flex-col gap-3 text-xs text-white/45 sm:flex-row sm:items-center sm:justify-between">

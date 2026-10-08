@@ -1,7 +1,11 @@
-"use client";
+import type { Metadata } from "next";
+import { HashRedirect } from "../components/ui/HashRedirect";
 
-import { WorkSection } from "../components/sections/WorkSection";
+export const metadata: Metadata = {
+  title: "Proyectos",
+  robots: { index: false, follow: true },
+};
 
-export default function WorkPage() {
-  return <WorkSection />;
+export default function WorkIndexPage() {
+  return <HashRedirect to="/#work" />;
 }

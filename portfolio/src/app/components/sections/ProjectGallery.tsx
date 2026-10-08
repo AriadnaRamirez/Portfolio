@@ -46,6 +46,9 @@ function frameAspect(id: ProjectId) {
 
 const pad = (n: number) => String(n).padStart(2, "0");
 
+/** 240px previews generated under /projects/<id>/thumbs/. */
+const thumbOf = (src: string) => src.replace(/\/([^/]+\.webp)$/, "/thumbs/$1");
+
 function useShots(count: number) {
   const [shot, setShot] = useState(1);
   const next = useCallback(() => setShot((s) => (s % count) + 1), [count]);
@@ -107,7 +110,10 @@ function PhoneChrome({ children }: { children: ReactNode }) {
   );
 }
 
-/** All shots stay mounted and crossfade, so switching never flashes empty. */
+/**
+ * Shots mount on first approach (the active one plus its neighbours) and then
+ * stay mounted to crossfade, so switching never flashes empty.
+ */
 function ShotStack({
   srcs,
   active,
@@ -123,10 +129,23 @@ function ShotStack({
   priority?: boolean;
   fit?: "cover" | "contain";
 }) {
+  const count = srcs.length;
+  const wrap = (n: number) => ((n - 1 + count) % count) + 1;
+  const [mounted, setMounted] = useState(() => new Set([active, wrap(active + 1)]));
+
+  useEffect(() => {
+    setMounted((prev) => {
+      const near = [wrap(active - 1), active, wrap(active + 1)];
+      if (near.every((n) => prev.has(n))) return prev;
+      return new Set([...prev, ...near]);
+    });
+  }, [active, count]);
+
   return (
     <>
       {srcs.map((src, i) => {
         const n = i + 1;
+        if (n !== active && !mounted.has(n)) return null;
         return (
           <Image
             key={src}
@@ -285,7 +304,7 @@ function Lightbox({
                 i + 1 === shot ? "opacity-100 ring-2 ring-white" : "opacity-45 hover:opacity-80"
               }`}
             >
-              <Image src={src} alt="" fill unoptimized sizes="96px" className="object-cover object-top" />
+              <Image src={thumbOf(src)} alt="" fill unoptimized sizes="96px" className="object-cover object-top" />
             </button>
           ))}
         </div>
@@ -442,7 +461,7 @@ export function ProjectGallery({ id, title, t, compact = false }: ProjectGallery
                 }`}
               >
                 <Image
-                  src={src}
+                  src={thumbOf(src)}
                   alt=""
                   fill
                   unoptimized

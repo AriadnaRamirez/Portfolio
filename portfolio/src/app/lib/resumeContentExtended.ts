@@ -14,7 +14,7 @@ const es: ResumeCopy = {
     {
       org: "Trabajo Independiente",
       role: "Freelance Web Developer",
-      period: "Ago 2026 — Actualidad · Oaxaca, México",
+      period: "Ago 2026 — Actualidad · Remoto",
       bullets: [
         "Desarrollo de soluciones web a la medida para clientes reales, cubriendo desde la arquitectura y UX hasta el desarrollo, SEO y despliegue en producción.",
       ],
@@ -25,7 +25,7 @@ const es: ResumeCopy = {
             "Desarrollé end-to-end un sitio web institucional responsive para un cliente real, desde la arquitectura y estructura de contenidos hasta el desarrollo y despliegue en producción.",
             "Definí la experiencia de navegación y organización del contenido, priorizando claridad, accesibilidad y conversión.",
             "Implementé un catálogo de 50+ productos con fichas individuales, servicios, FAQ, contacto y CTAs de cotización vía WhatsApp.",
-            "Apliqué prácticas básicas de SEO on-page y SEO local como parte de la optimización del sitio.",
+            "Apliqué SEO on-page y SEO local, posicionando el sitio en la primera página de Google para \"extintores Cuajimalpa\".",
             "Realicé el despliegue en Vercel y configuración relacionada con dominio y publicación.",
             "Trabajé directamente con el cliente para traducir necesidades de negocio en soluciones web.",
             "Utilicé herramientas de IA generativa como apoyo durante la implementación y debugging, validando manualmente el código y el resultado final.",
@@ -126,7 +126,7 @@ const es: ResumeCopy = {
     {
       left: "Junior Achievement Americas — Mujer Digital · 7.ª generación",
       right: "2026 · En curso",
-      sub: "Formación en ciberseguridad, redes y soporte, con acompañamiento para empleabilidad. Cisco Digital Badges: Introduction to Cybersecurity · Networking Basics · Network Defense.",
+      sub: "Formación en ciberseguridad, redes y soporte, con acompañamiento para empleabilidad. Cisco Digital Badges: Introduction to Cybersecurity · Networking Basics · Network Defense · Cyber Threat Management.",
     },
   ],
   skills: [
@@ -162,7 +162,7 @@ const es: ResumeCopy = {
     {
       left: "Cisco Digital Badges",
       right: "2026",
-      sub: "Introduction to Cybersecurity · Networking Basics · Networking Devices and Initial Configuration · Endpoint Security · Network Defense",
+      sub: "Introduction to Cybersecurity · Networking Basics · Networking Devices and Initial Configuration · Endpoint Security · Network Defense · Cyber Threat Management",
     },
     {
       left: "Python for Data Analysis · Programming with Python — Emerging Technologies Institute",
@@ -182,7 +182,7 @@ const en: ResumeCopy = {
     {
       org: "Independent work",
       role: "Freelance Web Developer",
-      period: "Aug 2026 — Present · Oaxaca, Mexico",
+      period: "Aug 2026 — Present · Remote",
       bullets: [
         "Custom web solutions for real clients, covering architecture and UX through development, SEO, and production deployment.",
       ],
@@ -193,7 +193,7 @@ const en: ResumeCopy = {
             "Built an end-to-end responsive institutional website for a real client, from architecture and content structure through development and production deployment.",
             "Defined navigation experience and content organization, prioritizing clarity, accessibility, and conversion.",
             "Implemented a 50+ product catalog with individual detail pages, services, FAQ, contact, and WhatsApp quote CTAs.",
-            "Applied basic on-page and local SEO as part of site optimization.",
+            "Applied on-page and local SEO, ranking the site on Google's first page for \"extintores Cuajimalpa\".",
             "Handled deployment on Vercel and related domain and publication setup.",
             "Worked directly with the client to translate business needs into web solutions.",
             "Used generative AI tools as support during implementation and debugging, manually validating the code and final result.",
@@ -294,7 +294,7 @@ const en: ResumeCopy = {
     {
       left: "Junior Achievement Americas — Mujer Digital · 7th cohort",
       right: "2026 · In progress",
-      sub: "Training in cybersecurity, networking, and support, with employability mentoring. Cisco Digital Badges: Introduction to Cybersecurity · Networking Basics · Network Defense.",
+      sub: "Training in cybersecurity, networking, and support, with employability mentoring. Cisco Digital Badges: Introduction to Cybersecurity · Networking Basics · Network Defense · Cyber Threat Management.",
     },
   ],
   skills: [
@@ -330,7 +330,7 @@ const en: ResumeCopy = {
     {
       left: "Cisco Digital Badges",
       right: "2026",
-      sub: "Introduction to Cybersecurity · Networking Basics · Networking Devices and Initial Configuration · Endpoint Security · Network Defense",
+      sub: "Introduction to Cybersecurity · Networking Basics · Networking Devices and Initial Configuration · Endpoint Security · Network Defense · Cyber Threat Management",
     },
     {
       left: "Python for Data Analysis · Programming with Python — Emerging Technologies Institute",

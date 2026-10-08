@@ -3,6 +3,7 @@
 import type { TranslationKey } from "@/app/components/lib/translations";
 import { useLanguage } from "@/app/context/LanguageContext";
 import { brands, type BrandId } from "@/app/lib/brands";
+import { getExtendedResumeCopy } from "@/app/lib/resumeContentExtended";
 import { experienceIds, type ExperienceId } from "@/app/lib/site";
 import Link from "next/link";
 import { useId, useState } from "react";
@@ -19,8 +20,8 @@ const entries: Record<
     stats: { value: string; label: TranslationKey }[];
     projects: Project[];
     stack: string[];
-    /** Bullet numbers shown behind the toggle; b1 is the summary. */
-    details: number[];
+    /** Index of this role in the CV; its per-project bullets fill the details. */
+    cv: number;
   }
 > = {
   crm: {
@@ -32,7 +33,7 @@ const entries: Record<
     ],
     projects: [{ brand: "crm", href: "/work/crm/" }],
     stack: ["HTML5", "CSS3", "JavaScript", "Cursor", "SEO", "Vercel"],
-    details: [2, 3, 4, 5],
+    cv: 0,
   },
   grova: {
     stats: [
@@ -48,36 +49,40 @@ const entries: Record<
     stack: [
       "React 19",
       "TypeScript",
+      "JavaScript",
       "Vite",
       "Formik",
       "Yup",
       "Zustand",
       "Tailwind CSS",
       "Material UI",
+      "Motion",
       "REST APIs",
       "JWT",
       "WordPress",
+      "Git",
+      "GitHub",
     ],
-    details: [2, 3, 4],
+    cv: 1,
   },
 };
 
 const chipClass =
-  "inline-flex items-center gap-2 rounded-full border border-border bg-background px-3 py-1.5 text-xs font-medium text-foreground/80";
+  "inline-flex h-10 items-center text-sm font-semibold tracking-[0.14em] text-foreground/80 uppercase";
 
 function ProjectChip({ project }: { project: Project }) {
   const { t } = useLanguage();
   const name = "name" in project ? project.name : brands[project.brand].name;
   const content =
     "brand" in project ? (
-      <BrandMark id={project.brand} className="h-8! w-auto max-w-28 rounded-none!" />
+      <BrandMark id={project.brand} className="h-10! w-auto max-w-36 rounded-none!" />
     ) : (
       name
     );
 
   if (!project.href) return <span className={chipClass}>{content}</span>;
 
-  const linkClass = `${chipClass} transition-colors hover:border-foreground hover:text-foreground`;
+  const linkClass = `${chipClass} overflow-visible transition-opacity duration-200 hover:opacity-70`;
   if (project.href.startsWith("/")) {
     return (
       <Link href={project.href} aria-label={`${t.cs_read}: ${name}`} className={linkClass}>
@@ -99,8 +104,10 @@ function ProjectChip({ project }: { project: Project }) {
 }
 
 function ExperienceEntry({ id, index }: { id: ExperienceId; index: number }) {
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
   const entry = entries[id];
+  const groups = getExtendedResumeCopy(lang).experience[entry.cv]?.nestedProjects ?? [];
+  const achievements = groups.reduce((sum, g) => sum + g.bullets.length, 0);
   const k = (suffix: string) => t[`exp_${id}_${suffix}` as TranslationKey];
   const periodParts = k("period").split(" · ");
   const dates = periodParts.find((p) => /\d/.test(p)) ?? periodParts[0];
@@ -143,7 +150,7 @@ function ExperienceEntry({ id, index }: { id: ExperienceId; index: number }) {
             <p className="mt-5 text-[0.9375rem] leading-relaxed text-muted">{k("b1")}</p>
 
             <p className="mt-6 font-mono-label text-muted">{t.exp_projects}</p>
-            <div className="mt-2.5 flex flex-wrap gap-2">
+            <div className="mt-3 flex flex-wrap items-center gap-x-7 gap-y-3">
               {entry.projects.map((p) => (
                 <ProjectChip key={"name" in p ? p.name : p.brand} project={p} />
               ))}
@@ -187,18 +194,23 @@ function ExperienceEntry({ id, index }: { id: ExperienceId; index: number }) {
                   open ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
                 }`}
               >
-                <ul className="min-h-0 space-y-3 overflow-hidden">
-                  {entry.details.map((n, i) => (
-                    <li
-                      key={n}
-                      className={`relative pl-5 text-sm leading-relaxed text-muted before:absolute before:top-[0.6em] before:left-0 before:h-1.5 before:w-1.5 before:rounded-full before:bg-[linear-gradient(135deg,var(--cat-from),var(--cat-to))] ${
-                        i === 0 ? "pt-1" : ""
-                      }`}
-                    >
-                      {k(`b${n}`)}
-                    </li>
+                <div className="min-h-0 space-y-6 overflow-hidden">
+                  {groups.map((group, gi) => (
+                    <div key={group.title} className={gi === 0 ? "pt-1" : ""}>
+                      <h4 className="text-sm font-semibold text-foreground">{group.title}</h4>
+                      <ul className="mt-2.5 space-y-2.5">
+                        {group.bullets.map((bullet) => (
+                          <li
+                            key={bullet}
+                            className="relative pl-5 text-sm leading-relaxed text-muted before:absolute before:top-[0.6em] before:left-0 before:h-1.5 before:w-1.5 before:rounded-full before:bg-[linear-gradient(135deg,var(--cat-from),var(--cat-to))]"
+                          >
+                            {bullet}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   ))}
-                </ul>
+                </div>
               </div>
               <button
                 type="button"
@@ -215,7 +227,7 @@ function ExperienceEntry({ id, index }: { id: ExperienceId; index: number }) {
                 >
                   +
                 </span>
-                {open ? t.exp_less : `${entry.details.length} ${t.exp_more}`}
+                {open ? t.exp_less : `${achievements} ${t.exp_more}`}
               </button>
             </div>
           </div>

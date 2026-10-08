@@ -146,6 +146,8 @@ const logoFiles: Partial<Record<TechId, { file: string; mono?: boolean }>> = {
   vercel: { file: "vercel", mono: true },
   render: { file: "render", mono: true },
   neon: { file: "neon" },
+  socketio: { file: "socketio", mono: true },
+  prisma: { file: "prisma", mono: true },
 };
 
 export function TechIcon({ id, className, showLabel = true }: TechIconProps) {

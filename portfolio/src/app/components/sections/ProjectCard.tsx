@@ -5,6 +5,7 @@ import type { Lang, TranslationKey } from "@/app/components/lib/translations";
 import { caseStudyFor } from "@/app/lib/caseStudies";
 import { projectMeta, type ProjectId } from "@/app/lib/site";
 import { Reveal } from "../ui/Reveal";
+import { SocialIcon } from "../ui/SocialIcon";
 import { TechIconRow } from "../ui/TechIcon";
 import { ProjectGallery } from "./ProjectGallery";
 
@@ -39,7 +40,7 @@ export function ProjectCard({ id, lang, t, compact = false }: ProjectCardProps) 
             {title}
           </h3>
           <p className="text-sm text-muted">{role}</p>
-          <p className="line-clamp-2 text-sm leading-relaxed text-muted">{desc}</p>
+          <p className="text-sm leading-relaxed text-pretty text-muted">{desc}</p>
           <TechIconRow ids={meta.tech.slice(0, 4)} />
         </div>
       </article>
@@ -60,31 +61,25 @@ export function ProjectCard({ id, lang, t, compact = false }: ProjectCardProps) 
             {title}
           </h3>
           <p className="text-[0.9375rem] font-medium text-foreground/80">{role}</p>
-          <p className="line-clamp-2 text-[0.9375rem] leading-relaxed text-muted">
+          <p className="text-[0.9375rem] leading-relaxed text-pretty text-muted">
             {desc}
           </p>
           <TechIconRow ids={meta.tech} />
           {meta.status ? (
             <p className="inline-flex items-center gap-2 rounded-full border border-dashed border-border px-4 py-2 text-sm font-medium text-muted">
-              {meta.status === "private" ? (
-                <svg viewBox="0 0 16 16" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden>
-                  <rect x="3" y="7" width="10" height="7" rx="1.5" />
-                  <path d="M5.5 7V5a2.5 2.5 0 0 1 5 0v2" />
-                </svg>
-              ) : (
-                <svg viewBox="0 0 16 16" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden>
-                  <circle cx="8" cy="8" r="5.5" />
-                  <path d="M8 5v3l2 1.5" />
-                </svg>
-              )}
-              {meta.status === "private" ? t.projects_status_private : t.projects_status_pending}
+              <svg viewBox="0 0 16 16" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden>
+                <rect x="3" y="7" width="10" height="7" rx="1.5" />
+                <path d="M5.5 7V5a2.5 2.5 0 0 1 5 0v2" />
+              </svg>
+              {t.projects_status_private}
             </p>
           ) : null}
           {caseStudy || meta.links.length ? (
             <div className="flex flex-wrap gap-3 pt-2">
               {caseStudy ? (
                 <Link href={`/work/${caseStudy.slug}/`} className="btn-primary">
-                  {t.cs_read} →
+                  {t.cs_read}
+                  <span aria-hidden className="btn-arrow">→</span>
                 </Link>
               ) : null}
               {meta.links.map((link) => (
@@ -94,8 +89,11 @@ export function ProjectCard({ id, lang, t, compact = false }: ProjectCardProps) 
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={`${t[link.labelKey]}: ${title}`}
+                  data-umami-event={link.labelKey === "projects_link_github" ? "project-code" : "project-live"}
+                  data-umami-event-project={id}
                   className="btn-ghost"
                 >
+                  {link.labelKey === "projects_link_github" ? <SocialIcon kind="github" /> : null}
                   {t[link.labelKey]}
                   <span aria-hidden>↗</span>
                 </a>

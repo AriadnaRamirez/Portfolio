@@ -8,9 +8,10 @@ export const site = {
   email: "ariadnamts98@gmail.com",
   phone: "951 218 9458",
   phoneHref: "tel:+529512189458",
+  whatsapp: "529512189458",
   /** Portrait used in hero / about (under public/). */
   photo: "/images/ariadna.jpg",
-  avatar: "/images/ariadna-avatar.png",
+  avatar: "/images/ariadna-avatar.webp",
   coreStack: [
     "TypeScript",
     "React",
@@ -22,6 +23,9 @@ export const site = {
     "Figma",
   ] as const,
 } as const;
+
+export const whatsappHref = (message: string) =>
+  `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(message)}`;
 
 export type ProjectLink = {
   labelKey: "projects_link_live" | "projects_link_github";
@@ -55,7 +59,9 @@ export type TechId =
   | "nestjs"
   | "vercel"
   | "render"
-  | "neon";
+  | "neon"
+  | "socketio"
+  | "prisma";
 
 export const projectMeta: Record<
   ProjectId,
@@ -65,7 +71,7 @@ export const projectMeta: Record<
     categories: ProjectCategory[];
     links: ProjectLink[];
     /** Shown instead of a live link when the project can't be visited. */
-    status?: "private" | "pending";
+    status?: "private";
     featured?: boolean;
     accent: string;
   }
@@ -73,7 +79,7 @@ export const projectMeta: Record<
   crm: {
     badge: {
       es: "Freelance · Trabajo Independiente",
-      en: "Freelance · Independent work",
+      en: "Freelance · Self-employed",
     },
     tech: ["html", "css", "javascript", "cursor"],
     categories: ["frontend", "product"],
@@ -81,6 +87,10 @@ export const projectMeta: Record<
       {
         labelKey: "projects_link_live",
         href: "https://www.crmextintores.com.mx/",
+      },
+      {
+        labelKey: "projects_link_github",
+        href: "https://github.com/AriadnaRamirez/grupoCRM",
       },
     ],
     featured: true,
@@ -108,6 +118,10 @@ export const projectMeta: Record<
         labelKey: "projects_link_live",
         href: "https://ccst-study-lab.vercel.app/",
       },
+      {
+        labelKey: "projects_link_github",
+        href: "https://github.com/AriadnaRamirez/ccst-study-lab",
+      },
     ],
     featured: true,
     accent: "#1f1f1f",
@@ -127,10 +141,14 @@ export const projectMeta: Record<
       es: "Proyecto estudiantil · Marketplace",
       en: "Student project · Marketplace",
     },
-    tech: ["nextjs", "typescript", "tailwind", "oauth"],
+    tech: ["nextjs", "typescript", "nestjs", "socketio", "oauth"],
     categories: ["fullstack", "product"],
-    links: [],
-    status: "pending",
+    links: [
+      {
+        labelKey: "projects_link_github",
+        href: "https://github.com/ServiYApp-Inc/ServiYApp-Frontend",
+      },
+    ],
     featured: true,
     accent: "#722f37",
   },
@@ -163,6 +181,7 @@ export const projectMediaShotCount: Partial<Record<ProjectId, number>> = {
   crm: 6,
   senda: 6,
   ccst: 6,
+  servi: 6,
 };
 
 /** Screenshots of the site before the redesign, under /projects/<id>/before-<n>.webp. */
@@ -217,6 +236,9 @@ const projectMediaExt: Partial<
   senda: {
     desktop: "webp",
   },
+  servi: {
+    desktop: "webp",
+  },
   ccst: {
     desktop: "webp",
     mobile: "webp",
@@ -249,10 +271,12 @@ export const projectIds: ProjectId[] = ["crm", "hotel", "ccst", "senda", "servi"
 
 export const navPages = [
   { href: "/#work", key: "nav_work" as const },
-  { href: "/#skills", key: "nav_skills" as const },
-  { href: "/#certs", key: "nav_certs" as const },
-  { href: "/#experience", key: "nav_experience" as const },
+  { href: "/#services", key: "nav_services" as const },
   { href: "/#about", key: "nav_about" as const },
+  { href: "/#experience", key: "nav_experience" as const },
+  { href: "/#skills", key: "nav_skills" as const },
+  { href: "/#education", key: "nav_education" as const },
+  { href: "/#certs", key: "nav_certs" as const },
   { href: "/#contact", key: "nav_contact" as const },
 ] as const;
 
@@ -294,9 +318,9 @@ export const stackGroups: Record<
   "frontend" | "backend" | "tools",
   readonly TechId[]
 > = {
-  frontend: ["typescript", "react", "nextjs", "tailwind", "figma"],
-  backend: ["nodejs", "postgresql", "mongodb", "oauth"],
-  tools: ["wordpress", "vite", "seo"],
+  frontend: ["typescript", "react", "nextjs", "tailwind"],
+  backend: ["nodejs", "nestjs", "socketio", "postgresql", "prisma"],
+  tools: ["vercel", "render", "cursor"],
 };
 
 export const techLabels: Record<TechId, string> = {
@@ -321,4 +345,6 @@ export const techLabels: Record<TechId, string> = {
   vercel: "Vercel",
   render: "Render",
   neon: "Neon",
+  socketio: "Socket.IO",
+  prisma: "Prisma",
 };

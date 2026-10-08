@@ -18,11 +18,12 @@ function Rise({ children, delay = 0, className = "" }: { children: ReactNode; de
   );
 }
 
-function SectionHead({ kicker, title }: { kicker: string; title?: string }) {
+function SectionHead({ kicker, title, n }: { kicker: string; title?: string; n?: number }) {
+  const label = n ? `${String(n).padStart(2, "0")} · ${kicker}` : kicker;
   return (
     <div className="max-w-2xl space-y-4">
       <Reveal variant="left">
-        {title ? <p className="section-kicker">{kicker}</p> : <h2 className="section-kicker">{kicker}</h2>}
+        {title ? <p className="section-kicker">{label}</p> : <h2 className="section-kicker">{label}</h2>}
       </Reveal>
       {title ? (
         <Reveal variant="blur" delay={100}>
@@ -87,6 +88,15 @@ export function CaseStudyView({ slug }: { slug: string }) {
   const cs = caseStudies[slug];
   const host = cs.liveUrl?.replace(/^https?:\/\//, "").replace(/\/$/, "");
   const hero = cs.story[0];
+  const sections = [
+    "problem",
+    "process",
+    "solution",
+    ...(cs.engineering?.length ? ["engineering"] : []),
+    ...(cs.before?.length ? ["before"] : []),
+    "results",
+  ];
+  const n = (key: string) => sections.indexOf(key) + 1;
 
   return (
     <article className="cat-violet">
@@ -113,6 +123,30 @@ export function CaseStudyView({ slug }: { slug: string }) {
               {cs.liveUrl ? (
                 <a href={cs.liveUrl} target="_blank" rel="noopener noreferrer" className="btn-primary">
                   {t.cs_view_live} <span aria-hidden>↗</span>
+                </a>
+              ) : null}
+              {cs.codeUrl ? (
+                <a
+                  href={cs.codeUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={cs.liveUrl ? "btn-ghost" : "btn-primary"}
+                  data-umami-event="cs-code"
+                  data-umami-event-project={cs.id}
+                >
+                  {cs.backendCodeUrl ? t.cs_code_frontend : t.projects_link_github} <span aria-hidden>↗</span>
+                </a>
+              ) : null}
+              {cs.backendCodeUrl ? (
+                <a
+                  href={cs.backendCodeUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-ghost"
+                  data-umami-event="cs-code-backend"
+                  data-umami-event-project={cs.id}
+                >
+                  {t.cs_code_backend} <span aria-hidden>↗</span>
                 </a>
               ) : null}
               <a href="#cs-story" className="btn-ghost">
@@ -161,7 +195,7 @@ export function CaseStudyView({ slug }: { slug: string }) {
 
       <section className="page-shell grid gap-12 py-24 sm:py-32 lg:grid-cols-2 lg:gap-16" aria-labelledby="cs-challenge">
         <div>
-          <SectionHead kicker={t.cs_challenge} />
+          <SectionHead kicker={t.cs_challenge} n={n("problem")} />
           <Reveal variant="up" delay={120}>
             <p id="cs-challenge" className="mt-6 text-xl leading-relaxed text-foreground sm:text-2xl">
               {cs.challenge[lang]}
@@ -187,43 +221,80 @@ export function CaseStudyView({ slug }: { slug: string }) {
         </div>
       </section>
 
-      {cs.before?.length ? (
-        <section className="page-shell pb-24 sm:pb-32" aria-label={t.cs_before}>
-          <SectionHead kicker={t.cs_before} />
-          <Reveal variant="up" className="mt-10">
-            <BeforeAfterCompare pairs={cs.before} />
-          </Reveal>
-        </section>
-      ) : null}
-
       <section className="page-shell pb-24 sm:pb-32" aria-label={t.cs_process}>
-        <SectionHead kicker={t.cs_process} />
+        <SectionHead kicker={t.cs_process} n={n("process")} />
         <ol className="mt-10 grid gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
           {cs.process.map((p, i) => (
-            <Reveal key={p.title.en} as="li" variant="up" delay={i * 90} className="bg-background p-6">
+            <Reveal key={p.title.en} as="li" variant="up" delay={i * 90} className="flex flex-col bg-background p-6">
               <span className="font-mono-label text-muted">{String(i + 1).padStart(2, "0")}</span>
               <h3 className="mt-4 font-display text-xl text-foreground">{p.title[lang]}</h3>
               <p className="mt-2 text-sm leading-relaxed text-muted">{p.body[lang]}</p>
+              {cs.artifact?.step === i ? (
+                <a
+                  href={assetPath(cs.artifact.image)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title={cs.artifact.caption[lang]}
+                  className="group/art mt-5 block"
+                >
+                  <span className="block overflow-hidden rounded-lg border border-border bg-white">
+                    <img
+                      src={assetPath(cs.artifact.image)}
+                      alt={cs.artifact.caption[lang]}
+                      loading="lazy"
+                      decoding="async"
+                      className="aspect-[16/9] w-full object-cover object-top transition-transform duration-500 ease-out group-hover/art:scale-[1.04] motion-reduce:transition-none"
+                    />
+                  </span>
+                  <span className="mt-2 inline-flex items-center gap-1 text-xs text-muted transition-colors group-hover/art:text-foreground">
+                    {cs.artifact.label[lang]} <span aria-hidden>↗</span>
+                  </span>
+                </a>
+              ) : null}
             </Reveal>
           ))}
         </ol>
       </section>
 
       <section id="cs-story" className="page-shell pb-16" aria-label={t.cs_solution}>
-        <SectionHead kicker={t.cs_solution} />
+        <SectionHead kicker={t.cs_solution} n={n("solution")} />
         <div className="mt-6">
-          <ScrollStory steps={cs.story} lang={lang} url={host} />
+          <ScrollStory steps={cs.story} lang={lang} url={host} problemLabel={t.cs_step_problem} />
         </div>
       </section>
 
+      {cs.engineering?.length ? (
+        <section className="page-shell pb-24 sm:pb-32" aria-label={t.cs_engineering}>
+          <SectionHead kicker={t.cs_engineering} n={n("engineering")} />
+          <ol className="mt-10 grid gap-px overflow-hidden rounded-2xl border border-border bg-border md:grid-cols-2">
+            {cs.engineering.map((e, i) => (
+              <Reveal key={e.title.en} as="li" variant="up" delay={(i % 2) * 90} className="bg-background p-6 sm:p-8">
+                <span className="font-mono-label text-gradient">{String(i + 1).padStart(2, "0")}</span>
+                <h3 className="mt-3 font-display text-xl leading-snug text-foreground">{e.title[lang]}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted">{e.body[lang]}</p>
+              </Reveal>
+            ))}
+          </ol>
+        </section>
+      ) : null}
+
+      {cs.before?.length ? (
+        <section className="page-shell pb-24 sm:pb-32" aria-label={t.cs_before}>
+          <SectionHead kicker={t.cs_before} n={n("before")} />
+          <Reveal variant="up" className="mt-10">
+            <BeforeAfterCompare pairs={cs.before} />
+          </Reveal>
+        </section>
+      ) : null}
+
       <section className="page-shell pb-24 sm:pb-32" aria-label={t.cs_results}>
-        <SectionHead kicker={t.cs_results} />
+        <SectionHead kicker={t.cs_results} n={n("results")} />
         <dl className="mt-10 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-border bg-border lg:grid-cols-4">
           {cs.results.map((r, i) => (
             <Reveal key={r.label.en} variant="up" delay={i * 90} className="bg-background p-6 sm:p-8">
               <dt className="sr-only">{r.label[lang]}</dt>
               <dd>
-                <span className="block font-display text-4xl leading-none text-gradient sm:text-5xl">{r.value}</span>
+                <span className="block font-display text-4xl leading-none text-gradient sm:text-5xl">{typeof r.value === "string" ? r.value : r.value[lang]}</span>
                 <span className="mt-3 block text-sm text-muted">{r.label[lang]}</span>
               </dd>
             </Reveal>
@@ -270,6 +341,7 @@ export function CaseStudyView({ slug }: { slug: string }) {
           <div className="flex flex-col gap-3 sm:flex-row">
             <Link href="/#contact" className="btn-primary">
               {t.hero_cta_contact_primary}
+              <span aria-hidden className="btn-arrow">→</span>
             </Link>
             <Link href="/#work" className="btn-ghost">
               {t.cs_more}

@@ -428,6 +428,24 @@ section[id] {
   transform: scale(0.98);
 }
 
+.btn-arrow {
+  display: inline-block;
+  transition: transform 0.25s var(--ease-smooth);
+}
+
+.btn-primary:hover .btn-arrow,
+.btn-ghost:hover .btn-arrow,
+.btn-text:hover .btn-arrow,
+.group:hover .btn-arrow {
+  transform: translateX(3px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn-arrow {
+    transition: none;
+  }
+}
+
 .band-ink .btn-primary {
   background: var(--background);
   color: var(--foreground);

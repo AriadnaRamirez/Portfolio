@@ -5,6 +5,8 @@ import type { TranslationKey } from "@/app/components/lib/translations";
 import { useLanguage } from "@/app/context/LanguageContext";
 import { certificationIds, scholarshipIds } from "@/app/lib/site";
 import { certificationOrg, scholarshipOrg } from "@/app/lib/orgs";
+import { badges } from "@/app/lib/badges";
+import { assetPath } from "@/app/lib/siteUrl";
 import { OrgLogo } from "../ui/OrgLogo";
 import { Reveal } from "../ui/Reveal";
 
@@ -14,15 +16,23 @@ function ProgramPicker() {
   const { t } = useLanguage();
   const [active, setActive] = useState<ScholarshipId | null>(null);
   const [shown, setShown] = useState<ScholarshipId>(scholarshipIds[0]);
+  const [pinned, setPinned] = useState(false);
   const panelId = useId();
 
-  const select = (id: ScholarshipId) => {
-    if (active === id) {
-      setActive(null);
-      return;
-    }
+  const open = (id: ScholarshipId) => {
     setShown(id);
     setActive(id);
+  };
+
+  /** Mouse hover previews a program; a click pins it open (or closes it if already pinned). */
+  const select = (id: ScholarshipId) => {
+    if (active === id && pinned) {
+      setActive(null);
+      setPinned(false);
+      return;
+    }
+    open(id);
+    setPinned(true);
   };
 
   const [org, ...rest] = t[`sch_${shown}_program` as TranslationKey].split(" — ");
@@ -32,7 +42,11 @@ function ProgramPicker() {
   const isOpen = active !== null;
 
   return (
-    <div>
+    <div
+      onPointerLeave={(e) => {
+        if (e.pointerType === "mouse" && !pinned) setActive(null);
+      }}
+    >
       <h3 className="font-mono-label text-muted">{t.landing_certs_programs_label}</h3>
       <ul className="mt-4 flex flex-wrap gap-2">
         {scholarshipIds.map((id) => {
@@ -42,6 +56,11 @@ function ProgramPicker() {
               <button
                 type="button"
                 onClick={() => select(id)}
+                onPointerEnter={(e) => {
+                  if (e.pointerType !== "mouse") return;
+                  open(id);
+                  if (active !== id) setPinned(false);
+                }}
                 aria-expanded={selected}
                 aria-controls={panelId}
                 className={`inline-flex items-center gap-2 rounded-full border px-3.5 py-1.5 text-sm font-medium transition-colors duration-200 ${
@@ -79,7 +98,7 @@ function ProgramPicker() {
           >
             <div>
               {scholarshipOrg[shown] ? (
-                <OrgLogo id={scholarshipOrg[shown]} className="mb-3 opacity-100! grayscale-0!" />
+                <OrgLogo id={scholarshipOrg[shown]} wrapperClassName="mb-3" className="opacity-100! grayscale-0!" />
               ) : null}
               <p className="font-mono-label text-[var(--cat-ink)]">{org}</p>
               <p className="mt-1 text-xs text-muted">{when}</p>
@@ -89,6 +108,7 @@ function ProgramPicker() {
               {descParts.length ? (
                 <p className="mt-2 text-sm leading-relaxed text-muted">{descParts.join(" · ")}</p>
               ) : null}
+              {shown === "mujer_digital" ? <BadgeRow /> : null}
             </div>
           </article>
         </div>
@@ -97,11 +117,54 @@ function ProgramPicker() {
   );
 }
 
+/** Compact row of verified badges earned in the Mujer Digital program. */
+function BadgeRow() {
+  const { t, lang } = useLanguage();
+  const formatDate = (iso: string) => {
+    const [y, m, d] = iso.split("-").map(Number);
+    return new Date(y, m - 1, d).toLocaleDateString(lang === "es" ? "es-MX" : "en-US", {
+      day: "numeric",
+      month: "short",
+      year: "numeric",
+    });
+  };
+
+  return (
+    <div className="mt-4 border-t border-border pt-4">
+      <p className="text-xs text-muted">
+        {t.landing_badges_title} · {badges.length}
+      </p>
+      <ul className="mt-3 grid gap-x-6 gap-y-2.5 sm:grid-cols-2">
+        {badges.map((badge) => (
+          <li key={badge.file} className="flex items-center gap-2.5">
+            {/* eslint-disable-next-line @next/next/no-img-element -- static export, local assets */}
+            <img
+              src={assetPath(`/badges/${badge.file}`)}
+              alt=""
+              width={83}
+              height={83}
+              loading="lazy"
+              decoding="async"
+              className="h-7 w-7 shrink-0 rounded-md object-cover"
+            />
+            <span className="min-w-0 leading-tight">
+              <span className="block text-sm text-foreground">{badge.name}</span>
+              <span className="block text-xs text-muted">
+                {t.landing_badges_issued} {formatDate(badge.issued)}
+              </span>
+            </span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
 export function LandingCertifications() {
   const { t } = useLanguage();
 
   return (
-    <section id="certs" className="cat-pink page-shell py-24 sm:py-32">
+    <section id="certs" className="cat-pink page-shell py-20 sm:py-24">
       <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
         <div className="max-w-xl space-y-5">
           <Reveal variant="left">
