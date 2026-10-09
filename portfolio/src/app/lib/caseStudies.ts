@@ -56,8 +56,8 @@ export const caseStudies: Record<string, CaseStudy> = {
     liveUrl: "https://www.crmextintores.com.mx/",
     codeUrl: "https://github.com/AriadnaRamirez/grupoCRM",
     summary: {
-      es: "Sitio institucional end-to-end para una empresa de extintores y equipo contra incendios en CDMX: de la arquitectura y los contenidos al desarrollo, SEO local y lanzamiento.",
-      en: "End-to-end institutional site for a fire-extinguisher and safety-equipment company in Mexico City: from architecture and content to development, local SEO, and launch.",
+      es: "Sitio para una empresa de extintores y equipo contra incendios en CDMX, hecho de punta a punta: estructura, textos, desarrollo, SEO local y lanzamiento. La meta: que cotizar esté a un clic.",
+      en: "Site for a fire-extinguisher and safety-equipment company in Mexico City, built end to end: structure, copy, development, local SEO, and launch. The goal: put a quote one tap away.",
     },
     facts: [
       { label: { es: "Rol", en: "Role" }, value: { es: "Freelance · End-to-end", en: "Freelance · End-to-end" } },
@@ -67,8 +67,8 @@ export const caseStudies: Record<string, CaseStudy> = {
     ],
     tech: ["html", "css", "javascript", "seo", "cursor"],
     challenge: {
-      es: "El cliente necesitaba una presencia digital que generara confianza y convirtiera visitas en cotizaciones. Su catálogo anterior tenía productos sin imagen, contenido de prueba publicado y poca jerarquía, y la mayoría de sus clientes (condominios, restaurantes y oficinas) busca resolver rápido el cumplimiento de Protección Civil.",
-      en: "The client needed a digital presence that built trust and turned visits into quote requests. Their previous catalog had products without images, published test content, and little hierarchy, and most customers (condos, restaurants, offices) want to sort out civil-protection compliance quickly.",
+      es: "El cliente necesitaba un sitio que generara confianza y recibiera cotizaciones. Su catálogo tenía productos sin foto, contenido de prueba publicado y poco orden. Sus clientes (condominios, restaurantes y oficinas) quieren cumplir rápido con Protección Civil.",
+      en: "The client needed a site that built trust and brought in quote requests. Their catalog had products without photos, published test content, and little order. Their customers (condos, restaurants, offices) want to meet civil-protection rules quickly.",
     },
     goals: [
       { es: "Cotizar en un clic vía WhatsApp desde cualquier página.", en: "One-tap WhatsApp quotes from any page." },
@@ -157,7 +157,7 @@ export const caseStudies: Record<string, CaseStudy> = {
       {
         image: "/projects/crm/before-3.webp",
         after: "/projects/crm/after-3.webp",
-        caption: { es: "Productos sin imagen y un “Curso de prueba” publicado como si fuera un artículo.", en: "Products without images and a “test course” published as if it were a product." },
+        caption: { es: "Productos sin imagen y un “Curso de prueba” publicado como si fuera un producto.", en: "Products without images and a “test course” published as if it were a product." },
         afterCaption: { es: "Cada producto con foto, clave, especificaciones y dos acciones claras: ver detalle o cotizar por WhatsApp.", en: "Every product with a photo, SKU, specs, and two clear actions: view details or quote via WhatsApp." },
       },
     ],
@@ -168,8 +168,8 @@ export const caseStudies: Record<string, CaseStudy> = {
     client: "Hotel Marqués del Valle",
     liveUrl: "https://www.hotelmarquesdelvalle.com.mx/",
     summary: {
-      es: "Auditoría UX/CX, rediseño y frontend en producción para un hotel histórico en el corazón de Oaxaca: un sitio bilingüe y multimoneda pensado para que reservar sea lo más fácil de la página.",
-      en: "UX/CX audit, redesign, and production frontend for a historic hotel in the heart of Oaxaca: a bilingual, multi-currency site where booking is the easiest thing on the page.",
+      es: "Auditoría UX/CX, rediseño y frontend en producción para un hotel histórico a pasos del Zócalo de Oaxaca. Un sitio bilingüe y multimoneda donde reservar es lo más fácil de hacer.",
+      en: "UX/CX audit, redesign, and production frontend for a historic hotel steps from Oaxaca's Zócalo. A bilingual, multi-currency site where booking is the easiest thing to do.",
     },
     facts: [
       { label: { es: "Rol", en: "Role" }, value: { es: "UX/UI + Frontend", en: "UX/UI + Frontend" } },
@@ -179,8 +179,8 @@ export const caseStudies: Record<string, CaseStudy> = {
     ],
     tech: ["figma", "figmamake", "react", "typescript", "vite", "tailwind"],
     challenge: {
-      es: "El sitio anterior se apoyaba en fotos y bloques de texto largos: no mostraba precios ni capacidad, y reservar dependía de encontrar un botón en el menú. El hotel —un edificio histórico a pasos del Zócalo— necesitaba convertir visitas en reservas directas, también para huéspedes internacionales que consultan en su idioma y moneda.",
-      en: "The previous site leaned on photos and long blocks of text: no prices or capacity, and booking meant hunting for a button in the menu. The hotel — a historic building steps from the Zócalo — needed to turn visits into direct bookings, including international guests who browse in their own language and currency.",
+      es: "El sitio anterior tenía fotos y bloques largos de texto. No mostraba precios ni capacidad, y para reservar había que buscar un botón en el menú. El hotel necesitaba más reservas directas, también de huéspedes extranjeros que navegan en su idioma y su moneda.",
+      en: "The previous site had photos and long blocks of text. It showed no prices or capacity, and booking meant hunting for a button in the menu. The hotel needed more direct bookings, including from international guests who browse in their own language and currency.",
     },
     goals: [
       { es: "Reservar desde cualquier página, con fechas y huéspedes siempre a mano.", en: "Book from any page, with dates and guests always at hand." },
@@ -283,8 +283,8 @@ export const caseStudies: Record<string, CaseStudy> = {
     liveUrl: "https://ccst-study-lab.vercel.app/",
     codeUrl: "https://github.com/AriadnaRamirez/ccst-study-lab",
     summary: {
-      es: "Plataforma de estudio para la certificación Cisco CCST Cybersecurity: 51 tarjetas que se corrigen en el servidor y una pregunta queda dominada después de tres aciertos seguidos. Usé Cursor para acelerar el proceso, del diseño al deploy.",
-      en: "Study platform for the Cisco CCST Cybersecurity certification: 51 cards graded on the server, and a question counts as mastered after three correct answers in a row. I used Cursor to speed up the process, from design to deploy.",
+      es: "App para estudiar la certificación Cisco CCST Cybersecurity: 51 tarjetas corregidas en el servidor y un repaso que prioriza lo que más fallas. Una pregunta cuenta como dominada tras tres aciertos seguidos.",
+      en: "App to study for the Cisco CCST Cybersecurity certification: 51 cards graded on the server and a review mode that prioritizes what you miss most. A question counts as mastered after three correct answers in a row.",
     },
     facts: [
       { label: { es: "Rol", en: "Role" }, value: { es: "Fullstack · Diseño y desarrollo", en: "Fullstack · Design & development" } },
@@ -378,26 +378,26 @@ export const caseStudies: Record<string, CaseStudy> = {
         },
       },
       {
-        title: { es: "Pruebas sobre la lógica que importa", en: "Tests on the logic that matters" },
+        title: { es: "Esquema y migraciones", en: "Schema and migrations" },
         body: {
-          es: "Vitest cubre la corrección de los 5 tipos de pregunta, la regla de tres aciertos seguidos, la mezcla de la sesión y dónde reaparece un refuerzo, más una prueba de integración del flujo de sesión. Prisma gestiona el esquema y las migraciones en PostgreSQL.",
-          en: "Vitest covers grading for all 5 question types, the three-in-a-row rule, the session mix, and where a reinforcement card reappears, plus an integration test for the session flow. Prisma manages the schema and migrations on PostgreSQL.",
+          es: "Prisma gestiona el esquema y las migraciones en PostgreSQL.",
+          en: "Prisma manages the schema and migrations on PostgreSQL.",
         },
       },
     ],
     results: [
-      { value: "26", label: { es: "usuarios en dos días", en: "users in two days" } },
-      { value: "8 / 18", label: { es: "con cuenta / sin cuenta", en: "with / without an account" } },
-      { value: "46", label: { es: "sesiones de estudio", en: "study sessions" } },
-      { value: "978", label: { es: "respuestas corregidas en el servidor", en: "answers graded on the server" } },
-      { value: "84.3%", label: { es: "precisión global", en: "overall accuracy" } },
-      { value: "23", label: { es: "usuarios activos", en: "active users" } },
-      { value: "13", label: { es: "usuarios con una sesión completa", en: "users who finished a session" } },
-      { value: "6.9%", label: { es: "dominio global", en: "overall mastery" } },
+      { value: "32", label: { es: "usuarios", en: "users" } },
+      { value: "9 / 23", label: { es: "con cuenta / sin cuenta", en: "with / without an account" } },
+      { value: "55", label: { es: "sesiones de estudio", en: "study sessions" } },
+      { value: "1204", label: { es: "respuestas corregidas en el servidor", en: "answers graded on the server" } },
+      { value: "83.8%", label: { es: "precisión global", en: "overall accuracy" } },
+      { value: "10", label: { es: "activos hoy", en: "active today" } },
+      { value: "16", label: { es: "usuarios con una sesión completa", en: "users who finished a session" } },
+      { value: "7.3%", label: { es: "dominio global", en: "overall mastery" } },
     ],
     resultsNote: {
-      es: "Métricas reales de los dos primeros días en producción, tomadas del panel de administración. El dominio crece despacio a propósito: una tarjeta cuenta como dominada solo después de tres aciertos seguidos.",
-      en: "Real metrics from the first two days in production, taken from the admin panel. Mastery grows slowly on purpose: a card only counts as mastered after three correct answers in a row.",
+      es: "Al tercer día de lanzamiento, tomadas del panel de administración. Los 32 usuarios son nuevos en los últimos 30 días; 27 estuvieron activos tanto en 7 como en 30 días. El dominio crece despacio a propósito: una tarjeta cuenta como dominada solo después de tres aciertos seguidos.",
+      en: "On day three after launch, taken from the admin panel. All 32 users are new in the last 30 days; 27 were active over both the last 7 and 30 days. Mastery grows slowly on purpose: a card only counts as mastered after three correct answers in a row.",
     },
   },
   serviyapp: {
@@ -407,8 +407,8 @@ export const caseStudies: Record<string, CaseStudy> = {
     codeUrl: "https://github.com/ServiYApp-Inc/ServiYApp-Frontend",
     backendCodeUrl: "https://github.com/ServiYApp-Inc/ServiYApp-Backend",
     summary: {
-      es: "Plataforma para reservar servicios de belleza a domicilio (peluquería, maquillaje, manicura, cejas, masajes y más) y coordinarlos de punta a punta. Como Frontend Developer en un equipo de 6, construí la autenticación por rol, el flujo de compra con Mercado Pago, la verificación de profesionales y el chat en tiempo real completo, del backend en NestJS a la interfaz.",
-      en: "A platform to book at-home beauty services (hair, makeup, nails, brows, massage, and more) and coordinate them end to end. As a Frontend Developer on a team of 6, I built role-based authentication, the Mercado Pago purchase flow, professional verification, and the full real-time chat, from the NestJS backend to the UI.",
+      es: "Plataforma para reservar belleza a domicilio (peluquería, maquillaje, manicura, masajes y más). Fui Frontend Developer en un equipo de 6 y construí el login por rol, el pago con Mercado Pago, la verificación de profesionales y el chat en tiempo real, este último completo, del backend a la interfaz.",
+      en: "Platform to book at-home beauty services (hair, makeup, nails, massage, and more). I was a Frontend Developer on a team of 6 and built role-based login, Mercado Pago payments, professional verification, and real-time chat, the latter in full, from backend to UI.",
     },
     facts: [
       { label: { es: "Rol", en: "Role" }, value: { es: "Frontend · Chat fullstack", en: "Frontend · Fullstack chat" } },
@@ -418,8 +418,8 @@ export const caseStudies: Record<string, CaseStudy> = {
     ],
     tech: ["nextjs", "react", "typescript", "tailwind", "nestjs", "socketio", "oauth"],
     challenge: {
-      es: "Un servicio a domicilio no termina en un catálogo: hay que pagar, agendar, coordinar la llegada y confiar en alguien que no conoces y que va a entrar a tu casa. ServiYApp conecta tres perfiles con sesión propia (el cliente reserva, el profesional publica y atiende, el administrador controla la plataforma), y los flujos entre ellos no se pueden romper. Todo en pocas semanas y con seis personas trabajando sobre el mismo código.",
-      en: "An at-home service doesn't end at a catalog: you have to pay, schedule, coordinate arrival, and trust a stranger who's coming into your home. ServiYApp connects three profiles, each with its own session (the client books, the professional publishes and delivers, the admin runs the platform), and the flows between them can't break. All in a few weeks, with six people working on the same codebase.",
+      es: "Un servicio a domicilio no termina en un catálogo. Hay que pagar, agendar, coordinar la llegada y confiar en alguien que va a entrar a tu casa. La plataforma tiene tres tipos de usuario (cliente, profesional y administrador) y cada uno ve solo lo suyo. Lo hicimos en pocas semanas, seis personas sobre el mismo código.",
+      en: "An at-home service doesn't end at a catalog. You have to pay, schedule, coordinate arrival, and trust someone who's coming into your home. The platform has three kinds of users (client, professional, and admin), and each sees only their own part. We built it in a few weeks, six people on the same codebase.",
     },
     goals: [
       { es: "Que cada rol entre a su propio panel y solo vea sus rutas.", en: "Each role lands on its own panel and only sees its own routes." },
@@ -490,8 +490,8 @@ export const caseStudies: Record<string, CaseStudy> = {
       {
         title: { es: "Construí el chat completo: backend y frontend", en: "I built the whole chat: backend and frontend" },
         body: {
-          es: "En el backend, un gateway de WebSockets en NestJS con Socket.IO; en el frontend, la interfaz de conversación y la lista de chats. Es la parte del proyecto que diseñé de punta a punta.",
-          en: "On the backend, a NestJS WebSocket gateway with Socket.IO; on the frontend, the conversation UI, the chat list, and notifications. It's the part of the project I designed end to end.",
+          es: "En el backend, un gateway de WebSockets en NestJS con Socket.IO; en el frontend, la interfaz de conversación, la lista de chats y las notificaciones. Es la parte que diseñé de punta a punta.",
+          en: "On the backend, a NestJS WebSocket gateway with Socket.IO; on the frontend, the conversation UI, the chat list, and notifications. It's the part I designed end to end.",
         },
       },
       {
@@ -532,8 +532,8 @@ export const caseStudies: Record<string, CaseStudy> = {
     slug: "senda",
     client: "SENDA",
     summary: {
-      es: "SaaS de citas y operación para una clínica de belleza que aplica bótox, ácido hialurónico y otros procedimientos estéticos, preparado para operar uno o varios comercios. Como Frontend Developer en GROVA, en un equipo de dos, construí los formularios de las entidades principales, el manejo de errores del backend y la interfaz que cambia según el comercio.",
-      en: "An appointments and operations SaaS for a beauty clinic that offers Botox, hyaluronic acid, and other aesthetic procedures, built to run one or several locations. As a Frontend Developer at GROVA, on a team of two, I built the forms for the core entities, backend error handling, and the UI that adapts to each business.",
+      es: "Sistema de citas para una clínica estética (bótox, ácido hialurónico y más) que puede atender varios comercios. Fui Frontend Developer en GROVA, en un equipo de dos. Hice los formularios principales, los mensajes de error claros y una interfaz que cambia según el comercio.",
+      en: "Appointments system for an aesthetics clinic (Botox, hyaluronic acid, and more) that can serve several locations. I was a Frontend Developer at GROVA, on a team of two. I built the main forms, clear error messages, and a UI that adapts to each business.",
     },
     facts: [
       { label: { es: "Rol", en: "Role" }, value: { es: "Frontend Developer · GROVA", en: "Frontend Developer · GROVA" } },
@@ -543,8 +543,8 @@ export const caseStudies: Record<string, CaseStudy> = {
     ],
     tech: ["react", "typescript", "vite", "tailwind"],
     challenge: {
-      es: "Una clínica de procedimientos estéticos agenda tratamientos como bótox o ácido hialurónico, lleva el expediente de cada paciente y puede operar varios comercios, cada uno con sus pacientes, servicios, horarios y personal, sin que sus datos se mezclen. Cada entidad necesitaba su formulario de alta y edición conectado a una API REST con JWT, con la misma validación y errores claros cuando el backend rechaza algo. Y como es un producto para un cliente privado, sus datos reales no se pueden mostrar.",
-      en: "An aesthetic clinic books treatments like Botox or hyaluronic acid, keeps a record for each patient, and can run several locations, each with its own patients, services, schedules, and staff, without their data mixing. Every entity needed a create and edit form wired to a REST API with JWT, with consistent validation and clear errors when the backend rejects something. And since it's a product for a private client, its real data can't be shown.",
+      es: "Una clínica estética agenda tratamientos como bótox o ácido hialurónico y guarda el expediente de cada paciente. Puede tener varios comercios, cada uno con sus pacientes, servicios, horarios y personal, sin que los datos se mezclen. Cada tipo de dato necesitaba su formulario, con la misma validación y errores claros cuando el servidor rechaza algo. Como es un cliente privado, no se pueden mostrar sus datos reales.",
+      en: "An aesthetics clinic books treatments like Botox or hyaluronic acid and keeps a record for each patient. It can run several locations, each with its own patients, services, schedules, and staff, without their data mixing. Every data type needed its own form, with the same validation and clear errors when the server rejects something. Since it's a private client, its real data can't be shown.",
     },
     goals: [
       { es: "Dar de alta y editar cada entidad con la misma validación y los mismos mensajes.", en: "Create and edit every entity with the same validation and the same messages." },
@@ -554,7 +554,7 @@ export const caseStudies: Record<string, CaseStudy> = {
     process: [
       {
         title: { es: "Formularios por entidad", en: "Per-entity forms" },
-        body: { es: "Ocho formularios con Formik y Yup (categorías, comercios, pacientes, productos, servicios, expedientes, horarios y citas), reutilizados en las pantallas de crear y editar.", en: "Eight Formik and Yup forms (categories, businesses, patients, products, services, records, schedules, and appointments), reused across the create and edit screens." },
+        body: { es: "12 formularios CRUD con Formik y Yup para ocho entidades (categorías, comercios, pacientes, productos, servicios, expedientes, horarios y citas), reutilizados en las pantallas de crear y editar.", en: "12 Formik and Yup CRUD forms for eight entities (categories, businesses, patients, products, services, records, schedules, and appointments), reused across the create and edit screens." },
       },
       {
         title: { es: "Vistas y estado", en: "Views & state" },
@@ -663,7 +663,7 @@ export const caseStudies: Record<string, CaseStudy> = {
     ],
     results: [
       { value: "44%", label: { es: "de los commits del repositorio", en: "of the repository's commits" } },
-      { value: "8", label: { es: "formularios de entidad con Formik y Yup", en: "entity forms with Formik and Yup" } },
+      { value: "12", label: { es: "formularios CRUD para 8 entidades, con Formik y Yup", en: "CRUD forms for 8 entities, with Formik and Yup" } },
       { value: "2", label: { es: "comercios en la demo, cada uno con sus datos", en: "businesses in the demo, each with its own data" } },
     ],
     resultsNote: {

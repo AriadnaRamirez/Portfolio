@@ -222,6 +222,9 @@ section[id] {
 /* Home section separation (see SectionBand.tsx) */
 .section-band {
   position: relative;
+  /* Offscreen sections skip style and layout until they approach the viewport. */
+  content-visibility: auto;
+  contain-intrinsic-size: auto 1000px;
 }
 
 .section-band--tint,
@@ -1013,6 +1016,10 @@ section[id] {
   }
 }
 
+.hero-parallax {
+  transform: scale(1.2) translate3d(0, -8%, 0);
+}
+
 @keyframes gallery-rise {
   from {
     transform: translate3d(0, 56px, 0);
@@ -1024,10 +1031,10 @@ section[id] {
 
 @keyframes hero-parallax {
   from {
-    transform: scale(1.04) translate3d(0, 0, 0);
+    transform: scale(1.2) translate3d(0, -8%, 0);
   }
   to {
-    transform: scale(1.14) translate3d(0, 5%, 0);
+    transform: scale(1.26) translate3d(0, -6%, 0);
   }
 }
 

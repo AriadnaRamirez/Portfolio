@@ -97,9 +97,14 @@ function ProgramPicker() {
             className="animate-fade mt-4 grid max-w-3xl gap-3 border-l-2 border-[var(--cat-ink)] bg-surface px-5 py-5 sm:grid-cols-[11rem_1fr] sm:gap-8 sm:px-6"
           >
             <div>
-              {scholarshipOrg[shown] ? (
-                <OrgLogo id={scholarshipOrg[shown]} wrapperClassName="mb-3" className="opacity-100! grayscale-0!" />
-              ) : null}
+              <div className="mb-3 flex flex-wrap items-center gap-4">
+                {scholarshipOrg[shown] ? (
+                  <OrgLogo id={scholarshipOrg[shown]} className="opacity-100! grayscale-0!" />
+                ) : null}
+                {shown === "generation_aws" ? (
+                  <OrgLogo id="aws" className="opacity-100! grayscale-0!" />
+                ) : null}
+              </div>
               <p className="font-mono-label text-[var(--cat-ink)]">{org}</p>
               <p className="mt-1 text-xs text-muted">{when}</p>
             </div>
@@ -108,7 +113,6 @@ function ProgramPicker() {
               {descParts.length ? (
                 <p className="mt-2 text-sm leading-relaxed text-muted">{descParts.join(" · ")}</p>
               ) : null}
-              {shown === "mujer_digital" ? <BadgeRow /> : null}
             </div>
           </article>
         </div>
@@ -117,7 +121,7 @@ function ProgramPicker() {
   );
 }
 
-/** Compact row of verified badges earned in the Mujer Digital program. */
+/** Cisco Networking Academy shields. They belong on the credential, not only inside a program. */
 function BadgeRow() {
   const { t, lang } = useLanguage();
   const formatDate = (iso: string) => {
@@ -130,13 +134,9 @@ function BadgeRow() {
   };
 
   return (
-    <div className="mt-4 border-t border-border pt-4">
-      <p className="text-xs text-muted">
-        {t.landing_badges_title} · {badges.length}
-      </p>
-      <ul className="mt-3 grid gap-x-6 gap-y-2.5 sm:grid-cols-2">
-        {badges.map((badge) => (
-          <li key={badge.file} className="flex items-center gap-2.5">
+    <ul className="mt-1 grid gap-x-6 gap-y-3 sm:grid-cols-2 lg:grid-cols-3">
+      {badges.map((badge) => (
+        <li key={badge.file} className="flex items-center gap-3">
             {/* eslint-disable-next-line @next/next/no-img-element -- static export, local assets */}
             <img
               src={assetPath(`/badges/${badge.file}`)}
@@ -145,7 +145,7 @@ function BadgeRow() {
               height={83}
               loading="lazy"
               decoding="async"
-              className="h-7 w-7 shrink-0 rounded-md object-cover"
+              className="h-12 w-12 shrink-0 rounded-lg bg-white object-contain"
             />
             <span className="min-w-0 leading-tight">
               <span className="block text-sm text-foreground">{badge.name}</span>
@@ -155,8 +155,82 @@ function BadgeRow() {
             </span>
           </li>
         ))}
-      </ul>
-    </div>
+    </ul>
+  );
+}
+
+function CiscoBadgeCard({
+  title,
+  period,
+  delay,
+}: {
+  title: string;
+  period: string;
+  delay: number;
+}) {
+  const { t } = useLanguage();
+  const panelId = useId();
+  const [pinned, setPinned] = useState(false);
+  const [hover, setHover] = useState(false);
+  const open = pinned || hover;
+
+  const toggle = () => {
+    if (pinned) {
+      setPinned(false);
+      setHover(false);
+      return;
+    }
+    setPinned(true);
+  };
+
+  return (
+    <Reveal variant="up" delay={delay} className={open ? "lg:col-span-2" : ""}>
+      <article
+        className="flex h-full flex-col gap-3 border border-border bg-background p-4"
+        onMouseEnter={() => setHover(true)}
+        onMouseLeave={() => setHover(false)}
+      >
+        <div className="flex min-h-8 items-center justify-between gap-3">
+          <OrgLogo id="cisco" className="max-h-7" />
+          <p className="font-mono-label text-gradient">{period}</p>
+        </div>
+        <button
+          type="button"
+          aria-expanded={open}
+          aria-controls={panelId}
+          onClick={toggle}
+          onFocus={() => setHover(true)}
+          onBlur={() => setHover(false)}
+          className="flex flex-1 cursor-pointer items-start justify-between gap-3 text-left"
+        >
+          <span>
+            <h3 className="font-display text-base leading-snug text-foreground">{title}</h3>
+            {open ? null : (
+              <p className="mt-1 text-sm leading-relaxed text-muted">
+                {badges.length} · {t.landing_badges_title}
+              </p>
+            )}
+          </span>
+          <span
+            aria-hidden
+            className={`mt-0.5 text-lg leading-none text-muted transition-transform duration-300 ${open ? "rotate-45" : ""}`}
+          >
+            +
+          </span>
+        </button>
+        <div
+          id={panelId}
+          inert={!open}
+          className={`grid transition-[grid-template-rows,opacity] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+            open ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+          }`}
+        >
+          <div className="min-h-0 overflow-hidden">
+            <BadgeRow />
+          </div>
+        </div>
+      </article>
+    </Reveal>
   );
 }
 
@@ -164,43 +238,42 @@ export function LandingCertifications() {
   const { t } = useLanguage();
 
   return (
-    <section id="certs" className="cat-pink page-shell py-20 sm:py-24">
-      <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
-        <div className="max-w-xl space-y-5">
-          <Reveal variant="left">
-            <p className="section-kicker">{t.nav_certs}</p>
-          </Reveal>
-          <Reveal variant="blur" delay={100}>
-            <h2 className="section-title">
-              {t.landing_certs_title_italic} {t.landing_certs_title_rest}
-            </h2>
-          </Reveal>
-        </div>
+    <section id="certs" className="cat-pink page-shell py-14 sm:py-16">
+      <div className="max-w-xl space-y-3">
+        <Reveal variant="left">
+          <p className="section-kicker">{t.nav_certs}</p>
+        </Reveal>
+        <Reveal variant="blur" delay={100}>
+          <h2 className="font-display text-[clamp(1.7rem,3.2vw,2.4rem)] leading-[1.08] text-foreground">
+            {t.landing_certs_title_italic} {t.landing_certs_title_rest}
+          </h2>
+        </Reveal>
       </div>
 
-      <div className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
         {certificationIds.map((id, i) => {
           const title = t[`cert_${id}_title` as TranslationKey];
           const org = t[`cert_${id}_org` as TranslationKey];
           const period = t[`cert_${id}_period` as TranslationKey];
+          if (id === "cisco_badges") {
+            return <CiscoBadgeCard key={id} title={title} period={period} delay={(i % 3) * 70} />;
+          }
           return (
             <Reveal key={id} variant="up" delay={(i % 3) * 70}>
-              <article className="group flex h-full flex-col gap-3 border border-border bg-background p-5">
+              <article className="flex h-full flex-col gap-3 border border-border bg-background p-4">
                 <div className="flex min-h-8 items-center justify-between gap-3">
                   {certificationOrg[id] ? <OrgLogo id={certificationOrg[id]} className="max-h-7" /> : <span />}
                   <p className="font-mono-label text-gradient">{period}</p>
                 </div>
-                <h3 className="font-display text-lg leading-snug text-foreground">{title}</h3>
-                <p className="mt-auto text-sm leading-relaxed text-muted">
-                  {org}
-                </p>
+                <h3 className="font-display text-base leading-snug text-foreground">{title}</h3>
+                <p className="mt-auto text-sm leading-relaxed text-muted">{org}</p>
               </article>
             </Reveal>
           );
         })}
       </div>
 
-      <Reveal variant="up" delay={120} className="mt-10">
+      <Reveal variant="up" delay={120} className="mt-8">
         <ProgramPicker />
       </Reveal>
     </section>

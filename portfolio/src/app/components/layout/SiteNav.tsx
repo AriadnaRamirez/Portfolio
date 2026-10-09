@@ -13,6 +13,9 @@ import { ThemeToggle } from "../navbar/ThemeToggle";
 
 const avatarSrc = assetPath(site.avatar);
 const pillLinksMobile = new Set(["/#work", "/#services", "/#contact"]);
+const pillLinksDesktop = new Set(["/#work", "/#services", "/#about", "/#experience"]);
+/** Sections without their own pill light up the closest one instead. */
+const pillFallback: Record<string, string> = { skills: "experience", education: "experience", certs: "experience" };
 
 function sectionIdFromHref(href: string) {
   const hash = href.includes("#") ? href.split("#")[1] : "";
@@ -77,12 +80,18 @@ export function SiteNav() {
 
   return (
     <>
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[80] focus:rounded-full focus:bg-foreground focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-background"
+      >
+        {t.nav_skip}
+      </a>
       <header className="relative z-40 bg-background">
         <nav className="page-shell flex items-center justify-between gap-4 py-5">
           <Link
             href="/"
             prefetch
-            className="inline-flex items-center gap-2.5 text-[0.9375rem] font-semibold tracking-tight text-foreground no-underline"
+            className="inline-flex items-center gap-2.5 font-display text-lg tracking-tight text-foreground no-underline sm:text-xl"
             onClick={() => setOpen(false)}
           >
             <span className="relative h-8 w-8 overflow-hidden rounded-[0.6rem] ring-1 ring-border">
@@ -151,7 +160,7 @@ export function SiteNav() {
       </header>
 
       <nav
-        aria-label={t.nav_open}
+        aria-label={t.nav_sections}
         className="floating-nav animate-rise-delay fixed bottom-5 left-1/2 z-50 flex max-w-[calc(100vw-1.5rem)] -translate-x-1/2 items-center gap-1 rounded-full border border-white/10 bg-[#2b2b2b]/90 p-1.5 shadow-[0_10px_30px_rgba(0,0,0,0.18)] backdrop-blur-md"
       >
         <Link
@@ -163,7 +172,7 @@ export function SiteNav() {
           <Image src={avatarSrc} alt="" fill sizes="32px" className="object-cover" />
         </Link>
         {navPages
-          .filter((link) => link.href !== "/#contact")
+          .filter((link) => pillLinksDesktop.has(link.href))
           .map((link) => (
             <Link
               key={link.href}
@@ -172,7 +181,8 @@ export function SiteNav() {
               className={`rounded-full px-3 py-1.5 text-sm font-medium whitespace-nowrap transition-colors duration-200 ${
                 pillLinksMobile.has(link.href) ? "" : "hidden lg:inline-flex"
               } ${
-                isLinkActive(link.href)
+                isLinkActive(link.href) ||
+                (pathname === "/" && activeHash && `/#${pillFallback[activeHash]}` === link.href)
                   ? "bg-white/12 text-white"
                   : "text-white/70 hover:text-white"
               }`}

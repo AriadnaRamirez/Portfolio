@@ -8,7 +8,7 @@ import { LandingEducation } from "./components/sections/LandingEducation";
 import { LandingExperience } from "./components/sections/LandingExperience";
 import { LandingHero } from "./components/sections/LandingHero";
 import { LandingProjects } from "./components/sections/LandingProjects";
-import { LandingServices } from "./components/sections/LandingServices";
+import { LandingFaq, LandingProcess, LandingServices } from "./components/sections/LandingServices";
 import { LandingSkills } from "./components/sections/LandingSkills";
 import { SectionBand } from "./components/ui/SectionBand";
 
@@ -40,8 +40,14 @@ export default function HomePage() {
       <SectionBand cat="pink">
         <LandingCertifications />
       </SectionBand>
+      <SectionBand tone="plain" cat="peach">
+        <LandingProcess />
+      </SectionBand>
       <SectionBand tone="tint" cat="peach">
         <ContactSection />
+      </SectionBand>
+      <SectionBand tone="plain" cat="peach">
+        <LandingFaq />
       </SectionBand>
     </>
   );

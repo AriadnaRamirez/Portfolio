@@ -8,7 +8,7 @@ import { assetPath } from "@/app/lib/siteUrl";
 import { Flag } from "../ui/Flag";
 import { HandNote } from "../ui/HandNote";
 import { SocialIcon } from "../ui/SocialIcon";
-import { Reveal, SplitWords } from "../ui/Reveal";
+import { Reveal } from "../ui/Reveal";
 
 const photoSrc = assetPath(site.photo);
 
@@ -21,8 +21,9 @@ const socials = [
 
 export function LandingHero() {
   const { t } = useLanguage();
-  const [role, ...rest] = t.identity_line.split(" | ");
-  const focus = rest.join(" | ").replace(/ · /g, "\u00a0· ");
+  const [firstName, ...restName] = site.name.split(" ");
+  const lastName = restName.join(" ");
+  const role = t.identity_line.split(" | ")[0];
 
   const highlights = [
     {
@@ -58,7 +59,7 @@ export function LandingHero() {
 
   return (
     <section className="hero-wash relative isolate overflow-hidden" aria-labelledby="hero-heading">
-      <div className="page-shell grid min-h-[calc(100dvh-4.5rem)] grid-cols-1 content-center gap-16 pt-10 pb-24 lg:grid-cols-12 lg:items-center lg:gap-10 lg:pt-12">
+      <div className="page-shell grid min-h-[calc(100dvh-4.5rem)] grid-cols-1 content-center gap-16 pt-10 pb-24 lg:grid-cols-12 lg:items-start lg:gap-10 lg:pt-12">
         <div className="lg:col-span-7">
           <p className="hero-rise mb-6 inline-flex items-center gap-2.5 rounded-full border border-border bg-background/70 px-3.5 py-1.5 text-sm font-medium text-foreground backdrop-blur-sm">
             <span aria-hidden className="relative flex h-2 w-2">
@@ -69,13 +70,21 @@ export function LandingHero() {
           </p>
           <h1
             id="hero-heading"
-            className="font-display text-[clamp(2.5rem,5.6vw,4.25rem)] leading-[1.02] text-foreground"
+            className="hero-rise font-display text-[clamp(3.75rem,8.2vw,6.75rem)] leading-[0.86] tracking-[-0.035em] text-foreground"
           >
-            <SplitWords text={role} gradient={focus} delay={60} instant />
+            {firstName}
+            <br />
+            {lastName}
           </h1>
+          <p
+            className="hero-rise mt-5 font-display text-[clamp(1.65rem,3vw,2.35rem)] leading-tight text-gradient-fill"
+            style={{ ["--rise-delay" as string]: "90ms" }}
+          >
+            {role}
+          </p>
 
           <p
-            className="hero-rise mt-7 max-w-[34rem] text-lg leading-[1.6] text-muted"
+            className="hero-rise mt-5 max-w-[34rem] text-lg leading-[1.6] text-muted"
             style={{ ["--rise-delay" as string]: "150ms" }}
           >
             {t.agency_hero_subtitle}
@@ -139,7 +148,7 @@ export function LandingHero() {
           </dl>
         </div>
 
-        <div className="relative mx-auto w-full max-w-md lg:col-span-5 lg:max-w-none">
+        <div className="relative mx-auto w-full max-w-md lg:col-span-5 lg:mt-1 lg:max-w-none">
           <div className="hero-clip">
             <figure className="relative aspect-[4/5] overflow-hidden rounded-[1.75rem] border border-border bg-surface shadow-[var(--shadow-card)]">
               <Image
@@ -149,7 +158,7 @@ export function LandingHero() {
                 priority
                 fetchPriority="high"
                 sizes="(max-width: 1024px) 90vw, 36vw"
-                className="hero-parallax object-cover object-center"
+                className="hero-parallax object-cover object-[center_72%]"
               />
             </figure>
           </div>

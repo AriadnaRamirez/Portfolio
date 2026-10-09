@@ -308,8 +308,8 @@ export const certificationIds = [
   "henry_cert",
   "ebac_ux",
   "ccst",
-  "cisco_badges",
   "python",
+  "cisco_badges",
 ] as const;
 
 export const awardIds = ["lasalle_valedictorian", "hermano_miguel"] as const;

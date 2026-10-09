@@ -1,13 +1,15 @@
 "use client";
 
 import Link from "next/link";
-import { useState, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import { useLanguage } from "@/app/context/LanguageContext";
 import { caseStudies, type CaseStudy } from "@/app/lib/caseStudies";
+import { prefetchShot, shotThumb } from "@/app/lib/shotImage";
 import { assetPath } from "@/app/lib/siteUrl";
 import { BeforeAfterSlider } from "../ui/BeforeAfterSlider";
 import { Reveal } from "../ui/Reveal";
 import { ScrollStory } from "../ui/ScrollStory";
+import { Breadcrumbs } from "../layout/Breadcrumbs";
 import { TechIconRow } from "../ui/TechIcon";
 
 function Rise({ children, delay = 0, className = "" }: { children: ReactNode; delay?: number; className?: string }) {
@@ -38,6 +40,16 @@ function BeforeAfterCompare({ pairs }: { pairs: NonNullable<CaseStudy["before"]>
   const { t, lang } = useLanguage();
   const [active, setActive] = useState(0);
   const pair = pairs[active];
+
+  useEffect(() => {
+    const timer = window.setTimeout(() => {
+      pairs.forEach((p) => {
+        prefetchShot(assetPath(p.image));
+        prefetchShot(assetPath(p.after));
+      });
+    }, 200);
+    return () => window.clearTimeout(timer);
+  }, [pairs]);
 
   return (
     <figure className="overflow-visible rounded-none">
@@ -73,7 +85,7 @@ function BeforeAfterCompare({ pairs }: { pairs: NonNullable<CaseStudy["before"]>
                   active === i ? "border-foreground" : "border-transparent opacity-60 hover:opacity-100"
                 }`}
               >
-                <img src={assetPath(p.after)} alt="" loading="lazy" decoding="async" className="aspect-[16/10] w-20 object-cover object-top" />
+                <img src={assetPath(shotThumb(p.after))} alt="" loading="lazy" decoding="async" className="aspect-[16/10] w-20 object-cover object-top" />
               </button>
             ))}
           </div>
@@ -102,9 +114,7 @@ export function CaseStudyView({ slug }: { slug: string }) {
     <article className="cat-violet">
       <header className="page-shell pt-28 pb-16 sm:pt-36 sm:pb-20">
         <Rise>
-          <Link href="/#work" className="btn-text inline-flex min-h-11 items-center text-sm">
-            ← {t.cs_back}
-          </Link>
+          <Breadcrumbs current={cs.client} />
         </Rise>
         <div className="mt-6 grid gap-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:items-end">
           <div className="space-y-6">

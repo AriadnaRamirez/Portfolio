@@ -1,10 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { useEffect, useLayoutEffect, useRef, useState, type ReactNode } from "react";
 import type { TranslationKey } from "@/app/components/lib/translations";
 import { useLanguage } from "@/app/context/LanguageContext";
-import { site, whatsappHref } from "@/app/lib/site";
+import { whatsappHref } from "@/app/lib/site";
 import { Reveal } from "../ui/Reveal";
 import { SocialIcon } from "../ui/SocialIcon";
 
@@ -214,7 +214,7 @@ function Icon({ id, className = "h-4 w-4" }: { id: FeatureId | ServiceId; classN
 
 function Arrow({ dir }: { dir: "prev" | "next" }) {
   return (
-    <svg viewBox="0 0 16 16" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden>
+    <svg viewBox="0 0 16 16" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden>
       <path d={dir === "prev" ? "M10 3 5 8l5 5" : "M6 3l5 5-5 5"} />
     </svg>
   );
@@ -299,9 +299,6 @@ function Deliverable({ n, title, meta }: { n: number; title: string; meta: strin
   );
 }
 
-const mailto = (subject: string) =>
-  `mailto:${site.email}?subject=${encodeURIComponent(subject)}`;
-
 const SWIPE_PX = 48;
 
 /** Slides fully in view per breakpoint; mirrors the `--v` CSS variable. */
@@ -323,13 +320,23 @@ function usePerView() {
 }
 
 /**
- * Infinite carousel: slides render three times and the index lives in the
- * middle copy; once a transition lands outside it, the track jumps back by one
- * copy without animating.
+ * Infinite carousel. Three copies of the slides are rendered and the index
+ * normally lives in the middle one. Fast clicks must not walk off that track:
+ * once the index leaves the middle copy, the next step jumps to the same cards
+ * there instead of translating into empty space. Reduced motion never leaves
+ * the middle copy, because a zero-duration transition does not settle itself.
  */
 function useCarousel(count: number) {
   const [index, setIndex] = useState(count);
   const [animate, setAnimate] = useState(true);
+  /** The copies on either side only matter once the track can move. */
+  const [engaged, setEngaged] = useState(false);
+  const indexRef = useRef(count);
+
+  const mod = (n: number) => ((n % count) + count) % count;
+  const toMiddle = (n: number) => count + mod(n);
+  const reducedMotion = () =>
+    typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   useEffect(() => {
     if (animate) return;
@@ -337,19 +344,57 @@ function useCarousel(count: number) {
     return () => cancelAnimationFrame(id);
   }, [animate]);
 
-  const move = (delta: number) => setIndex((i) => i + delta);
-  const goTo = (target: number) => setIndex(count + target);
+  useLayoutEffect(() => {
+    if (index >= 0 && index < count * 3) return;
+    const next = toMiddle(index);
+    indexRef.current = next;
+    setAnimate(false);
+    setIndex(next);
+  }, [index, count]);
+
+  const place = (next: number, withAnim: boolean) => {
+    indexRef.current = next;
+    setAnimate(withAnim);
+    setIndex(next);
+  };
+
+  const move = (delta: number) => {
+    setEngaged(true);
+    const current = indexRef.current;
+    const inMiddle = current >= count && current < count * 2;
+    const base = inMiddle ? current : toMiddle(current);
+    const next = base + delta;
+    const onTrack = next >= 0 && next < count * 3;
+
+    if (reducedMotion()) {
+      place(toMiddle(next), false);
+      return;
+    }
+    // The visible cards already match `base`. Jumping there avoids sliding
+    // backwards across the whole track, which is what left the row blank.
+    if (!inMiddle || !onTrack) {
+      place(onTrack ? next : toMiddle(next), false);
+      return;
+    }
+    place(next, true);
+  };
+
+  const goTo = (target: number) => {
+    setEngaged(true);
+    place(toMiddle(target), !reducedMotion());
+  };
 
   const settle = () => {
-    if (index >= count && index < count * 2) return;
-    setAnimate(false);
-    setIndex(count + (((index - count) % count) + count) % count);
+    const current = indexRef.current;
+    if (current >= count && current < count * 2) return;
+    place(toMiddle(current), false);
   };
 
   return {
     index,
-    active: (((index - count) % count) + count) % count,
+    active: mod(index - count),
     animate,
+    engaged,
     move,
     goTo,
     settle,
@@ -397,9 +442,19 @@ export function LandingServices() {
         </div>
 
         <Reveal variant="up" delay={140} className="mt-12">
-          <div role="region" aria-roledescription="carousel" aria-label={t.nav_services}>
+          <div
+            role="region"
+            aria-roledescription="carousel"
+            aria-label={t.nav_services}
+            onKeyDown={(e) => {
+              if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
+              e.preventDefault();
+              carousel.move(e.key === "ArrowRight" ? 1 : -1);
+            }}
+          >
+            <div className="relative">
             <div
-              className="-my-4 touch-pan-y overflow-x-clip py-4 [--gap:1rem] [--v:1.12] sm:[--gap:1.25rem] sm:[--v:2.2] sm:[mask-image:linear-gradient(to_right,#000_calc(100%-7rem),transparent)] lg:[--v:3.25]"
+              className="-my-6 touch-pan-y overflow-x-clip py-6 [--gap:1rem] [--v:1] sm:[--gap:1.25rem] sm:[--v:2] lg:[--v:3]"
               onPointerDown={(e) => {
                 swipeX.current = e.clientX;
               }}
@@ -414,7 +469,7 @@ export function LandingServices() {
                 onTransitionEnd={(e) => {
                   if (e.target === e.currentTarget && e.propertyName === "transform") carousel.settle();
                 }}
-                className={`flex gap-[var(--gap)] ${
+                className={`flex items-stretch gap-[var(--gap)] ${
                   carousel.animate ? "transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] motion-reduce:duration-0" : ""
                 }`}
                 style={{ transform: `translateX(calc(${index} * -1 * (100% + var(--gap)) / var(--v)))` }}
@@ -423,6 +478,10 @@ export function LandingServices() {
                   const n = i % services.length;
                   const visible = i >= index && i < index + perView;
                   const title = tk(`service_${service.id}_title`);
+                  const slideWidth = "w-[calc((100%-(var(--v)-1)*var(--gap))/var(--v))] shrink-0";
+                  if (!carousel.engaged && (i < services.length || i >= services.length * 2)) {
+                    return <li key={`${service.id}-${i}`} aria-hidden className={slideWidth} />;
+                  }
                   return (
                     <li
                       key={`${service.id}-${i}`}
@@ -431,9 +490,9 @@ export function LandingServices() {
                       aria-label={`${n + 1} ${t.services_of} ${services.length}: ${title}`}
                       aria-hidden={!visible}
                       inert={!visible}
-                      className="w-[calc((100%-(var(--v)-1)*var(--gap))/var(--v))] shrink-0"
+                      className={`${slideWidth} flex`}
                     >
-                      <article className="flex h-full flex-col border border-border bg-background p-6 transition-[border-color,box-shadow,translate] duration-300 hover:-translate-y-1 hover:border-border-strong hover:shadow-[0_24px_48px_-32px_rgba(20,20,40,0.45)] sm:p-7">
+                      <article className="flex h-full w-full flex-col border border-border bg-background p-6 transition-[border-color,box-shadow,translate] duration-300 hover:-translate-y-1 hover:border-border-strong hover:shadow-[0_24px_48px_-32px_rgba(20,20,40,0.45)] sm:p-7">
                         <div className="flex items-start justify-between gap-4">
                           <span className="grid h-12 w-12 place-items-center rounded-2xl bg-[linear-gradient(135deg,color-mix(in_srgb,var(--cat-from)_20%,transparent),color-mix(in_srgb,var(--cat-to)_20%,transparent))] text-[var(--cat-ink)]">
                             <Icon id={service.id} className="h-5 w-5" />
@@ -486,50 +545,73 @@ export function LandingServices() {
                 })}
               </ul>
             </div>
+              {(["prev", "next"] as const).map((dir) => (
+                <button
+                  key={dir}
+                  type="button"
+                  onClick={() => carousel.move(dir === "prev" ? -1 : 1)}
+                  aria-label={dir === "prev" ? t.services_prev : t.services_next}
+                  className={`absolute top-1/2 z-10 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-foreground text-background shadow-[0_12px_30px_-10px_rgba(20,20,40,0.7)] transition-transform duration-200 hover:scale-105 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground sm:h-14 sm:w-14 ${
+                    dir === "prev" ? "left-1 sm:left-0 sm:-translate-x-1/2" : "right-1 sm:right-0 sm:translate-x-1/2"
+                  }`}
+                >
+                  <Arrow dir={dir} />
+                </button>
+              ))}
+            </div>
 
-            <div className="mt-8 flex items-center gap-4 sm:gap-6">
+            <div className="mt-2 flex items-center gap-4 sm:gap-6">
               <p className="font-mono-label shrink-0 tabular-nums text-muted" aria-live="polite">
-                <span className="text-foreground">{pad(active + 1)}</span> / {pad(services.length)}
+                <span className="text-foreground">
+                  {perView > 1
+                    ? `${pad(active + 1)}–${pad(((active + Math.min(perView, services.length) - 1) % services.length) + 1)}`
+                    : pad(active + 1)}
+                </span>
+                {" / "}
+                {pad(services.length)}
               </p>
               <div className="flex flex-1 items-center">
-                {services.map((service, i) => (
-                  <button
-                    key={service.id}
-                    type="button"
-                    onClick={() => carousel.goTo(i)}
-                    aria-label={tk(`service_${service.id}_title`)}
-                    aria-current={i === active ? "true" : undefined}
-                    className="group/dot flex h-6 min-w-6 items-center justify-center"
-                  >
-                    <span
-                      className={`block h-1.5 rounded-full transition-all duration-300 ${
-                        i === active
-                          ? "w-7 bg-[linear-gradient(90deg,var(--cat-from),var(--cat-to))]"
-                          : "w-1.5 bg-border group-hover/dot:bg-muted"
-                      }`}
-                    />
-                  </button>
-                ))}
-              </div>
-              <div className="flex shrink-0 gap-2">
-                {(["prev", "next"] as const).map((dir) => (
-                  <button
-                    key={dir}
-                    type="button"
-                    onClick={() => carousel.move(dir === "prev" ? -1 : 1)}
-                    aria-label={dir === "prev" ? t.services_prev : t.services_next}
-                    className="flex h-11 w-11 items-center justify-center rounded-full border border-border bg-background text-foreground transition-colors duration-200 hover:border-foreground hover:bg-foreground hover:text-background"
-                  >
-                    <Arrow dir={dir} />
-                  </button>
-                ))}
+                {services.map((service, i) => {
+                  const shown =
+                    Array.from({ length: Math.min(perView, services.length) }, (_, k) => (active + k) % services.length).includes(i);
+                  return (
+                    <button
+                      key={service.id}
+                      type="button"
+                      onClick={() => carousel.goTo(i)}
+                      aria-label={tk(`service_${service.id}_title`)}
+                      aria-current={i === active ? "true" : undefined}
+                      className="group/dot flex h-6 min-w-6 items-center justify-center"
+                    >
+                      <span
+                        className={`block h-1.5 rounded-full transition-all duration-300 ${
+                          i === active
+                            ? "w-7 bg-[linear-gradient(90deg,var(--cat-from),var(--cat-to))]"
+                            : shown
+                              ? "w-3 bg-[color-mix(in_srgb,var(--cat-from)_55%,var(--border))]"
+                              : "w-1.5 bg-border group-hover/dot:bg-muted"
+                        }`}
+                      />
+                    </button>
+                  );
+                })}
               </div>
             </div>
           </div>
         </Reveal>
+      </div>
+    </section>
+  );
+}
 
-        <div id="process" className="mt-24 scroll-mt-24 sm:mt-32">
-          <div className="grid gap-6 lg:grid-cols-12 lg:items-end">
+export function LandingProcess() {
+  const { t } = useLanguage();
+  const tk = (key: string) => t[key as TranslationKey];
+  const pad = (n: number) => String(n).padStart(2, "0");
+
+  return (
+    <section id="process" className="page-shell scroll-mt-24 py-24 sm:py-28">
+      <div className="grid gap-6 lg:grid-cols-12 lg:items-end">
             <div className="space-y-5 lg:col-span-7">
               <Reveal variant="left">
                 <p className="section-kicker">{t.process_kicker}</p>
@@ -587,63 +669,43 @@ export function LandingServices() {
               })}
             </ol>
           </Reveal>
+    </section>
+  );
+}
 
-          <div className="mt-24 grid gap-10 lg:grid-cols-12">
-            <div className="space-y-4 lg:col-span-4">
-              <Reveal variant="left">
-                <p className="section-kicker">{t.faq_kicker}</p>
-              </Reveal>
-              <Reveal variant="blur" delay={100}>
-                <h3 className="font-display text-3xl leading-tight text-foreground sm:text-4xl">{t.faq_title}</h3>
-              </Reveal>
-            </div>
-            <Reveal variant="up" delay={120} className="lg:col-span-8">
-              <div className="border-t border-border">
-                {faqIds.map((id) => (
-                  <details key={id} className="group/faq border-b border-border">
-                    <summary className="flex cursor-pointer list-none items-center justify-between gap-6 py-5 text-left text-base font-medium text-foreground transition-colors hover:text-[var(--cat-ink)] [&::-webkit-details-marker]:hidden">
-                      {tk(`faq_${id}_q`)}
-                      <span
-                        aria-hidden
-                        className="grid h-7 w-7 shrink-0 place-items-center rounded-full border border-border text-lg leading-none text-muted transition-transform duration-300 group-open/faq:rotate-45"
-                      >
-                        +
-                      </span>
-                    </summary>
-                    <p className="max-w-2xl pb-6 text-[0.9375rem] leading-relaxed text-muted">{tk(`faq_${id}_a`)}</p>
-                  </details>
-                ))}
-              </div>
-            </Reveal>
-          </div>
+export function LandingFaq() {
+  const { t } = useLanguage();
+  const tk = (key: string) => t[key as TranslationKey];
 
-          <Reveal variant="up" className="mt-16">
-            <div className="flex flex-col gap-6 border-t border-border pt-10 lg:flex-row lg:items-center lg:justify-between">
-              <div className="max-w-xl">
-                <h3 className="font-display text-2xl leading-tight text-foreground sm:text-3xl">
-                  {t.services_cta_title}
-                </h3>
-                <p className="mt-2 text-base leading-relaxed text-muted">{t.services_cta_body}</p>
-              </div>
-              <div className="flex shrink-0 flex-col gap-3 sm:flex-row">
-                <a
-                  href={whatsappHref(t.wa_quote_msg)}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-primary"
-                  data-umami-event="whatsapp"
-                  data-umami-event-from="services-cta"
-                >
-                  <SocialIcon kind="whatsapp" className="h-4 w-4" />
-                  {t.services_cta_whatsapp}
-                </a>
-                <a href={mailto(t.services_quote_subject)} className="btn-ghost" data-umami-event="contact-email">
-                  {t.services_cta_email}
-                </a>
-              </div>
-            </div>
+  return (
+    <section id="faq" className="page-shell scroll-mt-24 py-20 sm:py-24">
+      <div className="grid gap-10 lg:grid-cols-12">
+        <div className="space-y-4 lg:col-span-4">
+          <Reveal variant="left">
+            <p className="section-kicker">{t.faq_kicker}</p>
+          </Reveal>
+          <Reveal variant="blur" delay={100}>
+            <h2 className="font-display text-3xl leading-tight text-foreground sm:text-4xl">{t.faq_title}</h2>
           </Reveal>
         </div>
+        <Reveal variant="up" delay={120} className="lg:col-span-8">
+          <div className="border-t border-border">
+            {faqIds.map((id) => (
+              <details key={id} className="group/faq border-b border-border">
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-6 py-5 text-left text-base font-medium text-foreground transition-colors hover:text-[var(--cat-ink)] [&::-webkit-details-marker]:hidden">
+                  {tk(`faq_${id}_q`)}
+                  <span
+                    aria-hidden
+                    className="grid h-7 w-7 shrink-0 place-items-center rounded-full border border-border text-lg leading-none text-muted transition-transform duration-300 group-open/faq:rotate-45"
+                  >
+                    +
+                  </span>
+                </summary>
+                <p className="max-w-2xl pb-6 text-[0.9375rem] leading-relaxed text-muted">{tk(`faq_${id}_a`)}</p>
+              </details>
+            ))}
+          </div>
+        </Reveal>
       </div>
     </section>
   );

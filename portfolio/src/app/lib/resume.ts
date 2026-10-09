@@ -1,6 +1,7 @@
 import { translations, type Lang } from "@/app/components/lib/translations";
 import { getResumeCopy, type ResumeVariant } from "@/app/lib/resumeContent";
 import { site } from "@/app/lib/site";
+import { SITE_URL } from "@/app/lib/siteUrl";
 
 type Copy = { [K in keyof (typeof translations)["es"]]: string };
 
@@ -10,11 +11,12 @@ export type ResumeJob = {
   role: string;
   period: string;
   bullets: string[];
-  nestedProjects?: { title: string; bullets: string[] }[];
+  nestedProjects?: { title: string; url?: string; bullets: string[] }[];
   footerBullets?: string[];
 };
 export type ResumeProject = {
   title: string;
+  url?: string;
   bullets: string[];
 };
 
@@ -59,6 +61,7 @@ export function buildResume(
       { label: phone, href: site.phoneHref },
       { label: linkedin, href: site.linkedin },
       { label: github, href: site.github },
+      { label: lang === "es" ? "Portafolio" : "Portfolio", href: SITE_URL },
     ],
     summary: copy.summary,
     education: copy.education,

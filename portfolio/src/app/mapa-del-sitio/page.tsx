@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Breadcrumbs } from "@/app/components/layout/Breadcrumbs";
 import { pageMetadata } from "@/app/lib/seo";
 import { site } from "@/app/lib/site";
 import { assetPath } from "@/app/lib/siteUrl";
@@ -49,7 +50,8 @@ function Group({ title, children }: { title: string; children: React.ReactNode }
 export default function SiteMapPage() {
   return (
     <div className="page-shell py-20 sm:py-28">
-      <p className="section-kicker is-visible">{site.name}</p>
+      <Breadcrumbs current="Mapa del sitio" />
+      <p className="section-kicker is-visible mt-6">{site.name}</p>
       <h1 className="section-title mt-5">Mapa del sitio</h1>
       <p className="mt-4 max-w-xl text-base text-muted">
         Todas las páginas y secciones del portfolio en un solo lugar.

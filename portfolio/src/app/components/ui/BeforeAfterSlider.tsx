@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { shotSm } from "@/app/lib/shotImage";
 
 type BeforeAfterSliderProps = {
   before: string;
@@ -29,17 +30,18 @@ export function BeforeAfterSlider({
       className={`group relative aspect-[16/10] w-full touch-pan-y overflow-hidden rounded-2xl border border-border bg-surface select-none ${className}`}
     >
       <img
-        src={after}
+        src={shotSm(after)}
         alt={`${afterLabel}: ${alt}`}
         draggable={false}
         decoding="async"
         className="absolute inset-0 h-full w-full object-cover object-top"
       />
       <img
-        src={before}
+        src={shotSm(before)}
         alt={`${beforeLabel}: ${alt}`}
         draggable={false}
         decoding="async"
+        fetchPriority="high"
         className="absolute inset-0 h-full w-full object-cover object-top"
         style={{ clipPath: `inset(0 ${100 - pos}% 0 0)` }}
       />

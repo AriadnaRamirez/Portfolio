@@ -7,7 +7,7 @@
     "build": "next build",
     "postbuild": "node scripts/fix-rsc-export.mjs",
     "start": "next start",
-    "cv:en": "npx --yes tsx scripts/generate-en-cv.mts"
+    "cv": "npx --yes tsx scripts/generate-cv.mts"
   },
   "dependencies": {
     "@react-pdf/renderer": "^4.6.1",

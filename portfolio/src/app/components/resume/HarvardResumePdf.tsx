@@ -50,6 +50,12 @@ const styles = StyleSheet.create({
     color: "#000000",
     textDecoration: "none",
   },
+  liveLink: {
+    fontSize: 9,
+    color: "#000000",
+    textDecoration: "underline",
+    marginBottom: 1.5,
+  },
   contactSep: {
     fontSize: 9,
   },
@@ -192,6 +198,16 @@ type Props = {
   labels: Labels;
 };
 
+function LiveLink({ url }: { url?: string }) {
+  if (!url) return null;
+  const label = url.replace(/^https?:\/\/(?:www\.)?/, "").replace(/\/$/, "");
+  return (
+    <Link src={url} style={styles.liveLink}>
+      {label}
+    </Link>
+  );
+}
+
 function Bullets({ items }: { items: string[] }) {
   if (!items.length) return null;
   return (
@@ -235,6 +251,7 @@ function JobBlock({
           <Text style={styles.nested}>
             {projectPrefix} {p.title}
           </Text>
+          <LiveLink url={p.url} />
           <Bullets items={p.bullets} />
         </View>
       ))}
@@ -291,6 +308,7 @@ export function HarvardResumePdf({ resume, labels }: Props) {
         {resume.projects.map((project) => (
           <View key={project.title} style={styles.projectBlock}>
             <Text style={styles.projectTitle}>{project.title}</Text>
+            <LiveLink url={project.url} />
             <Bullets items={project.bullets} />
           </View>
         ))}

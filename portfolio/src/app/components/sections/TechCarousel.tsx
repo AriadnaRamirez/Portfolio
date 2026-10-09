@@ -14,7 +14,6 @@ const rowA: Logo[] = [
   { file: "javascript", label: "JavaScript" },
   { file: "tailwindcss", label: "Tailwind CSS" },
   { file: "vitejs", label: "Vite" },
-  { file: "redux", label: "Redux" },
   { file: "zustand", label: "Zustand", mono: true },
   { file: "materialui", label: "Material UI" },
   { file: "html5", label: "HTML5" },
@@ -25,15 +24,11 @@ const rowA: Logo[] = [
 const rowB: Logo[] = [
   { file: "nodejs", label: "Node.js" },
   { file: "nestjs", label: "NestJS" },
-  { file: "express", label: "Express", mono: true },
   { file: "socketio", label: "Socket.IO", mono: true },
   { file: "postgresql", label: "PostgreSQL" },
   { file: "prisma", label: "Prisma", mono: true },
-  { file: "mongodb", label: "MongoDB" },
   { file: "git", label: "Git" },
   { file: "github", label: "GitHub", mono: true },
-  { file: "jest", label: "Jest" },
-  { file: "vitest", label: "Vitest" },
   { file: "vercel", label: "Vercel", mono: true },
 ];
 

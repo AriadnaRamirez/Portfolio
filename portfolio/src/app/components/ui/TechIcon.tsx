@@ -9,19 +9,24 @@ function Svg({
   children,
   title,
   className = iconClass,
+  decorative = false,
 }: {
   children: ReactNode;
   title: string;
   className?: string;
+  /** The visible chip already names the tool, so the icon must not repeat it. */
+  decorative?: boolean;
 }) {
+  if (decorative) {
+    return (
+      <svg viewBox="0 0 24 24" className={className} aria-hidden>
+        {children}
+      </svg>
+    );
+  }
+
   return (
-    <svg
-      viewBox="0 0 24 24"
-      className={className}
-      aria-hidden={title ? undefined : true}
-      role="img"
-    >
-      <title>{title}</title>
+    <svg viewBox="0 0 24 24" className={className} role="img" aria-label={title}>
       {children}
     </svg>
   );
@@ -169,7 +174,7 @@ export function TechIcon({ id, className, showLabel = true }: TechIconProps) {
           className={`h-4 w-4 shrink-0 object-contain ${logo.mono ? "dark:invert" : ""}`}
         />
       ) : (
-        <Svg title={label} className={iconClass}>
+        <Svg title={label} className={iconClass} decorative={showLabel}>
           {icons[id]}
         </Svg>
       )}

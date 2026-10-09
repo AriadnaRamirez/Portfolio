@@ -13,6 +13,7 @@ import {
 import { createPortal } from "react-dom";
 import type { TranslationKey } from "@/app/components/lib/translations";
 import { caseStudyFor } from "@/app/lib/caseStudies";
+import { prefetchShot } from "@/app/lib/shotImage";
 import { assetPath } from "@/app/lib/siteUrl";
 import { BeforeAfterSlider } from "../ui/BeforeAfterSlider";
 import {
@@ -48,6 +49,15 @@ const pad = (n: number) => String(n).padStart(2, "0");
 
 /** 240px previews generated under /projects/<id>/thumbs/. */
 const thumbOf = (src: string) => src.replace(/\/([^/]+\.webp)$/, "/thumbs/$1");
+
+/** Screenshots have a downscaled copy under /sm/ (840px wide, 300px for phone shots). */
+const SHOT_FILE = /\/((desktop|mobile|before|after)-\d+\.webp)$/;
+function srcSetOf(src: string) {
+  const match = src.match(SHOT_FILE);
+  if (!match) return undefined;
+  const phone = match[2] === "mobile";
+  return `${src.replace(SHOT_FILE, "/sm/$1")} ${phone ? 300 : 840}w, ${src} ${phone ? 780 : 1440}w`;
+}
 
 function useShots(count: number) {
   const [shot, setShot] = useState(1);
@@ -111,8 +121,8 @@ function PhoneChrome({ children }: { children: ReactNode }) {
 }
 
 /**
- * Shots mount on first approach (the active one plus its neighbours) and then
- * stay mounted to crossfade, so switching never flashes empty.
+ * Only the active shot loads at first; once someone switches shots, its
+ * neighbours mount too and stay mounted to crossfade without flashing empty.
  */
 function ShotStack({
   srcs,
@@ -131,9 +141,13 @@ function ShotStack({
 }) {
   const count = srcs.length;
   const wrap = (n: number) => ((n - 1 + count) % count) + 1;
-  const [mounted, setMounted] = useState(() => new Set([active, wrap(active + 1)]));
+  const [mounted, setMounted] = useState(() => new Set([active]));
+  const initial = useRef(active);
+  const moved = useRef(false);
 
   useEffect(() => {
+    if (active === initial.current && !moved.current) return;
+    moved.current = true;
     setMounted((prev) => {
       const near = [wrap(active - 1), active, wrap(active + 1)];
       if (near.every((n) => prev.has(n))) return prev;
@@ -146,18 +160,20 @@ function ShotStack({
       {srcs.map((src, i) => {
         const n = i + 1;
         if (n !== active && !mounted.has(n)) return null;
+        const eager = priority && n === 1;
         return (
-          <Image
+          // eslint-disable-next-line @next/next/no-img-element -- static export can't resize, so variants are prebuilt in /sm/
+          <img
             key={src}
             src={src}
+            srcSet={srcSetOf(src)}
             alt={n === active ? `${title} — ${n}/${srcs.length}` : ""}
             aria-hidden={n !== active}
-            fill
-            unoptimized
             sizes={sizes}
-            priority={priority && n === 1}
-            loading={priority && n === 1 ? undefined : "lazy"}
-            className={`${fit === "contain" ? "object-contain" : "object-cover object-top"} transition-opacity duration-500 ease-out ${
+            loading={eager ? "eager" : "lazy"}
+            fetchPriority={eager ? "high" : undefined}
+            decoding="async"
+            className={`absolute inset-0 h-full w-full ${fit === "contain" ? "object-contain" : "object-cover object-top"} transition-opacity duration-500 ease-out ${
               n === active ? "opacity-100" : "opacity-0"
             }`}
           />
@@ -336,6 +352,15 @@ export function ProjectGallery({ id, title, t, compact = false }: ProjectGallery
   const caption = (n: number) => shotCaption(t, id, n, mode);
   const comparePair = mode === "before" ? caseStudyFor(id)?.before?.[shot - 1] : undefined;
 
+  useEffect(() => {
+    const shots = projectBeforeShots(id);
+    if (!shots.length) return;
+    const timer = window.setTimeout(() => {
+      shots.forEach((src) => prefetchShot(src));
+    }, 400);
+    return () => window.clearTimeout(timer);
+  }, [id]);
+
   const switchMode = (m: Mode) => {
     setMode(m);
     setShot(1);
@@ -416,7 +441,7 @@ export function ProjectGallery({ id, title, t, compact = false }: ProjectGallery
                 srcs={srcs}
                 active={shot}
                 title={title}
-                sizes="(max-width: 1024px) 100vw, 60vw"
+                sizes="(max-width: 1024px) 90vw, 50vw"
               />
             </BrowserChrome>
           </div>
@@ -441,7 +466,7 @@ export function ProjectGallery({ id, title, t, compact = false }: ProjectGallery
                 srcs={afterShots.map((_, i) => projectMediaPath(id, "mobile", i + 1))}
                 active={shot}
                 title={title}
-                sizes="160px"
+                sizes="(max-width: 640px) 90px, 150px"
               />
             </PhoneChrome>
           </div>

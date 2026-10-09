@@ -1,6 +1,8 @@
 export const translations = {
   es: {
     nav_work: "Trabajo",
+    nav_home: "Inicio",
+    breadcrumb_label: "Ruta de navegación",
     nav_experience: "Experiencia",
     nav_about: "Sobre mí",
     nav_skills: "Stack",
@@ -13,6 +15,8 @@ export const translations = {
     footer_case_studies: "Casos de estudio",
     nav_open: "Abrir menú",
     nav_close: "Cerrar menú",
+    nav_skip: "Saltar al contenido",
+    nav_sections: "Secciones",
 
     footer_sitemap: "Mapa del sitio",
     nf_kicker: "Error 404",
@@ -27,7 +31,7 @@ export const translations = {
     hero_cta_primary: "Conectar en LinkedIn",
     hero_cta_secondary: "Ver proyectos",
     hero_cta_contact_primary: "Hablemos",
-    hero_open_to: "Abierta a roles Frontend / Fullstack y proyectos freelance",
+    hero_open_to: "Abierta a roles Frontend / Fullstack y a proyectos freelance",
     hero_cta_cv: "Ver CV",
     hero_cta_quote: "Cotizar un proyecto",
     hero_timezone: "Zona horaria UTC−6 (CST)",
@@ -37,22 +41,22 @@ export const translations = {
     hero_lang_es: "Español",
     hero_lang_es_level: "Nativo",
     hero_lang_en: "Inglés",
-    hero_lang_en_level: "Bilingüe C1",
+    hero_lang_en_level: "Avanzado (C1)",
     hero_lang_toefl: "TOEFL iBT 100/120 pts",
 
     agency_hero_subtitle:
-      "Construyo interfaces en React y TypeScript con criterio de UX y las conecto a APIs REST, WebSockets y PostgreSQL. De la idea a producción.",
-    agency_about_title: "Desarrollo productos digitales con criterio de UX y código limpio.",
+      "Construyo sitios y aplicaciones web con React y TypeScript: fáciles de usar y listos para publicar. De la idea a producción.",
+    agency_about_title: "Creo productos web fáciles de usar y listos para producción.",
     agency_about_p1:
-      "Soy Ariadna Ramírez, Fullstack Web Developer con foco en Frontend, React y TypeScript. Trabajo en SaaS, sitios web y soluciones a medida para clientes reales.",
+      "Soy Ariadna Ramírez, desarrolladora web. Me enfoco en el frontend con React y TypeScript. He hecho sistemas SaaS, sitios web y soluciones a medida para clientes reales.",
     agency_about_p2:
-      "Con el fullstack como base sólida, hoy estoy ampliando mi perfil hacia la nube, DevOps y la ciberseguridad, para entregar aplicaciones que se despliegan con confianza y son seguras desde el diseño.",
+      "Ahora estoy aprendiendo nube, DevOps y ciberseguridad para entregar proyectos más estables y seguros.",
 
     brands_kicker: "Marcas",
     brands_title_italic: "Con quién",
     brands_title_rest: "he construido",
     brands_subtitle:
-      "Freelance y colaboración por proyectos: productos en producción y marcas reales.",
+      "Productos en producción y marcas reales.",
 
     landing_about_focus_label: "Enfoque actual",
     landing_about_focus_1: "Frontend React & TypeScript",
@@ -75,37 +79,37 @@ export const translations = {
     exp_grova_s1: "formularios CRUD",
     exp_grova_s2: "proyectos de cliente",
     exp_grova_s3: "frontend multimoneda",
-    hero_note_me: "¡Hola, soy yo!",
+    hero_note_me: "¡Hola, soy Ari!",
     landing_skills_subtitle:
       "Herramientas visibles: frontend, backend, UX/UI y delivery a producción.",
     landing_skills_1_title: "Frontend",
     landing_skills_1_body:
-      "React · Next.js · TypeScript · JavaScript · Tailwind CSS · Zustand · Redux · Vite · HTML5 · CSS3",
+      "React · Next.js · TypeScript · JavaScript · Tailwind CSS · Zustand · Vite · HTML5 · CSS3",
     landing_skills_2_title: "Backend & APIs",
     landing_skills_2_body:
-      "Node.js · NestJS · Express · REST APIs · WebSockets (Socket.IO) · JWT · Prisma · TypeORM · PostgreSQL · MongoDB",
-    landing_skills_3_title: "UX/UI & Testing",
+      "Node.js · NestJS · REST APIs · WebSockets (Socket.IO) · JWT · Prisma · TypeORM · PostgreSQL",
+    landing_skills_3_title: "UX/UI",
     landing_skills_3_body:
-      "Figma · Figma Make · UX Audit · Wireframing · Prototyping · Vitest · Jest · React Testing Library · Zod",
+      "Figma · Figma Make · UX Audit · Wireframing · Prototyping · Zod",
     landing_skills_4_title: "Web, Cloud & AI",
     landing_skills_4_body:
       "Responsive · Performance · SEO · Vercel · Render · Neon · GitHub · Cursor · Codex",
 
     landing_certs_title_italic: "Credenciales",
-    landing_certs_title_rest: "que respaldan el perfil.",
+    landing_certs_title_rest: "que respaldan mi trabajo.",
     landing_certs_programs_label: "Programas en curso",
     landing_badges_title: "Insignias verificadas",
     landing_badges_issued: "Emitida",
 
-    landing_projects_title: "Proyectos destacados",
-    landing_exp_title: "Más que código: trayectoria reciente.",
-    landing_exp_subtitle: "Freelance y colaboración por proyectos con clientes reales.",
+    landing_projects_title: "Proyectos en producción",
+    landing_exp_title: "Más que código: resultados en producción.",
+    landing_exp_subtitle: "Freelance y proyectos con clientes reales, de la auditoría UX al lanzamiento.",
 
     landing_edu_title: "Formación",
-    landing_edu_subtitle: "Educación formal que sostiene el criterio técnico y de producto.",
+    landing_edu_subtitle: "La formación detrás de mi criterio técnico y de producto.",
 
 
-    services_title: "Lo que puedo hacer por tu negocio.",
+    services_title: "Sitios web que atraen clientes y los llevan a escribirte.",
     services_subtitle: "Sitios y aplicaciones web a la medida, listos para publicar.",
     services_quote: "Cotizar",
     services_quote_subject: "Cotización",
@@ -115,19 +119,19 @@ export const translations = {
     services_includes: "Incluye",
     services_of: "de",
     services_cta_title: "¿Tienes un proyecto en mente?",
-    services_cta_body: "Cuéntame qué necesitas y te envío una propuesta con alcance, costo y una estimación de tiempos.",
+    services_cta_body: "Cuéntame qué necesitas y en menos de 24 horas te envío una propuesta con alcance, costo y tiempos.",
     services_cta: "Pedir cotización",
     services_cta_whatsapp: "Escríbeme por WhatsApp",
     services_cta_email: "Prefiero correo",
     wa_quote_msg: "Hola Ariadna, vi tu portafolio y me gustaría cotizar un sitio web.",
     wa_service_msg: "Hola Ariadna, vi tu portafolio y me interesa:",
     contact_whatsapp: "WhatsApp",
-    hero_client_line: "¿Tienes un negocio? Hago sitios que te consiguen clientes por WhatsApp y Google.",
+    hero_client_line: "¿Tienes un negocio? Hago sitios que te traen clientes por WhatsApp y Google.",
     hero_client_link: "Ver servicios",
     faq_kicker: "Preguntas frecuentes",
     faq_title: "Lo que suelen preguntarme.",
     faq_price_q: "¿Cuánto cuesta y cuánto tarda?",
-    faq_price_a: "Depende de lo que necesites. Después de una plática corta te envío una propuesta por escrito con alcance, costo y tiempos, en 24–48 h hábiles y sin compromiso.",
+    faq_price_a: "Depende de lo que necesites. Después de una plática corta te envío una propuesta por escrito con alcance, costo y tiempos en menos de 24 horas, sin compromiso.",
     faq_domain_q: "¿De quién es el dominio?",
     faq_domain_a: "Tuyo, siempre. Lo compras a tu nombre y te guío paso a paso, o lo registro yo y te lo transfiero. Tu sitio nunca depende de mí.",
     faq_edit_q: "¿Puedo actualizar el contenido por mi cuenta?",
@@ -137,17 +141,17 @@ export const translations = {
     faq_support_q: "¿Qué pasa si algo falla después de publicar?",
     faq_support_a: "Me escribes y lo revisamos. Antes de empezar dejamos por escrito en la propuesta qué soporte incluye y cómo se manejan los cambios posteriores.",
     service_landing_title: "Landing page",
-    service_landing_for: "Una página para presentar tu servicio o campaña.",
+    service_landing_for: "Una página clara para presentar tu servicio o campaña y lograr que te escriban.",
     service_business_title: "Sitio web para negocio",
-    service_business_for: "Varias secciones para presentar tu empresa y tus servicios.",
+    service_business_for: "Todo tu negocio en un solo sitio: quién eres, qué ofreces y cómo contactarte.",
     service_redesign_title: "Rediseño de sitio",
-    service_redesign_for: "Renuevo un sitio que ya tienes para que se vea y funcione mejor.",
+    service_redesign_for: "Renuevo tu sitio actual para que se vea mejor y convierta más visitas en clientes.",
     service_catalog_title: "Catálogo de productos",
-    service_catalog_for: "Muestra tus productos y recibe solicitudes de cotización.",
+    service_catalog_for: "Muestra tus productos y recibe cotizaciones directo en tu WhatsApp.",
     service_seo_title: "SEO local",
-    service_seo_for: "Ayuda a que te encuentren en Google cuando buscan tu servicio en tu zona.",
+    service_seo_for: "Aparece en Google cuando tus clientes buscan lo que ofreces en tu zona.",
     service_webapp_title: "Aplicación web",
-    service_webapp_for: "Para proyectos con usuarios y datos: paneles, registros o plataformas.",
+    service_webapp_for: "Para cuando necesitas usuarios, datos y paneles: sistemas internos, plataformas o un MVP.",
     feature_design: "Diseño personalizado",
     feature_mobile: "Adaptado a celular",
     feature_hosting: "Dominio y hosting",
@@ -216,7 +220,7 @@ projects_link_live: "Ver sitio",
     cs_solution: "La solución",
     cs_results: "Resultados",
     cs_cta_title: "¿Tienes un proyecto parecido?",
-    cs_cta_body: "Cuéntame qué necesitas y te respondo en 24–48 h hábiles con una propuesta clara.",
+    cs_cta_body: "Cuéntame qué necesitas y te respondo en menos de 24 horas con una propuesta clara.",
     cs_more: "Más proyectos",
     cs_read: "Ver caso de estudio",
     cs_before: "Antes y después",
@@ -247,9 +251,9 @@ projects_link_live: "Ver sitio",
     pager_next: "Siguiente",
 
     projects_servi_title: "ServiYApp",
-    projects_servi_role: "Frontend Developer · Equipo de 6 · Marketplace",
+    projects_servi_role: "Chat fullstack · Equipo de 6 · Marketplace",
     projects_servi_desc:
-      "Belleza a domicilio con pago, agenda, chat en tiempo real y profesionales verificados.",
+      "Belleza a domicilio: login por rol, pago con Mercado Pago y el chat completo, del gateway en NestJS a la interfaz. 170 commits propios; despliegue en Vercel y Render.",
     projects_servi_shot_1: "Inicio: reserva belleza a domicilio en minutos",
     projects_servi_shot_2: "Servicios con búsqueda por ubicación, categoría y filtros",
     projects_servi_shot_3: "Detalle del servicio con profesional, precio y opiniones",
@@ -260,7 +264,7 @@ projects_link_live: "Ver sitio",
     projects_senda_title: "SENDA",
     projects_senda_role: "GROVA · SPA SaaS multi-comercio",
     projects_senda_desc:
-      "SaaS de citas multi-comercio: formularios con validación, errores del backend legibles y UI por comercio.",
+      "Sistema de citas para varios comercios: formularios validados, errores claros y una interfaz propia para cada negocio.",
 
     projects_crm_title: "Grupo CRM Extintores",
     projects_crm_role: "Freelance · Sitio institucional en producción",
@@ -270,12 +274,12 @@ projects_link_live: "Ver sitio",
     projects_fram_title: "Colectivo Framboyán",
     projects_fram_role: "Fullstack Developer · Individual · SoyHenry 2025",
     projects_fram_desc:
-      "E-commerce fullstack de artesanías oaxaqueñas: catálogo, autenticación JWT, carrito, órdenes y API REST con Next.js, Express, TypeORM y PostgreSQL.",
+      "Tienda en línea de artesanías oaxaqueñas con catálogo, login, carrito, órdenes y API (Next.js, Express, TypeORM, PostgreSQL).",
 
     projects_hotel_title: "Hotel Marqués del Valle",
     projects_hotel_role: "GROVA · HMDV · UX/UI + Frontend en producción",
     projects_hotel_desc:
-      "Rediseño UX/UI y frontend bilingüe con un flujo de reserva pensado para convertir.",
+      "Rediseño UX/UI y frontend bilingüe con reserva a la vista desde cualquier página.",
 
     projects_ccst_title: "CCST Study Lab",
     projects_ccst_role: "Diseño y desarrollo · Web, API y base de datos",
@@ -297,86 +301,86 @@ exp_grova_role: "Web Developer",
     exp_grova_org: "GROVA Marketing",
     exp_grova_period: "Colaboración por proyectos · Ago 2025 — Ago 2026 · Remoto",
     exp_grova_b1:
-      "Desarrollé sitios web y productos digitales para clientes de la agencia, con enfoque en frontend, UX/UI, integración de APIs y mantenimiento.",
+      "Tres productos de cliente: la agenda de SENDA operando con sus formularios, el hotel bilingüe y multimoneda con la reserva a la vista, y campañas de FitPlus en WordPress.",
     exp_grova_b2:
-      "SENDA: SPA SaaS multi-comercio; 12 formularios CRUD (React, TypeScript, Formik, Yup); formularios dinámicos JSON; Zustand; APIs REST con JWT; pruebas DevTools/Insomnia; Git/GitHub (branches, PRs y code review).",
+      "SENDA: sistema de citas para varios comercios. Hice 12 formularios para 8 tipos de datos con React, TypeScript, Formik y Yup.",
     exp_grova_b3:
-      "HMDV — Hotel Marqués del Valle: auditoría UX/CX, prototipo Figma/Make y frontend React/TypeScript/Vite multipágina ES/EN multimoneda; flujo de reserva; frontend en producción.",
+      "Hotel Marqués del Valle: auditoría UX, prototipo en Figma y sitio completo en React, bilingüe (ES/EN) y multimoneda, con flujo de reserva. Ya está en producción.",
     exp_grova_b4:
-      "FitPlus: actualizaciones de contenido y modificaciones para campañas promocionales en producción con WordPress y Elementor.",
+      "FitPlus: actualicé contenido y campañas promocionales en su sitio WordPress.",
     exp_grova_b5:
       "Stack: React 19 · TypeScript · JavaScript · Vite · Formik · Yup · Zustand · Tailwind CSS · Material UI · Motion · REST APIs · JWT · WordPress · Git · GitHub.",
     exp_grova_p_senda_title: "SENDA",
     exp_grova_p_senda_b1:
-      "Desarrollé funcionalidades para una SPA SaaS multi-comercio de gestión de citas, pacientes, servicios, productos y personal.",
+      "Desarrollé funciones para un sistema que maneja citas, pacientes, servicios, productos y personal de varios comercios.",
     exp_grova_p_senda_b2:
-      "Implementé 12 formularios CRUD con React, TypeScript, Formik y Yup, además de extender un sistema de formularios dinámicos basado en configuraciones JSON.",
+      "Hice 12 formularios para 8 tipos de datos (React, TypeScript, Formik, Yup) y amplié un sistema de formularios dinámicos.",
     exp_grova_p_senda_b3:
-      "Desarrollé flujos de gestión de citas y componentes reutilizables; Zustand (sesión/comercio); APIs REST con JWT; pruebas DevTools/Insomnia; Git/GitHub (branches, PRs y code review).",
+      "Armé el flujo de citas y componentes reutilizables. Conecté el frontend con la API (Zustand, JWT) y trabajé con Git, pull requests y code review.",
     exp_grova_p_hotel_title: "HMDV — Hotel Marqués del Valle",
     exp_grova_p_hotel_b1:
-      "Realicé auditoría UX/CX, arquitectura de páginas, wireframes y prototipo de alta fidelidad en Figma/Figma Make junto con marketing y dirección.",
+      "Hice la auditoría UX/CX, la estructura de páginas, los wireframes y el prototipo en Figma, junto con marketing y dirección.",
     exp_grova_p_hotel_b2:
-      "Desarrollé el frontend completo utilizando React, TypeScript y Vite: multipágina responsive, bilingüe ES/EN y multimoneda.",
+      "Desarrollé todo el frontend con React, TypeScript y Vite: varias páginas, adaptado a celular, en español e inglés y con varias monedas.",
     exp_grova_p_hotel_b3:
-      "Diseñé y optimicé el flujo de reserva; Codex y GitHub Copilot con validación. Frontend integrado en producción.",
+      "Diseñé y mejoré el flujo de reserva. Usé Codex y GitHub Copilot como apoyo y revisé todo el código a mano. Ya está en producción.",
     exp_grova_p_fitplus_title: "FitPlus",
     exp_grova_p_fitplus_b1:
-      "Gestioné actualizaciones de contenido y modificaciones para campañas promocionales en producción utilizando WordPress y Elementor.",
+      "Actualicé contenido y campañas promocionales en producción con WordPress y Elementor.",
 
     exp_crm_role: "Freelance Web Developer",
     exp_crm_org: "Trabajo Independiente",
     exp_crm_period: "Ago 2026 — Actualidad · Remoto",
     exp_crm_b1:
-      "Desarrollo soluciones web a la medida para clientes reales, desde la arquitectura y UX hasta el desarrollo, SEO y despliegue en producción.",
+      "Grupo CRM Extintores está publicado: una ficha de producto aparece en la primera página de Google para “extintores cuajimalpa”.",
     exp_crm_b2:
-      "PROYECTO Grupo CRM Extintores: sitio institucional responsive end-to-end, desde arquitectura y contenidos hasta desarrollo y despliegue en producción.",
+      "Grupo CRM Extintores: sitio completo y adaptado a celular, desde la estructura y los textos hasta la publicación.",
     exp_crm_b3:
-      "Implementé un catálogo de 50+ productos con fichas individuales, servicios, FAQ, contacto y CTAs de cotización vía WhatsApp.",
+      "Catálogo de 50+ productos con ficha individual, servicios, preguntas frecuentes, contacto y botones para cotizar por WhatsApp.",
     exp_crm_b4:
-      "Apliqué prácticas básicas de SEO on-page y SEO local; despliegue en Vercel con configuración de dominio y publicación.",
+      "Apliqué SEO básico y local: una ficha de producto aparece en la primera página de Google para “extintores cuajimalpa”. Publicado en Vercel con dominio propio.",
     exp_crm_b5:
-      "Trabajé directamente con el cliente para traducir necesidades de negocio en soluciones web; IA generativa como apoyo, validando manualmente el código y el resultado final.",
+      "Trabajé directo con el cliente para convertir sus necesidades en un sitio que funciona. Usé IA como apoyo y revisé el código y el resultado final a mano.",
 
     exp_rise_role: "Participante",
     exp_rise_org: "RAISE Summit Hackathon 2026",
     exp_rise_period: "Jul 2026 · Remoto · Equipo internacional México–Argentina",
     exp_rise_b1:
-      "Clawback: frontend y UX de un prototipo de IA para detectar discrepancias entre reservas hoteleras y comisiones cobradas por OTAs.",
+      "Clawback: frontend y UX de un prototipo con IA que detecta diferencias entre las reservas de un hotel y las comisiones que cobran las plataformas de reservas (OTAs).",
     exp_rise_b2:
-      "Cursor Agents y prompt engineering en un hackathon de 48 horas, validando el código generado; demo funcional desplegada y presentada.",
+      "Hackathon de 48 horas con Cursor Agents y prompt engineering. Revisé el código generado y presentamos una demo funcional.",
 
     exp_dulce_role: "Fundadora y administradora",
     exp_dulce_org: "Dulce Glaseado",
     exp_dulce_period: "Ene 2021 — Feb 2025 · Oaxaca, México",
     exp_dulce_b1:
-      "Creé la marca desde cero: identidad visual, presencia digital y experiencia de cliente.",
+      "Creé la marca desde cero: identidad visual, redes y experiencia del cliente.",
     exp_dulce_b2:
-      "Organicé operaciones, proveedores y CX con procesos y documentación que mejoraron la eficiencia.",
+      "Organicé la operación, a los proveedores y la atención al cliente con procesos documentados que hicieron el trabajo más eficiente.",
 
     exp_kansas_role: "Research & Teaching Assistant",
     exp_kansas_org: "The University of Kansas",
     exp_kansas_period: "Ago 2022 — Ene 2023 · Lawrence, KS",
     exp_kansas_b1:
-      "Analicé datos experimentales en investigación aplicada y redacté reportes técnicos en inglés.",
+      "Analicé datos de experimentos y escribí reportes técnicos en inglés.",
     exp_kansas_b2:
-      "Organicé la documentación técnica del departamento y apoyé la actividad académica.",
+      "Organicé la documentación técnica del departamento y apoyé las actividades académicas.",
 
 sch_mujer_digital_program: "Junior Achievement Americas — Mujer Digital · 7.ª generación",
     sch_mujer_digital_org:
-      "2026 · En curso · Formación en ciberseguridad, redes y soporte, con acompañamiento para empleabilidad. 6 Cisco Digital Badges en ciberseguridad y redes.",
+      "2026 · En curso · Ciberseguridad, redes y soporte, con apoyo para conseguir empleo. 6 insignias digitales de Cisco.",
 
     sch_generation_aws_program: "Generation México — AWS re/Start + AI Foundational · Cohorte 03",
     sch_generation_aws_org:
-      "Seleccionada · Beca completa · Inicio 12 oct. 2026 · Programa intensivo (15 semanas) en cloud computing, AWS, Linux, networking e IA. Certs previstas: AWS Certified Cloud Practitioner · AWS Certified AI Practitioner.",
+      "Seleccionada · Beca completa · Inicia el 12 oct. 2026 · 15 semanas intensivas de nube, AWS, Linux, redes e IA. Certificaciones previstas: AWS Certified Cloud Practitioner y AWS Certified AI Practitioner.",
 
     sch_epam_program: "EPAM — IT Operations and Support Training Program",
     sch_epam_org:
-      "12 oct. — 5 dic. 2026 · Formación orientada a IT Support, IT Operations, Service Management, Knowledge Management, troubleshooting y soporte técnico.",
+      "12 oct. — 5 dic. 2026 · Soporte técnico, operaciones de TI, gestión de servicios y resolución de problemas.",
 
     sch_hitss_program: "Global HITSS — Semillero de Talento de Global HITSS",
     sch_hitss_org:
-      "28 sept. — 17 dic. 2026 · Capacitación y primer empleo tecnológico para talento junior en el ecosistema laboral de TI, mediante formación práctica y acompañamiento.",
+      "28 sept. — 17 dic. 2026 · Capacitación práctica y primer empleo en tecnología para talento junior.",
 
     sch_fulbright_program: "Beca Fulbright–García Robles",
     sch_fulbright_org: "COMEXUS · 2021",
@@ -422,9 +426,9 @@ sch_mujer_digital_program: "Junior Achievement Americas — Mujer Digital · 7.�
     cert_cisco_badges_period: "2026",
 
 contact_kicker: "Contacto",
-    contact_title: "Hablemos de tu próximo producto",
+    contact_title: "Hablemos de tu próximo producto o proyecto",
     contact_subtitle:
-      "¿Una vacante o un proyecto para tu negocio? Escríbeme por correo o WhatsApp y te respondo en 24–48 h hábiles.",
+      "¿Una vacante o un proyecto para tu negocio? Escríbeme por correo o WhatsApp y te respondo en menos de 24 horas.",
     contact_cta_email_primary: "Enviar email",
     contact_copy: "Copiar email",
     contact_copied: "¡Copiado!",
@@ -442,11 +446,13 @@ contact_kicker: "Contacto",
     resume_section_honors: "Becas y reconocimientos",
     resume_section_certs: "Certificaciones",
     resume_section_languages: "Idiomas",
-    resume_section_projects_compact: "Proyectos estudiantiles",
+    resume_section_projects_compact: "Proyectos",
     resume_nested_project_prefix: "PROYECTO:",
   },
   en: {
     nav_work: "Work",
+    nav_home: "Home",
+    breadcrumb_label: "Breadcrumb",
     nav_experience: "Experience",
     nav_about: "About",
     nav_skills: "Stack",
@@ -459,6 +465,8 @@ contact_kicker: "Contacto",
     footer_case_studies: "Case studies",
     nav_open: "Open menu",
     nav_close: "Close menu",
+    nav_skip: "Skip to content",
+    nav_sections: "Sections",
 
     footer_sitemap: "Site map",
     nf_kicker: "Error 404",
@@ -483,22 +491,22 @@ contact_kicker: "Contacto",
     hero_lang_es: "Spanish",
     hero_lang_es_level: "Native",
     hero_lang_en: "English",
-    hero_lang_en_level: "Bilingual C1",
+    hero_lang_en_level: "Advanced (C1)",
     hero_lang_toefl: "TOEFL iBT 100/120 pts",
 
     agency_hero_subtitle:
-      "I build React and TypeScript interfaces with a UX eye and connect them to REST APIs, WebSockets, and PostgreSQL. From idea to production.",
-    agency_about_title: "I build digital products with UX judgment and clean code.",
+      "I build websites and web apps with React and TypeScript: easy to use and ready to launch. From idea to production.",
+    agency_about_title: "I create web products that are easy to use and ready for production.",
     agency_about_p1:
-      "I'm Ariadna Ramírez, a Fullstack Web Developer focused on Frontend, React, and TypeScript. I work on SaaS, websites, and custom solutions for real clients.",
+      "I'm Ariadna Ramírez, a web developer. I focus on frontend with React and TypeScript. I've built SaaS systems, websites, and custom solutions for real clients.",
     agency_about_p2:
-      "With fullstack as a solid foundation, I'm now expanding into cloud, DevOps, and cybersecurity, so the apps I build ship with confidence and are secure by design.",
+      "I'm now learning cloud, DevOps, and cybersecurity to deliver more stable and secure projects.",
 
     brands_kicker: "Brands",
     brands_title_italic: "Who I've",
     brands_title_rest: "built with",
     brands_subtitle:
-      "Freelance and project collaborations: live products and real brands.",
+      "Live products and real brands.",
 
     landing_about_focus_label: "Current focus",
     landing_about_focus_1: "React & TypeScript frontend",
@@ -521,18 +529,18 @@ contact_kicker: "Contacto",
     exp_grova_s1: "CRUD forms",
     exp_grova_s2: "client projects",
     exp_grova_s3: "multi-currency frontend",
-    hero_note_me: "Hi, that's me!",
+    hero_note_me: "Hi, I'm Ari!",
     landing_skills_subtitle:
       "The tools I use across frontend, backend, UX/UI, and shipping to production.",
     landing_skills_1_title: "Frontend",
     landing_skills_1_body:
-      "React · Next.js · TypeScript · JavaScript · Tailwind CSS · Zustand · Redux · Vite · HTML5 · CSS3",
+      "React · Next.js · TypeScript · JavaScript · Tailwind CSS · Zustand · Vite · HTML5 · CSS3",
     landing_skills_2_title: "Backend & APIs",
     landing_skills_2_body:
-      "Node.js · NestJS · Express · REST APIs · WebSockets (Socket.IO) · JWT · Prisma · TypeORM · PostgreSQL · MongoDB",
-    landing_skills_3_title: "UX/UI & Testing",
+      "Node.js · NestJS · REST APIs · WebSockets (Socket.IO) · JWT · Prisma · TypeORM · PostgreSQL",
+    landing_skills_3_title: "UX/UI",
     landing_skills_3_body:
-      "Figma · Figma Make · UX Audit · Wireframing · Prototyping · Vitest · Jest · React Testing Library · Zod",
+      "Figma · Figma Make · UX Audit · Wireframing · Prototyping · Zod",
     landing_skills_4_title: "Web, Cloud & AI",
     landing_skills_4_body:
       "Responsive · Performance · SEO · Vercel · Render · Neon · GitHub · Cursor · Codex",
@@ -543,15 +551,15 @@ contact_kicker: "Contacto",
     landing_badges_title: "Verified badges",
     landing_badges_issued: "Issued",
 
-    landing_projects_title: "Featured projects",
-    landing_exp_title: "More than code: recent experience.",
-    landing_exp_subtitle: "Freelance and project-based work with real clients.",
+    landing_projects_title: "Projects in production",
+    landing_exp_title: "More than code: results in production.",
+    landing_exp_subtitle: "Freelance and project work with real clients, from UX audit to launch.",
 
     landing_edu_title: "Education",
-    landing_edu_subtitle: "The formal education behind my technical and product judgment.",
+    landing_edu_subtitle: "The training behind my technical and product judgment.",
 
 
-    services_title: "What I can do for your business.",
+    services_title: "Websites that attract customers and get them to contact you.",
     services_subtitle: "Custom websites and web apps, ready to launch.",
     services_quote: "Get a quote",
     services_quote_subject: "Quote request",
@@ -561,19 +569,19 @@ contact_kicker: "Contacto",
     services_includes: "Includes",
     services_of: "of",
     services_cta_title: "Have a project in mind?",
-    services_cta_body: "Tell me what you need and I'll send you a proposal with scope, price, and an estimated timeline.",
+    services_cta_body: "Tell me what you need and in less than 24 hours I'll send a proposal with scope, price, and timeline.",
     services_cta: "Request a quote",
     services_cta_whatsapp: "Message me on WhatsApp",
     services_cta_email: "I prefer email",
     wa_quote_msg: "Hi Ariadna, I saw your portfolio and I'd like a quote for a website.",
     wa_service_msg: "Hi Ariadna, I saw your portfolio and I'm interested in:",
     contact_whatsapp: "WhatsApp",
-    hero_client_line: "Run a business? I build websites that bring you customers through WhatsApp and Google.",
+    hero_client_line: "Own a business? I build sites that bring you customers through WhatsApp and Google.",
     hero_client_link: "See services",
     faq_kicker: "FAQ",
     faq_title: "What clients usually ask.",
     faq_price_q: "How much does it cost and how long does it take?",
-    faq_price_a: "It depends on what you need. After a short call I send you a written proposal with scope, cost, and timeline within 24–48 business hours, no strings attached.",
+    faq_price_a: "It depends on what you need. After a short call I'll send a written proposal with scope, cost, and timeline in less than 24 hours, no strings attached.",
     faq_domain_q: "Who owns the domain?",
     faq_domain_a: "You do, always. You buy it in your name and I walk you through it, or I register it and transfer it to you. Your site never depends on me.",
     faq_edit_q: "Can I update the content myself?",
@@ -583,17 +591,17 @@ contact_kicker: "Contacto",
     faq_support_q: "What if something breaks after launch?",
     faq_support_a: "Message me and we look into it. Before we start, the proposal spells out what support is included and how later changes are handled.",
     service_landing_title: "Landing page",
-    service_landing_for: "A single page to present your service or campaign.",
+    service_landing_for: "One focused page to present your service or campaign and get people to reach out.",
     service_business_title: "Business website",
-    service_business_for: "Multiple sections to present your company and services.",
+    service_business_for: "Your whole business in one site: who you are, what you offer, and how to reach you.",
     service_redesign_title: "Website redesign",
-    service_redesign_for: "I refresh your existing site so it looks and works better.",
+    service_redesign_for: "I refresh your current site so it looks better and turns more visits into customers.",
     service_catalog_title: "Product catalog",
-    service_catalog_for: "Show your products and receive quote requests.",
+    service_catalog_for: "Show your products and receive quote requests straight on your WhatsApp.",
     service_seo_title: "Local SEO",
-    service_seo_for: "Helps people find you on Google when they search for your service nearby.",
+    service_seo_for: "Show up on Google when customers nearby search for what you offer.",
     service_webapp_title: "Web app",
-    service_webapp_for: "For projects with users and data: dashboards, sign-ups, or platforms.",
+    service_webapp_for: "For when you need users, data, and dashboards: internal systems, platforms, or an MVP.",
     feature_design: "Custom design",
     feature_mobile: "Mobile-friendly",
     feature_hosting: "Domain and hosting",
@@ -662,7 +670,7 @@ projects_link_live: "Live site",
     cs_solution: "The solution",
     cs_results: "Results",
     cs_cta_title: "Have a similar project?",
-    cs_cta_body: "Tell me what you need and I'll get back to you within 24–48 business hours with a clear proposal.",
+    cs_cta_body: "Tell me what you need and I'll get back to you in less than 24 hours with a clear proposal.",
     cs_more: "More projects",
     cs_read: "Read case study",
     cs_before: "Before & after",
@@ -693,9 +701,9 @@ projects_link_live: "Live site",
     pager_next: "Next",
 
     projects_servi_title: "ServiYApp",
-    projects_servi_role: "Frontend Developer · Team of 6 · Marketplace",
+    projects_servi_role: "Fullstack chat · Team of 6 · Marketplace",
     projects_servi_desc:
-      "At-home beauty booking with payments, scheduling, real-time chat, and verified pros.",
+      "At-home beauty booking: role-based login, Mercado Pago checkout, and the chat in full, from the NestJS gateway to the UI. 170 commits of my own; deployed on Vercel and Render.",
     projects_servi_shot_1: "Home: book at-home beauty services in minutes",
     projects_servi_shot_2: "Services with location, category, and sorting filters",
     projects_servi_shot_3: "Service detail with professional, price, and reviews",
@@ -706,7 +714,7 @@ projects_link_live: "Live site",
     projects_senda_title: "SENDA",
     projects_senda_role: "GROVA · Multi-store SaaS SPA",
     projects_senda_desc:
-      "Multi-business appointments SaaS: validated forms, readable backend errors, and per-business UI.",
+      "Appointments system for multiple businesses: validated forms, clear errors, and a UI of its own for each business.",
 
     projects_crm_title: "Grupo CRM Extintores",
     projects_crm_role: "Freelance · Institutional site in production",
@@ -716,12 +724,12 @@ projects_link_live: "Live site",
     projects_fram_title: "Colectivo Framboyán",
     projects_fram_role: "Fullstack Developer · Solo · SoyHenry 2025",
     projects_fram_desc:
-      "Fullstack e-commerce for Oaxacan crafts: catalog, JWT auth, cart, orders, and REST API with Next.js, Express, TypeORM, and PostgreSQL.",
+      "Online store for Oaxacan crafts with catalog, login, cart, orders, and API (Next.js, Express, TypeORM, PostgreSQL).",
 
     projects_hotel_title: "Hotel Marqués del Valle",
     projects_hotel_role: "GROVA · HMDV · UX/UI + Frontend in production",
     projects_hotel_desc:
-      "UX/UI redesign and bilingual frontend with a booking flow built to convert.",
+      "UX/UI redesign and bilingual frontend with booking in sight on every page.",
 
     projects_ccst_title: "CCST Study Lab",
     projects_ccst_role: "Design & development · Web, API, and database",
@@ -743,86 +751,86 @@ exp_grova_role: "Web Developer",
     exp_grova_org: "GROVA Marketing",
     exp_grova_period: "Project-based · Aug 2025 — Aug 2026 · Remote",
     exp_grova_b1:
-      "Built websites and digital products for agency clients, focused on frontend, UX/UI, API integration, and maintenance.",
+      "Three client products: SENDA's appointment calendar running with its forms, the hotel live in two languages and currencies with booking in sight, and FitPlus campaigns on WordPress.",
     exp_grova_b2:
-      "SENDA: multi-store SaaS SPA; 12 CRUD forms (React, TypeScript, Formik, Yup); JSON dynamic forms; Zustand; REST APIs with JWT; DevTools/Insomnia testing; Git/GitHub (branches, PRs, and code review).",
+      "SENDA: appointments system for multiple businesses. Built 12 forms for 8 data types with React, TypeScript, Formik, and Yup.",
     exp_grova_b3:
-      "HMDV — Hotel Marqués del Valle: UX/CX audit, Figma/Make prototype, and React/TypeScript/Vite multipage ES/EN multi-currency frontend; booking flow; frontend live in production.",
+      "Hotel Marqués del Valle: UX audit, Figma prototype, and a complete React site, bilingual (ES/EN) and multi-currency, with a booking flow. Live in production.",
     exp_grova_b4:
-      "FitPlus: content updates and promotional campaign changes in production with WordPress and Elementor.",
+      "FitPlus: updated content and promotional campaigns on their WordPress site.",
     exp_grova_b5:
       "Stack: React 19 · TypeScript · JavaScript · Vite · Formik · Yup · Zustand · Tailwind CSS · Material UI · Motion · REST APIs · JWT · WordPress · Git · GitHub.",
     exp_grova_p_senda_title: "SENDA",
     exp_grova_p_senda_b1:
-      "Built features for a multi-store SaaS SPA covering appointments, patients, services, products, and staff.",
+      "Built features for a system that manages appointments, patients, services, products, and staff across several businesses.",
     exp_grova_p_senda_b2:
-      "Implemented 12 CRUD forms with React, TypeScript, Formik, and Yup, and extended a JSON-config dynamic form system.",
+      "Built 12 forms for 8 data types (React, TypeScript, Formik, Yup) and extended a dynamic form system.",
     exp_grova_p_senda_b3:
-      "Built appointment management flows and reusable components; Zustand (session/store); REST APIs with JWT; DevTools/Insomnia testing; Git/GitHub (branches, PRs, and code review).",
+      "Built the appointment flow and reusable components. Connected the frontend to the API (Zustand, JWT), and worked with Git, pull requests, and code review.",
     exp_grova_p_hotel_title: "HMDV — Hotel Marqués del Valle",
     exp_grova_p_hotel_b1:
-      "Conducted UX/CX audit, page architecture, wireframes, and high-fidelity Figma/Figma Make prototype with marketing and leadership.",
+      "Ran the UX/CX audit, page structure, wireframes, and Figma prototype, together with marketing and leadership.",
     exp_grova_p_hotel_b2:
-      "Built the complete frontend using React, TypeScript, and Vite: responsive multipage, bilingual ES/EN, multi-currency.",
+      "Built the entire frontend with React, TypeScript, and Vite: multiple pages, mobile-friendly, in Spanish and English, with multiple currencies.",
     exp_grova_p_hotel_b3:
-      "Designed and optimized the booking flow, using Codex and GitHub Copilot with manual validation. Frontend live in production.",
+      "Designed and improved the booking flow. Used Codex and GitHub Copilot as support and reviewed all code by hand. Live in production.",
     exp_grova_p_fitplus_title: "FitPlus",
     exp_grova_p_fitplus_b1:
-      "Managed content updates and changes for promotional campaigns in production using WordPress and Elementor.",
+      "Updated content and promotional campaigns in production with WordPress and Elementor.",
 
     exp_crm_role: "Freelance Web Developer",
     exp_crm_org: "Self-employed",
     exp_crm_period: "Aug 2026 — Present · Remote",
     exp_crm_b1:
-      "I build custom web solutions for real clients, from architecture and UX through development, SEO, and production deployment.",
+      "Grupo CRM Extintores is live: a product page appears on Google's first page for “extintores cuajimalpa”.",
     exp_crm_b2:
-      "PROJECT Grupo CRM Extintores: end-to-end responsive institutional site, from architecture and content through development and production deployment.",
+      "Grupo CRM Extintores: a complete, mobile-friendly site, from structure and copy to launch.",
     exp_crm_b3:
-      "Implemented a 50+ product catalog with detail pages, services, FAQ, contact, and WhatsApp quote CTAs.",
+      "A 50+ product catalog with detail pages, services, FAQ, contact, and buttons to request quotes on WhatsApp.",
     exp_crm_b4:
-      "Applied basic on-page and local SEO; deployed on Vercel with domain and publication setup.",
+      "Applied basic and local SEO: a product page appears on Google's first page for “extintores cuajimalpa”. Published on Vercel with its own domain.",
     exp_crm_b5:
-      "Worked directly with the client to translate business needs into web solutions; generative AI as support, manually validating the code and final result.",
+      "Worked directly with the client to turn their needs into a site that works. Used AI as support and reviewed the code and final result by hand.",
 
     exp_rise_role: "Participant",
     exp_rise_org: "RAISE Summit Hackathon 2026",
     exp_rise_period: "Jul 2026 · Remote · International Mexico–Argentina team",
     exp_rise_b1:
-      "Clawback: frontend and UX of an AI prototype to detect gaps between hotel bookings and OTA commissions.",
+      "Clawback: frontend and UX for an AI prototype that detects gaps between a hotel's bookings and the commissions charged by booking platforms (OTAs).",
     exp_rise_b2:
-      "Cursor Agents and prompt engineering in a 48-hour hackathon, validating generated code; working demo deployed and presented.",
+      "48-hour hackathon with Cursor Agents and prompt engineering. I reviewed the generated code and we presented a working demo.",
 
     exp_dulce_role: "Founder & operator",
     exp_dulce_org: "Dulce Glaseado",
     exp_dulce_period: "Jan 2021 — Feb 2025 · Oaxaca, Mexico",
     exp_dulce_b1:
-      "Built the brand from scratch: visual identity, digital presence, and customer experience.",
+      "Built the brand from scratch: visual identity, social media, and customer experience.",
     exp_dulce_b2:
-      "Organized operations, vendors, and CX with processes and documentation that improved efficiency.",
+      "Organized operations, vendors, and customer service with documented processes that made the work more efficient.",
 
     exp_kansas_role: "Research & Teaching Assistant",
     exp_kansas_org: "The University of Kansas",
     exp_kansas_period: "Aug 2022 — Jan 2023 · Lawrence, KS",
     exp_kansas_b1:
-      "Analyzed experimental data in applied research and wrote technical reports in English.",
+      "Analyzed experiment data and wrote technical reports in English.",
     exp_kansas_b2:
-      "Organized departmental technical documentation and supported academic activities.",
+      "Organized the department's technical documentation and supported academic activities.",
 
 sch_mujer_digital_program: "Junior Achievement Americas — Mujer Digital · 7th cohort",
     sch_mujer_digital_org:
-      "2026 · In progress · Training in cybersecurity, networking, and support, with employability mentoring. 6 Cisco Digital Badges in cybersecurity and networking.",
+      "2026 · In progress · Cybersecurity, networking, and support, with job-search mentoring. 6 Cisco Digital Badges.",
 
     sch_generation_aws_program: "Generation Mexico — AWS re/Start + AI Foundational · Cohort 03",
     sch_generation_aws_org:
-      "Selected · Full scholarship · Starts Oct 12, 2026 · Intensive program (15 weeks) in cloud computing, AWS, Linux, networking, and AI. Planned certs: AWS Certified Cloud Practitioner · AWS Certified AI Practitioner.",
+      "Selected · Full scholarship · Starts Oct 12, 2026 · 15 intensive weeks of cloud, AWS, Linux, networking, and AI. Planned certs: AWS Certified Cloud Practitioner and AWS Certified AI Practitioner.",
 
     sch_epam_program: "EPAM — IT Operations and Support Training Program",
     sch_epam_org:
-      "Oct 12 — Dec 5, 2026 · Training focused on IT Support, IT Operations, Service Management, Knowledge Management, troubleshooting, and technical support.",
+      "Oct 12 — Dec 5, 2026 · Technical support, IT operations, service management, and troubleshooting.",
 
     sch_hitss_program: "Global HITSS — Global HITSS Talent Seedbed",
     sch_hitss_org:
-      "Sep 28 — Dec 17, 2026 · Training and first-job program for junior talent entering the IT industry, through hands-on training and mentorship.",
+      "Sep 28 — Dec 17, 2026 · Hands-on training and first tech job for junior talent.",
 
     sch_fulbright_program: "Fulbright–García Robles Fellowship",
     sch_fulbright_org: "COMEXUS · 2021",
@@ -868,9 +876,9 @@ sch_mujer_digital_program: "Junior Achievement Americas — Mujer Digital · 7th
     cert_cisco_badges_period: "2026",
 
 contact_kicker: "Contact",
-    contact_title: "Let’s talk about your next product",
+    contact_title: "Let’s talk about your next product or project",
     contact_subtitle:
-      "A role to fill or a project for your business? Reach me by email or WhatsApp and I'll reply within 24–48 business hours.",
+      "A role to fill or a project for your business? Email or WhatsApp me and I'll reply in less than 24 hours.",
     contact_cta_email_primary: "Send email",
     contact_copy: "Copy email",
     contact_copied: "Copied!",
@@ -888,7 +896,7 @@ contact_kicker: "Contact",
     resume_section_honors: "Fellowships and honors",
     resume_section_certs: "Certifications",
     resume_section_languages: "Languages",
-    resume_section_projects_compact: "Student projects",
+    resume_section_projects_compact: "Projects",
     resume_nested_project_prefix: "PROJECT:",
   },
 } as const;

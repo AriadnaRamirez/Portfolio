@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useLanguage } from "@/app/context/LanguageContext";
+import { Breadcrumbs } from "../components/layout/Breadcrumbs";
 import { ResumeDownloadButton } from "../components/resume/ResumeDownloadButton";
 import { getResumePdf } from "../lib/resumePdf";
 
@@ -13,6 +14,7 @@ export default function ResumePage() {
     <div className="resume-page border-t border-border bg-[#eceae6] py-10 sm:py-14 dark:bg-[#121212]">
       <div className="resume-toolbar page-shell mb-6 flex flex-col gap-4 sm:mb-8 sm:flex-row sm:items-end sm:justify-between">
         <div className="space-y-2">
+          <Breadcrumbs current={t.resume_title} />
           <p className="section-kicker">{t.resume_kicker}</p>
           <h1 className="font-display text-3xl text-foreground sm:text-4xl">
             {t.resume_title}

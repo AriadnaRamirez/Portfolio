@@ -52,7 +52,7 @@ export function BrandLogos() {
                     <span className="flex h-20 w-full items-center justify-center">
                       <BrandMark
                         id={id}
-                        className="w-auto max-w-[78%] opacity-60 grayscale transition duration-500 group-hover:opacity-100 group-hover:grayscale-0 dark:opacity-75 dark:brightness-0 dark:invert dark:group-hover:opacity-100"
+                        className="w-auto max-w-[78%]"
                       />
                     </span>
                     <span className="mt-10 block text-sm font-medium text-foreground">{brand.label[lang]}</span>

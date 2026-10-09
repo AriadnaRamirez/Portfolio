@@ -5,6 +5,7 @@ export type OrgId =
   | "ku"
   | "cisco"
   | "generation"
+  | "aws"
   | "epam"
   | "hitss"
   | "ja"
@@ -37,6 +38,7 @@ export const orgs: Record<
   ku: { name: "The University of Kansas", file: "ku.svg", size: "h-8", href: "https://ku.edu/" },
   cisco: { name: "Cisco", file: "cisco.svg", size: "h-7", href: "https://www.netacad.com/" },
   generation: { name: "Generation México", file: "generation.png", size: "h-9", href: "https://mexico.generation.org/" },
+  aws: { name: "Amazon Web Services", file: "aws.svg", size: "h-9", href: "https://aws.amazon.com/" },
   epam: { name: "EPAM", file: "epam.png", size: "h-7", href: "https://campus.epam.com/" },
   hitss: { name: "Global HITSS", file: "hitss.png", size: "h-8", href: "https://www.hitss.com/" },
   ja: { name: "Junior Achievement Americas", file: "ja.png", size: "h-9", href: "https://jaamericas.org/" },

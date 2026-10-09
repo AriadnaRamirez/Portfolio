@@ -54,11 +54,11 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
     default:
-      "Ariadna Ramírez | Fullstack Web Developer · Frontend React & TypeScript",
+      "Ariadna Ramírez | Desarrolladora Frontend · React y TypeScript",
     template: "%s | Ariadna Ramírez",
   },
   description:
-    "Ariadna Ramírez — Fullstack Web Developer especializada en Frontend, React, TypeScript y UX/UI. Diseño e implemento SaaS, sitios web y productos digitales en producción. México · remoto, híbrido o presencial.",
+    "Desarrolladora Frontend y Fullstack en México: React, TypeScript y UX/UI. SaaS y sitios web en producción para clientes reales. Remoto, híbrido o presencial.",
   keywords: [
     "Ariadna Ramírez",
     "Fullstack Web Developer",
@@ -85,16 +85,16 @@ export const metadata: Metadata = {
     url: absoluteUrl("/"),
     siteName: `${site.name} Portfolio`,
     title:
-      "Ariadna Ramírez | Fullstack Web Developer · Frontend React & TypeScript",
+      "Ariadna Ramírez | Desarrolladora Frontend · React y TypeScript",
     description:
-      "Frontend React/TypeScript, UX/UI, APIs REST y despliegue a producción. Freelance y experiencia en productos SaaS reales.",
+      "Frontend React y TypeScript, UX/UI, APIs REST y despliegue. Freelance y SaaS reales en producción.",
     images: [OG_IMAGE],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Ariadna Ramírez | Fullstack Web Developer",
+    title: "Ariadna Ramírez | Desarrolladora Frontend y Fullstack",
     description:
-      "Frontend React · TypeScript · UX/UI. SaaS, sitios y productos en producción. Disponible en México y remoto.",
+      "React · TypeScript · UX/UI. SaaS, sitios y productos en producción. Disponible en México y remoto.",
     images: [OG_IMAGE.url],
   },
   icons: {
@@ -138,7 +138,7 @@ export default function RootLayout({
             <div className="flex min-h-[100dvh] flex-col">
               <SiteNav />
               <RouteEffects>
-                <main id="main-content" className="flex-1">
+                <main id="main-content" tabIndex={-1} className="flex-1 outline-none">
                   {children}
                 </main>
                 <PagePager />

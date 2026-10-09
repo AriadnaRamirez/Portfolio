@@ -102,6 +102,11 @@ function Job({
           <p className="font-bold leading-[1.15]">
             {projectPrefix} {p.title}
           </p>
+          {p.url ? (
+            <a href={p.url} className="text-black underline">
+              {p.url.replace(/^https?:\/\/(?:www\.)?/, "").replace(/\/$/, "")}
+            </a>
+          ) : null}
           <ul className="mt-1 list-disc space-y-1 pl-5 leading-[1.2]">
             {p.bullets.map((b) => (
               <li key={b}>{b}</li>
@@ -178,6 +183,11 @@ export function HarvardResume({ resume, labels }: Props) {
           {resume.projects.map((project) => (
             <div key={project.title} className="mb-3 last:mb-0">
               <p className="font-bold leading-[1.15]">{project.title}</p>
+              {project.url ? (
+                <a href={project.url} className="text-black underline">
+                  {project.url.replace(/^https?:\/\/(?:www\.)?/, "").replace(/\/$/, "")}
+                </a>
+              ) : null}
               <ul className="mt-1 list-disc space-y-1 pl-5 leading-[1.2]">
                 {project.bullets.map((b) => (
                   <li key={b}>{b}</li>
