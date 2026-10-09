@@ -1957,41 +1957,25 @@ Convenciones: `{name}`, `{n}` y similares son variables que el sitio rellena sol
   - EN: Prisma manages the schema and migrations on PostgreSQL.
 
 **Resultados**
-- **Resultado 1 · cifra:** 32
+- **Resultado 1 · cifra:** 39
 - **Resultado 1 · etiqueta**
   - ES: usuarios
   - EN: users
-- **Resultado 2 · cifra:** 9 / 23
+- **Resultado 2 · cifra:** 19
 - **Resultado 2 · etiqueta**
-  - ES: con cuenta / sin cuenta
-  - EN: with / without an account
-- **Resultado 3 · cifra:** 55
+  - ES: con una sesión completa
+  - EN: finished a full session
+- **Resultado 3 · cifra:** 1345
 - **Resultado 3 · etiqueta**
-  - ES: sesiones de estudio
-  - EN: study sessions
-- **Resultado 4 · cifra:** 1204
-- **Resultado 4 · etiqueta**
   - ES: respuestas corregidas en el servidor
   - EN: answers graded on the server
-- **Resultado 5 · cifra:** 83.8%
-- **Resultado 5 · etiqueta**
+- **Resultado 4 · cifra:** 82.8%
+- **Resultado 4 · etiqueta**
   - ES: precisión global
   - EN: overall accuracy
-- **Resultado 6 · cifra:** 10
-- **Resultado 6 · etiqueta**
-  - ES: activos hoy
-  - EN: active today
-- **Resultado 7 · cifra:** 16
-- **Resultado 7 · etiqueta**
-  - ES: usuarios con una sesión completa
-  - EN: users who finished a session
-- **Resultado 8 · cifra:** 7.3%
-- **Resultado 8 · etiqueta**
-  - ES: dominio global
-  - EN: overall mastery
 - **Nota de resultados**
-  - ES: Al tercer día de lanzamiento, tomadas del panel de administración. Los 32 usuarios son nuevos en los últimos 30 días; 27 estuvieron activos tanto en 7 como en 30 días. El dominio crece despacio a propósito: una tarjeta cuenta como dominada solo después de tres aciertos seguidos.
-  - EN: On day three after launch, taken from the admin panel. All 32 users are new in the last 30 days; 27 were active over both the last 7 and 30 days. Mastery grows slowly on purpose: a card only counts as mastered after three correct answers in a row.
+  - ES: Al tercer día de lanzamiento, tomadas del panel de administración.
+  - EN: On day three after launch, taken from the admin panel.
 
 ### ServiYApp — /work/serviyapp/
 
@@ -2421,7 +2405,7 @@ Es el contenido de tu CV en PDF tal cual. Si lo cambias aquí, solo cambia la vi
 - **CCST Study Lab — Proyecto personal · Fullstack · Next.js · NestJS · TypeScript · PostgreSQL · Prisma**
   - Plataforma de estudio para la certificación Cisco CCST Cybersecurity con 51 tarjetas de 5 tipos y sesiones adaptativas.
   - Diseñé y desarrollé de punta a punta: corrección en el servidor, sesión JWT en cookie httpOnly, validación con Zod y despliegue en Vercel, Render y Neon.
-  - Al tercer día de lanzamiento: 32 usuarios, 55 sesiones y 1204 respuestas corregidas en el servidor.
+  - Al tercer día de lanzamiento: 39 usuarios, 19 con una sesión completa y 1345 respuestas corregidas en el servidor.
 - **ServiYApp — Proyecto estudiantil · Frontend Developer · Equipo de 6 · Next.js · React · TypeScript · Zustand · Socket.IO · Mercado Pago · Tailwind CSS**
   - Marketplace de servicios de belleza a domicilio con paneles para clientes, proveedores y administradores.
   - Implementé autenticación, Google OAuth, rutas protegidas por rol y persistencia de sesión con Zustand y JWT.
@@ -2491,7 +2475,7 @@ Es el contenido de tu CV en PDF tal cual. Si lo cambias aquí, solo cambia la vi
 - **CCST Study Lab — Personal project · Fullstack · Next.js · NestJS · TypeScript · PostgreSQL · Prisma**
   - Study platform for the Cisco CCST Cybersecurity certification with 51 cards across 5 types and adaptive sessions.
   - Designed and built it end to end: server-side grading, a JWT session in an httpOnly cookie, Zod validation, and deployment on Vercel, Render, and Neon.
-  - On day three after launch: 32 users, 55 sessions, and 1,204 answers graded on the server.
+  - On day three after launch: 39 users, 19 who finished a session, and 1,345 answers graded on the server.
 - **ServiYApp — Student project · Frontend Developer · Team of 6 · Next.js · React · TypeScript · Zustand · Socket.IO · Mercado Pago · Tailwind CSS**
   - At-home beauty services marketplace with client, provider, and admin panels.
   - Implemented authentication, Google OAuth, role-protected routes, and session persistence with Zustand and JWT.

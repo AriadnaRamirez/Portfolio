@@ -148,7 +148,7 @@ export function LandingHero() {
           </dl>
         </div>
 
-        <div className="relative mx-auto w-full max-w-md lg:col-span-5 lg:mt-1 lg:max-w-none">
+        <div className="relative mx-auto w-full max-w-[23rem] lg:col-span-5 lg:mt-1 lg:ml-auto">
           <div className="hero-clip">
             <figure className="relative aspect-[4/5] overflow-hidden rounded-[1.75rem] border border-border bg-surface shadow-[var(--shadow-card)]">
               <Image
@@ -158,7 +158,7 @@ export function LandingHero() {
                 priority
                 fetchPriority="high"
                 sizes="(max-width: 1024px) 90vw, 36vw"
-                className="hero-parallax object-cover object-[center_72%]"
+                className="hero-parallax object-cover object-center"
               />
             </figure>
           </div>

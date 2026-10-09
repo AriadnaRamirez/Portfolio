@@ -1017,7 +1017,7 @@ section[id] {
 }
 
 .hero-parallax {
-  transform: scale(1.2) translate3d(0, -8%, 0);
+  transform: none;
 }
 
 @keyframes gallery-rise {
@@ -1031,10 +1031,10 @@ section[id] {
 
 @keyframes hero-parallax {
   from {
-    transform: scale(1.2) translate3d(0, -8%, 0);
+    transform: none;
   }
   to {
-    transform: scale(1.26) translate3d(0, -6%, 0);
+    transform: scale(1.04) translate3d(0, -1.5%, 0);
   }
 }
 
