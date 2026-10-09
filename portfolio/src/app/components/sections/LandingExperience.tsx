@@ -42,7 +42,7 @@ const entries: Record<
       { value: "ES/EN", label: "exp_grova_s3" },
     ],
     projects: [
-      { name: "SENDA" },
+      { name: "SENDA", href: "/work/senda/" },
       { brand: "hmdv", href: "/work/hmdv/" },
       { brand: "fitplus", href: brands.fitplus.href },
     ],

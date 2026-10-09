@@ -132,6 +132,7 @@ export default function RootLayout({
     >
       <body className="font-sans antialiased">
         <JsonLd siteUrl={siteUrl} />
+        <div aria-hidden className="scroll-progress" />
         <ThemeProvider>
           <LanguageProvider>
             <div className="flex min-h-[100dvh] flex-col">

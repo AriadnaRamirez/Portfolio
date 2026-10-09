@@ -386,18 +386,18 @@ export const caseStudies: Record<string, CaseStudy> = {
       },
     ],
     results: [
-      { value: "9", label: { es: "usuarios el primer día", en: "users on day one" } },
-      { value: "3 / 6", label: { es: "con cuenta / sin cuenta", en: "with / without an account" } },
-      { value: "11", label: { es: "sesiones de estudio", en: "study sessions" } },
-      { value: "254", label: { es: "respuestas corregidas en el servidor", en: "answers graded on the server" } },
-      { value: "77.2%", label: { es: "precisión global", en: "overall accuracy" } },
-      { value: "8", label: { es: "usuarios activos", en: "active users" } },
-      { value: "4", label: { es: "usuarios con una sesión completa", en: "users who finished a session" } },
-      { value: "51", label: { es: "tarjetas en el banco", en: "cards in the bank" } },
+      { value: "26", label: { es: "usuarios en dos días", en: "users in two days" } },
+      { value: "8 / 18", label: { es: "con cuenta / sin cuenta", en: "with / without an account" } },
+      { value: "46", label: { es: "sesiones de estudio", en: "study sessions" } },
+      { value: "978", label: { es: "respuestas corregidas en el servidor", en: "answers graded on the server" } },
+      { value: "84.3%", label: { es: "precisión global", en: "overall accuracy" } },
+      { value: "23", label: { es: "usuarios activos", en: "active users" } },
+      { value: "13", label: { es: "usuarios con una sesión completa", en: "users who finished a session" } },
+      { value: "6.9%", label: { es: "dominio global", en: "overall mastery" } },
     ],
     resultsNote: {
-      es: "Métricas reales del primer día en producción, tomadas del panel de administración. El dominio global sigue en 0 %: dominar una tarjeta pide tres aciertos seguidos, y eso no pasa en una sola tarde.",
-      en: "Real metrics from the first day in production, taken from the admin panel. Overall mastery is still 0%: mastering a card takes three correct answers in a row, and that doesn't happen in a single afternoon.",
+      es: "Métricas reales de los dos primeros días en producción, tomadas del panel de administración. El dominio crece despacio a propósito: una tarjeta cuenta como dominada solo después de tres aciertos seguidos.",
+      en: "Real metrics from the first two days in production, taken from the admin panel. Mastery grows slowly on purpose: a card only counts as mastered after three correct answers in a row.",
     },
   },
   serviyapp: {
@@ -525,6 +525,150 @@ export const caseStudies: Record<string, CaseStudy> = {
     resultsNote: {
       es: "Proyecto estudiantil desarrollado en equipo de 6 entre octubre y noviembre de 2025. Las cifras salen del historial de Git del repositorio frontend; las capturas son de una demo local con datos de prueba.",
       en: "Student project built by a team of 6 between October and November 2025. Figures come from the frontend repository's Git history; screenshots are from a local demo with sample data.",
+    },
+  },
+  senda: {
+    id: "senda",
+    slug: "senda",
+    client: "SENDA",
+    summary: {
+      es: "SaaS de citas y operación para una clínica de belleza que aplica bótox, ácido hialurónico y otros procedimientos estéticos, preparado para operar uno o varios comercios. Como Frontend Developer en GROVA, en un equipo de dos, construí los formularios de las entidades principales, el manejo de errores del backend y la interfaz que cambia según el comercio.",
+      en: "An appointments and operations SaaS for a beauty clinic that offers Botox, hyaluronic acid, and other aesthetic procedures, built to run one or several locations. As a Frontend Developer at GROVA, on a team of two, I built the forms for the core entities, backend error handling, and the UI that adapts to each business.",
+    },
+    facts: [
+      { label: { es: "Rol", en: "Role" }, value: { es: "Frontend Developer · GROVA", en: "Frontend Developer · GROVA" } },
+      { label: { es: "Equipo", en: "Team" }, value: { es: "2 desarrolladores", en: "2 developers" } },
+      { label: { es: "Periodo", en: "Timeline" }, value: { es: "Ago 2025 — Ene 2026", en: "Aug 2025 — Jan 2026" } },
+      { label: { es: "Alcance", en: "Scope" }, value: { es: "Formularios · Vistas · UI multi-comercio", en: "Forms · Views · Multi-business UI" } },
+    ],
+    tech: ["react", "typescript", "vite", "tailwind"],
+    challenge: {
+      es: "Una clínica de procedimientos estéticos agenda tratamientos como bótox o ácido hialurónico, lleva el expediente de cada paciente y puede operar varios comercios, cada uno con sus pacientes, servicios, horarios y personal, sin que sus datos se mezclen. Cada entidad necesitaba su formulario de alta y edición conectado a una API REST con JWT, con la misma validación y errores claros cuando el backend rechaza algo. Y como es un producto para un cliente privado, sus datos reales no se pueden mostrar.",
+      en: "An aesthetic clinic books treatments like Botox or hyaluronic acid, keeps a record for each patient, and can run several locations, each with its own patients, services, schedules, and staff, without their data mixing. Every entity needed a create and edit form wired to a REST API with JWT, with consistent validation and clear errors when the backend rejects something. And since it's a product for a private client, its real data can't be shown.",
+    },
+    goals: [
+      { es: "Dar de alta y editar cada entidad con la misma validación y los mismos mensajes.", en: "Create and edit every entity with the same validation and the same messages." },
+      { es: "Que cada comercio se sienta propio: sus datos, su color, su contexto.", en: "Make each business feel like its own: its data, its color, its context." },
+      { es: "Mostrar el producto sin exponer datos reales de clientes.", en: "Show the product without exposing real customer data." },
+    ],
+    process: [
+      {
+        title: { es: "Formularios por entidad", en: "Per-entity forms" },
+        body: { es: "Ocho formularios con Formik y Yup (categorías, comercios, pacientes, productos, servicios, expedientes, horarios y citas), reutilizados en las pantallas de crear y editar.", en: "Eight Formik and Yup forms (categories, businesses, patients, products, services, records, schedules, and appointments), reused across the create and edit screens." },
+      },
+      {
+        title: { es: "Vistas y estado", en: "Views & state" },
+        body: { es: "Vistas de comercios, categorías y servicios. El comercio activo sale del store de Zustand, así cada alta queda ligada a él sin pedirlo en el formulario.", en: "Business, category, and service views. The active business comes from the Zustand store, so every new record is tied to it without asking in the form." },
+      },
+      {
+        title: { es: "Errores y feedback", en: "Errors & feedback" },
+        body: { es: "Un componente que muestra los errores de validación que regresa el backend, alertas con react-hot-toast y confirmaciones con un formato común.", en: "A component that shows the validation errors the backend returns, react-hot-toast alerts, and confirmations with a shared format." },
+      },
+      {
+        title: { es: "Interfaz multi-comercio", en: "Multi-business UI" },
+        body: { es: "Color del comercio en el tema y el scrollbar, sidebar responsive, menú de usuario con cambio de tema y una propuesta de diseño para el detalle de cita y el perfil.", en: "The business color on the theme and scrollbar, a responsive sidebar, a user menu with a theme toggle, and a design proposal for the appointment detail and profile." },
+      },
+    ],
+    story: [
+      {
+        kicker: { es: "01 · Agenda", en: "01 · Calendar" },
+        problem: { es: "Una lista de citas no dice cómo viene la semana ni quién está agendando.", en: "A list of appointments doesn't tell you how the week looks or who's booking." },
+        title: { es: "La semana completa, de un vistazo.", en: "The whole week at a glance." },
+        body: {
+          es: "La agenda semanal acomoda las citas por día y hora, marca los días cerrados y resume la semana: citas, completadas, inasistencias y cuántas agendó el agente. El color de cada tarjeta distingue el origen de la cita.",
+          en: "The weekly calendar lays out appointments by day and hour, marks closed days, and sums up the week: appointments, completed, no-shows, and how many the agent booked. Each card's color shows where the appointment came from.",
+        },
+        image: "/projects/senda/desktop-1.webp",
+      },
+      {
+        kicker: { es: "02 · Profesionales", en: "02 · Professionals" },
+        problem: { es: "Con varios profesionales, la agenda de todos mezcla jornadas que no son tuyas.", en: "With several professionals, the shared calendar mixes in shifts that aren't yours." },
+        title: { es: "La agenda de una sola persona.", en: "One person's calendar." },
+        body: {
+          es: "Un filtro deja solo las citas de un profesional y recalcula el resumen de la semana para él. La vista por profesional pone a cada uno en su propia columna.",
+          en: "A filter keeps only one professional's appointments and recalculates the week's summary for them. The per-professional view gives each one their own column.",
+        },
+        image: "/projects/senda/desktop-2.webp",
+      },
+      {
+        kicker: { es: "03 · Detalle", en: "03 · Detail" },
+        problem: { es: "Para resolver una duda sobre una cita había que abrirla en otra pantalla.", en: "Answering a question about an appointment meant opening it on another screen." },
+        title: { es: "Todo lo de la cita, sin salir de la agenda.", en: "Everything about the appointment, without leaving the calendar." },
+        body: {
+          es: "Al tocar una cita aparece su estado y origen, el paciente con teléfono y correo, el servicio con duración y precio, y el profesional, con acciones para editar, eliminar o abrirla. Parte de la propuesta de diseño del detalle de cita que hice en el proyecto.",
+          en: "Tapping an appointment shows its status and source, the patient with phone and email, the service with duration and price, and the professional, with actions to edit, delete, or open it. It builds on the appointment-detail design proposal I made on the project.",
+        },
+        image: "/projects/senda/desktop-3.webp",
+      },
+      {
+        kicker: { es: "04 · Nueva cita", en: "04 · New appointment" },
+        problem: { es: "Agendar no puede depender de recordar ids de pacientes, servicios o doctores.", en: "Booking can't depend on remembering patient, service, or doctor ids." },
+        title: { es: "Agendar con selectores, no con ids.", en: "Book with pickers, not ids." },
+        body: {
+          es: "El formulario pide paciente, servicio, profesional, fecha y horario, y valida antes de enviar. Maqueté su primera versión en el proyecto.",
+          en: "The form asks for patient, service, professional, date, and time, and validates before sending. I built its first layout on the project.",
+        },
+        image: "/projects/senda/desktop-4.webp",
+      },
+      {
+        kicker: { es: "05 · Expediente", en: "05 · Records" },
+        problem: { es: "La historia clínica de un paciente no puede vivir en notas sueltas.", en: "A patient's history can't live in scattered notes." },
+        title: { es: "Ficha y expediente en una vista.", en: "Profile and records in one view." },
+        body: {
+          es: "Los datos de contacto arriba y, debajo, el expediente por tipo de registro, con alta de registros nuevos. Construí los formularios de pacientes y de expedientes.",
+          en: "Contact details on top and, below, the records by type, with new entries added in place. I built the patient and record forms.",
+        },
+        image: "/projects/senda/desktop-5.webp",
+      },
+      {
+        kicker: { es: "06 · Multi-comercio", en: "06 · Multi-business" },
+        problem: { es: "Un mismo equipo atiende negocios distintos, con datos que no se pueden mezclar.", en: "One team serves different businesses whose data can't mix." },
+        title: { es: "Cambiar de comercio es cambiar de contexto.", en: "Switching business switches context." },
+        body: {
+          es: "Al elegir otro comercio, la app muestra solo sus citas, sus profesionales y sus servicios, con su propio color. Implementé el cambio de color según el comercio y que los formularios tomen el comercio activo del store.",
+          en: "Picking another business shows only its appointments, professionals, and services, in its own color. I implemented the per-business color and made the forms take the active business from the store.",
+        },
+        image: "/projects/senda/desktop-6.webp",
+      },
+    ],
+    engineering: [
+      {
+        title: { es: "Errores del backend, legibles", en: "Readable backend errors" },
+        body: {
+          es: "Una función normaliza la respuesta de error de la API en una lista de mensajes, y un componente los muestra encima del formulario cuando un alta falla, en lugar de un error genérico.",
+          en: "A function normalizes the API's error response into a list of messages, and a component shows them above the form when a save fails, instead of a generic error.",
+        },
+      },
+      {
+        title: { es: "El comercio vive en el store", en: "The business lives in the store" },
+        body: {
+          es: "El id del comercio activo se toma de Zustand y viaja en campos ocultos, así ningún registro queda huérfano ni se pide un dato que el usuario no debería tocar.",
+          en: "The active business id is read from Zustand and sent in hidden fields, so no record ends up orphaned and users aren't asked for data they shouldn't touch.",
+        },
+      },
+      {
+        title: { es: "Validación declarativa", en: "Declarative validation" },
+        body: {
+          es: "Cada formulario define su esquema con Yup y los campos dependen del estado: por ejemplo, el número de sesiones de un servicio solo aparece si tiene varias sesiones activadas.",
+          en: "Each form defines its schema with Yup and fields depend on state: for example, a service's session count only appears when multiple sessions are enabled.",
+        },
+      },
+      {
+        title: { es: "Una demo sin tocar las pantallas", en: "A demo without touching the screens" },
+        body: {
+          es: "Para el portafolio, la función que llama a la API desvía cada petición a un manejador local con datos semilla cuando el modo demo está activo. Las pantallas siguen llamando a la misma API, con alta, edición, búsqueda y paginación funcionando en el navegador.",
+          en: "For the portfolio, the function that calls the API routes every request to a local handler with seed data when demo mode is on. The screens keep calling the same API, with create, edit, search, and pagination working in the browser.",
+        },
+      },
+    ],
+    results: [
+      { value: "44%", label: { es: "de los commits del repositorio", en: "of the repository's commits" } },
+      { value: "8", label: { es: "formularios de entidad con Formik y Yup", en: "entity forms with Formik and Yup" } },
+      { value: "2", label: { es: "comercios en la demo, cada uno con sus datos", en: "businesses in the demo, each with its own data" } },
+    ],
+    resultsNote: {
+      es: "Proyecto de GROVA para un cliente privado; el código y los datos reales no son públicos. El porcentaje sale del historial de Git, sin contar merges, y solo incluye lo que subí desde mi cuenta: parte de mi trabajo lo subió mi compañero. Las capturas son de una demo local con datos ficticios.",
+      en: "A GROVA project for a private client; the code and real data aren't public. The percentage comes from the Git history, excluding merges, and only counts what I pushed from my own account: my teammate pushed part of my work. Screenshots are from a local demo with fictitious data.",
     },
   },
 };

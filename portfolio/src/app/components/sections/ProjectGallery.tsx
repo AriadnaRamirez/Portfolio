@@ -405,7 +405,11 @@ export function ProjectGallery({ id, title, t, compact = false }: ProjectGallery
           onClick={() => setOpen(true)}
           className="group relative block w-full text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-foreground"
         >
-          <div className={hasMobile ? "" : "translate-y-px [&>div]:rounded-b-none [&>div]:border-b-0"}>
+          <div
+            className={`gallery-rise transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-1.5 motion-reduce:group-hover:translate-y-0 ${
+              hasMobile ? "" : "translate-y-px [&>div]:rounded-b-none [&>div]:border-b-0"
+            }`}
+          >
             <BrowserChrome url={url} aspect={aspect}>
               <ShotStack
                 key={mode}

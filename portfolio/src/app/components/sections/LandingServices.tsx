@@ -220,6 +220,85 @@ function Arrow({ dir }: { dir: "prev" | "next" }) {
   );
 }
 
+/** What the client holds at the end of each step, drawn as the object itself. */
+function Deliverable({ n, title, meta }: { n: number; title: string; meta: string }) {
+  if (n === 1) {
+    return (
+      <div className="relative flex h-full items-center gap-3.5 rounded-xl border border-border bg-background px-4 py-3.5 shadow-[0_14px_30px_-24px_rgba(20,20,40,0.45)]">
+        <span aria-hidden className="relative grid h-12 w-10 shrink-0 place-items-center rounded-md border border-border bg-surface">
+          <span className="absolute top-0 right-0 h-3 w-3 rounded-bl-md border-b border-l border-border bg-background" />
+          <span className="mt-1 flex w-5 flex-col gap-1">
+            <span className="h-0.5 rounded bg-[var(--cat-ink)]" />
+            <span className="h-0.5 rounded bg-border-strong" />
+            <span className="h-0.5 w-3 rounded bg-border-strong" />
+          </span>
+        </span>
+        <p className="min-w-0">
+          <span className="block font-display text-lg leading-tight text-foreground">{title}</span>
+          <span className="mt-0.5 block text-[13px] text-muted">{meta}</span>
+        </p>
+      </div>
+    );
+  }
+
+  if (n === 2) {
+    return (
+      <div className="relative flex h-full flex-col justify-between rounded-xl border border-border bg-background px-4 py-3.5 shadow-[0_14px_30px_-24px_rgba(20,20,40,0.45)]">
+        <div aria-hidden className="flex items-center gap-1.5">
+          <span className="h-6 w-6 rounded-full bg-[var(--cat-from)]" />
+          <span className="-ml-3 h-6 w-6 rounded-full border-2 border-background bg-[var(--cat-to)]" />
+          <span className="-ml-3 h-6 w-6 rounded-full border-2 border-background bg-foreground" />
+          <span className="ml-2 font-display text-lg leading-none text-foreground">Aa</span>
+          <span className="ml-auto inline-flex items-center gap-1 rounded-full bg-emerald-500/12 px-2 py-0.5 text-[11px] font-semibold text-emerald-700 dark:text-emerald-400">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth={2.4} strokeLinecap="round" strokeLinejoin="round" className="h-3 w-3">
+              <path d="M3.5 8.5l3 3 6-7" />
+            </svg>
+            OK
+          </span>
+        </div>
+        <p className="mt-3">
+          <span className="block font-display text-lg leading-tight text-foreground">{title}</span>
+          <span className="mt-0.5 block text-[13px] text-muted">{meta}</span>
+        </p>
+      </div>
+    );
+  }
+
+  if (n === 3) {
+    return (
+      <div className="relative h-full overflow-hidden rounded-xl border border-border bg-background shadow-[0_14px_30px_-24px_rgba(20,20,40,0.45)]">
+        <div aria-hidden className="flex items-center gap-1.5 border-b border-border px-3 py-2">
+          <span className="h-1.5 w-1.5 rounded-full bg-border-strong" />
+          <span className="h-1.5 w-1.5 rounded-full bg-border-strong" />
+          <span className="h-1.5 w-1.5 rounded-full bg-border-strong" />
+        </div>
+        <div className="px-4 py-3">
+          <p className="flex min-w-0 items-center gap-2 rounded-full bg-surface px-3 py-1.5">
+            <svg aria-hidden viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth={1.6} strokeLinecap="round" className="h-3.5 w-3.5 shrink-0 text-[var(--cat-ink)]">
+              <path d="M6.5 9.5l3-3M7 4.5l1-1a2.5 2.5 0 0 1 3.5 3.5l-1 1M9 11.5l-1 1A2.5 2.5 0 0 1 4.5 9l1-1" />
+            </svg>
+            <span className="truncate text-sm font-medium text-foreground">{title}</span>
+          </p>
+          <span className="mt-2 block text-[13px] text-muted">{meta}</span>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="relative flex h-full flex-col justify-center rounded-xl bg-foreground px-4 py-3.5 text-background shadow-[0_18px_36px_-22px_rgba(20,20,40,0.6)]">
+      <p className="flex items-center gap-2">
+        <span aria-hidden className="relative flex h-2 w-2">
+          <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-70 motion-reduce:animate-none" />
+          <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
+        </span>
+        <span className="font-display text-lg leading-tight">{title}</span>
+      </p>
+      <span className="mt-1 block text-[13px] text-background/65">{meta}</span>
+    </div>
+  );
+}
+
 const mailto = (subject: string) =>
   `mailto:${site.email}?subject=${encodeURIComponent(subject)}`;
 
@@ -490,23 +569,17 @@ export function LandingServices() {
                       {tk(`process_${n}_title`)}
                     </h3>
                     <p className="mt-2 text-sm leading-relaxed text-muted">{tk(`process_${n}_body`)}</p>
-                    <div className="mt-auto pt-6">
-                      <div className="flex items-start gap-3 rounded-xl border border-border bg-[color-mix(in_srgb,var(--foreground)_2.5%,transparent)] px-4 py-3.5 lg:min-h-[6rem]">
-                        <span
-                          aria-hidden
-                          style={{ transitionDelay: `${500 + i * 350}ms` }}
-                          className="mt-0.5 grid h-5 w-5 shrink-0 scale-50 place-items-center rounded-full bg-[linear-gradient(135deg,var(--cat-from),var(--cat-to))] text-white opacity-0 transition-[transform,opacity] duration-500 ease-out group-[.is-visible]/process:scale-100 group-[.is-visible]/process:opacity-100 motion-reduce:scale-100 motion-reduce:opacity-100 motion-reduce:transition-none"
-                        >
-                          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth={2.2} strokeLinecap="round" strokeLinejoin="round" className="h-3 w-3">
-                            <path d="M3.5 8.5l3 3 6-7" />
-                          </svg>
-                        </span>
-                        <p className="min-w-0">
-                          <span className="font-mono-label block text-muted">{t.process_get}</span>
-                          <span className="mt-1 block text-[15px] font-medium leading-snug text-foreground">
-                            {tk(`process_${n}_get`)}
-                          </span>
-                        </p>
+                    <div
+                      style={{ transitionDelay: `${450 + i * 300}ms` }}
+                      className="mt-auto pt-6 opacity-0 translate-y-4 transition-[opacity,translate] duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-[.is-visible]/process:translate-y-0 group-[.is-visible]/process:opacity-100 motion-reduce:translate-y-0 motion-reduce:opacity-100 motion-reduce:transition-none"
+                    >
+                      <p className="sr-only">{t.process_get}:</p>
+                      <div className="lg:h-[9rem]">
+                        <Deliverable
+                          n={n}
+                          title={tk(`process_${n}_get`)}
+                          meta={tk(`process_${n}_meta`)}
+                        />
                       </div>
                     </div>
                   </li>

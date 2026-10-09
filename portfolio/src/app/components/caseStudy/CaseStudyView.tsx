@@ -289,7 +289,11 @@ export function CaseStudyView({ slug }: { slug: string }) {
 
       <section className="page-shell pb-24 sm:pb-32" aria-label={t.cs_results}>
         <SectionHead kicker={t.cs_results} n={n("results")} />
-        <dl className="mt-10 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-border bg-border lg:grid-cols-4">
+        <dl
+          className={`mt-10 grid gap-px overflow-hidden rounded-2xl border border-border bg-border ${
+            cs.results.length === 3 ? "grid-cols-1 sm:grid-cols-3" : "grid-cols-2 lg:grid-cols-4"
+          }`}
+        >
           {cs.results.map((r, i) => (
             <Reveal key={r.label.en} variant="up" delay={i * 90} className="bg-background p-6 sm:p-8">
               <dt className="sr-only">{r.label[lang]}</dt>

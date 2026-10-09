@@ -149,7 +149,7 @@ export function LandingHero() {
                 priority
                 fetchPriority="high"
                 sizes="(max-width: 1024px) 90vw, 36vw"
-                className="object-cover object-center"
+                className="hero-parallax object-cover object-center"
               />
             </figure>
           </div>
