@@ -34,12 +34,15 @@ export function BrandMark({ id, className = "h-8 w-auto max-w-[10rem]" }: BrandM
   const name = brand.name;
 
   if (brand.logo) {
+    const markClass = `${className} ${brand.logoClassName ?? ""}`;
+    if (!brand.logoDark) {
+      return <LogoImg src={brand.logo} alt={name} className={markClass} />;
+    }
     return (
-      <LogoImg
-        src={brand.logo}
-        alt={name}
-        className={`${className} ${brand.logoClassName ?? ""}`}
-      />
+      <>
+        <LogoImg src={brand.logo} alt={name} className={`${markClass} dark:hidden`} />
+        <LogoImg src={brand.logoDark} alt={name} className={`${markClass} hidden dark:inline`} />
+      </>
     );
   }
 

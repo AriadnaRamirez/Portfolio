@@ -239,12 +239,12 @@ export function LandingCertifications() {
 
   return (
     <section id="certs" className="cat-pink page-shell py-14 sm:py-16">
-      <div className="max-w-xl space-y-3">
+      <div className="max-w-4xl space-y-3">
         <Reveal variant="left">
           <p className="section-kicker">{t.nav_certs}</p>
         </Reveal>
         <Reveal variant="blur" delay={100}>
-          <h2 className="font-display text-[clamp(1.7rem,3.2vw,2.4rem)] leading-[1.08] text-foreground">
+          <h2 className="section-title">
             {t.landing_certs_title_italic} {t.landing_certs_title_rest}
           </h2>
         </Reveal>

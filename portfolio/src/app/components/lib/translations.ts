@@ -10,7 +10,6 @@ export const translations = {
     nav_services: "Servicios",
     nav_contact: "Contacto",
     nav_resume: "CV",
-    nav_resume_view: "Ver CV",
     nav_education: "Formación",
     footer_case_studies: "Casos de estudio",
     nav_open: "Abrir menú",
@@ -32,7 +31,6 @@ export const translations = {
     hero_cta_secondary: "Ver proyectos",
     hero_cta_contact_primary: "Hablemos",
     hero_open_to: "Abierta a roles Frontend / Fullstack y a proyectos freelance",
-    hero_cta_cv: "Ver CV",
     hero_cta_quote: "Cotizar un proyecto",
     hero_timezone: "Zona horaria UTC−6 (CST)",
     hero_highlight_2_label: "Disponibilidad",
@@ -46,7 +44,7 @@ export const translations = {
 
     agency_hero_subtitle:
       "Construyo sitios y aplicaciones web con React y TypeScript: fáciles de usar y listos para publicar. De la idea a producción.",
-    agency_about_title: "Creo productos web fáciles de usar y listos para producción.",
+    agency_about_title: "Fáciles de usar y listos para producción.",
     agency_about_p1:
       "Soy Ariadna Ramírez, desarrolladora web. Me enfoco en el frontend con React y TypeScript. He hecho sistemas SaaS, sitios web y soluciones a medida para clientes reales.",
     agency_about_p2:
@@ -460,7 +458,6 @@ contact_kicker: "Contacto",
     nav_services: "Services",
     nav_contact: "Contact",
     nav_resume: "CV",
-    nav_resume_view: "View CV",
     nav_education: "Education",
     footer_case_studies: "Case studies",
     nav_open: "Open menu",
@@ -482,7 +479,6 @@ contact_kicker: "Contacto",
     hero_cta_secondary: "View projects",
     hero_cta_contact_primary: "Let's talk",
     hero_open_to: "Open to Frontend / Fullstack roles and freelance projects",
-    hero_cta_cv: "View CV",
     hero_cta_quote: "Get a project quote",
     hero_timezone: "Time zone UTC−6 (CST)",
     hero_highlight_2_label: "Availability",
@@ -496,7 +492,7 @@ contact_kicker: "Contacto",
 
     agency_hero_subtitle:
       "I build websites and web apps with React and TypeScript: easy to use and ready to launch. From idea to production.",
-    agency_about_title: "I create web products that are easy to use and ready for production.",
+    agency_about_title: "Easy to use and ready for production.",
     agency_about_p1:
       "I'm Ariadna Ramírez, a web developer. I focus on frontend with React and TypeScript. I've built SaaS systems, websites, and custom solutions for real clients.",
     agency_about_p2:

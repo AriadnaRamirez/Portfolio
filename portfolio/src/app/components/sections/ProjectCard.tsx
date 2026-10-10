@@ -48,7 +48,7 @@ export function ProjectCard({ id, lang, t, compact = false }: ProjectCardProps) 
   }
 
   return (
-    <article className="border-b border-border py-12 last:border-b-0 sm:py-16">
+    <article className="border-b border-border py-12 last:border-b-0 sm:py-16 lg:py-8">
       <div className="grid gap-8 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,0.75fr)] lg:items-start lg:gap-12">
         <Reveal variant="clip" className="min-w-0">
           <ProjectGallery id={id} title={title} t={t} />
