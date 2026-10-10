@@ -23,8 +23,8 @@ export function LandingAbout() {
   ];
 
   return (
-    <section id="about" className="cat-teal page-shell py-24 sm:py-32">
-      <div className="grid gap-12 lg:grid-cols-12 lg:gap-10">
+    <section id="about" className="cat-teal page-shell py-24 sm:py-32 lg:py-10">
+      <div className="grid gap-12 lg:grid-cols-12 lg:items-center lg:gap-8">
         <Reveal variant="clip" className="lg:col-span-5">
           <div className="about-stage relative mx-auto aspect-[4/5] max-w-md overflow-hidden rounded-[1.75rem] border border-border lg:max-w-none">
             <div className="absolute inset-x-0 top-[10%] bottom-[5%] flex justify-center">
@@ -49,7 +49,7 @@ export function LandingAbout() {
           </div>
         </Reveal>
 
-        <div className="space-y-8 lg:col-span-7 lg:pl-6">
+        <div className="space-y-8 lg:col-span-7 lg:space-y-5 lg:pl-4">
           <Reveal variant="left">
             <p className="section-kicker">{t.nav_about}</p>
           </Reveal>

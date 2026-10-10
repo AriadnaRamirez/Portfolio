@@ -48,10 +48,6 @@ Convenciones: `{name}`, `{n}` y similares son variables que el sitio rellena sol
 - ES: CV
 - EN: CV
 
-`nav_resume_view`
-- ES: Ver CV
-- EN: View CV
-
 `nav_education`
 - ES: Formación
 - EN: Education
@@ -97,10 +93,6 @@ Convenciones: `{name}`, `{n}` y similares son variables que el sitio rellena sol
 `hero_open_to`
 - ES: Abierta a roles Frontend / Fullstack y a proyectos freelance
 - EN: Open to Frontend / Fullstack roles and freelance projects
-
-`hero_cta_cv`
-- ES: Ver CV
-- EN: View CV
 
 `hero_cta_quote`
 - ES: Cotizar un proyecto
@@ -179,8 +171,8 @@ Convenciones: `{name}`, `{n}` y similares son variables que el sitio rellena sol
 ### Sobre mí
 
 `agency_about_title`
-- ES: Creo productos web fáciles de usar y listos para producción.
-- EN: I create web products that are easy to use and ready for production.
+- ES: Fáciles de usar y listos para producción.
+- EN: Easy to use and ready for production.
 
 `agency_about_p1`
 - ES: Soy Ariadna Ramírez, desarrolladora web. Me enfoco en el frontend con React y TypeScript. He hecho sistemas SaaS, sitios web y soluciones a medida para clientes reales.
@@ -1957,7 +1949,7 @@ Convenciones: `{name}`, `{n}` y similares son variables que el sitio rellena sol
   - EN: Prisma manages the schema and migrations on PostgreSQL.
 
 **Resultados**
-- **Resultado 1 · cifra:** 39
+- **Resultado 1 · cifra:** 40
 - **Resultado 1 · etiqueta**
   - ES: usuarios
   - EN: users
@@ -2405,7 +2397,7 @@ Es el contenido de tu CV en PDF tal cual. Si lo cambias aquí, solo cambia la vi
 - **CCST Study Lab — Proyecto personal · Fullstack · Next.js · NestJS · TypeScript · PostgreSQL · Prisma**
   - Plataforma de estudio para la certificación Cisco CCST Cybersecurity con 51 tarjetas de 5 tipos y sesiones adaptativas.
   - Diseñé y desarrollé de punta a punta: corrección en el servidor, sesión JWT en cookie httpOnly, validación con Zod y despliegue en Vercel, Render y Neon.
-  - Al tercer día de lanzamiento: 39 usuarios, 19 con una sesión completa y 1345 respuestas corregidas en el servidor.
+  - Al tercer día de lanzamiento: 40 usuarios, 19 con una sesión completa y 1345 respuestas corregidas en el servidor.
 - **ServiYApp — Proyecto estudiantil · Frontend Developer · Equipo de 6 · Next.js · React · TypeScript · Zustand · Socket.IO · Mercado Pago · Tailwind CSS**
   - Marketplace de servicios de belleza a domicilio con paneles para clientes, proveedores y administradores.
   - Implementé autenticación, Google OAuth, rutas protegidas por rol y persistencia de sesión con Zustand y JWT.
@@ -2475,7 +2467,7 @@ Es el contenido de tu CV en PDF tal cual. Si lo cambias aquí, solo cambia la vi
 - **CCST Study Lab — Personal project · Fullstack · Next.js · NestJS · TypeScript · PostgreSQL · Prisma**
   - Study platform for the Cisco CCST Cybersecurity certification with 51 cards across 5 types and adaptive sessions.
   - Designed and built it end to end: server-side grading, a JWT session in an httpOnly cookie, Zod validation, and deployment on Vercel, Render, and Neon.
-  - On day three after launch: 39 users, 19 who finished a session, and 1,345 answers graded on the server.
+  - On day three after launch: 40 users, 19 who finished a session, and 1,345 answers graded on the server.
 - **ServiYApp — Student project · Frontend Developer · Team of 6 · Next.js · React · TypeScript · Zustand · Socket.IO · Mercado Pago · Tailwind CSS**
   - At-home beauty services marketplace with client, provider, and admin panels.
   - Implemented authentication, Google OAuth, role-protected routes, and session persistence with Zustand and JWT.

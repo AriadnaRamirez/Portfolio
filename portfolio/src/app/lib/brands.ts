@@ -21,6 +21,8 @@ export const brands: Record<
     work: Localized;
     /** Optional logo under /public */
     logo?: string;
+    /** Light mark used on dark backgrounds */
+    logoDark?: string;
     logoClassName?: string;
   }
 > = {
@@ -31,6 +33,7 @@ export const brands: Record<
     sector: { es: "Agencia de marketing", en: "Marketing agency" },
     work: { es: "Desarrollo por proyectos", en: "Project-based development" },
     logo: "/brands/grova.png",
+    logoDark: "/brands/grova-white.png",
     logoClassName: "h-11 sm:h-12",
   },
   crm: {
@@ -55,6 +58,7 @@ export const brands: Record<
     sector: { es: "Hotelería", en: "Hospitality" },
     work: { es: "UX/UI + frontend", en: "UX/UI + frontend" },
     logo: "/brands/hmdv.png",
+    logoDark: "/brands/hmdv-white.png",
     logoClassName: "h-14 sm:h-16",
   },
   fitplus: {

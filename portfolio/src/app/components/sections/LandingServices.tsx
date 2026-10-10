@@ -413,9 +413,9 @@ export function LandingServices() {
 
   return (
     <section id="services" className="cat-peach">
-      <div className="page-shell py-24 sm:py-32">
+      <div className="page-shell py-24 sm:py-32 lg:py-8">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
-          <div className="max-w-2xl space-y-5">
+          <div className="min-w-0 flex-1 space-y-5">
             <Reveal variant="left">
               <p className="section-kicker">{t.nav_services}</p>
             </Reveal>
@@ -441,7 +441,7 @@ export function LandingServices() {
           </Reveal>
         </div>
 
-        <Reveal variant="up" delay={140} className="mt-12">
+        <Reveal variant="up" delay={140} className="mt-12 lg:mt-6">
           <div
             role="region"
             aria-roledescription="carousel"
@@ -492,7 +492,7 @@ export function LandingServices() {
                       inert={!visible}
                       className={`${slideWidth} flex`}
                     >
-                      <article className="flex h-full w-full flex-col border border-border bg-background p-6 transition-[border-color,box-shadow,translate] duration-300 hover:-translate-y-1 hover:border-border-strong hover:shadow-[0_24px_48px_-32px_rgba(20,20,40,0.45)] sm:p-7">
+                      <article className="flex h-full w-full flex-col border border-border bg-background p-6 transition-[border-color,box-shadow,translate] duration-300 hover:-translate-y-1 hover:border-border-strong hover:shadow-[0_24px_48px_-32px_rgba(20,20,40,0.45)] sm:p-7 lg:p-5">
                         <div className="flex items-start justify-between gap-4">
                           <span className="grid h-12 w-12 place-items-center rounded-2xl bg-[linear-gradient(135deg,color-mix(in_srgb,var(--cat-from)_20%,transparent),color-mix(in_srgb,var(--cat-to)_20%,transparent))] text-[var(--cat-ink)]">
                             <Icon id={service.id} className="h-5 w-5" />
@@ -501,12 +501,12 @@ export function LandingServices() {
                             {pad(n + 1)}
                           </span>
                         </div>
-                        <h3 className="mt-6 font-display text-2xl leading-tight text-foreground">{title}</h3>
+                        <h3 className="mt-6 font-display text-2xl leading-tight text-foreground lg:mt-4">{title}</h3>
                         <p className="mt-2 text-sm leading-relaxed text-muted">
                           {tk(`service_${service.id}_for`)}
                         </p>
-                        <p className="mt-6 font-mono-label text-muted">{t.services_includes}</p>
-                        <ul className="mt-3 space-y-2.5">
+                        <p className="mt-6 font-mono-label text-muted lg:mt-4">{t.services_includes}</p>
+                        <ul className="mt-3 space-y-2.5 lg:space-y-1.5">
                           {service.features.map((feature) => (
                             <li key={feature} className="flex items-center gap-3 text-sm text-foreground">
                               <Icon id={feature} className="h-4 w-4 shrink-0 text-[var(--cat-ink)]" />
@@ -514,7 +514,7 @@ export function LandingServices() {
                             </li>
                           ))}
                         </ul>
-                        <div className="mt-auto pt-7">
+                        <div className="mt-auto pt-7 lg:pt-4">
                           <div className="flex items-center justify-between gap-3 border-t border-border pt-5">
                             <a
                               href={whatsappHref(`${t.wa_service_msg} ${title}.`)}
@@ -680,15 +680,15 @@ export function LandingFaq() {
   return (
     <section id="faq" className="page-shell scroll-mt-24 py-20 sm:py-24">
       <div className="grid gap-10 lg:grid-cols-12">
-        <div className="space-y-4 lg:col-span-4">
+        <div className="space-y-4 lg:col-span-6">
           <Reveal variant="left">
             <p className="section-kicker">{t.faq_kicker}</p>
           </Reveal>
           <Reveal variant="blur" delay={100}>
-            <h2 className="font-display text-3xl leading-tight text-foreground sm:text-4xl">{t.faq_title}</h2>
+            <h2 className="section-title">{t.faq_title}</h2>
           </Reveal>
         </div>
-        <Reveal variant="up" delay={120} className="lg:col-span-8">
+        <Reveal variant="up" delay={120} className="lg:col-span-6">
           <div className="border-t border-border">
             {faqIds.map((id) => (
               <details key={id} className="group/faq border-b border-border">

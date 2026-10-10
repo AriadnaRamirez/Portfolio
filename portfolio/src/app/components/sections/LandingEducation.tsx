@@ -12,14 +12,12 @@ export function LandingEducation() {
 
   return (
     <section id="education" className="cat-mint page-shell py-14 sm:py-16">
-      <div className="max-w-2xl space-y-3">
+      <div className="max-w-4xl space-y-3">
         <Reveal variant="left">
           <p className="section-kicker">{t.landing_edu_title}</p>
         </Reveal>
         <Reveal variant="blur" delay={100}>
-          <h2 className="font-display text-[clamp(1.7rem,3.2vw,2.4rem)] leading-[1.08] text-foreground">
-            {t.landing_edu_subtitle}
-          </h2>
+          <h2 className="section-title">{t.landing_edu_subtitle}</h2>
         </Reveal>
       </div>
 

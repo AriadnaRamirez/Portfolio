@@ -386,7 +386,7 @@ export const caseStudies: Record<string, CaseStudy> = {
       },
     ],
     results: [
-      { value: "39", label: { es: "usuarios", en: "users" } },
+      { value: "40", label: { es: "usuarios", en: "users" } },
       { value: "19", label: { es: "con una sesión completa", en: "finished a full session" } },
       { value: "1345", label: { es: "respuestas corregidas en el servidor", en: "answers graded on the server" } },
       { value: "82.8%", label: { es: "precisión global", en: "overall accuracy" } },

@@ -1,8 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { useLanguage } from "@/app/context/LanguageContext";
+import { ResumeDownloadButton } from "../resume/ResumeDownloadButton";
 import { site } from "@/app/lib/site";
 import { assetPath } from "@/app/lib/siteUrl";
 import { Flag } from "../ui/Flag";
@@ -59,7 +59,7 @@ export function LandingHero() {
 
   return (
     <section className="hero-wash relative isolate overflow-hidden" aria-labelledby="hero-heading">
-      <div className="page-shell grid min-h-[calc(100dvh-4.5rem)] grid-cols-1 content-center gap-16 pt-10 pb-24 lg:grid-cols-12 lg:items-start lg:gap-10 lg:pt-12">
+      <div className="page-shell grid min-h-[calc(100dvh-4.5rem)] grid-cols-1 content-center gap-16 pt-10 pb-24 lg:min-h-[calc(100dvh-4rem)] lg:grid-cols-12 lg:items-center lg:gap-8 lg:py-6">
         <div className="lg:col-span-7">
           <p className="hero-rise mb-6 inline-flex items-center gap-2.5 rounded-full border border-border bg-background/70 px-3.5 py-1.5 text-sm font-medium text-foreground backdrop-blur-sm">
             <span aria-hidden className="relative flex h-2 w-2">
@@ -104,10 +104,9 @@ export function LandingHero() {
             className="hero-rise mt-9 flex flex-col gap-3 min-[480px]:flex-row"
             style={{ ["--rise-delay" as string]: "260ms" }}
           >
-            <Link href="/resume" className="btn-primary" data-umami-event="hero-cv">
-              {t.hero_cta_cv}
+            <ResumeDownloadButton className="btn-primary">
               <span aria-hidden className="btn-arrow">→</span>
-            </Link>
+            </ResumeDownloadButton>
             <a href="#services" className="btn-ghost" data-umami-event="hero-quote">
               {t.hero_cta_quote}
             </a>
@@ -132,7 +131,7 @@ export function LandingHero() {
             ))}
           </ul>
 
-          <dl className="mt-12 grid max-w-md grid-cols-2 gap-6">
+          <dl className="mt-12 grid max-w-md grid-cols-2 gap-6 lg:mt-6 lg:gap-4">
               {highlights.map((item, i) => (
                 <div
                   key={item.label}

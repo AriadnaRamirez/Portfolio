@@ -12,7 +12,6 @@ import { LangToggle } from "../navbar/LangToggle";
 import { ThemeToggle } from "../navbar/ThemeToggle";
 
 const avatarSrc = assetPath(site.avatar);
-const pillLinksMobile = new Set(["/#work", "/#services", "/#contact"]);
 const pillLinksDesktop = new Set(["/#work", "/#services", "/#about", "/#experience"]);
 /** Sections without their own pill light up the closest one instead. */
 const pillFallback: Record<string, string> = { skills: "experience", education: "experience", certs: "experience" };
@@ -26,7 +25,21 @@ export function SiteNav() {
   const { t } = useLanguage();
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const [activeHash, setActiveHash] = useState<string | null>(null);
+
+  useEffect(() => {
+    let last = window.scrollY > 12;
+    setScrolled(last);
+    const onScroll = () => {
+      const next = window.scrollY > 12;
+      if (next === last) return;
+      last = next;
+      setScrolled(next);
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   useEffect(() => {
     setOpen(false);
@@ -86,33 +99,65 @@ export function SiteNav() {
       >
         {t.nav_skip}
       </a>
-      <header className="relative z-40 bg-background">
-        <nav className="page-shell flex items-center justify-between gap-4 py-5">
+      <header className="fixed inset-x-0 top-0 z-40">
+        <div className={`transition-[padding] duration-300 ease-out ${scrolled ? "px-3 pt-3 sm:px-5" : ""}`}>
+        <div
+          className={`transition-[border-radius,box-shadow,background-color] duration-300 ease-out ${
+            scrolled
+              ? "mx-auto w-fit max-w-full rounded-full border border-white/60 bg-background/80 shadow-[0_16px_40px_-20px_rgba(20,20,40,0.45)] backdrop-blur-xl backdrop-saturate-150 dark:border-white/10 dark:bg-background/70"
+              : "border-b border-white/50 bg-background/70 backdrop-blur-xl backdrop-saturate-150 dark:border-white/10 dark:bg-background/55"
+          }`}
+        >
+        <nav className={`flex items-center ${scrolled ? "gap-1.5 p-1.5" : "page-shell justify-between gap-3 py-4 lg:py-3"}`}>
           <Link
             href="/"
             prefetch
-            className="inline-flex items-center gap-2.5 font-display text-lg tracking-tight text-foreground no-underline sm:text-xl"
+            className="inline-flex shrink-0 items-center gap-2.5 font-display text-lg tracking-tight text-foreground no-underline sm:text-xl"
             onClick={() => setOpen(false)}
           >
-            <span className="relative h-8 w-8 overflow-hidden rounded-[0.6rem] ring-1 ring-border">
+            <span className={`relative h-8 w-8 overflow-hidden ring-1 ring-border ${scrolled ? "rounded-full" : "rounded-[0.6rem]"}`}>
               <Image src={avatarSrc} alt="" fill sizes="32px" className="object-cover" />
             </span>
-            {site.name}
+            <span className={scrolled ? "sr-only" : undefined}>{site.name}</span>
           </Link>
 
-          <div className="flex items-center gap-2 sm:gap-3">
-            <div className="hidden items-center gap-2 sm:flex">
+          <div className={`min-w-0 items-center gap-0.5 ${scrolled ? "flex" : "hidden lg:flex"}`}>
+            {navPages
+              .filter((link) => pillLinksDesktop.has(link.href))
+              .map((link) => {
+                const active =
+                  isLinkActive(link.href) ||
+                  (pathname === "/" && activeHash != null && `/#${pillFallback[activeHash]}` === link.href);
+                return (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    prefetch
+                    className={`rounded-full px-2.5 py-1.5 text-sm font-medium whitespace-nowrap transition-colors duration-200 sm:px-3 ${
+                      link.href === "/#about" || link.href === "/#experience" ? "hidden lg:inline-flex" : "inline-flex"
+                    } ${
+                      active ? "bg-foreground/8 text-foreground" : "text-muted hover:bg-foreground/5 hover:text-foreground"
+                    }`}
+                  >
+                    {t[link.key]}
+                  </Link>
+                );
+              })}
+            <Link
+              href="/#contact"
+              prefetch
+              className="ml-1.5 rounded-full bg-foreground px-3.5 py-1.5 text-sm font-semibold whitespace-nowrap text-background transition-transform duration-200 motion-safe:hover:-translate-y-px"
+            >
+              {t.hero_cta_contact_primary}
+            </Link>
+          </div>
+
+          <div className={`flex shrink-0 items-center gap-2 sm:gap-3 ${scrolled ? "lg:hidden" : ""}`}>
+            <div className={`items-center gap-2 ${scrolled ? "hidden" : "hidden sm:flex"}`}>
               <LangToggle />
               <ThemeToggle />
             </div>
-            <Link
-              href="/resume"
-              prefetch
-              className="hidden rounded-full px-3 py-1.5 text-sm font-medium text-muted transition-colors hover:text-foreground lg:inline-flex"
-            >
-              {t.nav_resume_view}
-            </Link>
-            <span className="hidden md:inline-flex">
+            <span className={scrolled ? "hidden" : "hidden md:inline-flex"}>
               <ResumeDownloadButton className="btn-ghost !min-h-9 !px-4 !py-1.5 !text-sm" />
             </span>
             <button
@@ -128,14 +173,16 @@ export function SiteNav() {
             </button>
           </div>
         </nav>
+        </div>
+        </div>
 
         <div
           className={`overflow-hidden transition-[max-height,opacity] duration-300 ease-out lg:hidden ${
-            open ? "max-h-[44rem] border-t border-border opacity-100" : "max-h-0 opacity-0"
+            open ? "max-h-[44rem] border-t border-border bg-background/95 opacity-100 backdrop-blur-xl" : "max-h-0 opacity-0"
           }`}
         >
           <div className="page-shell flex flex-col gap-1 py-5">
-            {[...navPages, { href: "/resume", key: "nav_resume_view" as const }].map((link) => (
+            {navPages.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
@@ -158,56 +205,7 @@ export function SiteNav() {
           </div>
         </div>
       </header>
-
-      <nav
-        aria-label={t.nav_sections}
-        className="floating-nav animate-rise-delay fixed bottom-5 left-1/2 z-50 flex max-w-[calc(100vw-1.5rem)] -translate-x-1/2 items-center gap-1 rounded-full border border-white/10 bg-[#2b2b2b]/90 p-1.5 shadow-[0_10px_30px_rgba(0,0,0,0.18)] backdrop-blur-md"
-      >
-        <Link
-          href="/"
-          prefetch
-          aria-label={site.name}
-          className="relative mr-1 h-8 w-8 shrink-0 overflow-hidden rounded-full ring-1 ring-white/20"
-        >
-          <Image src={avatarSrc} alt="" fill sizes="32px" className="object-cover" />
-        </Link>
-        {navPages
-          .filter((link) => pillLinksDesktop.has(link.href))
-          .map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              prefetch
-              className={`rounded-full px-3 py-1.5 text-sm font-medium whitespace-nowrap transition-colors duration-200 ${
-                pillLinksMobile.has(link.href) ? "" : "hidden lg:inline-flex"
-              } ${
-                isLinkActive(link.href) ||
-                (pathname === "/" && activeHash && `/#${pillFallback[activeHash]}` === link.href)
-                  ? "bg-white/12 text-white"
-                  : "text-white/70 hover:text-white"
-              }`}
-            >
-              {t[link.key]}
-            </Link>
-          ))}
-        <Link
-          href="/#contact"
-          prefetch
-          className="group relative ml-1 inline-flex items-center overflow-hidden rounded-full bg-white px-4 py-1.5 text-sm font-semibold whitespace-nowrap text-[#242424] transition-[color,box-shadow,transform] duration-300 ease-out hover:text-white hover:shadow-[0_6px_20px_-4px_rgba(106,61,240,0.6)] focus-visible:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white motion-safe:hover:-translate-y-px"
-        >
-          <span
-            aria-hidden
-            className="absolute inset-0 bg-[linear-gradient(110deg,#6a3df0,#c2410c)] opacity-0 transition-opacity duration-300 ease-out group-hover:opacity-100 group-focus-visible:opacity-100"
-          />
-          <span className="relative">{t.hero_cta_contact_primary}</span>
-          <span
-            aria-hidden
-            className="relative inline-block w-0 -translate-x-1 overflow-hidden opacity-0 transition-all duration-300 ease-out group-hover:ml-1.5 group-hover:w-3 group-hover:translate-x-0 group-hover:opacity-100 group-focus-visible:ml-1.5 group-focus-visible:w-3 group-focus-visible:translate-x-0 group-focus-visible:opacity-100"
-          >
-            →
-          </span>
-        </Link>
-      </nav>
+      <div aria-hidden className="h-[4.25rem] lg:h-16" />
     </>
   );
 }

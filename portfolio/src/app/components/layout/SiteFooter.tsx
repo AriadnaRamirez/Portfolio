@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useLanguage } from "@/app/context/LanguageContext";
 import { caseStudies } from "@/app/lib/caseStudies";
 import { navPages, site } from "@/app/lib/site";
+import { ResumeDownloadButton } from "../resume/ResumeDownloadButton";
 import { SocialIcon } from "../ui/SocialIcon";
 
 const linkClass = "text-sm text-white/65 transition-colors duration-200 hover:text-white";
@@ -20,8 +21,7 @@ export function SiteFooter() {
         className="h-px w-full bg-[linear-gradient(90deg,transparent,var(--tone-green)_12%,var(--grad-from)_38%,var(--grad-to)_62%,var(--tone-orange)_88%,transparent)] opacity-70"
       />
 
-      {/* Bottom padding clears the floating nav pill. */}
-      <div className="page-shell pt-12 pb-24">
+      <div className="page-shell pt-12 pb-14">
         <div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
           <div>
             <p className="font-display text-[clamp(2.5rem,5vw,4.25rem)] leading-none tracking-tight">{site.name}</p>
@@ -50,9 +50,7 @@ export function SiteFooter() {
               {t[page.key]}
             </Link>
           ))}
-          <Link href="/resume" prefetch className={linkClass}>
-            {t.nav_resume_view}
-          </Link>
+          <ResumeDownloadButton className={linkClass} />
         </nav>
 
         <nav

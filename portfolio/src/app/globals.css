@@ -175,6 +175,24 @@ h2.font-display,
 .dark .cat-pink { --cat-ink: #ff7fa6; }
 .dark .cat-mint { --cat-ink: #4fd6a5; }
 .dark .cat-peach { --cat-ink: #f5b062; }
+
+/* Service cards: the peach ink turns muddy on near-black. Keep the light
+   theme, and in dark use a lifted surface with a cool lilac accent. */
+.dark #services {
+  --cat-from: #c4b5fd;
+  --cat-to: #f0d5c8;
+  --cat-ink: #ddd4ff;
+}
+
+.dark #services article {
+  background: var(--surface-2);
+  border-color: color-mix(in srgb, white 10%, transparent);
+  box-shadow: 0 18px 40px -28px rgba(0, 0, 0, 0.85);
+}
+
+.dark #services article:hover {
+  border-color: color-mix(in srgb, var(--cat-from) 45%, white 12%);
+}
 .dark .cat-teal { --cat-ink: #5fd0e0; }
 
 .font-hand {
@@ -211,7 +229,7 @@ h2.font-display,
 }
 
 section[id] {
-  scroll-margin-top: 2rem;
+  scroll-margin-top: 5.5rem;
 }
 
 .band,
@@ -789,6 +807,12 @@ section[id] {
   gap: 1rem;
   padding-block: 4.75rem;
   transform: rotate(-6.67deg) scale(1.12);
+}
+
+@media (min-width: 1024px) {
+  .diag-rows {
+    padding-block: 1.75rem;
+  }
 }
 
 .diag-track {
