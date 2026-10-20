@@ -73,7 +73,7 @@ const es: ResumeCopy = {
       bullets: [
         "Plataforma de estudio para la certificación Cisco CCST Cybersecurity con 51 tarjetas de 5 tipos y sesiones adaptativas.",
         "Diseñé y desarrollé de punta a punta: corrección en el servidor, sesión JWT en cookie httpOnly, validación con Zod y despliegue en Vercel, Render y Neon.",
-        "Al tercer día de lanzamiento: 40 usuarios, 19 con una sesión completa y 1345 respuestas corregidas en el servidor.",
+        "Del 6 al 19 de octubre de 2026: 230 usuarios, 507 sesiones terminadas y 15,792 respuestas corregidas en el servidor.",
       ],
     },
     {
@@ -240,7 +240,7 @@ const en: ResumeCopy = {
       bullets: [
         "Study platform for the Cisco CCST Cybersecurity certification with 51 cards across 5 types and adaptive sessions.",
         "Designed and built it end to end: server-side grading, a JWT session in an httpOnly cookie, Zod validation, and deployment on Vercel, Render, and Neon.",
-        "On day three after launch: 40 users, 19 who finished a session, and 1,345 answers graded on the server.",
+        "October 6–19, 2026: 230 users, 507 sessions completed, and 15,792 answers graded on the server.",
       ],
     },
     {

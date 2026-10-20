@@ -386,14 +386,14 @@ export const caseStudies: Record<string, CaseStudy> = {
       },
     ],
     results: [
-      { value: "40", label: { es: "usuarios", en: "users" } },
-      { value: "19", label: { es: "con una sesión completa", en: "finished a full session" } },
-      { value: "1345", label: { es: "respuestas corregidas en el servidor", en: "answers graded on the server" } },
-      { value: "82.8%", label: { es: "precisión global", en: "overall accuracy" } },
+      { value: "230", label: { es: "usuarios", en: "users" } },
+      { value: "507", label: { es: "sesiones terminadas", en: "sessions completed" } },
+      { value: "15,792", label: { es: "respuestas corregidas en el servidor", en: "answers graded on the server" } },
+      { value: "87%", label: { es: "respuestas correctas", en: "correct answers" } },
     ],
     resultsNote: {
-      es: "Al tercer día de lanzamiento, tomadas del panel de administración.",
-      en: "On day three after launch, taken from the admin panel.",
+      es: "Acumulado del lanzamiento (6 de octubre) al 19 de octubre de 2026, tomado del panel de administración. 186 de los 230 usuarios estudiaron.",
+      en: "Cumulative from launch (October 6) to October 19, 2026, taken from the admin panel. 186 of the 230 users studied.",
     },
   },
   serviyapp: {
