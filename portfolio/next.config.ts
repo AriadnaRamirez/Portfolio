@@ -14,6 +14,7 @@ const nextConfig: NextConfig = {
   trailingSlash: true,
   outputFileTracingRoot: appDir,
   turbopack: { root: appDir },
+  experimental: { agentUpgrade: "security" },
   ...(basePath ? { basePath, assetPrefix: basePath } : {}),
   env: {
     // Used by static asset helpers so /projects/* resolve under GitHub Pages.
