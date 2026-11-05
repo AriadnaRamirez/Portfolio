@@ -60,7 +60,7 @@ const services: {
   {
     id: "webapp",
     features: ["login", "database", "api", "cloud"],
-    example: { slug: "ccst", label: "CCST Study Lab" },
+    example: { slug: "aws", label: "AWS Study Lab" },
   },
 ];
 

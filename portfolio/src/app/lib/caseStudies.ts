@@ -276,6 +276,126 @@ export const caseStudies: Record<string, CaseStudy> = {
       },
     ],
   },
+  aws: {
+    id: "aws",
+    slug: "aws",
+    client: "AWS Study Lab",
+    liveUrl: "https://aws-practitioner-study-lab.vercel.app/",
+    codeUrl: "https://github.com/AriadnaRamirez/aws-practitioner-study-lab",
+    summary: {
+      es: "App para estudiar la certificación AWS Cloud Practitioner: 352 cartas, 208 preguntas originales y un examen de hasta 65 preguntas en 90 minutos. Una carta se domina con tres aciertos seguidos.",
+      en: "App to study for the AWS Cloud Practitioner certification: 352 cards, 208 original questions, and an exam of up to 65 questions in 90 minutes. A card is mastered after three correct answers in a row.",
+    },
+    facts: [
+      { label: { es: "Rol", en: "Role" }, value: { es: "Fullstack · Diseño y desarrollo", en: "Fullstack · Design & development" } },
+      { label: { es: "Tipo", en: "Type" }, value: { es: "Proyecto personal", en: "Personal project" } },
+      { label: { es: "Contenido", en: "Content" }, value: { es: "352 cartas · 208 preguntas", en: "352 cards · 208 questions" } },
+      { label: { es: "Alcance", en: "Scope" }, value: { es: "UX · Web · API · Base de datos · Deploy", en: "UX · Web · API · Database · Deploy" } },
+    ],
+    tech: ["nextjs", "nestjs", "typescript", "prisma", "postgresql", "tailwind", "vercel", "render", "neon"],
+    challenge: {
+      es: "Estudiar para una certificación con un banco de preguntas suele ser repetir lo mismo hasta memorizar el orden. Quería una herramienta que supiera qué te cuesta, te lo devolviera, dejara leer el tema y medirse contra reloj, y no dejara ver las respuestas desde el navegador, para que el progreso fuera real.",
+      en: "Studying for a certification with a question bank usually means repeating the same set until you memorize the order. I wanted a tool that knows what you struggle with, brings it back, lets you read the topic and take a timed exam, and keeps answers out of the browser so progress is real.",
+    },
+    goals: [
+      { es: "Probar sin cuenta o entrar con cuenta, sin fricción para empezar.", en: "Try it without an account or sign in, with no friction to start." },
+      { es: "Dominar una carta con tres aciertos seguidos. Lo que fallas vuelve a salir.", en: "Master a card with three correct answers in a row. What you miss comes back." },
+      { es: "Un examen de hasta 65 preguntas y 90 minutos, que se prende desde Administración.", en: "An exam of up to 65 questions and 90 minutes, switched on from Admin." },
+    ],
+    process: [
+      {
+        title: { es: "Contenido", en: "Content" },
+        body: { es: "352 cartas en 12 temas y 208 preguntas escritas como casos del examen.", en: "352 cards across 12 topics and 208 questions written as exam cases." },
+      },
+      {
+        title: { es: "Modelo de dominio", en: "Mastery model" },
+        body: { es: "Racha de 3 aciertos para dominar. Un fallo la reinicia y la carta puede volver en la misma partida.", en: "A 3-answer streak to master. A miss resets it, and the card can return in the same session." },
+      },
+      {
+        title: { es: "Arquitectura", en: "Architecture" },
+        body: { es: "Web en Next.js y API en NestJS. El navegador no llama a la API: Next reenvía la petición. Los tipos viven en un paquete compartido.", en: "Next.js web and NestJS API. The browser never calls the API: Next forwards the request. Types live in a shared package." },
+      },
+      {
+        title: { es: "Datos y deploy", en: "Data & deploy" },
+        body: { es: "PostgreSQL guarda cuentas, rachas y partidas. Web en Vercel, API en Render, base en Neon. El examen se prende desde Administración.", en: "PostgreSQL stores accounts, streaks, and sessions. Web on Vercel, API on Render, database on Neon. The exam is switched on from Admin." },
+      },
+    ],
+    story: [
+      {
+        kicker: { es: "01 · Partida", en: "01 · Session" },
+        problem: { es: "Repetir el mismo banco de preguntas enseña el orden, no el tema.", en: "Repeating the same question bank teaches the order, not the topic." },
+        title: { es: "Tú eliges cuánto y de qué.", en: "You pick how much, and which topics." },
+        body: {
+          es: "Una partida pide 10, 20, 30 o 50 cartas, parejo o al azar, de los 12 temas. Sin cuenta se pueden probar unas cartas. Con cuenta se guarda la racha.",
+          en: "A session asks for 10, 20, 30, or 50 cards, dealt evenly or at random, from the 12 topics. Without an account you can try a few cards. With an account the streak is saved.",
+        },
+        image: "/projects/aws/desktop-2.webp",
+        mobile: "/projects/aws/mobile-2.webp",
+      },
+      {
+        kicker: { es: "02 · Dominio", en: "02 · Mastery" },
+        problem: { es: "Saber que fallaste no sirve de mucho si no entiendes por qué.", en: "Knowing you got it wrong doesn't help much if you don't understand why." },
+        title: { es: "Cada respuesta enseña algo, y lo que fallas vuelve.", en: "Every answer teaches something, and what you miss comes back." },
+        body: {
+          es: "Al responder ves si estuvo bien, la explicación y tu racha (0 / 3). Si fallas, la carta puede volver en la misma partida. Si sigue costando, queda en Más falladas.",
+          en: "After answering you see whether you got it right, the explanation, and your streak (0 / 3). If you miss it, the card can return in the same session. If it keeps costing you, it waits with the ones you miss most.",
+        },
+        image: "/projects/aws/desktop-4.webp",
+        mobile: "/projects/aws/mobile-4.webp",
+      },
+      {
+        kicker: { es: "03 · Repaso", en: "03 · Review" },
+        problem: { es: "Leer el nombre de un servicio una vez no alcanza para recordarlo en el examen.", en: "Reading a service name once isn't enough to remember it on the exam." },
+        title: { es: "Guía, crucigrama y el reloj del examen.", en: "A guide, a crossword, and the exam clock." },
+        body: {
+          es: "Las guías se leen en la app o se bajan en PDF. El crucigrama pide el nombre del servicio, en inglés si así se llama. El examen sigue el formato real: hasta 65 preguntas y 90 minutos, y se enciende desde Administración.",
+          en: "Guides can be read in the app or downloaded as PDF. The crossword asks for the service name, in English when that's what it's called. The exam follows the real format: up to 65 questions and 90 minutes, and it's switched on from Admin.",
+        },
+        image: "/projects/aws/desktop-6.webp",
+        mobile: "/projects/aws/mobile-6.webp",
+      },
+    ],
+    engineering: [
+      {
+        title: { es: "La respuesta correcta llega después de corregir", en: "The right answer arrives after grading" },
+        body: {
+          es: "La carta que ves trae el enunciado y las opciones. La explicación, con la opción correcta, vuelve cuando el servidor ya corrigió.",
+          en: "The card you see carries the prompt and the choices. The explanation, with the correct option, comes back once the server has graded it.",
+        },
+      },
+      {
+        title: { es: "El navegador no habla con la API", en: "The browser never talks to the API" },
+        body: {
+          es: "Next.js hace de intermediario: reenvía la petición a Nest, y la web y el servidor comparten los tipos, así el contrato no se desfasa.",
+          en: "Next.js acts as a go-between: it forwards the request to Nest, and the web and the server share types, so the contract doesn't drift.",
+        },
+      },
+      {
+        title: { es: "Lo que fallas vuelve en la misma partida", en: "What you miss comes back in the same session" },
+        body: {
+          es: "Una carta fallada puede reaparecer más adelante en la misma partida. Si sigue costando, queda en Más falladas. Dominarla pide tres aciertos seguidos.",
+          en: "A missed card can reappear later in the same session. If it keeps costing you, it waits with the ones you miss most. Mastering it takes three correct answers in a row.",
+        },
+      },
+      {
+        title: { es: "El examen se prende sin desplegar", en: "The exam switches on without a deploy" },
+        body: {
+          es: "Desde Administración se prende o se apaga el examen, sin volver a desplegar. Apagado, Estudiar deja las cartas y Más falladas. Encendido, son hasta 65 preguntas y 90 minutos.",
+          en: "Admin switches the exam on or off, without a new deploy. Off, Study keeps the cards and the ones you miss most. On, it's up to 65 questions and 90 minutes.",
+        },
+      },
+    ],
+    results: [
+      { value: "352", label: { es: "cartas publicadas en 12 temas", en: "published cards across 12 topics" } },
+      { value: "208", label: { es: "preguntas originales de examen", en: "original exam questions" } },
+      { value: "3", label: { es: "aciertos seguidos para dominar una carta", en: "correct answers in a row to master a card" } },
+      { value: "65 / 90", label: { es: "preguntas y minutos del examen", en: "exam questions and minutes" } },
+    ],
+    resultsNote: {
+      es: "Material de estudio, no oficial y no afiliado a AWS ni a Generation México.",
+      en: "Study material, unofficial and not affiliated with AWS or Generation México.",
+    },
+  },
   ccst: {
     id: "ccst",
     slug: "ccst",

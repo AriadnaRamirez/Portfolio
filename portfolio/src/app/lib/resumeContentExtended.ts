@@ -68,6 +68,16 @@ const es: ResumeCopy = {
   projects: [
     {
       title:
+        "AWS Study Lab — Proyecto personal · Fullstack · Next.js · NestJS · TypeScript · PostgreSQL · Prisma",
+      url: "https://aws-practitioner-study-lab.vercel.app/",
+      bullets: [
+        "App de estudio para la certificación AWS Cloud Practitioner: 352 cartas, 208 preguntas originales y un examen de hasta 65 preguntas en 90 minutos.",
+        "Diseñé y desarrollé de punta a punta la web, la API y el contenido. Una carta se domina con tres aciertos seguidos y lo que fallas vuelve a salir.",
+        "El navegador solo habla con Next.js, que reenvía la API a Nest. Los tipos viven en un paquete compartido. Despliegue en Vercel, Render y Neon.",
+      ],
+    },
+    {
+      title:
         "CCST Study Lab — Proyecto personal · Fullstack · Next.js · NestJS · TypeScript · PostgreSQL · Prisma",
       url: "https://ccst-study-lab.vercel.app/",
       bullets: [
@@ -233,6 +243,16 @@ const en: ResumeCopy = {
     },
   ],
   projects: [
+    {
+      title:
+        "AWS Study Lab — Personal project · Fullstack · Next.js · NestJS · TypeScript · PostgreSQL · Prisma",
+      url: "https://aws-practitioner-study-lab.vercel.app/",
+      bullets: [
+        "Study app for the AWS Cloud Practitioner certification: 352 cards, 208 original questions, and an exam of up to 65 questions in 90 minutes.",
+        "Designed and built the web, the API, and the content end to end. A card is mastered after three correct answers in a row, and what you miss comes back.",
+        "The browser only talks to Next.js, which forwards the API to Nest. Types live in a shared package. Deployed on Vercel, Render, and Neon.",
+      ],
+    },
     {
       title:
         "CCST Study Lab — Personal project · Fullstack · Next.js · NestJS · TypeScript · PostgreSQL · Prisma",

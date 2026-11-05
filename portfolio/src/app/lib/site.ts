@@ -34,7 +34,7 @@ export type ProjectLink = {
 
 export type ProjectCategory = "fullstack" | "frontend" | "product";
 
-export type ProjectId = "crm" | "servi" | "senda" | "fram" | "hotel" | "dulce" | "ccst";
+export type ProjectId = "crm" | "servi" | "senda" | "fram" | "hotel" | "dulce" | "ccst" | "aws";
 
 export type MediaKind = "desktop" | "tablet" | "mobile";
 
@@ -109,6 +109,23 @@ export const projectMeta: Record<
     featured: true,
     accent: "#3d1f24",
   },
+  aws: {
+    badge: { es: "Proyecto personal · Fullstack", en: "Personal project · Fullstack" },
+    tech: ["nextjs", "nestjs", "typescript", "prisma", "postgresql", "tailwind", "vercel", "render", "neon"],
+    categories: ["fullstack", "product"],
+    links: [
+      {
+        labelKey: "projects_link_live",
+        href: "https://aws-practitioner-study-lab.vercel.app/",
+      },
+      {
+        labelKey: "projects_link_github",
+        href: "https://github.com/AriadnaRamirez/aws-practitioner-study-lab",
+      },
+    ],
+    featured: true,
+    accent: "#e8772e",
+  },
   ccst: {
     badge: { es: "Proyecto personal · Fullstack", en: "Personal project · Fullstack" },
     tech: ["nextjs", "nestjs", "typescript", "postgresql", "vercel", "render", "neon", "cursor"],
@@ -181,6 +198,7 @@ export const projectMediaShotCount: Partial<Record<ProjectId, number>> = {
   crm: 6,
   senda: 6,
   ccst: 6,
+  aws: 6,
   servi: 6,
 };
 
@@ -212,6 +230,7 @@ export const projectMediaKinds: Partial<Record<ProjectId, MediaKind[]>> = {
   hotel: ["desktop", "mobile"],
   crm: ["desktop", "mobile"],
   ccst: ["desktop", "mobile"],
+  aws: ["desktop", "mobile"],
   senda: ["desktop"],
   servi: ["desktop"],
   dulce: ["desktop"],
@@ -243,6 +262,10 @@ const projectMediaExt: Partial<
     desktop: "webp",
     mobile: "webp",
   },
+  aws: {
+    desktop: "webp",
+    mobile: "webp",
+  },
 };
 
 export function projectShotCount(id: ProjectId) {
@@ -266,8 +289,8 @@ export function projectMediaPath(
   return `${base}/projects/${id}/${kind}.${ext}`;
 }
 
-/** Display order: CRM → HMDV → CCST Study Lab → SENDA → ServiYApp (student). */
-export const projectIds: ProjectId[] = ["crm", "hotel", "ccst", "senda", "servi"];
+/** Display order: CRM → HMDV → AWS Study Lab → CCST Study Lab → SENDA → ServiYApp (student). */
+export const projectIds: ProjectId[] = ["crm", "hotel", "aws", "ccst", "senda", "servi"];
 
 export const navPages = [
   { href: "/#work", key: "nav_work" as const },

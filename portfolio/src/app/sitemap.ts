@@ -13,6 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/", priority: 1, changeFrequency: "weekly" },
     { path: "/work/crm/", priority: 0.8, changeFrequency: "monthly" },
     { path: "/work/hmdv/", priority: 0.8, changeFrequency: "monthly" },
+    { path: "/work/aws/", priority: 0.8, changeFrequency: "monthly" },
     { path: "/work/ccst/", priority: 0.8, changeFrequency: "monthly" },
     { path: "/work/senda/", priority: 0.7, changeFrequency: "monthly" },
     { path: "/work/serviyapp/", priority: 0.7, changeFrequency: "monthly" },

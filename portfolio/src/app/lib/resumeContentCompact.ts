@@ -67,12 +67,17 @@ const es: ResumeCopy = {
   ],
   projects: [
     {
-      title:
-        "CCST Study Lab — Proyecto personal · Fullstack · Next.js · NestJS · TypeScript · PostgreSQL · Prisma",
+      title: "AWS Study Lab — Proyecto personal · Next.js · NestJS · PostgreSQL",
+      url: "https://aws-practitioner-study-lab.vercel.app/",
+      bullets: [
+        "App para AWS Cloud Practitioner: 352 cartas, 208 preguntas y examen de 65 en 90 min. Vercel, Render y Neon.",
+      ],
+    },
+    {
+      title: "CCST Study Lab — Proyecto personal · Next.js · NestJS · PostgreSQL",
       url: "https://ccst-study-lab.vercel.app/",
       bullets: [
-        "Plataforma de estudio para la certificación Cisco CCST Cybersecurity con 51 tarjetas de 5 tipos y sesiones adaptativas.",
-        "Diseñé y desarrollé de punta a punta: corrección en el servidor, sesión JWT en cookie httpOnly, validación con Zod y despliegue en Vercel, Render y Neon.",
+        "App para Cisco CCST Cybersecurity: 51 tarjetas de 5 tipos y corrección en el servidor. Vercel, Render y Neon.",
         "Del 6 al 19 de octubre de 2026: 230 usuarios, 507 sesiones terminadas y 15,792 respuestas corregidas en el servidor.",
       ],
     },
@@ -80,11 +85,10 @@ const es: ResumeCopy = {
       title:
         "ServiYApp — Proyecto estudiantil · Frontend Developer · Equipo de 6 · Next.js · React · TypeScript · Zustand · Socket.IO · Mercado Pago · Tailwind CSS",
       bullets: [
-        "Marketplace de servicios de belleza a domicilio con paneles para clientes, proveedores y administradores.",
+        "Marketplace de servicios de belleza a domicilio con paneles para clientes, proveedores y administradores; desarrollé el backoffice con métricas y aprobación de documentos.",
         "Implementé autenticación, Google OAuth, rutas protegidas por rol y persistencia de sesión con Zustand y JWT.",
         "Integré checkout con Mercado Pago con soporte para MXN, COP y ARS.",
         "Construí el chat de punta a punta: el gateway de WebSockets en NestJS con Socket.IO y, en el frontend, historial, estado online/offline, indicador de escritura y confirmaciones de lectura.",
-        "Desarrollé el backoffice con métricas y aprobación de documentos.",
         "170 commits propios en el frontend (70% del repositorio). Despliegue en Vercel y Render.",
       ],
     },
@@ -125,7 +129,7 @@ const es: ResumeCopy = {
     {
       left: "Junior Achievement Americas — Mujer Digital · 7.ª generación",
       right: "2026 · En curso",
-      sub: "Formación en ciberseguridad, redes y soporte, con acompañamiento para empleabilidad. Cisco Digital Badges: Introduction to Cybersecurity · Networking Basics · Network Defense · Cyber Threat Management.",
+      sub: "Formación en ciberseguridad, redes y soporte, con acompañamiento para empleabilidad.",
     },
   ],
   skills: [
@@ -234,12 +238,17 @@ const en: ResumeCopy = {
   ],
   projects: [
     {
-      title:
-        "CCST Study Lab — Personal project · Fullstack · Next.js · NestJS · TypeScript · PostgreSQL · Prisma",
+      title: "AWS Study Lab — Personal project · Next.js · NestJS · PostgreSQL",
+      url: "https://aws-practitioner-study-lab.vercel.app/",
+      bullets: [
+        "App for AWS Cloud Practitioner: 352 cards, 208 questions, and a 65-question exam in 90 minutes. Vercel, Render, and Neon.",
+      ],
+    },
+    {
+      title: "CCST Study Lab — Personal project · Next.js · NestJS · PostgreSQL",
       url: "https://ccst-study-lab.vercel.app/",
       bullets: [
-        "Study platform for the Cisco CCST Cybersecurity certification with 51 cards across 5 types and adaptive sessions.",
-        "Designed and built it end to end: server-side grading, a JWT session in an httpOnly cookie, Zod validation, and deployment on Vercel, Render, and Neon.",
+        "App for Cisco CCST Cybersecurity: 51 cards across 5 types and server-side grading. Vercel, Render, and Neon.",
         "October 6–19, 2026: 230 users, 507 sessions completed, and 15,792 answers graded on the server.",
       ],
     },
@@ -247,11 +256,10 @@ const en: ResumeCopy = {
       title:
         "ServiYApp — Student project · Frontend Developer · Team of 6 · Next.js · React · TypeScript · Zustand · Socket.IO · Mercado Pago · Tailwind CSS",
       bullets: [
-        "At-home beauty services marketplace with client, provider, and admin panels.",
+        "At-home beauty services marketplace with client, provider, and admin panels; I built the backoffice with metrics and document approval.",
         "Implemented authentication, Google OAuth, role-protected routes, and session persistence with Zustand and JWT.",
         "Integrated Mercado Pago checkout with support for MXN, COP, and ARS.",
         "Built the real-time chat end to end: the NestJS WebSocket gateway with Socket.IO and, on the frontend, history, online/offline status, typing indicator, and read receipts.",
-        "Built the backoffice with metrics and document approval.",
         "170 commits of my own in the frontend (70% of the repository). Deployed on Vercel and Render.",
       ],
     },
@@ -292,7 +300,7 @@ const en: ResumeCopy = {
     {
       left: "Junior Achievement Americas — Mujer Digital · 7th cohort",
       right: "2026 · In progress",
-      sub: "Training in cybersecurity, networking, and support, with employability mentoring. Cisco Digital Badges: Introduction to Cybersecurity · Networking Basics · Network Defense · Cyber Threat Management.",
+      sub: "Training in cybersecurity, networking, and support, with employability mentoring.",
     },
   ],
   skills: [

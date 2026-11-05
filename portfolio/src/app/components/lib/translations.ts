@@ -279,6 +279,17 @@ projects_link_live: "Ver sitio",
     projects_hotel_desc:
       "Rediseño UX/UI y frontend bilingüe con reserva a la vista desde cualquier página.",
 
+    projects_aws_title: "AWS Study Lab",
+    projects_aws_role: "Diseño y desarrollo · Web, API y base de datos",
+    projects_aws_desc:
+      "App de estudio para AWS Cloud Practitioner que corrige en el servidor, repasa lo que fallas y cierra con un examen contra reloj.",
+    projects_aws_shot_1: "Inicio: entra con cuenta o prueba sin cuenta",
+    projects_aws_shot_2: "Elige el tamaño de la partida y los temas",
+    projects_aws_shot_3: "Carta de estudio, con la respuesta todavía oculta",
+    projects_aws_shot_4: "Feedback con explicación y racha hacia el dominio",
+    projects_aws_shot_5: "Guías para leer o bajar en PDF",
+    projects_aws_shot_6: "Crucigrama para recordar los nombres de los servicios",
+
     projects_ccst_title: "CCST Study Lab",
     projects_ccst_role: "Diseño y desarrollo · Web, API y base de datos",
     projects_ccst_desc:
@@ -726,6 +737,17 @@ projects_link_live: "Live site",
     projects_hotel_role: "GROVA · HMDV · UX/UI + Frontend in production",
     projects_hotel_desc:
       "UX/UI redesign and bilingual frontend with booking in sight on every page.",
+
+    projects_aws_title: "AWS Study Lab",
+    projects_aws_role: "Design & development · Web, API, and database",
+    projects_aws_desc:
+      "AWS Cloud Practitioner study app that grades on the server, drills what you miss, and finishes with a timed exam.",
+    projects_aws_shot_1: "Home: sign in or try it without an account",
+    projects_aws_shot_2: "Pick the session size and the topics",
+    projects_aws_shot_3: "A study card, with the answer still hidden",
+    projects_aws_shot_4: "Feedback with explanation and mastery streak",
+    projects_aws_shot_5: "Guides to read or download as PDF",
+    projects_aws_shot_6: "Crossword for remembering the service names",
 
     projects_ccst_title: "CCST Study Lab",
     projects_ccst_role: "Design & development · Web, API, and database",
